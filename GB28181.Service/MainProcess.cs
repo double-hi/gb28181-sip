@@ -87,30 +87,27 @@ namespace GB28181Service
 
         public void Run()
         {
-            //_eventStopService.Reset();
-            //_eventThreadExit.Reset();
+            _eventStopService.Reset();
+            _eventThreadExit.Reset();
 
-            //AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
 
-            //// config info for .net core https://www.cnblogs.com/Leo_wl/p/5745772.html#_label3
-            //var builder = new ConfigurationBuilder()
-            //    .SetBasePath(Directory.GetCurrentDirectory())
-            //    .AddXmlFile("Config/gb28181.xml", false, reloadOnChange: true);
-            //var config = builder.Build();//// Console.WriteLine(config["sipaccount:ID"]);
+            // config info for .net core https://www.cnblogs.com/Leo_wl/p/5745772.html#_label3
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddXmlFile("Config/gb28181.xml", false, reloadOnChange: true);
+            var config = builder.Build();//// Console.WriteLine(config["sipaccount:ID"]);
 
-            //var sect = config.GetSection("sipaccounts");
+            var sect = config.GetSection("sipaccounts");
 
-            ////Config Service & and run
-            //ConfigServices(config);
+            //Config Service & and run
+            ConfigServices(config);
 
-            ////Start the main serice
-            //_mainTask = Task.Factory.StartNew(() => MainServiceProcessing());
+            //Start the main serice
+            _mainTask = Task.Factory.StartNew(() => MainServiceProcessing());
 
-            ////wait the process exit of main
-            //_eventExitMainProcess.WaitOne();
-
-            Console.WriteLine("hello world ...");
-            Console.Read(); 
+            //wait the process exit of main
+            _eventExitMainProcess.WaitOne();
         }
         
         public void Stop()
