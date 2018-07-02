@@ -58,7 +58,7 @@ namespace SIPSorcery.GB28181.Sys.Config
         public SIPAccount GetLocalSipAccout()
         {
 
-            var defaultAccount = Accounts.First();
+            var defaultAccount = Accounts.FirstOrDefault();
 
             if (defaultAccount == null)
             {
