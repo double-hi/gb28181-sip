@@ -59,7 +59,17 @@ namespace SIPSorcery.GB28181.Sys.Config
         public SIPAccount GetLocalSipAccout()
         {
 
-            var defaultAccount = Accounts[0];
+            if (Accounts == null)
+            {
+                throw new ApplicationException("Accounts is NULL,SIP not started");
+            }
+
+            var defaultAccount = Accounts.FirstOrDefault();
+
+            foreach (SIPAccount sipa in Accounts)
+            {
+                defaultAccount = sipa;
+            }
 
             if (defaultAccount == null)
             {
