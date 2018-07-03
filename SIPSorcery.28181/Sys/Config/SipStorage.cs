@@ -63,6 +63,10 @@ namespace SIPSorcery.GB28181.Sys.Config
             {
                 throw new ApplicationException("Accounts is NULL,SIP not started");
             }
+            else
+            {
+                throw new ApplicationException("Accounts is not NULL:" + Accounts.Count);
+            }
 
             var defaultAccount = Accounts.FirstOrDefault();
 
