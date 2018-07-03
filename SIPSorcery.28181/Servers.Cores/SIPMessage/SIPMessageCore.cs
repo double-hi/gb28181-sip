@@ -187,17 +187,10 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
 
         private void Initialize(List<Camera> cameraList)
         {
-            //_cameras.Add(new Camera()
-            //{
-            //    DeviceID = "42010000002100000002",
-            //    IPAddress = "10.78.115.156",
-            //    Port = 5060
-            //});
-
             _cameras.Add(new Camera()
             {
                 DeviceID = "42010000001310000184",
-                IPAddress = "10.78.115.152",
+                IPAddress = EnvironmentVariables.LocalIp,
                 Port = 5060
             });
 
@@ -216,7 +209,6 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
                 //    RemoteEndPoint = new SIPEndPoint(SIPProtocolsEnum.udp, ipaddress, deviceItem.Port),
                 //    DeviceId = deviceItem.DeviceID
                 //});
-
             });
             
         }

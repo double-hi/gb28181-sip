@@ -559,6 +559,13 @@ namespace SIPSorcery.GB28181.SIP.App
                         foreach (DataRow row in sipAssetSet.Tables[0].Rows)
                         {
                             var sipAsset = new SIPAccount();
+
+                            string LocalIp = EnvironmentVariables.LocalIp;
+                            if (!string.IsNullOrEmpty(LocalIp))
+                            {
+                                row["LocalIp"] = LocalIp;
+                            }
+
                             sipAsset.Load(row);
                             assets.Add(sipAsset.Id, sipAsset);
                         }
