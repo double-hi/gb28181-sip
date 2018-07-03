@@ -1,5 +1,5 @@
 
-FROM microsoft/dotnet:2.1-aspnetcore-runtime
+FROM microsoft/aspnetcore
 
 WORKDIR /app
 
