@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
+
 /// <summary>
 /// read configuraton and config the data storage
 /// </summary>
@@ -58,7 +59,7 @@ namespace SIPSorcery.GB28181.Sys.Config
         public SIPAccount GetLocalSipAccout()
         {
 
-            var defaultAccount = Accounts.FirstOrDefault();
+            var defaultAccount = Accounts.First();
 
             if (defaultAccount == null)
             {
