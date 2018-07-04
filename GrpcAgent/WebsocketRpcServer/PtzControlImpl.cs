@@ -24,31 +24,31 @@ namespace GrpcAgent.WebsocketRpcServer
         {
             if (request.Xyz.X == 0 && request.Xyz.Y == 4 && request.Xyz.Z == 0)
             {
-                _sipMessageCore.PtzControl(SIPSorcery.GB28181.Servers.SIPMonitor.PTZCommand.Up, request.Step * 40);
+                _sipMessageCore.PtzControl(SIPSorcery.GB28181.Servers.SIPMonitor.PTZCommand.Up, request.Speed * 40);
             }
             else if (request.Xyz.X == 0 && request.Xyz.Y == -4 && request.Xyz.Z == 0)
             {
-                _sipMessageCore.PtzControl(SIPSorcery.GB28181.Servers.SIPMonitor.PTZCommand.Down, request.Step * 40);
+                _sipMessageCore.PtzControl(SIPSorcery.GB28181.Servers.SIPMonitor.PTZCommand.Down, request.Speed * 40);
             }
             else if (request.Xyz.X == 4 && request.Xyz.Y == 0 && request.Xyz.Z == 0)
             {
-                _sipMessageCore.PtzControl(SIPSorcery.GB28181.Servers.SIPMonitor.PTZCommand.Left, request.Step * 40);
+                _sipMessageCore.PtzControl(SIPSorcery.GB28181.Servers.SIPMonitor.PTZCommand.Left, request.Speed * 40);
             }
             else if (request.Xyz.X == -4 && request.Xyz.Y == 0 && request.Xyz.Z == 0)
             {
-                _sipMessageCore.PtzControl(SIPSorcery.GB28181.Servers.SIPMonitor.PTZCommand.Right, request.Step * 40);
+                _sipMessageCore.PtzControl(SIPSorcery.GB28181.Servers.SIPMonitor.PTZCommand.Right, request.Speed * 40);
             }
             else if (request.Xyz.X == 0 && request.Xyz.Y == 0 && request.Xyz.Z == 4)
             {
-                _sipMessageCore.PtzControl(SIPSorcery.GB28181.Servers.SIPMonitor.PTZCommand.Zoom1, request.Step * 40);
+                _sipMessageCore.PtzControl(SIPSorcery.GB28181.Servers.SIPMonitor.PTZCommand.Zoom1, request.Speed * 40);
             }
             else if (request.Xyz.X == 0 && request.Xyz.Y == 0 && request.Xyz.Z == -4)
             {
-                _sipMessageCore.PtzControl(SIPSorcery.GB28181.Servers.SIPMonitor.PTZCommand.Zoom2, request.Step * 40);
+                _sipMessageCore.PtzControl(SIPSorcery.GB28181.Servers.SIPMonitor.PTZCommand.Zoom2, request.Speed * 40);
             }
             else
             {
-                _sipMessageCore.PtzControl(SIPSorcery.GB28181.Servers.SIPMonitor.PTZCommand.Stop, request.Step * 40);
+                _sipMessageCore.PtzControl(SIPSorcery.GB28181.Servers.SIPMonitor.PTZCommand.Stop, request.Speed * 40);
             }
             string x = "Status: 200 OK";
             return Task.FromResult(new PtzDirectReply { Message = x });

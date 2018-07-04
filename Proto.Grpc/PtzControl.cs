@@ -22,17 +22,17 @@ namespace GrpcPtzControl {
     static PtzControlReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFwdHpfY29udHJvbC5wcm90bxIOR3JwY1B0ekNvbnRyb2wiVwoQUHR6RGly",
+            "ChFwdHpfY29udHJvbC5wcm90bxIOR3JwY1B0ekNvbnRyb2wiWAoQUHR6RGly",
             "ZWN0UmVxdWVzdBIjCgN4eXoYASABKAsyFi5HcnBjUHR6Q29udHJvbC5QdHpY",
-            "WVoSDAoEc3RlcBgCIAEoBRIQCghkZXZpY2VpZBgDIAEoCSIhCg5QdHpEaXJl",
-            "Y3RSZXBseRIPCgdtZXNzYWdlGAEgASgJIikKBlB0elhZWhIJCgFYGAEgASgF",
-            "EgkKAVkYAiABKAUSCQoBWhgDIAEoBTJdCgpQdHpDb250cm9sEk8KCVB0ekRp",
-            "cmVjdBIgLkdycGNQdHpDb250cm9sLlB0ekRpcmVjdFJlcXVlc3QaHi5HcnBj",
-            "UHR6Q29udHJvbC5QdHpEaXJlY3RSZXBseSIAYgZwcm90bzM="));
+            "WVoSDQoFc3BlZWQYAiABKAUSEAoIZGV2aWNlaWQYAyABKAkiIQoOUHR6RGly",
+            "ZWN0UmVwbHkSDwoHbWVzc2FnZRgBIAEoCSIpCgZQdHpYWVoSCQoBWBgBIAEo",
+            "BRIJCgFZGAIgASgFEgkKAVoYAyABKAUyXQoKUHR6Q29udHJvbBJPCglQdHpE",
+            "aXJlY3QSIC5HcnBjUHR6Q29udHJvbC5QdHpEaXJlY3RSZXF1ZXN0Gh4uR3Jw",
+            "Y1B0ekNvbnRyb2wuUHR6RGlyZWN0UmVwbHkiAGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcPtzControl.PtzDirectRequest), global::GrpcPtzControl.PtzDirectRequest.Parser, new[]{ "Xyz", "Step", "Deviceid" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcPtzControl.PtzDirectRequest), global::GrpcPtzControl.PtzDirectRequest.Parser, new[]{ "Xyz", "Speed", "Deviceid" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GrpcPtzControl.PtzDirectReply), global::GrpcPtzControl.PtzDirectReply.Parser, new[]{ "Message" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GrpcPtzControl.PtzXYZ), global::GrpcPtzControl.PtzXYZ.Parser, new[]{ "X", "Y", "Z" }, null, null, null)
           }));
@@ -69,7 +69,7 @@ namespace GrpcPtzControl {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public PtzDirectRequest(PtzDirectRequest other) : this() {
       Xyz = other.xyz_ != null ? other.Xyz.Clone() : null;
-      step_ = other.step_;
+      speed_ = other.speed_;
       deviceid_ = other.deviceid_;
     }
 
@@ -89,14 +89,14 @@ namespace GrpcPtzControl {
       }
     }
 
-    /// <summary>Field number for the "step" field.</summary>
-    public const int StepFieldNumber = 2;
-    private int step_;
+    /// <summary>Field number for the "speed" field.</summary>
+    public const int SpeedFieldNumber = 2;
+    private int speed_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Step {
-      get { return step_; }
+    public int Speed {
+      get { return speed_; }
       set {
-        step_ = value;
+        speed_ = value;
       }
     }
 
@@ -125,7 +125,7 @@ namespace GrpcPtzControl {
         return true;
       }
       if (!object.Equals(Xyz, other.Xyz)) return false;
-      if (Step != other.Step) return false;
+      if (Speed != other.Speed) return false;
       if (Deviceid != other.Deviceid) return false;
       return true;
     }
@@ -134,7 +134,7 @@ namespace GrpcPtzControl {
     public override int GetHashCode() {
       int hash = 1;
       if (xyz_ != null) hash ^= Xyz.GetHashCode();
-      if (Step != 0) hash ^= Step.GetHashCode();
+      if (Speed != 0) hash ^= Speed.GetHashCode();
       if (Deviceid.Length != 0) hash ^= Deviceid.GetHashCode();
       return hash;
     }
@@ -150,9 +150,9 @@ namespace GrpcPtzControl {
         output.WriteRawTag(10);
         output.WriteMessage(Xyz);
       }
-      if (Step != 0) {
+      if (Speed != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(Step);
+        output.WriteInt32(Speed);
       }
       if (Deviceid.Length != 0) {
         output.WriteRawTag(26);
@@ -166,8 +166,8 @@ namespace GrpcPtzControl {
       if (xyz_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Xyz);
       }
-      if (Step != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Step);
+      if (Speed != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Speed);
       }
       if (Deviceid.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Deviceid);
@@ -186,8 +186,8 @@ namespace GrpcPtzControl {
         }
         Xyz.MergeFrom(other.Xyz);
       }
-      if (other.Step != 0) {
-        Step = other.Step;
+      if (other.Speed != 0) {
+        Speed = other.Speed;
       }
       if (other.Deviceid.Length != 0) {
         Deviceid = other.Deviceid;
@@ -210,7 +210,7 @@ namespace GrpcPtzControl {
             break;
           }
           case 16: {
-            Step = input.ReadInt32();
+            Speed = input.ReadInt32();
             break;
           }
           case 26: {
