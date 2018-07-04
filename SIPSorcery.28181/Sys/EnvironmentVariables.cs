@@ -11,6 +11,7 @@ namespace SIPSorcery.GB28181.Sys
         public static string LocalIp
         {
             get { return _localip ?? Environment.GetEnvironmentVariable(MICRO_REGISTRY_ADDRESS); }
+            set { _localip = value; }
         }
     }
 }
