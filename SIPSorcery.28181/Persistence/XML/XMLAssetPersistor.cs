@@ -487,7 +487,7 @@ namespace SIPSorcery.GB28181.Persistence.XML
             {
                 var dir = Path.GetDirectoryName(m_xmlAssetFilePath);
                 var file = Path.GetFileName(m_xmlAssetFilePath);
-                logger.Debug("Starting file watch on " + dir + " and " + file + ".");
+                logger.Debug("Starting file 2 watch on " + dir + " and " + file + ".");
                 m_xmlFileWatcher = new FileSystemWatcher(dir, file);
                 m_xmlFileWatcher.Changed += new FileSystemEventHandler(AssetXMLFileChanged);
                 m_xmlFileWatcher.EnableRaisingEvents = true;
