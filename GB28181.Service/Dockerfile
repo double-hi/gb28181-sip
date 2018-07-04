@@ -1,5 +1,5 @@
 
-FROM microsoft/aspnetcore
+FROM microsoft/dotnet
 
 WORKDIR /app
 
