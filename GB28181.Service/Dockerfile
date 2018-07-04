@@ -3,7 +3,7 @@ FROM microsoft/aspnetcore
 
 WORKDIR /app
 
-COPY . /app
+COPY publish /app
 
 EXPOSE 5061
 
