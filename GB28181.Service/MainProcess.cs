@@ -95,7 +95,7 @@ namespace GB28181Service
             // config info for .net core https://www.cnblogs.com/Leo_wl/p/5745772.html#_label3
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddXmlFile("Config/gb28181.xml", false, reloadOnChange: true);
+                .AddXmlFile("Config\\gb28181.xml", false, reloadOnChange: true);
             var config = builder.Build();//// Console.WriteLine(config["sipaccount:ID"]);
 
             var sect = config.GetSection("sipaccounts");
@@ -218,7 +218,7 @@ namespace GB28181Service
                          case ConsoleKey.I:
                              {
                                  var mockCaller = _serviceProvider.GetService<ISIPServiceDirector>();
-                                 mockCaller.MakeVideoRequest("42010000001310000184", new int[] { 5060 }, "10.78.115.155");
+                                 mockCaller.MakeVideoRequest("42010000001310000184", new int[] { 5060 }, EnvironmentVariables.LocalIp);
                              }
                              break;
 
