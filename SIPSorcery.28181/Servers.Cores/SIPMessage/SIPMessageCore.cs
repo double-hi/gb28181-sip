@@ -190,7 +190,7 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
             _cameras.Add(new Camera()
             {
                 DeviceID = "42010000001310000184",
-                IPAddress = EnvironmentVariables.LocalIp,
+                IPAddress = "10.78.115.155",//ip of Camera
                 Port = 5060
             });
 
