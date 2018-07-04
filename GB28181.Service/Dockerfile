@@ -1,10 +1,12 @@
 
-FROM microsoft/dotnet
+FROM microsoft/dotnet:2.1-runtime
 
-WORKDIR /app
+WORKDIR /opt/bin
 
-COPY publish /app
+COPY Build/netcoreapp2.1/publish /opt/bin 
 
 EXPOSE 5061
+EXPOSE 50051
 
 ENTRYPOINT ["dotnet", "GB28181.Service.dll"]
+

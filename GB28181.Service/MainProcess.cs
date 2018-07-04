@@ -179,7 +179,7 @@ namespace GB28181Service
                 {
                     _mainWebSocketRpcServer.AddIPAdress(EnvironmentVariables.LocalIp);
                     //_mainWebSocketRpcServer.AddIPAdress("127.0.0.1");
-                    _mainWebSocketRpcServer.AddPort(5061);
+                    _mainWebSocketRpcServer.AddPort(50051);
                     _mainWebSocketRpcServer.Run();
                 });
 
