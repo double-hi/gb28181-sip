@@ -66,7 +66,7 @@ namespace SIPSorcery.GB28181.SIP
                 IPAddress ipadobj;
                 IPAddress.TryParse("0.0.0.0", out ipadobj);
                 IPEndPoint ipedp = new IPEndPoint(ipadobj, m_localSIPEndPoint.GetIPEndPoint().Port);
-                m_sipConn = new UdpClient(ipedp);
+                m_sipConn = new UdpClient(ipedp);//ipedp=0.0.0.0:5061
                 logger.Debug("Initialise() new IPEndPoint is:" + ipedp);
                 //m_sipConn = new UdpClient(m_localSIPEndPoint.GetIPEndPoint());
 
