@@ -63,7 +63,12 @@ namespace SIPSorcery.GB28181.SIP
         private void Initialise() {
             try {
                 logger.Debug("Initialise() .new UdpClient()  m_localSIPEndPoint.GetIPEndPoint() is:" + m_localSIPEndPoint.GetIPEndPoint());
-                m_sipConn = new UdpClient(m_localSIPEndPoint.GetIPEndPoint());
+                IPAddress ipadobj;
+                IPAddress.TryParse("0.0.0.0", out ipadobj);
+                IPEndPoint ipedp = new IPEndPoint(ipadobj, m_localSIPEndPoint.GetIPEndPoint().Port);
+                m_sipConn = new UdpClient(ipedp);
+                logger.Debug("Initialise() new IPEndPoint is:" + ipedp);
+                //m_sipConn = new UdpClient(m_localSIPEndPoint.GetIPEndPoint());
 
                 var listenThread = new Thread(new ThreadStart(Listen))
                 {
