@@ -210,7 +210,7 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
                 //    DeviceId = deviceItem.DeviceID
                 //});
             });
-            
+            logger.Debug("PTZ Camera Initialized ...");
         }
 
         #region 启动/停止消息主服务(监听注册链接)
