@@ -177,15 +177,15 @@ namespace GB28181Service
                 var _mainWebSocketRpcServer = _serviceProvider.GetRequiredService<IRpcService>();
                 _mainWebSocketRpcTask = Task.Factory.StartNew(() =>
                 {
-                    _mainWebSocketRpcServer.AddIPAdress(EnvironmentVariables.LocalIp);
+                    _mainWebSocketRpcServer.AddIPAdress("0.0.0.0");//EnvironmentVariables.LocalIp//docker inner container will be used
                     //_mainWebSocketRpcServer.AddIPAdress("127.0.0.1");
                     _mainWebSocketRpcServer.AddPort(50051);
                     _mainWebSocketRpcServer.Run();
                 });
 
-                //test code will be removed
-                var abc = WaitUserCmd();
-                abc.Wait();
+                ////test code will be removed
+                //var abc = WaitUserCmd();
+                //abc.Wait();
 
                 //wait main service exit
                 _eventStopService.WaitOne();
@@ -205,41 +205,41 @@ namespace GB28181Service
 
         }
         
-        private async Task WaitUserCmd()
-        {
-            await Task.Run(() =>
-             {
-                 while (true)
-                 {
-                     Console.WriteLine("\ninput command : I -Invite, E -Exit");
-                     var inputkey = Console.ReadKey();
-                     switch (inputkey.Key)
-                     {
-                         case ConsoleKey.I:
-                             {
-                                 var mockCaller = _serviceProvider.GetService<ISIPServiceDirector>();
-                                 mockCaller.MakeVideoRequest("42010000001310000184", new int[] { 5060 }, EnvironmentVariables.LocalIp);
-                             }
-                             break;
+        //private async Task WaitUserCmd()
+        //{
+        //    await Task.Run(() =>
+        //     {
+        //         while (true)
+        //         {
+        //             Console.WriteLine("\ninput command : I -Invite, E -Exit");
+        //             var inputkey = Console.ReadKey();
+        //             switch (inputkey.Key)
+        //             {
+        //                 case ConsoleKey.I:
+        //                     {
+        //                         var mockCaller = _serviceProvider.GetService<ISIPServiceDirector>();
+        //                         mockCaller.MakeVideoRequest("42010000001310000184", new int[] { 5060 }, EnvironmentVariables.LocalIp);
+        //                     }
+        //                     break;
 
-                         case ConsoleKey.E:
-                             Console.WriteLine("\nexit Process!");
-                             break;
-                         default:
-                             break;
-                     }
-                     if (inputkey.Key == ConsoleKey.E)
-                     {
-                         return 0;
-                     }
-                     else
-                     {
-                         continue;
-                     }
-                 }
+        //                 case ConsoleKey.E:
+        //                     Console.WriteLine("\nexit Process!");
+        //                     break;
+        //                 default:
+        //                     break;
+        //             }
+        //             if (inputkey.Key == ConsoleKey.E)
+        //             {
+        //                 return 0;
+        //             }
+        //             else
+        //             {
+        //                 continue;
+        //             }
+        //         }
 
-             });
-        }
+        //     });
+        //}
 
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {

@@ -560,7 +560,7 @@ namespace SIPSorcery.GB28181.SIP.App
                         {
                             var sipAsset = new SIPAccount();
 
-                            string LocalIp = EnvironmentVariables.LocalIp;
+                            string LocalIp = EnvironmentVariables.GbServiceLocalIp;
                             if (!string.IsNullOrEmpty(LocalIp))
                             {
                                 row["LocalIp"] = LocalIp;
