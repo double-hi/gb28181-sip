@@ -230,7 +230,7 @@ namespace SIPSorcery.GB28181.Servers
                                 FireProxyLogEvent(new SIPMonitorConsoleEvent(SIPMonitorServerTypesEnum.Registrar, SIPMonitorEventTypesEnum.RegistrarTiming, "register result=" + result.ToString() + ", time=" + duration.TotalMilliseconds + "ms, user=" + registrarTransaction.TransactionRequest.Header.To.ToURI.User + ".", null));
                                 RegisterComplete?.Invoke(duration.TotalMilliseconds, registrarTransaction.TransactionRequest.Header.AuthenticationHeader != null);
 
-                                logger.Debug("Register Complete ...");
+                                logger.Debug("Register was completed ...");
                                 //CacheDeviceItem(registrarTransaction.TransactionRequest);
                             }
                         }
