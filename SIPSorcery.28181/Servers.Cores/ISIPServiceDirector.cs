@@ -7,11 +7,12 @@ namespace SIPSorcery.GB28181.Servers
     public interface ISIPServiceDirector
     {
         ISIPMonitorCore GetTargetMonitorService(string gbid);
-
-
+        
         //ip/port/protocol/ 
         Task<Tuple<string, int, ProtocolType>> MakeVideoRequest(string gbid, int[] mediaPort, string receiveIP);
 
-
+        //Stop 
+        Task<Tuple<string, int, ProtocolType>> Stop(string gbid);
+        
     }
 }

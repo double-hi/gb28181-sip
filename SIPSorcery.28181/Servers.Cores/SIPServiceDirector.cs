@@ -56,5 +56,33 @@ namespace SIPSorcery.GB28181.Servers
 
             return Tuple.Create(ipaddress, port, ProtocolType.Udp);
         }
+
+
+        //stop real Request
+        async public Task<Tuple<string, int, ProtocolType>> Stop(string gbid)
+        {
+            var target = GetTargetMonitorService(gbid);
+
+            if (target == null)
+            {
+                return null;
+            }
+
+            var taskResult = await Task.Factory.StartNew(() =>
+            {
+                //stop
+                target.ByeVideoReq();
+
+                var result = target.WaitRequestResult();
+
+                return result;
+            });
+
+            var ipaddress = _sipCoreMessageService.GetReceiveIP(taskResult.Item2.Body);
+
+            var port = _sipCoreMessageService.GetReceivePort(taskResult.Item2.Body, SDPMediaTypesEnum.video);
+
+            return Tuple.Create(ipaddress, port, ProtocolType.Udp);
+        }
     }
 }

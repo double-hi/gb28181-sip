@@ -82,8 +82,7 @@ namespace GrpcAgent.WebsocketRpcServer
 
         public override Task<StopReply> Stop(StopRequest request, ServerCallContext context)
         {
-            return base.Stop(request, context);
-
+            //return base.Stop(request, context);
             //var stopReply = new StopReply()
             //{
             //    Status = new MediaContract.Status()
@@ -91,10 +90,20 @@ namespace GrpcAgent.WebsocketRpcServer
             //        Code = 200,
             //        Msg = "Stop Successful!"
             //    }
-
             //};
-
             //return Task.FromResult(stopReply);
+            
+            var stopProcessResult = _sipServiceDirector.Stop(request.Gbid);
+
+            var stopReply = new StopReply()
+            {
+                Status = new MediaContract.Status()
+                {
+                    Code = 200,
+                    Msg = "Stop Successful!"
+                }
+            };
+            return Task.FromResult(stopReply);
         }
     }
 }
