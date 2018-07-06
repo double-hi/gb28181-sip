@@ -43,10 +43,10 @@ namespace GrpcAgent.WebsocketRpcServer
             //get the response .
             var resReply = new StartLiveReply()
             {
-                // Ipaddr = reqeustProcessResult.Result.Item1,
-                //Port = reqeustProcessResult.Result.Item2,
-                Ipaddr = "0000000",
-                Port = 000000,
+                Ipaddr = reqeustProcessResult.Result.Item1,
+                Port = reqeustProcessResult.Result.Item2,
+                //Ipaddr = "0000000",
+                //Port = 000000,
                 Hdr = request.Hdr,
 
                 Status = new MediaContract.Status()
@@ -82,19 +82,19 @@ namespace GrpcAgent.WebsocketRpcServer
 
         public override Task<StopReply> Stop(StopRequest request, ServerCallContext context)
         {
-            // return base.Stop(request, context);
+            return base.Stop(request, context);
 
-            var stopReply = new StopReply()
-            {
-                Status = new MediaContract.Status()
-                {
-                    Code = 200,
-                    Msg = "Stop Successful!"
-                }
+            //var stopReply = new StopReply()
+            //{
+            //    Status = new MediaContract.Status()
+            //    {
+            //        Code = 200,
+            //        Msg = "Stop Successful!"
+            //    }
 
-            };
+            //};
 
-            return Task.FromResult(stopReply);
+            //return Task.FromResult(stopReply);
         }
     }
 }
