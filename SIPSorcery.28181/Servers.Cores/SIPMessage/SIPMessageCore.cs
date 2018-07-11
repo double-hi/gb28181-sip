@@ -305,7 +305,6 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
             try
             {
                 logger.Debug("PTZ Controlling started.");
-                Initialize(_cameras);
                 sipMonitorcore.PtzContrl(ptzcmd, dwSpeed);
                 logger.Debug("PTZ Controlling halted.");
             }
