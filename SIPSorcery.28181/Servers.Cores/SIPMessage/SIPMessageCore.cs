@@ -181,10 +181,7 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
             // throw new NotImplementedException();
         }
 
-        private List<Camera> _cameras = new List<Camera>();
-
-        public SIPMonitorCoreService sipMonitorcore;
-
+        private List<Camera> _cameras = new List<Camera>();        
         private void Initialize(List<Camera> cameraList)
         {
             _cameras.Add(new Camera()
@@ -198,17 +195,12 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
             cameraList?.ForEach(deviceItem =>
             {
                 var ipaddress = IPAddress.Parse(deviceItem.IPAddress);
-                sipMonitorcore = new SIPMonitorCoreService(this, _transport, sipAccountStorage: _sipAccountStorage)
+                SIPMonitorCoreService sipMonitorcore = new SIPMonitorCoreService(this, _transport, sipAccountStorage: _sipAccountStorage)
                 {
                     RemoteEndPoint = new SIPEndPoint(SIPProtocolsEnum.udp, ipaddress, deviceItem.Port),
                     DeviceId = deviceItem.DeviceID
                 };
                 _nodeMonitorService.TryAdd(deviceItem.DeviceID, sipMonitorcore);
-                //_nodeMonitorService.TryAdd(deviceItem.DeviceID, new SIPMonitorCoreService(this, _transport, sipAccountStorage: _sipAccountStorage)
-                //{
-                //    RemoteEndPoint = new SIPEndPoint(SIPProtocolsEnum.udp, ipaddress, deviceItem.Port),
-                //    DeviceId = deviceItem.DeviceID
-                //});
             });
             logger.Debug("PTZ Camera Initialized ...");
         }
@@ -221,7 +213,7 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
             LocalSIPId = _LocalSipAccount.LocalID;
 
             Initialize(_cameras);
-            
+
             try
             {
                 logger.Debug("SIPMessageCoreService daemon is runing...");
@@ -230,12 +222,6 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
                 _transport.MsgEncode = _LocalSipAccount.MsgEncode;
                 _transport.AddSIPChannel(sipChannels);
 
-                ////PTZ Listen
-                //var PTZListenThread = new Thread(new ThreadStart(PTZListen))
-                //{
-                //    Name = "listenThread" + Crypto.GetRandomString(4)
-                //};
-                //PTZListenThread.Start();
             }
             catch (Exception excp)
             {
@@ -274,38 +260,23 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
             }
         }
 
-        /// <summary>
-        /// PTZ Listen
-        /// </summary>
-        protected bool Closed;
-        private void PTZListen()
-        {
-            try
-            {                
-                logger.Debug("PTZ listening started.");
-                while (!Closed)
-                {
-                    //PTZ request
-                    PTZCommand ptzcmd = PTZCommand.Right;
-                    int dwSpeed = 5;
-                    Closed = true;
-                    Thread.Sleep(1000);
-                    sipMonitorcore.PtzContrl(ptzcmd, dwSpeed);
-                }
-                logger.Debug("PTZ listening halted.");
-            }
-            catch (Exception excp)
-            {
-                logger.Error("ptzListen(). " + excp.Message);
-                //throw excp;
-            }
-        }
-        public void PtzControl(PTZCommand ptzcmd, int dwSpeed)
+        public void PtzControl(PTZCommand ptzcmd, int dwSpeed, string deviceID)
         {
             try
             {
                 logger.Debug("PTZ Controlling started.");
-                sipMonitorcore.PtzContrl(ptzcmd, dwSpeed);
+
+                _cameras?.ForEach(deviceItem =>
+                {
+                    foreach (var item in _nodeMonitorService.ToArray())
+                    {
+                        if (deviceItem.DeviceID.Equals(deviceID) && item.Key.Equals(deviceID))
+                        {
+                            item.Value.PtzContrl(ptzcmd, dwSpeed);
+                        }
+                    }
+                });
+
                 logger.Debug("PTZ Controlling halted.");
             }
             catch (Exception excp)
