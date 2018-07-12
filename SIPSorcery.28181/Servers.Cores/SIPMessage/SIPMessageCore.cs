@@ -260,7 +260,7 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
             }
         }
 
-        public void PtzControl(PTZCommand ptzcmd, int dwSpeed, string deviceID)
+        public void PtzControl(PTZCommand ptzcmd, int dwSpeed, string deviceId)
         {
             try
             {
@@ -270,7 +270,7 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
                 {
                     foreach (var item in _nodeMonitorService.ToArray())
                     {
-                        if (deviceItem.DeviceID.Equals(deviceID) && item.Key.Equals(deviceID))
+                        if (deviceItem.DeviceID.Equals(deviceId) && item.Key.Equals(deviceId))
                         {
                             item.Value.PtzContrl(ptzcmd, dwSpeed);
                         }
@@ -1042,6 +1042,34 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
                     string xmlBody = CatalogQuery.Instance.Save<CatalogQuery>(catalog);
                     catalogReq.Body = xmlBody;
                     SendRequest(remoteEP, catalogReq);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 设备目录查询
+        /// </summary>
+        /// <param name="deviceId">目的设备编码</param>
+        public void DeviceCatalogQuery(string deviceId)
+        {
+            lock (_remoteTransEPs)
+            {
+                foreach (var item in _remoteTransEPs)
+                {
+                    if (item.Value == deviceId)
+                    {
+                        SIPEndPoint remoteEP = SIPEndPoint.ParseSIPEndPoint("udp:" + item.Key);
+                        SIPRequest catalogReq = QueryItems(remoteEP, item.Value);
+                        CatalogQuery catalog = new CatalogQuery()
+                        {
+                            CommandType = CommandType.Catalog,
+                            DeviceID = item.Value,
+                            SN = new Random().Next(1, ushort.MaxValue)
+                        };
+                        string xmlBody = CatalogQuery.Instance.Save<CatalogQuery>(catalog);
+                        catalogReq.Body = xmlBody;
+                        SendRequest(remoteEP, catalogReq);
+                    }
                 }
             }
         }
