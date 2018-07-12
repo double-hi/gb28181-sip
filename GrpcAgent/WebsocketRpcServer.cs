@@ -29,10 +29,13 @@ namespace GrpcAgent
 
         private readonly TaskCompletionSource<bool> tokenSource = new TaskCompletionSource<bool>();
 
-        public RpcServer(VideoSession.VideoSessionBase videoSessionImp, PtzControl.PtzControlBase ptzControlService)
+        public RpcServer(VideoSession.VideoSessionBase videoSessionImp, 
+            PtzControl.PtzControlBase ptzControlService,
+            DeviceCatalog.DeviceCatalogBase deviceCatalogService)
         {
             _videoSession = videoSessionImp;
             _ptzControlService = ptzControlService;
+            _deviceCatalogService = deviceCatalogService;
         }
 
         public void Run()
