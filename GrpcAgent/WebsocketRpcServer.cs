@@ -6,6 +6,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using GrpcPtzControl;
+using GrpcDeviceCatalog;
 
 namespace GrpcAgent
 {
@@ -19,6 +20,7 @@ namespace GrpcAgent
         private string _name = "DefaultName";
         private VideoSession.VideoSessionBase _videoSession;
         private PtzControl.PtzControlBase _ptzControlService;
+        private DeviceCatalog.DeviceCatalogBase _deviceCatalogService;
         public string Ipaddress { get => _ipaddress; set => _ipaddress = value; }
         public int Port { get => _port; set => _port = value; }
 
@@ -33,13 +35,14 @@ namespace GrpcAgent
             _ptzControlService = ptzControlService;
         }
 
-
         public void Run()
         {
             var healthService = new HealthServiceImpl();
             _server = new Server
             {
-                Services = { VideoSession.BindService(_videoSession), PtzControl.BindService(_ptzControlService)},
+                Services = { VideoSession.BindService(_videoSession),
+                    PtzControl.BindService(_ptzControlService),
+                    DeviceCatalog.BindService(_deviceCatalogService) },
                 Ports = { new ServerPort(_ipaddress, _port, ServerCredentials.Insecure) }
             };
 
@@ -52,9 +55,6 @@ namespace GrpcAgent
             tokenSource.Task.Wait();
             _server.ShutdownAsync().Wait();
         }
-
-
-
 
         public void Dispose()
         {

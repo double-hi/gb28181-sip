@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SIPSorcery.GB28181.Servers.SIPCatalog
 {
-    public class SIPCatalogCore
+    public class SIPCatalogCore : ISIPCatalogCore
     {
         private static SIPCatalogCore _instance;
         private Dictionary<string, string> _devList;
@@ -25,7 +25,6 @@ namespace SIPSorcery.GB28181.Servers.SIPCatalog
         }
         public SIPCatalogCore(ISipMessageCore sipMessageCore)
         {
-            _devList = new Dictionary<string, string>();
             _sipMsgCoreService = sipMessageCore;
         }
 

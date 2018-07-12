@@ -19,6 +19,8 @@ using SIPSorcery.GB28181.Servers.SIPMonitor;
 using SIPSorcery.GB28181.Sys.Cache;
 using SIPSorcery.GB28181.Sys.Model;
 using GrpcPtzControl;
+using GrpcDeviceCatalog;
+using SIPSorcery.GB28181.Servers.SIPCatalog;
 
 namespace GB28181Service
 {
@@ -131,6 +133,8 @@ namespace GB28181Service
                             .AddTransient<ISIPTransactionEngine, SIPTransactionEngine>()
                             .AddTransient<ISIPMonitorCore, SIPMonitorCoreService>()
                             .AddScoped<PtzControl.PtzControlBase, PtzControlImpl>()
+                            .AddScoped<DeviceCatalog.DeviceCatalogBase, DeviceCatalogImpl>()
+                            .AddScoped<ISIPCatalogCore, SIPCatalogCore>()
                             .AddSingleton<ISIPTransport, SIPTransport>()
                             .AddSingleton<ISIPRegistrarCore, SIPRegistrarCoreService>()
                             .AddSingleton<ISipMessageCore, SIPMessageCoreService>()

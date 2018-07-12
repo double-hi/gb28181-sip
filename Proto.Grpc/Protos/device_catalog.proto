@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package GrpcDeviceCatalog;
+
+service DeviceCatalog {
+  rpc GetCatalog (GetCatalogRequest) returns (GetCatalogReply) {}
+}
+
+// The request message.
+message GetCatalogRequest {
+	string deviceid = 1;
+}
+
+// The response message.
+message GetCatalogReply {
+  string message = 1;
+}
