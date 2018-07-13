@@ -186,7 +186,8 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
         {
             Camera _camera = new Camera();
             _camera.DeviceID = "42010000001310000184";
-            _camera.IPAddress = string.IsNullOrEmpty(EnvironmentVariables.GbCameraRemoteIp) ? "10.78.115.156" : EnvironmentVariables.GbCameraRemoteIp;
+            string _GbCameraRemoteIp = EnvironmentVariables.GbCameraRemoteIp;
+            _camera.IPAddress = string.IsNullOrEmpty(_GbCameraRemoteIp) ? "10.78.115.156" : _GbCameraRemoteIp;
             _camera.Port = 5060;
             _cameras.Add(_camera);
 
