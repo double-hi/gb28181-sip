@@ -575,12 +575,12 @@ namespace SIPSorcery.GB28181.SIP.App
                         logger.Error("Exception loading SIP asset record in LoadAssetsFromXMLRecordSet (" + (new SIPAccount()).GetType().ToString() + "). " + excp.Message);
                     }
 
-                    logger.Debug(" " + assets.Count + " " + (new SIPAccount()).GetType().ToString() + " assets loaded from XML record set.");
+                    logger.Debug(assets.Count + " " + (new SIPAccount()).GetType().ToString() + " assets loaded from XML record set.");
                 }
                 else
                 {
                     //logger.Warn("The XML supplied to LoadAssetsFromXMLRecordSet for asset type " + (new T()).GetType().ToString() + " did not contain any assets.");
-                    logger.Debug(" no " + (new SIPAccount()).GetType().ToString() + " assets loaded from XML record set.");
+                    logger.Debug("No" + (new SIPAccount()).GetType().ToString() + " assets loaded from XML record set.");
                 }
 
                 xmlReader.Close();

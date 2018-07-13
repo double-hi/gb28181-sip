@@ -186,9 +186,7 @@ namespace SIPSorcery.GB28181.Servers
                             {
                                 m_registerQueue.Enqueue(registrarTransaction);
                             }
-                            logger.Debug("m_registerQueue.Count is: " + m_registerQueue.Count
-                                + "; LocalSIPEndPoint is: " + registrarTransaction.LocalSIPEndPoint + ";"
-                                + "; RemoteEndPoint is: " + registrarTransaction.RemoteEndPoint + ";");
+                            logger.Debug("m_registerQueue.Enqueue Counts: " + m_registerQueue.Count);
                             FireProxyLogEvent(new SIPMonitorConsoleEvent(SIPMonitorServerTypesEnum.Registrar, SIPMonitorEventTypesEnum.BindingInProgress, "Register queued for " + registerRequest.Header.To.ToURI.ToString() + ".", null));
                         }
                         else
@@ -233,9 +231,8 @@ namespace SIPSorcery.GB28181.Servers
                                 FireProxyLogEvent(new SIPMonitorConsoleEvent(SIPMonitorServerTypesEnum.Registrar, SIPMonitorEventTypesEnum.RegistrarTiming, "register result=" + result.ToString() + ", time=" + duration.TotalMilliseconds + "ms, user=" + registrarTransaction.TransactionRequest.Header.To.ToURI.User + ".", null));
                                 RegisterComplete?.Invoke(duration.TotalMilliseconds, registrarTransaction.TransactionRequest.Header.AuthenticationHeader != null);
 
-                                //[Debug]: m_registerQueue.Count is: 1; LocalSIPEndPoint is: udp: 10.77.38.86:5061; ; RemoteEndPoint is: udp: 10.78.115.155:5060;
-                                //[Debug]: Register was completed...
-                                logger.Debug("Register was completed ...");                                
+
+                                logger.Debug("Register was completed: Server " + registrarTransaction.LocalSIPEndPoint + ", " + "Camera " + registrarTransaction.RemoteEndPoint);
                                 //CacheDeviceItem(registrarTransaction.TransactionRequest);
                             }
                         }

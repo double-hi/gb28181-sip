@@ -62,13 +62,11 @@ namespace SIPSorcery.GB28181.SIP
 
         private void Initialise() {
             try {
-                logger.Debug("Initialise() .new UdpClient()  m_localSIPEndPoint.GetIPEndPoint() is:" + m_localSIPEndPoint.GetIPEndPoint());
-                IPAddress ipadobj;
-                IPAddress.TryParse("0.0.0.0", out ipadobj);
-                IPEndPoint ipedp = new IPEndPoint(ipadobj, m_localSIPEndPoint.GetIPEndPoint().Port);
-                m_sipConn = new UdpClient(ipedp);//ipedp=0.0.0.0:5061
-                logger.Debug("Initialise() new IPEndPoint is:" + ipedp);
+                logger.Debug("Initialise() UdpClient() Old IPEndPoint is: " + m_localSIPEndPoint.GetIPEndPoint());
+                IPEndPoint ipedp = new IPEndPoint(IPAddress.Parse("0.0.0.0"), 5061);
+                logger.Debug("Initialise() UdpClient() New IPEndPoint is: " + ipedp);
                 //m_sipConn = new UdpClient(m_localSIPEndPoint.GetIPEndPoint());
+                m_sipConn = new UdpClient(ipedp);
 
                 var listenThread = new Thread(new ThreadStart(Listen))
                 {
@@ -76,7 +74,7 @@ namespace SIPSorcery.GB28181.SIP
                 };
                 listenThread.Start();
 
-                logger.Debug("SIPUDPChannel listener created " + m_localSIPEndPoint.GetIPEndPoint() + ".");
+                //logger.Debug("SIPUDPChannel listener created " + m_localSIPEndPoint.GetIPEndPoint() + ".");
             }
             catch (Exception excp) {
                 logger.Error("Exception SIPUDPChannel Initialise. " + excp.Message);
@@ -99,9 +97,9 @@ namespace SIPSorcery.GB28181.SIP
 			{
 				byte[] buffer = null;
 
-                logger.Debug("SIPUDPChannel socket on " + m_localSIPEndPoint.ToString() + " listening started.");
+                logger.Debug("SIPUDPChannel socket on 0.0.0.0:5061 listening started.");
 
-				while(!Closed)
+                while (!Closed)
 				{
                     IPEndPoint inEndPoint = new IPEndPoint(IPAddress.Any, 0);
 

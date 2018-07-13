@@ -202,7 +202,7 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
                 };
                 _nodeMonitorService.TryAdd(deviceItem.DeviceID, sipMonitorcore);
             });
-            logger.Debug("PTZ Camera Initialized ...");
+            logger.Debug(cameraList.Count() + " PTZ Cameras Initialized.");
         }
 
         #region 启动/停止消息主服务(监听注册链接)

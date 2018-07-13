@@ -608,7 +608,7 @@ namespace SIPSorcery.GB28181.Persistence.XML
                         }
                     }
 
-                    logger.Debug(" " + assets.Count + " " + (new T()).GetType().ToString() + " assets loaded from XML record set.");
+                    logger.Debug(assets.Count + " " + (new T()).GetType().ToString() + " assets loaded from XML record set.");
                 }
                 else
                 {
