@@ -184,12 +184,11 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
         private List<Camera> _cameras = new List<Camera>();        
         private void Initialize(List<Camera> cameraList)
         {
-            _cameras.Add(new Camera()
-            {
-                DeviceID = "42010000001310000184",
-                IPAddress = "10.78.115.156",//ip of Camera
-                Port = 5060
-            });
+            Camera _camera = new Camera();
+            _camera.DeviceID = "42010000001310000184";
+            _camera.IPAddress = string.IsNullOrEmpty(EnvironmentVariables.GbCameraRemoteIp) ? "10.78.115.156" : EnvironmentVariables.GbCameraRemoteIp;
+            _camera.Port = 5060;
+            _cameras.Add(_camera);
 
             // init the camera info for connetctions
             cameraList?.ForEach(deviceItem =>
