@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using GrpcPtzControl;
 using GrpcDeviceCatalog;
+using Manage;
 
 namespace GrpcAgent
 {
@@ -21,6 +22,7 @@ namespace GrpcAgent
         private VideoSession.VideoSessionBase _videoSession;
         private PtzControl.PtzControlBase _ptzControlService;
         private DeviceCatalog.DeviceCatalogBase _deviceCatalogService;
+        private Manage.Manage.ManageBase _deviceManageService;
         public string Ipaddress { get => _ipaddress; set => _ipaddress = value; }
         public int Port { get => _port; set => _port = value; }
 
@@ -31,11 +33,13 @@ namespace GrpcAgent
 
         public RpcServer(VideoSession.VideoSessionBase videoSessionImp, 
             PtzControl.PtzControlBase ptzControlService,
-            DeviceCatalog.DeviceCatalogBase deviceCatalogService)
+            DeviceCatalog.DeviceCatalogBase deviceCatalogService,
+            Manage.Manage.ManageBase deviceManageService)
         {
             _videoSession = videoSessionImp;
             _ptzControlService = ptzControlService;
             _deviceCatalogService = deviceCatalogService;
+            _deviceManageService = deviceManageService;
         }
 
         public void Run()
@@ -45,7 +49,9 @@ namespace GrpcAgent
             {
                 Services = { VideoSession.BindService(_videoSession),
                     PtzControl.BindService(_ptzControlService),
-                    DeviceCatalog.BindService(_deviceCatalogService) },
+                    DeviceCatalog.BindService(_deviceCatalogService),
+                    Manage.Manage.BindService(_deviceManageService)
+                },
                 Ports = { new ServerPort(_ipaddress, _port, ServerCredentials.Insecure) }
             };
 

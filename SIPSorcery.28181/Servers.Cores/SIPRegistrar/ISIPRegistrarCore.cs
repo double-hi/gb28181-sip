@@ -9,5 +9,10 @@ namespace SIPSorcery.GB28181.Servers
         void ProcessRegisterRequest();
 
         void AddRegisterRequest(SIPEndPoint localSIPEndPoint, SIPEndPoint remoteEndPoint, SIPRequest registerRequest);
+
+        /// <summary>
+        /// 设备注册到DMS
+        /// </summary>
+        event RPCDmsRegisterDelegate RPCDmsRegisterReceived;
     }
 }

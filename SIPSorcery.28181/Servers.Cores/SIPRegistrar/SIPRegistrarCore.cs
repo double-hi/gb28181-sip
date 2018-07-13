@@ -131,6 +131,11 @@ namespace SIPSorcery.GB28181.Servers
 
         private IMemoCache<Camera> _cameraCache = null;
 
+        /// <summary>
+        /// Éè±¸×¢²áµ½DMS
+        /// </summary>
+        public event RPCDmsRegisterDelegate RPCDmsRegisterReceived;
+
         public SIPRegistrarCoreService(ISIPTransport sipTransport, ISipAccountStorage sipAccountStorage, IMemoCache<Camera> cameraCache, bool mangleUACContact = true, bool strictRealmHandling = true)
         {
 
@@ -318,6 +323,7 @@ namespace SIPSorcery.GB28181.Servers
                     SIPResponse okRes = GetOkResponse(sipRequest);
 
                     registerTransaction.SendFinalResponse(okRes);
+                    RPCDmsRegisterReceived?.Invoke(registerTransaction);
 
                     //Add Camera Item Into Cache
                     CacheDeviceItem(sipRequest);
