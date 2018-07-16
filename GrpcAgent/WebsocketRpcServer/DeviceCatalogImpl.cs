@@ -25,5 +25,13 @@ namespace GrpcAgent.WebsocketRpcServer
             string x = "Status: 200 OK";
             return Task.FromResult(new GetCatalogReply { Message = x });
         }
+
+        // Server side handler of the SayHello RPC
+        public override Task<DeviceCatalogSubscribeReply> DeviceCatalogSubscribe(DeviceCatalogSubscribeRequest request, ServerCallContext context)
+        {
+            _sipCatalogCore.DeviceCatalogSubscribe(request.Deviceid);
+            string x = "Status: 200 OK";
+            return Task.FromResult(new DeviceCatalogSubscribeReply { Message = x });
+        }
     }
 }

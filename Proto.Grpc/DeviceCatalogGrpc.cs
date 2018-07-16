@@ -15,6 +15,8 @@ namespace GrpcDeviceCatalog {
 
     static readonly grpc::Marshaller<global::GrpcDeviceCatalog.GetCatalogRequest> __Marshaller_GetCatalogRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcDeviceCatalog.GetCatalogRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GrpcDeviceCatalog.GetCatalogReply> __Marshaller_GetCatalogReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcDeviceCatalog.GetCatalogReply.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::GrpcDeviceCatalog.DeviceCatalogSubscribeRequest> __Marshaller_DeviceCatalogSubscribeRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcDeviceCatalog.DeviceCatalogSubscribeRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::GrpcDeviceCatalog.DeviceCatalogSubscribeReply> __Marshaller_DeviceCatalogSubscribeReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcDeviceCatalog.DeviceCatalogSubscribeReply.Parser.ParseFrom);
 
     static readonly grpc::Method<global::GrpcDeviceCatalog.GetCatalogRequest, global::GrpcDeviceCatalog.GetCatalogReply> __Method_GetCatalog = new grpc::Method<global::GrpcDeviceCatalog.GetCatalogRequest, global::GrpcDeviceCatalog.GetCatalogReply>(
         grpc::MethodType.Unary,
@@ -22,6 +24,13 @@ namespace GrpcDeviceCatalog {
         "GetCatalog",
         __Marshaller_GetCatalogRequest,
         __Marshaller_GetCatalogReply);
+
+    static readonly grpc::Method<global::GrpcDeviceCatalog.DeviceCatalogSubscribeRequest, global::GrpcDeviceCatalog.DeviceCatalogSubscribeReply> __Method_DeviceCatalogSubscribe = new grpc::Method<global::GrpcDeviceCatalog.DeviceCatalogSubscribeRequest, global::GrpcDeviceCatalog.DeviceCatalogSubscribeReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "DeviceCatalogSubscribe",
+        __Marshaller_DeviceCatalogSubscribeRequest,
+        __Marshaller_DeviceCatalogSubscribeReply);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -33,6 +42,11 @@ namespace GrpcDeviceCatalog {
     public abstract partial class DeviceCatalogBase
     {
       public virtual global::System.Threading.Tasks.Task<global::GrpcDeviceCatalog.GetCatalogReply> GetCatalog(global::GrpcDeviceCatalog.GetCatalogRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::GrpcDeviceCatalog.DeviceCatalogSubscribeReply> DeviceCatalogSubscribe(global::GrpcDeviceCatalog.DeviceCatalogSubscribeRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -78,6 +92,22 @@ namespace GrpcDeviceCatalog {
       {
         return CallInvoker.AsyncUnaryCall(__Method_GetCatalog, null, options, request);
       }
+      public virtual global::GrpcDeviceCatalog.DeviceCatalogSubscribeReply DeviceCatalogSubscribe(global::GrpcDeviceCatalog.DeviceCatalogSubscribeRequest request, grpc::Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return DeviceCatalogSubscribe(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::GrpcDeviceCatalog.DeviceCatalogSubscribeReply DeviceCatalogSubscribe(global::GrpcDeviceCatalog.DeviceCatalogSubscribeRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_DeviceCatalogSubscribe, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::GrpcDeviceCatalog.DeviceCatalogSubscribeReply> DeviceCatalogSubscribeAsync(global::GrpcDeviceCatalog.DeviceCatalogSubscribeRequest request, grpc::Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return DeviceCatalogSubscribeAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::GrpcDeviceCatalog.DeviceCatalogSubscribeReply> DeviceCatalogSubscribeAsync(global::GrpcDeviceCatalog.DeviceCatalogSubscribeRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_DeviceCatalogSubscribe, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       protected override DeviceCatalogClient NewInstance(ClientBaseConfiguration configuration)
       {
@@ -90,7 +120,8 @@ namespace GrpcDeviceCatalog {
     public static grpc::ServerServiceDefinition BindService(DeviceCatalogBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
-          .AddMethod(__Method_GetCatalog, serviceImpl.GetCatalog).Build();
+          .AddMethod(__Method_GetCatalog, serviceImpl.GetCatalog)
+          .AddMethod(__Method_DeviceCatalogSubscribe, serviceImpl.DeviceCatalogSubscribe).Build();
     }
 
   }

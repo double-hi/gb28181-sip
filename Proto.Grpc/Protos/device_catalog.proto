@@ -4,6 +4,7 @@ package GrpcDeviceCatalog;
 
 service DeviceCatalog {
   rpc GetCatalog (GetCatalogRequest) returns (GetCatalogReply) {}
+  rpc DeviceCatalogSubscribe (DeviceCatalogSubscribeRequest) returns (DeviceCatalogSubscribeReply) {}
 }
 
 // The request message.
@@ -13,5 +14,15 @@ message GetCatalogRequest {
 
 // The response message.
 message GetCatalogReply {
+  string message = 1;
+}
+
+// The request message.
+message DeviceCatalogSubscribeRequest {
+	string deviceid = 1;
+}
+
+// The response message.
+message DeviceCatalogSubscribeReply {
   string message = 1;
 }

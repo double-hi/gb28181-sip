@@ -5,6 +5,8 @@ using SIPSorcery.GB28181.Servers.SIPMessage;
 using SIPSorcery.GB28181.Sys.XML;
 using System.Linq;
 using System.Threading.Tasks;
+using SIPSorcery.GB28181.SIP;
+using System.Net;
 
 namespace SIPSorcery.GB28181.Servers.SIPCatalog
 {
@@ -64,6 +66,15 @@ namespace SIPSorcery.GB28181.Servers.SIPCatalog
         public void GetCatalog(string deviceId)
         {
             _sipMsgCoreService.DeviceCatalogQuery(deviceId);
+        }
+
+        /// <summary>
+        /// 目录订阅
+        /// </summary>
+        /// <param name="deviceId">目的设备编码</param>
+        public void DeviceCatalogSubscribe(string deviceId)
+        {
+            _sipMsgCoreService.DeviceCatalogSubscribe(deviceId);
         }
     }
 }

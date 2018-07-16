@@ -1106,6 +1106,25 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
         /// 目录订阅
         /// </summary>
         /// <param name="deviceId">目的设备编码</param>
+        public void DeviceCatalogSubscribe(string deviceId)
+        {
+            lock (_remoteTransEPs)
+            {
+                foreach (var item in _remoteTransEPs)
+                {
+                    if (item.Value == deviceId)
+                    {
+                        SIPEndPoint remoteEP = SIPEndPoint.ParseSIPEndPoint("udp:" + item.Key);
+                        DeviceCatalogSubscribe(remoteEP, deviceId);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 目录订阅
+        /// </summary>
+        /// <param name="deviceId">目的设备编码</param>
         public void DeviceCatalogSubscribe(SIPEndPoint remoteEP, string remoteID)
         {
             SIPRequest catalogReq = SubscribeCatalog(remoteEP, remoteID);
@@ -1113,9 +1132,9 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
             {
                 CommandType = CommandType.Catalog,
                 DeviceID = remoteID,
-                SN = new Random().Next(1, ushort.MaxValue)
-                //StartTime = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss"),
-                //EndTime = DateTime.Now.AddYears(1).ToString("yyyy-MM-ddTHH:mm:ss")
+                SN = new Random().Next(1, ushort.MaxValue),
+                StartTime = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss"),
+                EndTime = DateTime.Now.AddYears(1).ToString("yyyy-MM-ddTHH:mm:ss")
             };
             string xmlBody = CatalogQuery.Instance.Save<CatalogQuery>(catalog);
             catalogReq.Body = xmlBody;
@@ -1143,11 +1162,11 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
             catalogReq.Header.Allow = null;
             catalogReq.Header.To = to;
             catalogReq.Header.UserAgent = SIPConstants.SIP_USERAGENT_STRING;
-            catalogReq.Header.Event = "Catalog";//"Catalog;id=1894";
+            catalogReq.Header.Event = "Catalog";//"presence";//"Catalog";//"Catalog;id=1894";
             catalogReq.Header.Expires = 600;
             catalogReq.Header.CSeq = cSeq;
             catalogReq.Header.CallId = callId;
-            catalogReq.Header.ContentType = "application/MANSCDP+xml";
+            catalogReq.Header.ContentType = "application/MANSCDP+xml";//"Application/MANSCDP+xml"
 
             return catalogReq;
         }

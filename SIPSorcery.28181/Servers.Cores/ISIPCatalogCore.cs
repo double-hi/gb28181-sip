@@ -23,6 +23,10 @@ namespace SIPSorcery.GB28181.Servers
         /// 获取设备目录
         /// </summary>
         void GetCatalog(string deviceId);
+        /// <summary>
+        /// 目录订阅
+        /// </summary>
+        void DeviceCatalogSubscribe(string deviceId);
 
     }
 }

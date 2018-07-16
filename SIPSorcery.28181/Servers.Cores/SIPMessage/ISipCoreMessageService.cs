@@ -39,6 +39,7 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
 
         void DeviceCatalogQuery();
         void DeviceCatalogQuery(string deviceId);
+        void DeviceCatalogSubscribe(string deviceId);
 
 
         #region 事件
