@@ -55,7 +55,9 @@ namespace GrpcAgent.WebsocketRpcServer
                     break;
                 }
             }
-            return Task.FromResult(new GetCatalogReply { Message = x });
+            object objCatalog = _Catalog;
+            Instance instance = (GrpcDeviceCatalog.Instance)objCatalog;
+            return Task.FromResult(new GetCatalogReply { Catalog = instance });
         }
 
         // Server side handler of the SayHello RPC

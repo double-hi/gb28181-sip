@@ -23,21 +23,59 @@ namespace GrpcDeviceCatalog {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChRkZXZpY2VfY2F0YWxvZy5wcm90bxIRR3JwY0RldmljZUNhdGFsb2ciJQoR",
-            "R2V0Q2F0YWxvZ1JlcXVlc3QSEAoIZGV2aWNlaWQYASABKAkiIgoPR2V0Q2F0",
-            "YWxvZ1JlcGx5Eg8KB21lc3NhZ2UYASABKAkiMQodRGV2aWNlQ2F0YWxvZ1N1",
-            "YnNjcmliZVJlcXVlc3QSEAoIZGV2aWNlaWQYASABKAkiLgobRGV2aWNlQ2F0",
-            "YWxvZ1N1YnNjcmliZVJlcGx5Eg8KB21lc3NhZ2UYASABKAky5wEKDURldmlj",
-            "ZUNhdGFsb2cSWAoKR2V0Q2F0YWxvZxIkLkdycGNEZXZpY2VDYXRhbG9nLkdl",
-            "dENhdGFsb2dSZXF1ZXN0GiIuR3JwY0RldmljZUNhdGFsb2cuR2V0Q2F0YWxv",
-            "Z1JlcGx5IgASfAoWRGV2aWNlQ2F0YWxvZ1N1YnNjcmliZRIwLkdycGNEZXZp",
-            "Y2VDYXRhbG9nLkRldmljZUNhdGFsb2dTdWJzY3JpYmVSZXF1ZXN0Gi4uR3Jw",
-            "Y0RldmljZUNhdGFsb2cuRGV2aWNlQ2F0YWxvZ1N1YnNjcmliZVJlcGx5IgBi",
-            "BnByb3RvMw=="));
+            "R2V0Q2F0YWxvZ1JlcXVlc3QSEAoIZGV2aWNlaWQYASABKAkiPwoPR2V0Q2F0",
+            "YWxvZ1JlcGx5EiwKB0NhdGFsb2cYASABKAsyGy5HcnBjRGV2aWNlQ2F0YWxv",
+            "Zy5JbnN0YW5jZSKZAQoISW5zdGFuY2USLwoHQ21kVHlwZRgBIAEoDjIeLkdy",
+            "cGNEZXZpY2VDYXRhbG9nLkNvbW1hbmRUeXBlEhAKCERldmljZUlEGAIgASgJ",
+            "Ei4KCkRldmljZUxpc3QYAyABKAsyGi5HcnBjRGV2aWNlQ2F0YWxvZy5EZXZM",
+            "aXN0EgoKAlNOGAQgASgJEg4KBlN1bU51bRgFIAEoCSIxCgdEZXZMaXN0EiYK",
+            "BUl0ZW1zGAEgAygLMhcuR3JwY0RldmljZUNhdGFsb2cuSXRlbSKNBAoESXRl",
+            "bRIQCghEZXZpY2VJRBgBIAEoCRIMCgROYW1lGAIgASgJEhQKDE1hbnVmYWN0",
+            "dXJlchgDIAEoCRINCgVNb2RlbBgEIAEoCRINCgVPd25lchgFIAEoCRIRCglD",
+            "aXZpbENvZGUYBiABKAkSDQoFQmxvY2sYByABKAkSDwoHQWRkcmVzcxgIIAEo",
+            "CRIQCghQYXJlbnRhbBgJIAEoBRIQCghQYXJlbnRJRBgKIAEoCRIXCg9CdXNp",
+            "bmVzc0dyb3VwSUQYCyABKAkSEQoJU2FmZXR5V2F5GAwgASgFEhMKC1JlZ2lz",
+            "dGVyV2F5GA0gASgFEg8KB0NlcnROdW0YDiABKAkSEwoLQ2VydGlmaWFibGUY",
+            "DyABKAUSDwoHRXJyQ29kZRgQIAEoCRIPCgdFbmRUaW1lGBEgASgFEg8KB1Nl",
+            "Y3JlY3kYEiABKAkSEQoJSVBBZGRyZXNzGBMgASgJEgwKBFBvcnQYFCABKAUS",
+            "EAoIUGFzc3dvcmQYFSABKAkSLAoGU3RhdHVzGBYgASgOMhwuR3JwY0Rldmlj",
+            "ZUNhdGFsb2cuRGV2U3RhdHVzEhEKCUxvbmdpdHVkZRgXIAEoARIQCghMYXRp",
+            "dHVkZRgYIAEoARIoCgdJbmZMaXN0GBkgASgLMhcuR3JwY0RldmljZUNhdGFs",
+            "b2cuSW5mbxIQCghSZW1vdGVFUBgaIAEoCSLYAwoESW5mbxIPCgdQVFpUeXBl",
+            "GAEgASgFEhQKDFBUWlR5cGVWYWx1ZRgCIAEoCRIUCgxQb3NpdGlvblR5cGUY",
+            "AyABKAUSGQoRUG9zaXRpb25UeXBlVmFsdWUYBCABKAkSEAoIUm9vbVR5cGUY",
+            "BSABKAUSFQoNUm9vbVR5cGVWYWx1ZRgGIAEoCRIPCgdVc2VUeXBlGAcgASgF",
+            "EhQKDFVzZVR5cGVWYWx1ZRgIIAEoCRIXCg9TdXBwbHlMaWdodFR5cGUYCSAB",
+            "KAUSHAoUU3VwcGx5TGlnaHRUeXBlVmFsdWUYCiABKAkSFQoNRGlyZWN0aW9u",
+            "VHlwZRgLIAEoBRIaChJEaXJlY3Rpb25UeXBlVmFsdWUYDCABKAkSEgoKUmVz",
+            "b2x1dGlvbhgNIAEoCRIXCg9CdXNpbmVzc0dyb3VwSUQYDiABKAkSFQoNRG93",
+            "bmxvYWRTcGVlZBgPIAEoCRIbChNTVkNTcGFjZVN1cHBvcnRNb2RlGBAgASgF",
+            "EiAKGFNWQ1NwYWNlU3VwcG9ydE1vZGVWYWx1ZRgRIAEoCRIaChJTVkNUaW1l",
+            "U3VwcG9ydE1vZGUYEiABKAUSHwoXU1ZDVGltZVN1cHBvcnRNb2RlVmFsdWUY",
+            "EyABKAkiMQodRGV2aWNlQ2F0YWxvZ1N1YnNjcmliZVJlcXVlc3QSEAoIZGV2",
+            "aWNlaWQYASABKAkiLgobRGV2aWNlQ2F0YWxvZ1N1YnNjcmliZVJlcGx5Eg8K",
+            "B21lc3NhZ2UYASABKAkqlwIKC0NvbW1hbmRUeXBlEgsKB1Vua25vd24QABIN",
+            "CglLZWVwYWxpdmUQARILCgdDYXRhbG9nEAISCAoEUGxheRADEgwKCFBsYXli",
+            "YWNrEAQSEQoNRGV2aWNlQ29udHJvbBAFEgkKBUFsYXJtEAYSDgoKRGV2aWNl",
+            "SW5mbxAHEhAKDERldmljZVN0YXR1cxAIEg4KClJlY29yZEluZm8QCRIMCghE",
+            "b3dubG9hZBAKEhIKDkNvbmZpZ0Rvd25sb2FkEAsSDQoJQnJvYWRjYXN0EAwS",
+            "DwoLUHJlc2V0UXVlcnkQDRISCg5Nb2JpbGVQb3NpdGlvbhAOEhAKDERldmlj",
+            "ZUNvbmZpZxAPEg8KC01lZGlhU3RhdHVzEBAqHAoJRGV2U3RhdHVzEgYKAk9O",
+            "EAASBwoDT0ZGEAEy5wEKDURldmljZUNhdGFsb2cSWAoKR2V0Q2F0YWxvZxIk",
+            "LkdycGNEZXZpY2VDYXRhbG9nLkdldENhdGFsb2dSZXF1ZXN0GiIuR3JwY0Rl",
+            "dmljZUNhdGFsb2cuR2V0Q2F0YWxvZ1JlcGx5IgASfAoWRGV2aWNlQ2F0YWxv",
+            "Z1N1YnNjcmliZRIwLkdycGNEZXZpY2VDYXRhbG9nLkRldmljZUNhdGFsb2dT",
+            "dWJzY3JpYmVSZXF1ZXN0Gi4uR3JwY0RldmljZUNhdGFsb2cuRGV2aWNlQ2F0",
+            "YWxvZ1N1YnNjcmliZVJlcGx5IgBiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::GrpcDeviceCatalog.CommandType), typeof(global::GrpcDeviceCatalog.DevStatus), }, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::GrpcDeviceCatalog.GetCatalogRequest), global::GrpcDeviceCatalog.GetCatalogRequest.Parser, new[]{ "Deviceid" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcDeviceCatalog.GetCatalogReply), global::GrpcDeviceCatalog.GetCatalogReply.Parser, new[]{ "Message" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcDeviceCatalog.GetCatalogReply), global::GrpcDeviceCatalog.GetCatalogReply.Parser, new[]{ "Catalog" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcDeviceCatalog.Instance), global::GrpcDeviceCatalog.Instance.Parser, new[]{ "CmdType", "DeviceID", "DeviceList", "SN", "SumNum" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcDeviceCatalog.DevList), global::GrpcDeviceCatalog.DevList.Parser, new[]{ "Items" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcDeviceCatalog.Item), global::GrpcDeviceCatalog.Item.Parser, new[]{ "DeviceID", "Name", "Manufacturer", "Model", "Owner", "CivilCode", "Block", "Address", "Parental", "ParentID", "BusinessGroupID", "SafetyWay", "RegisterWay", "CertNum", "Certifiable", "ErrCode", "EndTime", "Secrecy", "IPAddress", "Port", "Password", "Status", "Longitude", "Latitude", "InfList", "RemoteEP" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcDeviceCatalog.Info), global::GrpcDeviceCatalog.Info.Parser, new[]{ "PTZType", "PTZTypeValue", "PositionType", "PositionTypeValue", "RoomType", "RoomTypeValue", "UseType", "UseTypeValue", "SupplyLightType", "SupplyLightTypeValue", "DirectionType", "DirectionTypeValue", "Resolution", "BusinessGroupID", "DownloadSpeed", "SVCSpaceSupportMode", "SVCSpaceSupportModeValue", "SVCTimeSupportMode", "SVCTimeSupportModeValue" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GrpcDeviceCatalog.DeviceCatalogSubscribeRequest), global::GrpcDeviceCatalog.DeviceCatalogSubscribeRequest.Parser, new[]{ "Deviceid" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GrpcDeviceCatalog.DeviceCatalogSubscribeReply), global::GrpcDeviceCatalog.DeviceCatalogSubscribeReply.Parser, new[]{ "Message" }, null, null, null)
           }));
@@ -45,10 +83,35 @@ namespace GrpcDeviceCatalog {
     #endregion
 
   }
+  #region Enums
+  public enum CommandType {
+    [pbr::OriginalName("Unknown")] Unknown = 0,
+    [pbr::OriginalName("Keepalive")] Keepalive = 1,
+    [pbr::OriginalName("Catalog")] Catalog = 2,
+    [pbr::OriginalName("Play")] Play = 3,
+    [pbr::OriginalName("Playback")] Playback = 4,
+    [pbr::OriginalName("DeviceControl")] DeviceControl = 5,
+    [pbr::OriginalName("Alarm")] Alarm = 6,
+    [pbr::OriginalName("DeviceInfo")] DeviceInfo = 7,
+    [pbr::OriginalName("DeviceStatus")] DeviceStatus = 8,
+    [pbr::OriginalName("RecordInfo")] RecordInfo = 9,
+    [pbr::OriginalName("Download")] Download = 10,
+    [pbr::OriginalName("ConfigDownload")] ConfigDownload = 11,
+    [pbr::OriginalName("Broadcast")] Broadcast = 12,
+    [pbr::OriginalName("PresetQuery")] PresetQuery = 13,
+    [pbr::OriginalName("MobilePosition")] MobilePosition = 14,
+    [pbr::OriginalName("DeviceConfig")] DeviceConfig = 15,
+    [pbr::OriginalName("MediaStatus")] MediaStatus = 16,
+  }
+
+  public enum DevStatus {
+    [pbr::OriginalName("ON")] On = 0,
+    [pbr::OriginalName("OFF")] Off = 1,
+  }
+
+  #endregion
+
   #region Messages
-  /// <summary>
-  /// The request message.
-  /// </summary>
   public sealed partial class GetCatalogRequest : pb::IMessage<GetCatalogRequest> {
     private static readonly pb::MessageParser<GetCatalogRequest> _parser = new pb::MessageParser<GetCatalogRequest>(() => new GetCatalogRequest());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -166,9 +229,6 @@ namespace GrpcDeviceCatalog {
 
   }
 
-  /// <summary>
-  /// The response message.
-  /// </summary>
   public sealed partial class GetCatalogReply : pb::IMessage<GetCatalogReply> {
     private static readonly pb::MessageParser<GetCatalogReply> _parser = new pb::MessageParser<GetCatalogReply>(() => new GetCatalogReply());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -193,7 +253,7 @@ namespace GrpcDeviceCatalog {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public GetCatalogReply(GetCatalogReply other) : this() {
-      message_ = other.message_;
+      Catalog = other.catalog_ != null ? other.Catalog.Clone() : null;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -201,14 +261,14 @@ namespace GrpcDeviceCatalog {
       return new GetCatalogReply(this);
     }
 
-    /// <summary>Field number for the "message" field.</summary>
-    public const int MessageFieldNumber = 1;
-    private string message_ = "";
+    /// <summary>Field number for the "Catalog" field.</summary>
+    public const int CatalogFieldNumber = 1;
+    private global::GrpcDeviceCatalog.Instance catalog_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Message {
-      get { return message_; }
+    public global::GrpcDeviceCatalog.Instance Catalog {
+      get { return catalog_; }
       set {
-        message_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        catalog_ = value;
       }
     }
 
@@ -225,14 +285,14 @@ namespace GrpcDeviceCatalog {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Message != other.Message) return false;
+      if (!object.Equals(Catalog, other.Catalog)) return false;
       return true;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Message.Length != 0) hash ^= Message.GetHashCode();
+      if (catalog_ != null) hash ^= Catalog.GetHashCode();
       return hash;
     }
 
@@ -243,17 +303,17 @@ namespace GrpcDeviceCatalog {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Message.Length != 0) {
+      if (catalog_ != null) {
         output.WriteRawTag(10);
-        output.WriteString(Message);
+        output.WriteMessage(Catalog);
       }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Message.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Message);
+      if (catalog_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Catalog);
       }
       return size;
     }
@@ -263,8 +323,11 @@ namespace GrpcDeviceCatalog {
       if (other == null) {
         return;
       }
-      if (other.Message.Length != 0) {
-        Message = other.Message;
+      if (other.catalog_ != null) {
+        if (catalog_ == null) {
+          catalog_ = new global::GrpcDeviceCatalog.Instance();
+        }
+        Catalog.MergeFrom(other.Catalog);
       }
     }
 
@@ -277,7 +340,10 @@ namespace GrpcDeviceCatalog {
             input.SkipLastField();
             break;
           case 10: {
-            Message = input.ReadString();
+            if (catalog_ == null) {
+              catalog_ = new global::GrpcDeviceCatalog.Instance();
+            }
+            input.ReadMessage(catalog_);
             break;
           }
         }
@@ -286,9 +352,1794 @@ namespace GrpcDeviceCatalog {
 
   }
 
-  /// <summary>
-  /// The request message.
-  /// </summary>
+  public sealed partial class Instance : pb::IMessage<Instance> {
+    private static readonly pb::MessageParser<Instance> _parser = new pb::MessageParser<Instance>(() => new Instance());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Instance> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::GrpcDeviceCatalog.DeviceCatalogReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Instance() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Instance(Instance other) : this() {
+      cmdType_ = other.cmdType_;
+      deviceID_ = other.deviceID_;
+      DeviceList = other.deviceList_ != null ? other.DeviceList.Clone() : null;
+      sN_ = other.sN_;
+      sumNum_ = other.sumNum_;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Instance Clone() {
+      return new Instance(this);
+    }
+
+    /// <summary>Field number for the "CmdType" field.</summary>
+    public const int CmdTypeFieldNumber = 1;
+    private global::GrpcDeviceCatalog.CommandType cmdType_ = 0;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::GrpcDeviceCatalog.CommandType CmdType {
+      get { return cmdType_; }
+      set {
+        cmdType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "DeviceID" field.</summary>
+    public const int DeviceIDFieldNumber = 2;
+    private string deviceID_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string DeviceID {
+      get { return deviceID_; }
+      set {
+        deviceID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "DeviceList" field.</summary>
+    public const int DeviceListFieldNumber = 3;
+    private global::GrpcDeviceCatalog.DevList deviceList_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::GrpcDeviceCatalog.DevList DeviceList {
+      get { return deviceList_; }
+      set {
+        deviceList_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "SN" field.</summary>
+    public const int SNFieldNumber = 4;
+    private string sN_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string SN {
+      get { return sN_; }
+      set {
+        sN_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "SumNum" field.</summary>
+    public const int SumNumFieldNumber = 5;
+    private string sumNum_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string SumNum {
+      get { return sumNum_; }
+      set {
+        sumNum_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Instance);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Instance other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (CmdType != other.CmdType) return false;
+      if (DeviceID != other.DeviceID) return false;
+      if (!object.Equals(DeviceList, other.DeviceList)) return false;
+      if (SN != other.SN) return false;
+      if (SumNum != other.SumNum) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (CmdType != 0) hash ^= CmdType.GetHashCode();
+      if (DeviceID.Length != 0) hash ^= DeviceID.GetHashCode();
+      if (deviceList_ != null) hash ^= DeviceList.GetHashCode();
+      if (SN.Length != 0) hash ^= SN.GetHashCode();
+      if (SumNum.Length != 0) hash ^= SumNum.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (CmdType != 0) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) CmdType);
+      }
+      if (DeviceID.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(DeviceID);
+      }
+      if (deviceList_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(DeviceList);
+      }
+      if (SN.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(SN);
+      }
+      if (SumNum.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(SumNum);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (CmdType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CmdType);
+      }
+      if (DeviceID.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(DeviceID);
+      }
+      if (deviceList_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(DeviceList);
+      }
+      if (SN.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(SN);
+      }
+      if (SumNum.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(SumNum);
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Instance other) {
+      if (other == null) {
+        return;
+      }
+      if (other.CmdType != 0) {
+        CmdType = other.CmdType;
+      }
+      if (other.DeviceID.Length != 0) {
+        DeviceID = other.DeviceID;
+      }
+      if (other.deviceList_ != null) {
+        if (deviceList_ == null) {
+          deviceList_ = new global::GrpcDeviceCatalog.DevList();
+        }
+        DeviceList.MergeFrom(other.DeviceList);
+      }
+      if (other.SN.Length != 0) {
+        SN = other.SN;
+      }
+      if (other.SumNum.Length != 0) {
+        SumNum = other.SumNum;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            cmdType_ = (global::GrpcDeviceCatalog.CommandType) input.ReadEnum();
+            break;
+          }
+          case 18: {
+            DeviceID = input.ReadString();
+            break;
+          }
+          case 26: {
+            if (deviceList_ == null) {
+              deviceList_ = new global::GrpcDeviceCatalog.DevList();
+            }
+            input.ReadMessage(deviceList_);
+            break;
+          }
+          case 34: {
+            SN = input.ReadString();
+            break;
+          }
+          case 42: {
+            SumNum = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class DevList : pb::IMessage<DevList> {
+    private static readonly pb::MessageParser<DevList> _parser = new pb::MessageParser<DevList>(() => new DevList());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<DevList> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::GrpcDeviceCatalog.DeviceCatalogReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public DevList() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public DevList(DevList other) : this() {
+      items_ = other.items_.Clone();
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public DevList Clone() {
+      return new DevList(this);
+    }
+
+    /// <summary>Field number for the "Items" field.</summary>
+    public const int ItemsFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::GrpcDeviceCatalog.Item> _repeated_items_codec
+        = pb::FieldCodec.ForMessage(10, global::GrpcDeviceCatalog.Item.Parser);
+    private readonly pbc::RepeatedField<global::GrpcDeviceCatalog.Item> items_ = new pbc::RepeatedField<global::GrpcDeviceCatalog.Item>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::GrpcDeviceCatalog.Item> Items {
+      get { return items_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as DevList);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(DevList other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!items_.Equals(other.items_)) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= items_.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      items_.WriteTo(output, _repeated_items_codec);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += items_.CalculateSize(_repeated_items_codec);
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(DevList other) {
+      if (other == null) {
+        return;
+      }
+      items_.Add(other.items_);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            items_.AddEntriesFrom(input, _repeated_items_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class Item : pb::IMessage<Item> {
+    private static readonly pb::MessageParser<Item> _parser = new pb::MessageParser<Item>(() => new Item());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Item> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::GrpcDeviceCatalog.DeviceCatalogReflection.Descriptor.MessageTypes[4]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Item() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Item(Item other) : this() {
+      deviceID_ = other.deviceID_;
+      name_ = other.name_;
+      manufacturer_ = other.manufacturer_;
+      model_ = other.model_;
+      owner_ = other.owner_;
+      civilCode_ = other.civilCode_;
+      block_ = other.block_;
+      address_ = other.address_;
+      parental_ = other.parental_;
+      parentID_ = other.parentID_;
+      businessGroupID_ = other.businessGroupID_;
+      safetyWay_ = other.safetyWay_;
+      registerWay_ = other.registerWay_;
+      certNum_ = other.certNum_;
+      certifiable_ = other.certifiable_;
+      errCode_ = other.errCode_;
+      endTime_ = other.endTime_;
+      secrecy_ = other.secrecy_;
+      iPAddress_ = other.iPAddress_;
+      port_ = other.port_;
+      password_ = other.password_;
+      status_ = other.status_;
+      longitude_ = other.longitude_;
+      latitude_ = other.latitude_;
+      InfList = other.infList_ != null ? other.InfList.Clone() : null;
+      remoteEP_ = other.remoteEP_;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Item Clone() {
+      return new Item(this);
+    }
+
+    /// <summary>Field number for the "DeviceID" field.</summary>
+    public const int DeviceIDFieldNumber = 1;
+    private string deviceID_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string DeviceID {
+      get { return deviceID_; }
+      set {
+        deviceID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Name" field.</summary>
+    public const int NameFieldNumber = 2;
+    private string name_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Manufacturer" field.</summary>
+    public const int ManufacturerFieldNumber = 3;
+    private string manufacturer_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Manufacturer {
+      get { return manufacturer_; }
+      set {
+        manufacturer_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Model" field.</summary>
+    public const int ModelFieldNumber = 4;
+    private string model_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Model {
+      get { return model_; }
+      set {
+        model_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Owner" field.</summary>
+    public const int OwnerFieldNumber = 5;
+    private string owner_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Owner {
+      get { return owner_; }
+      set {
+        owner_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "CivilCode" field.</summary>
+    public const int CivilCodeFieldNumber = 6;
+    private string civilCode_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string CivilCode {
+      get { return civilCode_; }
+      set {
+        civilCode_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Block" field.</summary>
+    public const int BlockFieldNumber = 7;
+    private string block_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Block {
+      get { return block_; }
+      set {
+        block_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Address" field.</summary>
+    public const int AddressFieldNumber = 8;
+    private string address_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Address {
+      get { return address_; }
+      set {
+        address_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Parental" field.</summary>
+    public const int ParentalFieldNumber = 9;
+    private int parental_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Parental {
+      get { return parental_; }
+      set {
+        parental_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ParentID" field.</summary>
+    public const int ParentIDFieldNumber = 10;
+    private string parentID_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string ParentID {
+      get { return parentID_; }
+      set {
+        parentID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "BusinessGroupID" field.</summary>
+    public const int BusinessGroupIDFieldNumber = 11;
+    private string businessGroupID_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string BusinessGroupID {
+      get { return businessGroupID_; }
+      set {
+        businessGroupID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "SafetyWay" field.</summary>
+    public const int SafetyWayFieldNumber = 12;
+    private int safetyWay_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int SafetyWay {
+      get { return safetyWay_; }
+      set {
+        safetyWay_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "RegisterWay" field.</summary>
+    public const int RegisterWayFieldNumber = 13;
+    private int registerWay_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int RegisterWay {
+      get { return registerWay_; }
+      set {
+        registerWay_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "CertNum" field.</summary>
+    public const int CertNumFieldNumber = 14;
+    private string certNum_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string CertNum {
+      get { return certNum_; }
+      set {
+        certNum_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Certifiable" field.</summary>
+    public const int CertifiableFieldNumber = 15;
+    private int certifiable_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Certifiable {
+      get { return certifiable_; }
+      set {
+        certifiable_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ErrCode" field.</summary>
+    public const int ErrCodeFieldNumber = 16;
+    private string errCode_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string ErrCode {
+      get { return errCode_; }
+      set {
+        errCode_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "EndTime" field.</summary>
+    public const int EndTimeFieldNumber = 17;
+    private int endTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int EndTime {
+      get { return endTime_; }
+      set {
+        endTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Secrecy" field.</summary>
+    public const int SecrecyFieldNumber = 18;
+    private string secrecy_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Secrecy {
+      get { return secrecy_; }
+      set {
+        secrecy_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "IPAddress" field.</summary>
+    public const int IPAddressFieldNumber = 19;
+    private string iPAddress_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string IPAddress {
+      get { return iPAddress_; }
+      set {
+        iPAddress_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Port" field.</summary>
+    public const int PortFieldNumber = 20;
+    private int port_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Port {
+      get { return port_; }
+      set {
+        port_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Password" field.</summary>
+    public const int PasswordFieldNumber = 21;
+    private string password_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Password {
+      get { return password_; }
+      set {
+        password_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Status" field.</summary>
+    public const int StatusFieldNumber = 22;
+    private global::GrpcDeviceCatalog.DevStatus status_ = 0;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::GrpcDeviceCatalog.DevStatus Status {
+      get { return status_; }
+      set {
+        status_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Longitude" field.</summary>
+    public const int LongitudeFieldNumber = 23;
+    private double longitude_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public double Longitude {
+      get { return longitude_; }
+      set {
+        longitude_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Latitude" field.</summary>
+    public const int LatitudeFieldNumber = 24;
+    private double latitude_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public double Latitude {
+      get { return latitude_; }
+      set {
+        latitude_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "InfList" field.</summary>
+    public const int InfListFieldNumber = 25;
+    private global::GrpcDeviceCatalog.Info infList_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::GrpcDeviceCatalog.Info InfList {
+      get { return infList_; }
+      set {
+        infList_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "RemoteEP" field.</summary>
+    public const int RemoteEPFieldNumber = 26;
+    private string remoteEP_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string RemoteEP {
+      get { return remoteEP_; }
+      set {
+        remoteEP_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Item);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Item other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (DeviceID != other.DeviceID) return false;
+      if (Name != other.Name) return false;
+      if (Manufacturer != other.Manufacturer) return false;
+      if (Model != other.Model) return false;
+      if (Owner != other.Owner) return false;
+      if (CivilCode != other.CivilCode) return false;
+      if (Block != other.Block) return false;
+      if (Address != other.Address) return false;
+      if (Parental != other.Parental) return false;
+      if (ParentID != other.ParentID) return false;
+      if (BusinessGroupID != other.BusinessGroupID) return false;
+      if (SafetyWay != other.SafetyWay) return false;
+      if (RegisterWay != other.RegisterWay) return false;
+      if (CertNum != other.CertNum) return false;
+      if (Certifiable != other.Certifiable) return false;
+      if (ErrCode != other.ErrCode) return false;
+      if (EndTime != other.EndTime) return false;
+      if (Secrecy != other.Secrecy) return false;
+      if (IPAddress != other.IPAddress) return false;
+      if (Port != other.Port) return false;
+      if (Password != other.Password) return false;
+      if (Status != other.Status) return false;
+      if (Longitude != other.Longitude) return false;
+      if (Latitude != other.Latitude) return false;
+      if (!object.Equals(InfList, other.InfList)) return false;
+      if (RemoteEP != other.RemoteEP) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (DeviceID.Length != 0) hash ^= DeviceID.GetHashCode();
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (Manufacturer.Length != 0) hash ^= Manufacturer.GetHashCode();
+      if (Model.Length != 0) hash ^= Model.GetHashCode();
+      if (Owner.Length != 0) hash ^= Owner.GetHashCode();
+      if (CivilCode.Length != 0) hash ^= CivilCode.GetHashCode();
+      if (Block.Length != 0) hash ^= Block.GetHashCode();
+      if (Address.Length != 0) hash ^= Address.GetHashCode();
+      if (Parental != 0) hash ^= Parental.GetHashCode();
+      if (ParentID.Length != 0) hash ^= ParentID.GetHashCode();
+      if (BusinessGroupID.Length != 0) hash ^= BusinessGroupID.GetHashCode();
+      if (SafetyWay != 0) hash ^= SafetyWay.GetHashCode();
+      if (RegisterWay != 0) hash ^= RegisterWay.GetHashCode();
+      if (CertNum.Length != 0) hash ^= CertNum.GetHashCode();
+      if (Certifiable != 0) hash ^= Certifiable.GetHashCode();
+      if (ErrCode.Length != 0) hash ^= ErrCode.GetHashCode();
+      if (EndTime != 0) hash ^= EndTime.GetHashCode();
+      if (Secrecy.Length != 0) hash ^= Secrecy.GetHashCode();
+      if (IPAddress.Length != 0) hash ^= IPAddress.GetHashCode();
+      if (Port != 0) hash ^= Port.GetHashCode();
+      if (Password.Length != 0) hash ^= Password.GetHashCode();
+      if (Status != 0) hash ^= Status.GetHashCode();
+      if (Longitude != 0D) hash ^= Longitude.GetHashCode();
+      if (Latitude != 0D) hash ^= Latitude.GetHashCode();
+      if (infList_ != null) hash ^= InfList.GetHashCode();
+      if (RemoteEP.Length != 0) hash ^= RemoteEP.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (DeviceID.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(DeviceID);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Name);
+      }
+      if (Manufacturer.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Manufacturer);
+      }
+      if (Model.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Model);
+      }
+      if (Owner.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Owner);
+      }
+      if (CivilCode.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(CivilCode);
+      }
+      if (Block.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(Block);
+      }
+      if (Address.Length != 0) {
+        output.WriteRawTag(66);
+        output.WriteString(Address);
+      }
+      if (Parental != 0) {
+        output.WriteRawTag(72);
+        output.WriteInt32(Parental);
+      }
+      if (ParentID.Length != 0) {
+        output.WriteRawTag(82);
+        output.WriteString(ParentID);
+      }
+      if (BusinessGroupID.Length != 0) {
+        output.WriteRawTag(90);
+        output.WriteString(BusinessGroupID);
+      }
+      if (SafetyWay != 0) {
+        output.WriteRawTag(96);
+        output.WriteInt32(SafetyWay);
+      }
+      if (RegisterWay != 0) {
+        output.WriteRawTag(104);
+        output.WriteInt32(RegisterWay);
+      }
+      if (CertNum.Length != 0) {
+        output.WriteRawTag(114);
+        output.WriteString(CertNum);
+      }
+      if (Certifiable != 0) {
+        output.WriteRawTag(120);
+        output.WriteInt32(Certifiable);
+      }
+      if (ErrCode.Length != 0) {
+        output.WriteRawTag(130, 1);
+        output.WriteString(ErrCode);
+      }
+      if (EndTime != 0) {
+        output.WriteRawTag(136, 1);
+        output.WriteInt32(EndTime);
+      }
+      if (Secrecy.Length != 0) {
+        output.WriteRawTag(146, 1);
+        output.WriteString(Secrecy);
+      }
+      if (IPAddress.Length != 0) {
+        output.WriteRawTag(154, 1);
+        output.WriteString(IPAddress);
+      }
+      if (Port != 0) {
+        output.WriteRawTag(160, 1);
+        output.WriteInt32(Port);
+      }
+      if (Password.Length != 0) {
+        output.WriteRawTag(170, 1);
+        output.WriteString(Password);
+      }
+      if (Status != 0) {
+        output.WriteRawTag(176, 1);
+        output.WriteEnum((int) Status);
+      }
+      if (Longitude != 0D) {
+        output.WriteRawTag(185, 1);
+        output.WriteDouble(Longitude);
+      }
+      if (Latitude != 0D) {
+        output.WriteRawTag(193, 1);
+        output.WriteDouble(Latitude);
+      }
+      if (infList_ != null) {
+        output.WriteRawTag(202, 1);
+        output.WriteMessage(InfList);
+      }
+      if (RemoteEP.Length != 0) {
+        output.WriteRawTag(210, 1);
+        output.WriteString(RemoteEP);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (DeviceID.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(DeviceID);
+      }
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (Manufacturer.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Manufacturer);
+      }
+      if (Model.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Model);
+      }
+      if (Owner.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Owner);
+      }
+      if (CivilCode.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(CivilCode);
+      }
+      if (Block.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Block);
+      }
+      if (Address.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Address);
+      }
+      if (Parental != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Parental);
+      }
+      if (ParentID.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ParentID);
+      }
+      if (BusinessGroupID.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(BusinessGroupID);
+      }
+      if (SafetyWay != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SafetyWay);
+      }
+      if (RegisterWay != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RegisterWay);
+      }
+      if (CertNum.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(CertNum);
+      }
+      if (Certifiable != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Certifiable);
+      }
+      if (ErrCode.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(ErrCode);
+      }
+      if (EndTime != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(EndTime);
+      }
+      if (Secrecy.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(Secrecy);
+      }
+      if (IPAddress.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(IPAddress);
+      }
+      if (Port != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(Port);
+      }
+      if (Password.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(Password);
+      }
+      if (Status != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeEnumSize((int) Status);
+      }
+      if (Longitude != 0D) {
+        size += 2 + 8;
+      }
+      if (Latitude != 0D) {
+        size += 2 + 8;
+      }
+      if (infList_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(InfList);
+      }
+      if (RemoteEP.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(RemoteEP);
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Item other) {
+      if (other == null) {
+        return;
+      }
+      if (other.DeviceID.Length != 0) {
+        DeviceID = other.DeviceID;
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      if (other.Manufacturer.Length != 0) {
+        Manufacturer = other.Manufacturer;
+      }
+      if (other.Model.Length != 0) {
+        Model = other.Model;
+      }
+      if (other.Owner.Length != 0) {
+        Owner = other.Owner;
+      }
+      if (other.CivilCode.Length != 0) {
+        CivilCode = other.CivilCode;
+      }
+      if (other.Block.Length != 0) {
+        Block = other.Block;
+      }
+      if (other.Address.Length != 0) {
+        Address = other.Address;
+      }
+      if (other.Parental != 0) {
+        Parental = other.Parental;
+      }
+      if (other.ParentID.Length != 0) {
+        ParentID = other.ParentID;
+      }
+      if (other.BusinessGroupID.Length != 0) {
+        BusinessGroupID = other.BusinessGroupID;
+      }
+      if (other.SafetyWay != 0) {
+        SafetyWay = other.SafetyWay;
+      }
+      if (other.RegisterWay != 0) {
+        RegisterWay = other.RegisterWay;
+      }
+      if (other.CertNum.Length != 0) {
+        CertNum = other.CertNum;
+      }
+      if (other.Certifiable != 0) {
+        Certifiable = other.Certifiable;
+      }
+      if (other.ErrCode.Length != 0) {
+        ErrCode = other.ErrCode;
+      }
+      if (other.EndTime != 0) {
+        EndTime = other.EndTime;
+      }
+      if (other.Secrecy.Length != 0) {
+        Secrecy = other.Secrecy;
+      }
+      if (other.IPAddress.Length != 0) {
+        IPAddress = other.IPAddress;
+      }
+      if (other.Port != 0) {
+        Port = other.Port;
+      }
+      if (other.Password.Length != 0) {
+        Password = other.Password;
+      }
+      if (other.Status != 0) {
+        Status = other.Status;
+      }
+      if (other.Longitude != 0D) {
+        Longitude = other.Longitude;
+      }
+      if (other.Latitude != 0D) {
+        Latitude = other.Latitude;
+      }
+      if (other.infList_ != null) {
+        if (infList_ == null) {
+          infList_ = new global::GrpcDeviceCatalog.Info();
+        }
+        InfList.MergeFrom(other.InfList);
+      }
+      if (other.RemoteEP.Length != 0) {
+        RemoteEP = other.RemoteEP;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            DeviceID = input.ReadString();
+            break;
+          }
+          case 18: {
+            Name = input.ReadString();
+            break;
+          }
+          case 26: {
+            Manufacturer = input.ReadString();
+            break;
+          }
+          case 34: {
+            Model = input.ReadString();
+            break;
+          }
+          case 42: {
+            Owner = input.ReadString();
+            break;
+          }
+          case 50: {
+            CivilCode = input.ReadString();
+            break;
+          }
+          case 58: {
+            Block = input.ReadString();
+            break;
+          }
+          case 66: {
+            Address = input.ReadString();
+            break;
+          }
+          case 72: {
+            Parental = input.ReadInt32();
+            break;
+          }
+          case 82: {
+            ParentID = input.ReadString();
+            break;
+          }
+          case 90: {
+            BusinessGroupID = input.ReadString();
+            break;
+          }
+          case 96: {
+            SafetyWay = input.ReadInt32();
+            break;
+          }
+          case 104: {
+            RegisterWay = input.ReadInt32();
+            break;
+          }
+          case 114: {
+            CertNum = input.ReadString();
+            break;
+          }
+          case 120: {
+            Certifiable = input.ReadInt32();
+            break;
+          }
+          case 130: {
+            ErrCode = input.ReadString();
+            break;
+          }
+          case 136: {
+            EndTime = input.ReadInt32();
+            break;
+          }
+          case 146: {
+            Secrecy = input.ReadString();
+            break;
+          }
+          case 154: {
+            IPAddress = input.ReadString();
+            break;
+          }
+          case 160: {
+            Port = input.ReadInt32();
+            break;
+          }
+          case 170: {
+            Password = input.ReadString();
+            break;
+          }
+          case 176: {
+            status_ = (global::GrpcDeviceCatalog.DevStatus) input.ReadEnum();
+            break;
+          }
+          case 185: {
+            Longitude = input.ReadDouble();
+            break;
+          }
+          case 193: {
+            Latitude = input.ReadDouble();
+            break;
+          }
+          case 202: {
+            if (infList_ == null) {
+              infList_ = new global::GrpcDeviceCatalog.Info();
+            }
+            input.ReadMessage(infList_);
+            break;
+          }
+          case 210: {
+            RemoteEP = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class Info : pb::IMessage<Info> {
+    private static readonly pb::MessageParser<Info> _parser = new pb::MessageParser<Info>(() => new Info());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Info> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::GrpcDeviceCatalog.DeviceCatalogReflection.Descriptor.MessageTypes[5]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Info() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Info(Info other) : this() {
+      pTZType_ = other.pTZType_;
+      pTZTypeValue_ = other.pTZTypeValue_;
+      positionType_ = other.positionType_;
+      positionTypeValue_ = other.positionTypeValue_;
+      roomType_ = other.roomType_;
+      roomTypeValue_ = other.roomTypeValue_;
+      useType_ = other.useType_;
+      useTypeValue_ = other.useTypeValue_;
+      supplyLightType_ = other.supplyLightType_;
+      supplyLightTypeValue_ = other.supplyLightTypeValue_;
+      directionType_ = other.directionType_;
+      directionTypeValue_ = other.directionTypeValue_;
+      resolution_ = other.resolution_;
+      businessGroupID_ = other.businessGroupID_;
+      downloadSpeed_ = other.downloadSpeed_;
+      sVCSpaceSupportMode_ = other.sVCSpaceSupportMode_;
+      sVCSpaceSupportModeValue_ = other.sVCSpaceSupportModeValue_;
+      sVCTimeSupportMode_ = other.sVCTimeSupportMode_;
+      sVCTimeSupportModeValue_ = other.sVCTimeSupportModeValue_;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Info Clone() {
+      return new Info(this);
+    }
+
+    /// <summary>Field number for the "PTZType" field.</summary>
+    public const int PTZTypeFieldNumber = 1;
+    private int pTZType_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int PTZType {
+      get { return pTZType_; }
+      set {
+        pTZType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "PTZTypeValue" field.</summary>
+    public const int PTZTypeValueFieldNumber = 2;
+    private string pTZTypeValue_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string PTZTypeValue {
+      get { return pTZTypeValue_; }
+      set {
+        pTZTypeValue_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "PositionType" field.</summary>
+    public const int PositionTypeFieldNumber = 3;
+    private int positionType_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int PositionType {
+      get { return positionType_; }
+      set {
+        positionType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "PositionTypeValue" field.</summary>
+    public const int PositionTypeValueFieldNumber = 4;
+    private string positionTypeValue_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string PositionTypeValue {
+      get { return positionTypeValue_; }
+      set {
+        positionTypeValue_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "RoomType" field.</summary>
+    public const int RoomTypeFieldNumber = 5;
+    private int roomType_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int RoomType {
+      get { return roomType_; }
+      set {
+        roomType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "RoomTypeValue" field.</summary>
+    public const int RoomTypeValueFieldNumber = 6;
+    private string roomTypeValue_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string RoomTypeValue {
+      get { return roomTypeValue_; }
+      set {
+        roomTypeValue_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "UseType" field.</summary>
+    public const int UseTypeFieldNumber = 7;
+    private int useType_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int UseType {
+      get { return useType_; }
+      set {
+        useType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "UseTypeValue" field.</summary>
+    public const int UseTypeValueFieldNumber = 8;
+    private string useTypeValue_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string UseTypeValue {
+      get { return useTypeValue_; }
+      set {
+        useTypeValue_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "SupplyLightType" field.</summary>
+    public const int SupplyLightTypeFieldNumber = 9;
+    private int supplyLightType_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int SupplyLightType {
+      get { return supplyLightType_; }
+      set {
+        supplyLightType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "SupplyLightTypeValue" field.</summary>
+    public const int SupplyLightTypeValueFieldNumber = 10;
+    private string supplyLightTypeValue_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string SupplyLightTypeValue {
+      get { return supplyLightTypeValue_; }
+      set {
+        supplyLightTypeValue_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "DirectionType" field.</summary>
+    public const int DirectionTypeFieldNumber = 11;
+    private int directionType_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int DirectionType {
+      get { return directionType_; }
+      set {
+        directionType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "DirectionTypeValue" field.</summary>
+    public const int DirectionTypeValueFieldNumber = 12;
+    private string directionTypeValue_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string DirectionTypeValue {
+      get { return directionTypeValue_; }
+      set {
+        directionTypeValue_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Resolution" field.</summary>
+    public const int ResolutionFieldNumber = 13;
+    private string resolution_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Resolution {
+      get { return resolution_; }
+      set {
+        resolution_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "BusinessGroupID" field.</summary>
+    public const int BusinessGroupIDFieldNumber = 14;
+    private string businessGroupID_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string BusinessGroupID {
+      get { return businessGroupID_; }
+      set {
+        businessGroupID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "DownloadSpeed" field.</summary>
+    public const int DownloadSpeedFieldNumber = 15;
+    private string downloadSpeed_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string DownloadSpeed {
+      get { return downloadSpeed_; }
+      set {
+        downloadSpeed_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "SVCSpaceSupportMode" field.</summary>
+    public const int SVCSpaceSupportModeFieldNumber = 16;
+    private int sVCSpaceSupportMode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int SVCSpaceSupportMode {
+      get { return sVCSpaceSupportMode_; }
+      set {
+        sVCSpaceSupportMode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "SVCSpaceSupportModeValue" field.</summary>
+    public const int SVCSpaceSupportModeValueFieldNumber = 17;
+    private string sVCSpaceSupportModeValue_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string SVCSpaceSupportModeValue {
+      get { return sVCSpaceSupportModeValue_; }
+      set {
+        sVCSpaceSupportModeValue_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "SVCTimeSupportMode" field.</summary>
+    public const int SVCTimeSupportModeFieldNumber = 18;
+    private int sVCTimeSupportMode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int SVCTimeSupportMode {
+      get { return sVCTimeSupportMode_; }
+      set {
+        sVCTimeSupportMode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "SVCTimeSupportModeValue" field.</summary>
+    public const int SVCTimeSupportModeValueFieldNumber = 19;
+    private string sVCTimeSupportModeValue_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string SVCTimeSupportModeValue {
+      get { return sVCTimeSupportModeValue_; }
+      set {
+        sVCTimeSupportModeValue_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Info);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Info other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (PTZType != other.PTZType) return false;
+      if (PTZTypeValue != other.PTZTypeValue) return false;
+      if (PositionType != other.PositionType) return false;
+      if (PositionTypeValue != other.PositionTypeValue) return false;
+      if (RoomType != other.RoomType) return false;
+      if (RoomTypeValue != other.RoomTypeValue) return false;
+      if (UseType != other.UseType) return false;
+      if (UseTypeValue != other.UseTypeValue) return false;
+      if (SupplyLightType != other.SupplyLightType) return false;
+      if (SupplyLightTypeValue != other.SupplyLightTypeValue) return false;
+      if (DirectionType != other.DirectionType) return false;
+      if (DirectionTypeValue != other.DirectionTypeValue) return false;
+      if (Resolution != other.Resolution) return false;
+      if (BusinessGroupID != other.BusinessGroupID) return false;
+      if (DownloadSpeed != other.DownloadSpeed) return false;
+      if (SVCSpaceSupportMode != other.SVCSpaceSupportMode) return false;
+      if (SVCSpaceSupportModeValue != other.SVCSpaceSupportModeValue) return false;
+      if (SVCTimeSupportMode != other.SVCTimeSupportMode) return false;
+      if (SVCTimeSupportModeValue != other.SVCTimeSupportModeValue) return false;
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (PTZType != 0) hash ^= PTZType.GetHashCode();
+      if (PTZTypeValue.Length != 0) hash ^= PTZTypeValue.GetHashCode();
+      if (PositionType != 0) hash ^= PositionType.GetHashCode();
+      if (PositionTypeValue.Length != 0) hash ^= PositionTypeValue.GetHashCode();
+      if (RoomType != 0) hash ^= RoomType.GetHashCode();
+      if (RoomTypeValue.Length != 0) hash ^= RoomTypeValue.GetHashCode();
+      if (UseType != 0) hash ^= UseType.GetHashCode();
+      if (UseTypeValue.Length != 0) hash ^= UseTypeValue.GetHashCode();
+      if (SupplyLightType != 0) hash ^= SupplyLightType.GetHashCode();
+      if (SupplyLightTypeValue.Length != 0) hash ^= SupplyLightTypeValue.GetHashCode();
+      if (DirectionType != 0) hash ^= DirectionType.GetHashCode();
+      if (DirectionTypeValue.Length != 0) hash ^= DirectionTypeValue.GetHashCode();
+      if (Resolution.Length != 0) hash ^= Resolution.GetHashCode();
+      if (BusinessGroupID.Length != 0) hash ^= BusinessGroupID.GetHashCode();
+      if (DownloadSpeed.Length != 0) hash ^= DownloadSpeed.GetHashCode();
+      if (SVCSpaceSupportMode != 0) hash ^= SVCSpaceSupportMode.GetHashCode();
+      if (SVCSpaceSupportModeValue.Length != 0) hash ^= SVCSpaceSupportModeValue.GetHashCode();
+      if (SVCTimeSupportMode != 0) hash ^= SVCTimeSupportMode.GetHashCode();
+      if (SVCTimeSupportModeValue.Length != 0) hash ^= SVCTimeSupportModeValue.GetHashCode();
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (PTZType != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(PTZType);
+      }
+      if (PTZTypeValue.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(PTZTypeValue);
+      }
+      if (PositionType != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(PositionType);
+      }
+      if (PositionTypeValue.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(PositionTypeValue);
+      }
+      if (RoomType != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(RoomType);
+      }
+      if (RoomTypeValue.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(RoomTypeValue);
+      }
+      if (UseType != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(UseType);
+      }
+      if (UseTypeValue.Length != 0) {
+        output.WriteRawTag(66);
+        output.WriteString(UseTypeValue);
+      }
+      if (SupplyLightType != 0) {
+        output.WriteRawTag(72);
+        output.WriteInt32(SupplyLightType);
+      }
+      if (SupplyLightTypeValue.Length != 0) {
+        output.WriteRawTag(82);
+        output.WriteString(SupplyLightTypeValue);
+      }
+      if (DirectionType != 0) {
+        output.WriteRawTag(88);
+        output.WriteInt32(DirectionType);
+      }
+      if (DirectionTypeValue.Length != 0) {
+        output.WriteRawTag(98);
+        output.WriteString(DirectionTypeValue);
+      }
+      if (Resolution.Length != 0) {
+        output.WriteRawTag(106);
+        output.WriteString(Resolution);
+      }
+      if (BusinessGroupID.Length != 0) {
+        output.WriteRawTag(114);
+        output.WriteString(BusinessGroupID);
+      }
+      if (DownloadSpeed.Length != 0) {
+        output.WriteRawTag(122);
+        output.WriteString(DownloadSpeed);
+      }
+      if (SVCSpaceSupportMode != 0) {
+        output.WriteRawTag(128, 1);
+        output.WriteInt32(SVCSpaceSupportMode);
+      }
+      if (SVCSpaceSupportModeValue.Length != 0) {
+        output.WriteRawTag(138, 1);
+        output.WriteString(SVCSpaceSupportModeValue);
+      }
+      if (SVCTimeSupportMode != 0) {
+        output.WriteRawTag(144, 1);
+        output.WriteInt32(SVCTimeSupportMode);
+      }
+      if (SVCTimeSupportModeValue.Length != 0) {
+        output.WriteRawTag(154, 1);
+        output.WriteString(SVCTimeSupportModeValue);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (PTZType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PTZType);
+      }
+      if (PTZTypeValue.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(PTZTypeValue);
+      }
+      if (PositionType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PositionType);
+      }
+      if (PositionTypeValue.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(PositionTypeValue);
+      }
+      if (RoomType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RoomType);
+      }
+      if (RoomTypeValue.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(RoomTypeValue);
+      }
+      if (UseType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(UseType);
+      }
+      if (UseTypeValue.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(UseTypeValue);
+      }
+      if (SupplyLightType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SupplyLightType);
+      }
+      if (SupplyLightTypeValue.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(SupplyLightTypeValue);
+      }
+      if (DirectionType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(DirectionType);
+      }
+      if (DirectionTypeValue.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(DirectionTypeValue);
+      }
+      if (Resolution.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Resolution);
+      }
+      if (BusinessGroupID.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(BusinessGroupID);
+      }
+      if (DownloadSpeed.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(DownloadSpeed);
+      }
+      if (SVCSpaceSupportMode != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(SVCSpaceSupportMode);
+      }
+      if (SVCSpaceSupportModeValue.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(SVCSpaceSupportModeValue);
+      }
+      if (SVCTimeSupportMode != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(SVCTimeSupportMode);
+      }
+      if (SVCTimeSupportModeValue.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(SVCTimeSupportModeValue);
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Info other) {
+      if (other == null) {
+        return;
+      }
+      if (other.PTZType != 0) {
+        PTZType = other.PTZType;
+      }
+      if (other.PTZTypeValue.Length != 0) {
+        PTZTypeValue = other.PTZTypeValue;
+      }
+      if (other.PositionType != 0) {
+        PositionType = other.PositionType;
+      }
+      if (other.PositionTypeValue.Length != 0) {
+        PositionTypeValue = other.PositionTypeValue;
+      }
+      if (other.RoomType != 0) {
+        RoomType = other.RoomType;
+      }
+      if (other.RoomTypeValue.Length != 0) {
+        RoomTypeValue = other.RoomTypeValue;
+      }
+      if (other.UseType != 0) {
+        UseType = other.UseType;
+      }
+      if (other.UseTypeValue.Length != 0) {
+        UseTypeValue = other.UseTypeValue;
+      }
+      if (other.SupplyLightType != 0) {
+        SupplyLightType = other.SupplyLightType;
+      }
+      if (other.SupplyLightTypeValue.Length != 0) {
+        SupplyLightTypeValue = other.SupplyLightTypeValue;
+      }
+      if (other.DirectionType != 0) {
+        DirectionType = other.DirectionType;
+      }
+      if (other.DirectionTypeValue.Length != 0) {
+        DirectionTypeValue = other.DirectionTypeValue;
+      }
+      if (other.Resolution.Length != 0) {
+        Resolution = other.Resolution;
+      }
+      if (other.BusinessGroupID.Length != 0) {
+        BusinessGroupID = other.BusinessGroupID;
+      }
+      if (other.DownloadSpeed.Length != 0) {
+        DownloadSpeed = other.DownloadSpeed;
+      }
+      if (other.SVCSpaceSupportMode != 0) {
+        SVCSpaceSupportMode = other.SVCSpaceSupportMode;
+      }
+      if (other.SVCSpaceSupportModeValue.Length != 0) {
+        SVCSpaceSupportModeValue = other.SVCSpaceSupportModeValue;
+      }
+      if (other.SVCTimeSupportMode != 0) {
+        SVCTimeSupportMode = other.SVCTimeSupportMode;
+      }
+      if (other.SVCTimeSupportModeValue.Length != 0) {
+        SVCTimeSupportModeValue = other.SVCTimeSupportModeValue;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            PTZType = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            PTZTypeValue = input.ReadString();
+            break;
+          }
+          case 24: {
+            PositionType = input.ReadInt32();
+            break;
+          }
+          case 34: {
+            PositionTypeValue = input.ReadString();
+            break;
+          }
+          case 40: {
+            RoomType = input.ReadInt32();
+            break;
+          }
+          case 50: {
+            RoomTypeValue = input.ReadString();
+            break;
+          }
+          case 56: {
+            UseType = input.ReadInt32();
+            break;
+          }
+          case 66: {
+            UseTypeValue = input.ReadString();
+            break;
+          }
+          case 72: {
+            SupplyLightType = input.ReadInt32();
+            break;
+          }
+          case 82: {
+            SupplyLightTypeValue = input.ReadString();
+            break;
+          }
+          case 88: {
+            DirectionType = input.ReadInt32();
+            break;
+          }
+          case 98: {
+            DirectionTypeValue = input.ReadString();
+            break;
+          }
+          case 106: {
+            Resolution = input.ReadString();
+            break;
+          }
+          case 114: {
+            BusinessGroupID = input.ReadString();
+            break;
+          }
+          case 122: {
+            DownloadSpeed = input.ReadString();
+            break;
+          }
+          case 128: {
+            SVCSpaceSupportMode = input.ReadInt32();
+            break;
+          }
+          case 138: {
+            SVCSpaceSupportModeValue = input.ReadString();
+            break;
+          }
+          case 144: {
+            SVCTimeSupportMode = input.ReadInt32();
+            break;
+          }
+          case 154: {
+            SVCTimeSupportModeValue = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   public sealed partial class DeviceCatalogSubscribeRequest : pb::IMessage<DeviceCatalogSubscribeRequest> {
     private static readonly pb::MessageParser<DeviceCatalogSubscribeRequest> _parser = new pb::MessageParser<DeviceCatalogSubscribeRequest>(() => new DeviceCatalogSubscribeRequest());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -296,7 +2147,7 @@ namespace GrpcDeviceCatalog {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::GrpcDeviceCatalog.DeviceCatalogReflection.Descriptor.MessageTypes[2]; }
+      get { return global::GrpcDeviceCatalog.DeviceCatalogReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -406,9 +2257,6 @@ namespace GrpcDeviceCatalog {
 
   }
 
-  /// <summary>
-  /// The response message.
-  /// </summary>
   public sealed partial class DeviceCatalogSubscribeReply : pb::IMessage<DeviceCatalogSubscribeReply> {
     private static readonly pb::MessageParser<DeviceCatalogSubscribeReply> _parser = new pb::MessageParser<DeviceCatalogSubscribeReply>(() => new DeviceCatalogSubscribeReply());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -416,7 +2264,7 @@ namespace GrpcDeviceCatalog {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::GrpcDeviceCatalog.DeviceCatalogReflection.Descriptor.MessageTypes[3]; }
+      get { return global::GrpcDeviceCatalog.DeviceCatalogReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
