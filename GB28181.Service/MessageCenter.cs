@@ -64,7 +64,7 @@ namespace GB28181Service
         /// <param name="cata"></param>
         public void OnCatalogReceived(Catalog cata)
         {
-            _catalogQueue.Enqueue(cata);
+            //_catalogQueue.Enqueue(cata);
         }
 
 
