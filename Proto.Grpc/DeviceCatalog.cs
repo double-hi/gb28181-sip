@@ -36,7 +36,7 @@ namespace GrpcDeviceCatalog {
             "CRIQCghQYXJlbnRhbBgJIAEoBRIQCghQYXJlbnRJRBgKIAEoCRIXCg9CdXNp",
             "bmVzc0dyb3VwSUQYCyABKAkSEQoJU2FmZXR5V2F5GAwgASgFEhMKC1JlZ2lz",
             "dGVyV2F5GA0gASgFEg8KB0NlcnROdW0YDiABKAkSEwoLQ2VydGlmaWFibGUY",
-            "DyABKAUSDwoHRXJyQ29kZRgQIAEoCRIPCgdFbmRUaW1lGBEgASgFEg8KB1Nl",
+            "DyABKAUSDwoHRXJyQ29kZRgQIAEoCRIPCgdFbmRUaW1lGBEgASgJEg8KB1Nl",
             "Y3JlY3kYEiABKAkSEQoJSVBBZGRyZXNzGBMgASgJEgwKBFBvcnQYFCABKAUS",
             "EAoIUGFzc3dvcmQYFSABKAkSLAoGU3RhdHVzGBYgASgOMhwuR3JwY0Rldmlj",
             "ZUNhdGFsb2cuRGV2U3RhdHVzEhEKCUxvbmdpdHVkZRgXIAEoARIQCghMYXRp",
@@ -931,12 +931,12 @@ namespace GrpcDeviceCatalog {
 
     /// <summary>Field number for the "EndTime" field.</summary>
     public const int EndTimeFieldNumber = 17;
-    private int endTime_;
+    private string endTime_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int EndTime {
+    public string EndTime {
       get { return endTime_; }
       set {
-        endTime_ = value;
+        endTime_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -1100,7 +1100,7 @@ namespace GrpcDeviceCatalog {
       if (CertNum.Length != 0) hash ^= CertNum.GetHashCode();
       if (Certifiable != 0) hash ^= Certifiable.GetHashCode();
       if (ErrCode.Length != 0) hash ^= ErrCode.GetHashCode();
-      if (EndTime != 0) hash ^= EndTime.GetHashCode();
+      if (EndTime.Length != 0) hash ^= EndTime.GetHashCode();
       if (Secrecy.Length != 0) hash ^= Secrecy.GetHashCode();
       if (IPAddress.Length != 0) hash ^= IPAddress.GetHashCode();
       if (Port != 0) hash ^= Port.GetHashCode();
@@ -1184,9 +1184,9 @@ namespace GrpcDeviceCatalog {
         output.WriteRawTag(130, 1);
         output.WriteString(ErrCode);
       }
-      if (EndTime != 0) {
-        output.WriteRawTag(136, 1);
-        output.WriteInt32(EndTime);
+      if (EndTime.Length != 0) {
+        output.WriteRawTag(138, 1);
+        output.WriteString(EndTime);
       }
       if (Secrecy.Length != 0) {
         output.WriteRawTag(146, 1);
@@ -1277,8 +1277,8 @@ namespace GrpcDeviceCatalog {
       if (ErrCode.Length != 0) {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(ErrCode);
       }
-      if (EndTime != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(EndTime);
+      if (EndTime.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(EndTime);
       }
       if (Secrecy.Length != 0) {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(Secrecy);
@@ -1363,7 +1363,7 @@ namespace GrpcDeviceCatalog {
       if (other.ErrCode.Length != 0) {
         ErrCode = other.ErrCode;
       }
-      if (other.EndTime != 0) {
+      if (other.EndTime.Length != 0) {
         EndTime = other.EndTime;
       }
       if (other.Secrecy.Length != 0) {
@@ -1470,8 +1470,8 @@ namespace GrpcDeviceCatalog {
             ErrCode = input.ReadString();
             break;
           }
-          case 136: {
-            EndTime = input.ReadInt32();
+          case 138: {
+            EndTime = input.ReadString();
             break;
           }
           case 146: {

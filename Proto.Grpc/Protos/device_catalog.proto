@@ -65,7 +65,7 @@ message Item{
   string CertNum = 14;
   int32 Certifiable = 15;
   string ErrCode = 16;
-  int32 EndTime = 17;
+  string EndTime = 17;
   string Secrecy = 18;
   string IPAddress = 19;
   int32 Port = 20;

@@ -7,6 +7,7 @@ using GrpcDeviceCatalog;
 using SIPSorcery.GB28181.Servers;
 using SIPSorcery.GB28181.Servers.SIPMessage;
 using SIPSorcery.GB28181.Sys.XML;
+using Newtonsoft.Json;
 
 namespace GrpcAgent.WebsocketRpcServer
 {
@@ -31,7 +32,6 @@ namespace GrpcAgent.WebsocketRpcServer
             }
         }
 
-        // Server side handler of the SayHello RPC
         public override Task<GetCatalogReply> GetCatalog(GetCatalogRequest request, ServerCallContext context)
         {
             _sipCatalogCore.GetCatalog(request.Deviceid);
@@ -55,12 +55,22 @@ namespace GrpcAgent.WebsocketRpcServer
                     break;
                 }
             }
-            object objCatalog = _Catalog;
-            Instance instance = (GrpcDeviceCatalog.Instance)objCatalog;
+            string jsonCatalog = JsonConvert.SerializeObject(_Catalog)
+                .Replace("\"Block\":null", "\"Block\":\"null\"")
+                .Replace("\"ParentID\":null", "\"ParentID\":\"null\"")
+                .Replace("\"BusinessGroupID\":null", "\"BusinessGroupID\":\"null\"")
+                .Replace("\"CertNum\":null", "\"CertNum\":\"null\"")
+                .Replace("\"Certifiable\":null", "\"Certifiable\":0")
+                .Replace("\"ErrCode\":null", "\"ErrCode\":0")
+                .Replace("\"EndTime\":null", "\"EndTime\":\"null\"")
+                .Replace("\"Secrecy\":null", "\"Secrecy\":0")
+                .Replace("\"Password\":null", "\"Password\":\"null\"")
+                .Replace("\"Longitude\":null", "\"Longitude\":0")
+                .Replace("\"Latitude\":null", "\"Latitude\":0");
+            Instance instance = JsonConvert.DeserializeObject<Instance>(jsonCatalog);
             return Task.FromResult(new GetCatalogReply { Catalog = instance });
         }
 
-        // Server side handler of the SayHello RPC
         public override Task<DeviceCatalogSubscribeReply> DeviceCatalogSubscribe(DeviceCatalogSubscribeRequest request, ServerCallContext context)
         {
             _sipCatalogCore.DeviceCatalogSubscribe(request.Deviceid);

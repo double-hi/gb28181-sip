@@ -14,7 +14,6 @@ namespace GrpcAgent.WebsocketRpcServer
     public class DeviceManageImpl : Manage.Manage.ManageBase
     {
         private static ILog logger = LogManager.GetLogger("RpcServer");
-        //private ISIPMonitorCore _sipMonitorCore = null;
         private ISipMessageCore _sipMessageCore = null;
         private ISIPRegistrarCore _sipRegistrarCore = null;
 

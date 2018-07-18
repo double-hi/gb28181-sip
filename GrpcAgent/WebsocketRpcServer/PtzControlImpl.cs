@@ -4,14 +4,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Grpc.Core;
 using GrpcPtzControl;
-//using SIPSorcery.GB28181.Servers;
 using SIPSorcery.GB28181.Servers.SIPMessage;
 
 namespace GrpcAgent.WebsocketRpcServer
 {
     public class PtzControlImpl : PtzControl.PtzControlBase
     {
-        //private ISIPMonitorCore _sipMonitorCore = null;
         private ISipMessageCore _sipMessageCore = null;
 
         public PtzControlImpl(ISipMessageCore sipMessageCore)
@@ -19,7 +17,6 @@ namespace GrpcAgent.WebsocketRpcServer
             _sipMessageCore = sipMessageCore;
         }
 
-        // Server side handler of the SayHello RPC
         public override Task<PtzDirectReply> PtzDirect(PtzDirectRequest request, ServerCallContext context)
         {
             if (request.Xyz.X == 0 && request.Xyz.Y == 4 && request.Xyz.Z == 0)
