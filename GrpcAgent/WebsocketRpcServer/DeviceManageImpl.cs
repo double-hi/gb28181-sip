@@ -41,23 +41,25 @@ namespace GrpcAgent.WebsocketRpcServer
         
         public void RPCDmsRegister(SIPTransaction sipTransaction)
         {
-            Device _device = new Device();
-            try
-            {
-                Channel channel = new Channel("10.78.115.155:5060", ChannelCredentials.Insecure);
-                var client = new Manage.Manage.ManageClient(channel);
-                AddDeviceRequest _AddDeviceRequest = new AddDeviceRequest();
-                _device.Guid = "42010000001310000184";
-                //_AddDeviceRequest.Device = _device;
-                _AddDeviceRequest.LoginRoleId = "admin";
-                var reply = client.AddDevice(_AddDeviceRequest);
+            logger.Debug("Device[" + sipTransaction.TransactionRequest.RemoteSIPEndPoint + "] is registering DMS.");
 
-                logger.Debug("Device[" + sipTransaction.TransactionRequest.RemoteSIPEndPoint + "] register DMS successed.");
-            }
-            catch (Exception ex)
-            {
-                logger.Error("Device[" + sipTransaction.TransactionRequest.RemoteSIPEndPoint + "] register DMS failed. " + ex.Message);
-            }
+            //Device _device = new Device();
+            //try
+            //{
+            //    Channel channel = new Channel("10.78.115.155:5060", ChannelCredentials.Insecure);
+            //    var client = new Manage.Manage.ManageClient(channel);
+            //    AddDeviceRequest _AddDeviceRequest = new AddDeviceRequest();
+            //    _device.Guid = "42010000001310000184";
+            //    //_AddDeviceRequest.Device = _device;
+            //    _AddDeviceRequest.LoginRoleId = "admin";
+            //    var reply = client.AddDevice(_AddDeviceRequest);
+
+            //    logger.Debug("Device[" + sipTransaction.TransactionRequest.RemoteSIPEndPoint + "] register DMS successed.");
+            //}
+            //catch (Exception ex)
+            //{
+            //    logger.Error("Device[" + sipTransaction.TransactionRequest.RemoteSIPEndPoint + "] register DMS failed. " + ex.Message);
+            //}
         }        
     }
 }
