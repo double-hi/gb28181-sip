@@ -1726,27 +1726,35 @@ namespace SIPSorcery.GB28181.SIP
 
         public SIPRequest GetRequest(SIPMethodsEnum method, SIPURI uri, SIPToHeader to, SIPEndPoint localSIPEndPoint)
         {
-            if (localSIPEndPoint == null)
+            try
             {
-                localSIPEndPoint = GetDefaultSIPEndPoint();
+                if (localSIPEndPoint == null)
+                {
+                    localSIPEndPoint = GetDefaultSIPEndPoint();
+                }
+
+                SIPRequest request = new SIPRequest(method, uri)
+                {
+                    LocalSIPEndPoint = localSIPEndPoint
+                };
+
+                SIPContactHeader contactHeader = new SIPContactHeader(null, new SIPURI(SIPSchemesEnum.sip, localSIPEndPoint));
+                SIPFromHeader fromHeader = new SIPFromHeader(null, contactHeader.ContactURI, CallProperties.CreateNewTag());
+                SIPHeader header = new SIPHeader(contactHeader, fromHeader, to, 1, CallProperties.CreateNewCallId());
+                request.Header = header;
+                header.CSeqMethod = method;
+                header.Allow = ALLOWED_SIP_METHODS;
+
+                SIPViaHeader viaHeader = new SIPViaHeader(localSIPEndPoint, CallProperties.CreateBranchId());
+                header.Vias.PushViaHeader(viaHeader);
+
+                return request;
             }
-
-            SIPRequest request = new SIPRequest(method, uri)
+            catch (Exception excp)
             {
-                LocalSIPEndPoint = localSIPEndPoint
-            };
-
-            SIPContactHeader contactHeader = new SIPContactHeader(null, new SIPURI(SIPSchemesEnum.sip, localSIPEndPoint));
-            SIPFromHeader fromHeader = new SIPFromHeader(null, contactHeader.ContactURI, CallProperties.CreateNewTag());
-            SIPHeader header = new SIPHeader(contactHeader, fromHeader, to, 1, CallProperties.CreateNewCallId());
-            request.Header = header;
-            header.CSeqMethod = method;
-            header.Allow = ALLOWED_SIP_METHODS;
-
-            SIPViaHeader viaHeader = new SIPViaHeader(localSIPEndPoint, CallProperties.CreateBranchId());
-            header.Vias.PushViaHeader(viaHeader);
-
-            return request;
+                logger.Error("Exception SIPTransport GetRequest. " + excp.Message);
+                throw;
+            }
         }
 
         public SIPTransaction GetTransaction(string transactionId)
