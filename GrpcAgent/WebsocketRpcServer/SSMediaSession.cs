@@ -92,8 +92,8 @@ namespace GrpcAgent.WebsocketRpcServer
             //    }
             //};
             //return Task.FromResult(stopReply);
-            
-            var stopProcessResult = _sipServiceDirector.Stop(request.Gbid);
+
+            var stopProcessResult = _sipServiceDirector.Stop(string.IsNullOrEmpty(request.Gbid) ? "42010000001310000184" : request.Gbid);
 
             var stopReply = new StopReply()
             {
