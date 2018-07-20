@@ -1,5 +1,7 @@
-﻿using SIPSorcery.GB28181.Net;
+﻿using Logger4Net;
+using SIPSorcery.GB28181.Net;
 using SIPSorcery.GB28181.Servers.SIPMessage;
+using SIPSorcery.GB28181.Sys;
 using SIPSorcery.GB28181.Sys.XML;
 using System;
 using System.Collections.Generic;
@@ -10,7 +12,7 @@ namespace SIPSorcery.GB28181.Servers
 {
     public class SIPServiceDirector : ISIPServiceDirector
     {
-
+        private static ILog logger = AppState.logger;
         private ISipMessageCore _sipCoreMessageService;
         private Dictionary<string, Catalog> _Catalogs = new Dictionary<string, Catalog>();
         public Dictionary<string, Catalog> Catalogs => _Catalogs;
@@ -40,6 +42,7 @@ namespace SIPSorcery.GB28181.Servers
         //make real Request
         async public Task<Tuple<string, int, ProtocolType>> MakeVideoRequest(string gbid, int[] mediaPort, string receiveIP)
         {
+            logger.Debug("Make video request started.");
             var target = GetTargetMonitorService(gbid);
 
             if (target == null)
@@ -105,6 +108,7 @@ namespace SIPSorcery.GB28181.Servers
         /// </summary>
         public void GetCatalog(string deviceId)
         {
+            logger.Debug("Device Catalog Query started.");
             _sipCoreMessageService.DeviceCatalogQuery(deviceId);
         }
         #endregion
