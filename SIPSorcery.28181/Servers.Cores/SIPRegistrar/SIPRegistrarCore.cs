@@ -138,7 +138,6 @@ namespace SIPSorcery.GB28181.Servers
 
         public SIPRegistrarCoreService(ISIPTransport sipTransport, ISipAccountStorage sipAccountStorage, IMemoCache<Camera> cameraCache, bool mangleUACContact = true, bool strictRealmHandling = true)
         {
-
             _sipTransport = sipTransport;
             m_mangleUACContact = mangleUACContact;
             m_strictRealmHandling = strictRealmHandling;
@@ -237,7 +236,7 @@ namespace SIPSorcery.GB28181.Servers
                                 RegisterComplete?.Invoke(duration.TotalMilliseconds, registrarTransaction.TransactionRequest.Header.AuthenticationHeader != null);
 
 
-                                logger.Debug("Register was completed: Server " + registrarTransaction.LocalSIPEndPoint + ", " + "Camera " + registrarTransaction.RemoteEndPoint);
+                                logger.Debug("IPC register have completed: Server " + registrarTransaction.LocalSIPEndPoint + ", " + "Camera " + registrarTransaction.RemoteEndPoint);
                                 //CacheDeviceItem(registrarTransaction.TransactionRequest);
                             }
                         }
