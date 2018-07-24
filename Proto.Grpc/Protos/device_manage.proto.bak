@@ -1,0 +1,332 @@
+syntax = "proto3";
+
+package manage;
+
+//service and action definition
+service Manage {
+    rpc AddDevice(AddDeviceRequest) returns (AddDeviceResponse) {}
+	rpc DeleteDevice(DeleteDeviceRequest) returns (DeleteDeviceResponse) {}
+	rpc UpdateDevice(UpdateDeviceRequest) returns (UpdateDeviceResponse) {}
+    rpc QueryDevice(QueryRequest) returns (QueryDeviceResponse) {}
+    rpc CheckDupl(CheckDupRequest) returns (CheckDupResponse){}
+
+    rpc AddView(AddViewRequest) returns (AddViewResponse){}
+    rpc DeleteView(DeleteViewRequest) returns (DeleteViewResponse){}
+    rpc UpdateView(UpdateViewRequest) returns (UpdateViewResponse){}
+
+    rpc QuerySimpleView(QuerySimpleRequest) returns (QuerySimpleViewResponse){}
+    rpc QuerySimpleDeviceById(QuerySimpleDeviceRequest) returns (QuerySimpleDeviceResponse){}
+
+    rpc QuerySimpleDeviceByIds(QuerySimpleDevicesRequest) returns (QuerySimpleDevicesResponse){}
+
+    rpc FuzzyQueryDeviceByName(FuzzyQueryDeviceRequest) returns (FuzzyQueryDeviceResponse){}
+
+    rpc QueryChannelDevices(QueryChannelRequest) returns(QueryChannelResponse){}
+}
+
+message QueryChannelRequest{
+    string login_role_id=1;
+    string parent_device_id=2;
+}
+
+message QueryChannelResponse{
+    repeated SimpleDevice channel_devices=1;
+}
+
+message View{
+    string guid = 1;
+    string name =2;
+    string description = 3;
+    string parent_id = 4;
+    repeated string child_view_ids=5;
+    repeated string device_ids = 6;
+    string owner_id = 7;
+}
+
+message SimpleView{
+    string guid = 1;
+    string name =2;
+    string description = 3;    
+    repeated SimpleView child_simple_views = 4;
+    repeated KeyValuePair devices = 5;
+    string owner_id = 6;
+    int32 total_device_count=7;
+    int32 total_online_count=8;
+}
+
+message KeyValuePair{
+    string id=1;
+    string name = 2;
+}
+
+message AddViewRequest{
+    repeated View views =1;
+    uint64 timestamp=2;
+}
+
+message AddViewResponse {
+    OP_RESULT_STATUS status= 1;
+}
+
+message UpdateViewRequest{
+    repeated View views =1;
+    uint64 timestamp=2;
+}
+
+message UpdateViewResponse {
+    OP_RESULT_STATUS status= 1;      
+}
+message DeleteViewRequest {
+    uint64 timestamp=1;
+    repeated string view_ids = 2;
+}
+
+message DeleteViewResponse {
+    OP_RESULT_STATUS status= 1;
+}
+
+message QuerySimpleRequest{
+    uint64 timestamp=1;
+    string user_id =2;
+    string view_id = 3;
+}
+
+message QuerySimpleDevicesRequest{
+    uint64 timestamp=1;
+    repeated string device_ids =2;
+}
+message QuerySimpleDevicesResponse{
+    SEARCH_STATUS status=1;
+    repeated SimpleDevice simple_devices = 2; 
+}
+
+message FuzzyQueryDeviceRequest{
+    uint64 timestamp=1;
+    string login_role_id=2;
+    string name =3;
+}
+
+message FuzzyQueryDeviceResponse{
+    repeated KeyValuePair devices = 1; 
+}
+
+message QuerySimpleDeviceRequest{
+    uint64 timestamp=1;
+    string device_id =2;
+}
+message QuerySimpleDeviceResponse{
+    SEARCH_STATUS status=1;
+    SimpleDevice simple_device = 2; 
+}
+
+message QuerySimpleViewResponse{
+    SEARCH_STATUS status=1;
+    repeated SimpleView simple_views = 2;
+}
+
+enum ProtoType {
+    PROTO_ONVIF = 0;
+    PROTO_GB28181 = 1;
+    PROTO_RTSP =2;
+    PROTO_MQTT =3;
+    PROTO_COAP =4;
+    PROTO_WEBSOCKET =5;
+    PROTO_OTHER = 6;
+}
+
+enum TypeCode{
+    IPC =0;
+    NVR7128=1;
+    Channel=2;
+}
+  enum PTZType {
+    CAM_DOME_HIGH_SPEED=0;
+    CAM_DOME=1;
+    CAM_BOX=2;
+    CAM_BOX_FIX=3;
+  }
+
+message DeviceList{
+   repeated Device item =1;
+}
+
+message Device {
+    string guid=1;  //device的guid 主键
+    string name = 2;
+    TypeCode type_code =3; 
+    ProtoType protocol_type =4;  //用以区别设备接入时采用的协议类型,必须存储
+    string description =5;
+    double  geo_long=6; //
+    double  geo_lat=7;
+    uint32 ptz_type = 8;         //PTZ类型,      
+    ProtocolInfo protocol_detail = 9; //协议相关的细节
+    MediaInfo media_detail = 10; 
+	repeated LoginUser login_user = 11;  //登陆设备的用户信息
+	repeated string tag=12;   //对设备做的标注，比如打个标签，用于检索和参数携带，允许多个标注
+	repeated uint32 media_srcType=13;      //设备的提供数据类型（提供视频/音频/文本数据/二进制数据包，0 for nil ,1 for video 2 for audio 3 for binary
+    int32 channel_id=14; 
+}
+
+message SimpleDevice{
+    string guid=1;  //device的guid 主键
+    string device_name =2;
+    ProtoType protocol_type =3;  //用以区别设备接入时采用的协议类型,必须存储
+    ProtocolInfo protocol_detail = 4; //协议相关的细节
+    repeated LoginUser users =5;
+    TypeCode type_code=6;
+    int32 channel_id = 7;
+}    
+
+ message LoginUser {
+	string login_name=1; //登陆设备所需要的用户名
+	string login_pwd=2; //登陆设备所需要的密码
+}
+
+//设备分类
+message DeviceCategory {
+    uint64 category_id = 1;
+    string name = 2;
+    string description = 3;
+}
+
+//协议
+message ProtocolInfo {
+    OnvifDetail onvif=1;
+	GBDetail gb=2;
+}
+
+message OnvifDetail {
+    string IP=1; //设备的IP地址
+	uint32 Port=2; //设备的服务端口
+}
+
+message GBDetail {
+	string GB_ID=1; //GBID 20 位国标编码,.
+	string parent_ID=2; //设备的服务端口
+    string IP =3;
+    uint32 port=4;
+}
+
+message MediaInfo {
+    uint32 video_encode=1; //视频编码,  //1 for h264 2 for h265 3 for svac
+	uint32 audio_encode=2; //音频编码 //1 for AAC 2 for G729 3 for MP3
+	uint32 video_width =3; //视频分辨率宽
+	uint32 video_height=4; //视频分辨率高
+	uint32 profile=5; //默认的配置
+}
+
+//设备属性集详情
+message DeviceDetails {
+    string guid = 1;
+    uint32 ptz_type = 2;
+    string manufacturer = 3;
+    string model_number = 4;
+    string vendor_name=5;
+    uint32 video_encode=6;
+    uint32 audio_encode=7;
+    bool is_video_device=8;
+}
+
+message DeviceItemEvent {
+    string guid = 1;
+    string name = 2;
+    string description = 3;
+    DeviceOperation device_operation = 4;
+    string operator_id = 5;
+    int64 timestamp = 6;
+}
+
+enum DeviceOperation {
+    DOP_UNKNOWN=0;
+    DOP_CREATE=1;
+    DOP_DELETE=2;
+    DOP_UPDATE=3;
+    DOP_QUERY=4;
+}
+
+message AddDeviceRequest {
+    uint64 timestamp=1;
+    DeviceList device=2;
+    string login_role_id=3;
+}
+
+message AddDeviceResponse {
+    OP_RESULT_STATUS status= 1;
+}
+
+message DeleteDeviceRequest {
+    uint64 timestamp=1;
+    repeated string devices_id = 2;
+}
+
+message DeleteDeviceResponse {
+    OP_RESULT_STATUS status= 1;
+    repeated Device device_item =2; 
+}
+
+message UpdateDeviceRequest {
+    string login_role_id=1;
+    repeated Device device_item =2;
+}
+
+message UpdateDeviceResponse {
+    OP_RESULT_STATUS status= 1;
+    repeated Device device_item =3;
+}
+
+message QueryRequest {
+    QueryCondition query_condition = 1;
+    int32 page_number = 2;      //page number
+    int32 count_per_page = 3;  // item count of per page.
+    string loginRoleId = 4;//  当前登录的角色 ID
+}
+
+message QueryCondition{
+    string id = 1;
+    string name = 2;
+    string protocol_type=3;
+}
+
+message QueryDeviceResponse {
+    SEARCH_STATUS status=1;
+    repeated Device devices =2;
+    int32 total_count = 3;
+    int32 total_page = 4;
+}
+
+message CheckDupRequest {
+    uint64 timestamp=1;
+    Category category =2;
+    repeated string checkValue = 3;
+}
+
+message CheckDupResponse {
+    CHECKDUPL_RESULT status= 1;
+    repeated string duplValue =2;
+    string msg = 3;
+}
+
+enum Category {
+    Category_Role=0;
+    Category_User=1;
+    Category_Device=2;
+    Category_View = 3;
+}
+enum CHECKDUPL_RESULT {
+    CHECKDUPL_DUPL=0;
+    CHECKDUPL_NODUPL=1;
+    CHECKDUPL_FAILED=2;
+}
+
+enum OP_RESULT_STATUS {
+    OP_SUCCESS=0;
+    OP_EXCEPTION=1;
+    OP_NAMEDUPLICATE=2;
+    OP_RESOURCEOCCURREDEXCEPTION=3;
+}
+
+enum SEARCH_STATUS {
+    SEARCH_IN_PROGRESS =0;
+    SEARCH_FINISHED=1;
+    SEARCH_EXCEPTION=2;
+}

@@ -44,13 +44,16 @@ namespace GrpcAgent.WebsocketRpcServer
             logger.Debug("Device[" + sipTransaction.TransactionRequest.RemoteSIPEndPoint + "] is registering DMS.");
 
             //Device _device = new Device();
+            ////DeviceList dl = new DeviceList();
+            ////dl.Item.Add(_device);
             //try
             //{
-            //    Channel channel = new Channel("10.78.115.155:5060", ChannelCredentials.Insecure);
+            //    Channel channel = new Channel("10.78.115.152:5000", ChannelCredentials.Insecure);
             //    var client = new Manage.Manage.ManageClient(channel);
             //    AddDeviceRequest _AddDeviceRequest = new AddDeviceRequest();
+            //    _device.Name = "Carmera01";
             //    _device.Guid = "42010000001310000184";
-            //    //_AddDeviceRequest.Device = _device;
+            //    _AddDeviceRequest.Device.Add(_device);
             //    _AddDeviceRequest.LoginRoleId = "admin";
             //    var reply = client.AddDevice(_AddDeviceRequest);
 
