@@ -94,12 +94,11 @@ namespace GB28181Service
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
 
             // config info for .net core https://www.cnblogs.com/Leo_wl/p/5745772.html#_label3
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddXmlFile("Config/gb28181.xml", false, reloadOnChange: true);
-            var config = builder.Build();//// Console.WriteLine(config["sipaccount:ID"]);
-
-            var sect = config.GetSection("sipaccounts");
+            var builder = new ConfigurationBuilder();
+                //.SetBasePath(Directory.GetCurrentDirectory())
+                //.AddXmlFile("Config/gb28181.xml", false, reloadOnChange: true);
+            var config = builder.Build();//Console.WriteLine(config["sipaccount:ID"]);
+            //var sect = config.GetSection("sipaccounts");
 
             //Config Service & and run
             ConfigServices(config);
