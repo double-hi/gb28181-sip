@@ -20,6 +20,8 @@ using SIPSorcery.GB28181.Sys.Cache;
 using SIPSorcery.GB28181.Sys.Model;
 using GrpcPtzControl;
 using GrpcDeviceCatalog;
+using Grpc.Core;
+using GrpcGb28181Config;
 
 namespace GB28181Service
 {
@@ -68,7 +70,6 @@ namespace GB28181Service
 
         protected virtual void Dispose(bool disposing)
         {
-
             lock (this)
             {
                 if (_already_disposed)
@@ -100,6 +101,9 @@ namespace GB28181Service
             var config = builder.Build();//Console.WriteLine(config["sipaccount:ID"]);
             //var sect = config.GetSection("sipaccounts");
 
+            //InitServer
+            SipAccountStorage.RPCGBServerConfigReceived += SipAccountStorage_RPCGBServerConfigReceived;
+
             //Config Service & and run
             ConfigServices(config);
 
@@ -115,7 +119,6 @@ namespace GB28181Service
             // signal main service exit
             _eventStopService.Set();
             _eventThreadExit.WaitOne();
-
         }
 
         private void ConfigServices(IConfigurationRoot configuration)
@@ -204,9 +207,50 @@ namespace GB28181Service
             {
 
             }
-
         }
-        
+
+        private List<SIPSorcery.GB28181.SIP.App.SIPAccount> SipAccountStorage_RPCGBServerConfigReceived()
+        {
+            try
+            {
+                string GBServerChannelAddress = EnvironmentVariables.GBServerChannelAddress ?? "10.78.115.152:5000";
+                Channel channel = new Channel(GBServerChannelAddress, ChannelCredentials.Insecure);
+                var client = new Gb28181Config.Gb28181ConfigClient(channel);
+                //GbConfigRequest _GbConfigRequest = new GbConfigRequest();
+                GbConfigReply _GbConfigReply = new GbConfigReply();
+                _GbConfigReply = client.GbConfig(new GbConfigRequest() { });
+
+                List<SIPSorcery.GB28181.SIP.App.SIPAccount> _lstSIPAccount = new List<SIPSorcery.GB28181.SIP.App.SIPAccount>();
+                foreach (SIPAccount item in _GbConfigReply.Sipaccount)
+                {
+                    SIPSorcery.GB28181.SIP.App.SIPAccount obj = new SIPSorcery.GB28181.SIP.App.SIPAccount();
+                    obj.Id = Guid.NewGuid();
+                    //obj.Owner = item.Name;
+                    obj.GbVersion = item.GbVersion;
+                    obj.LocalID = item.LocalID;
+                    obj.LocalIP = System.Net.IPAddress.Parse(item.LocalIP);
+                    obj.LocalPort = Convert.ToUInt16(item.LocalPort);
+                    obj.RemotePort = Convert.ToUInt16(item.RemotePort);
+                    obj.Authentication = Boolean.Parse(item.Authentication);
+                    obj.SIPUsername = item.SIPUsername;
+                    obj.SIPPassword = item.SIPPassword;
+                    obj.MsgProtocol = System.Net.Sockets.ProtocolType.Udp;
+                    obj.StreamProtocol = System.Net.Sockets.ProtocolType.Udp;
+                    obj.TcpMode = SIPSorcery.GB28181.Net.RTP.TcpConnectMode.passive;
+                    obj.MsgEncode = item.MsgEncode;
+                    obj.PacketOutOrder = Boolean.Parse(item.PacketOutOrder);
+                    obj.KeepaliveInterval = Convert.ToUInt16(item.KeepaliveInterval);
+                    obj.KeepaliveNumber = Convert.ToByte(item.KeepaliveNumber);
+                    _lstSIPAccount.Add(obj);
+                }
+                return _lstSIPAccount;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
         //private async Task WaitUserCmd()
         //{
         //    await Task.Run(() =>
@@ -223,7 +267,6 @@ namespace GB28181Service
         //                         mockCaller.MakeVideoRequest("42010000001310000184", new int[] { 5060 }, EnvironmentVariables.LocalIp);
         //                     }
         //                     break;
-
         //                 case ConsoleKey.E:
         //                     Console.WriteLine("\nexit Process!");
         //                     break;
@@ -239,7 +282,6 @@ namespace GB28181Service
         //                 continue;
         //             }
         //         }
-
         //     });
         //}
 
@@ -253,9 +295,5 @@ namespace GB28181Service
                 }
             }
         }
-
     }
-
-
-
 }

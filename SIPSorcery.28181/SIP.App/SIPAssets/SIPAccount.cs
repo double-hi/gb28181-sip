@@ -560,16 +560,8 @@ namespace SIPSorcery.GB28181.SIP.App
                         {
                             var sipAsset = new SIPAccount();
 
-                            string LocalIp = EnvironmentVariables.GbServiceLocalIp;
-                            string LocalPort = EnvironmentVariables.GbServiceLocalPort;
-                            if (!string.IsNullOrEmpty(LocalIp))
-                            {
-                                row["LocalIp"] = LocalIp;
-                            }
-                            if (!string.IsNullOrEmpty(LocalPort))
-                            {
-                                row["LocalPort"] = LocalPort;
-                            }
+                            row["LocalIp"] = EnvironmentVariables.GbServiceLocalIp ?? row["LocalIp"];
+                            row["LocalPort"] = EnvironmentVariables.GbServiceLocalPort ?? row["LocalPort"];
 
                             sipAsset.Load(row);
                             assets.Add(sipAsset.Id, sipAsset);

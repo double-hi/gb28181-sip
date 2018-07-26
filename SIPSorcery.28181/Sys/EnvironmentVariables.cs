@@ -13,7 +13,9 @@ namespace SIPSorcery.GB28181.Sys
         private const string GB_SERVICE_LOCAL_PORT = "GB_SERVICE_LOCAL_PORT";//5061
         private static string _GB_SERVICE_LOCAL_PORT;
         private const string GB_CAMERA_REMOTE_IP = "GB_CAMERA_REMOTE_IP";//10.78.115.155
-        private static string _GB_CAMERA_REMOTE_IP;
+        private static string _GB_CAMERA_REMOTE_IP; 
+        private const string GB_SERVER_CHANNEL_ADDRESS = "GB_SERVER_CHANNEL_ADDRESS";//10.77.38.86:50050
+        private static string _GB_SERVER_CHANNEL_ADDRESS;
         public static string MicroRegistryAddress
         {
             get { return _MICRO_REGISTRY_ADDRESS ?? Environment.GetEnvironmentVariable(MICRO_REGISTRY_ADDRESS); }
@@ -33,6 +35,11 @@ namespace SIPSorcery.GB28181.Sys
         {
             get { return _GB_CAMERA_REMOTE_IP ?? Environment.GetEnvironmentVariable(GB_CAMERA_REMOTE_IP); }
             set { _GB_CAMERA_REMOTE_IP = value; }
+        }
+        public static string GBServerChannelAddress
+        {
+            get { return _GB_SERVER_CHANNEL_ADDRESS ?? Environment.GetEnvironmentVariable(GB_SERVER_CHANNEL_ADDRESS); }
+            set { _GB_SERVER_CHANNEL_ADDRESS = value; }
         }
     }
 }

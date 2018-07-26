@@ -14,4 +14,4 @@
 
 @rem Generate the C# code for .proto files
 
-..\..\packages\Grpc.Tools.1.8.0\tools\windows_x64\protoc.exe -I../protos --csharp_out ../ --grpc_out ../ --plugin=protoc-gen-grpc=..\..\packages\Grpc.Tools.1.8.0\tools\windows_x64\grpc_csharp_plugin.exe ../protos/ptz_control.proto
+C:\Users\h302201\.nuget\packages\grpc.tools\1.13.1\tools\windows_x64\protoc.exe -I../protos --csharp_out ../ --grpc_out ../ --plugin=protoc-gen-grpc=C:\Users\h302201\.nuget\packages\grpc.tools\1.13.1\tools\windows_x64\grpc_csharp_plugin.exe ../protos/ptz_control.proto

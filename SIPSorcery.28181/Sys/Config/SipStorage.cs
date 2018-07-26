@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
+using SIPSorcery.GB28181.SIP;
+using Logger4Net;
 
 /// <summary>
 /// read configuraton and config the data storage
@@ -12,6 +14,7 @@ namespace SIPSorcery.GB28181.Sys.Config
 {
     public class SipAccountStorage : ISipAccountStorage
     {
+        private static ILog logger = AppState.logger;
         private static readonly string m_storageTypeKey = SIPSorceryConfiguration.PERSISTENCE_STORAGETYPE_KEY;
         private static readonly string m_connStrKey = SIPSorceryConfiguration.PERSISTENCE_STORAGECONNSTR_KEY;
         private static readonly string m_XMLFilename = "gb28181.xml"; //default storage filename
@@ -24,11 +27,30 @@ namespace SIPSorcery.GB28181.Sys.Config
         //   private static SipStorage _instance;
 
         private static List<SIPAccount> _sipAccountsCache = null;
+        private static bool _haveGBConfig = false;
+        /// <summary>
+        /// 获取 GB Server Config
+        /// </summary>
+        public static event RPCGBServerConfigDelegate RPCGBServerConfigReceived;
 
         public List<SIPAccount> Accounts
         {
             get
             {
+                if (RPCGBServerConfigReceived != null && !_haveGBConfig)
+                {
+                    List<SIPAccount> lstSIPAccount = RPCGBServerConfigReceived?.Invoke();
+                    if (lstSIPAccount != null && lstSIPAccount.Count > 0)
+                    {
+                        _sipAccountsCache = lstSIPAccount;
+                        logger.Debug("GB Server Config Received: " + lstSIPAccount[0].LocalIP.ToString() + ":" + lstSIPAccount[0].LocalPort.ToString());
+                        _haveGBConfig = true;
+                    }
+                    else if (_sipAccountsCache == null)
+                    {
+                        logger.Debug("Get GB Server Config Failed, it's running with xml config.");
+                    }
+                }
                 if (_sipAccountsCache == null)
                 {
                     Read();
