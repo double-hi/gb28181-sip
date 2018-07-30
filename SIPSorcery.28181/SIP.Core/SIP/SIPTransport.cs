@@ -1848,7 +1848,7 @@ namespace SIPSorcery.GB28181.SIP
             }
             catch (Exception excp)
             {
-                logger.Error("Exception CreateUASTransaction. " + excp);
+                logger.Error("Exception CreateCancelTransaction. " + excp);
                 throw;
             }
         }

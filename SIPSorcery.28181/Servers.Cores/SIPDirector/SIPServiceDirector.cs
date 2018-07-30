@@ -78,21 +78,26 @@ namespace SIPSorcery.GB28181.Servers
                 return null;
             }
 
-            var taskResult = await Task.Factory.StartNew(() =>
-            {
-                //stop
-                target.ByeVideoReq();
+            //stop
+            target.ByeVideoReq();
+            return null;
 
-                var result = target.WaitRequestResult();
+            //var taskResult = await Task.Factory.StartNew(() =>
+            //{
+            //    //stop
+            //    target.ByeVideoReq();
 
-                return result;
-            });
+            //    var result = target.WaitRequestResult();
 
-            var ipaddress = _sipCoreMessageService.GetReceiveIP(taskResult.Item2.Body);
+            //    return result;
+            //});
 
-            var port = _sipCoreMessageService.GetReceivePort(taskResult.Item2.Body, SDPMediaTypesEnum.video);
+            //var ipaddress = _sipCoreMessageService.GetReceiveIP(taskResult.Item2.Body);
 
-            return Tuple.Create(ipaddress, port, ProtocolType.Udp);
+            //var port = _sipCoreMessageService.GetReceivePort(taskResult.Item2.Body, SDPMediaTypesEnum.video);
+
+            //return Tuple.Create(ipaddress, port, ProtocolType.Udp);
+
         }
 
         #region 设备目录
