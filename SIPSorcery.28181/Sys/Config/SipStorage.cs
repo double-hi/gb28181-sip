@@ -43,7 +43,7 @@ namespace SIPSorcery.GB28181.Sys.Config
                     if (lstSIPAccount != null && lstSIPAccount.Count > 0)
                     {
                         _sipAccountsCache = lstSIPAccount;
-                        logger.Debug("GB Server Config Received: " + lstSIPAccount[0].LocalIP.ToString() + ":" + lstSIPAccount[0].LocalPort.ToString());
+                        logger.Debug("GB Server Config Received from: " + EnvironmentVariables.GBServerChannelAddress ?? "10.78.115.152:5000");
                         _haveGBConfig = true;
                     }
                     else if (_sipAccountsCache == null)

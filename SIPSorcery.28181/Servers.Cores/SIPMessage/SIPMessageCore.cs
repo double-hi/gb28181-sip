@@ -539,7 +539,7 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
                 //add by zohn on 20180711
                 if (response.Header.ContentType == null)
                 {
-                    logger.Warn("Received unknowing SIP message (application/sdp); response.Status:" + response.Status + "; remoteEP:" + remoteEP);
+                    logger.Debug("Received response.Header.ContentType == null, response.Status: " + response.Status + "," + remoteEP);
                     return;
                 }
 

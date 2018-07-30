@@ -212,7 +212,7 @@ namespace SIPSorcery.GB28181.Servers
 
         public void ProcessRegisterRequest()
         {
-            logger.Debug("SIPRegistrarCoreService successfully Running at :" + _localSipAccount.LocalIP + ":" + _localSipAccount.LocalPort);
+            logger.Debug("SIPRegistrarCoreService successfully Running at: " + _localSipAccount.LocalIP + ":" + _localSipAccount.LocalPort);
             try
             {
                 while (!Stop)

@@ -918,7 +918,7 @@ namespace SIPSorcery.GB28181.Servers.SIPMonitor
             string toTag = CallProperties.CreateNewTag();
             int cSeq = CallProperties.CreateNewCSeq();
             string callId = CallProperties.CreateNewCallId();
-            logger.Debug("PtzContrl() start to PTZRequest...");
+            logger.Debug("PtzContrl() start to PTZRequest.");
             SIPRequest ptzReq = PTZRequest(fromTag, toTag, cSeq, callId);
             string cmdStr = GetPtzCmd(ucommand, dwSpeed);
 
@@ -931,7 +931,7 @@ namespace SIPSorcery.GB28181.Servers.SIPMonitor
             };
             string xmlBody = PTZControl.Instance.Save<PTZControl>(ptz);
             ptzReq.Body = xmlBody;
-            logger.Debug("PtzContrl() start to SendRequest...");
+            //logger.Debug("PtzContrl() start to SendRequest...");
             _sipMsgCoreService.SendRequest(RemoteEndPoint, ptzReq);
 
         }
@@ -947,7 +947,7 @@ namespace SIPSorcery.GB28181.Servers.SIPMonitor
             SIPFromHeader from = new SIPFromHeader(null, localUri, fromTag);
             SIPToHeader to = new SIPToHeader(null, remoteUri, toTag);
             SIPRequest ptzReq = _sipTransport.GetRequest(SIPMethodsEnum.MESSAGE, remoteUri);
-            logger.Debug("PtzContrl() .PTZRequest() .GetRequest() ended...");
+            //logger.Debug("PtzContrl() .PTZRequest() .GetRequest() ended.");
             ptzReq.Header.From = from;
             ptzReq.Header.Contact = null;
             ptzReq.Header.Allow = null;
