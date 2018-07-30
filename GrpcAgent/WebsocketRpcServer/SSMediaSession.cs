@@ -2,6 +2,8 @@
 using MediaContract;
 using System.Threading.Tasks;
 using SIPSorcery.GB28181.Servers;
+using System;
+
 namespace GrpcAgent.WebsocketRpcServer
 {
     public class SSMediaSessionImpl : VideoSession.VideoSessionBase
@@ -34,36 +36,40 @@ namespace GrpcAgent.WebsocketRpcServer
 
         public override Task<StartLiveReply> StartLive(StartLiveRequest request, ServerCallContext context)
         {
-            // var restult = _sipServiceDirector.MakeVideoRequest(request.Gbid, new int[] { request.Port }, request.Ipaddr);
-            _eventSource?.FireLivePlayRequestEvent(request, context);
-            var reqeustProcessResult = _sipServiceDirector.MakeVideoRequest(request.Gbid, new int[] { request.Port }, request.Ipaddr);
-
-            reqeustProcessResult?.Wait(System.TimeSpan.FromSeconds(1));
-
-            //get the response .
-            var resReply = new StartLiveReply()
+            try
             {
-                Ipaddr = reqeustProcessResult.Result.Item1,
-                Port = reqeustProcessResult.Result.Item2,
-                //Ipaddr = "0000000",
-                //Port = 000000,
-                Hdr = request.Hdr,
+                _eventSource?.FireLivePlayRequestEvent(request, context);
+                var reqeustProcessResult = _sipServiceDirector.MakeVideoRequest(request.Gbid, new int[] { request.Port }, request.Ipaddr);
 
-                Status = new MediaContract.Status()
+                reqeustProcessResult?.Wait(System.TimeSpan.FromSeconds(1));
+
+                //get the response .
+                var resReply = new StartLiveReply()
                 {
-                    Code = 200,
-                    Msg = "Request Successful!"
-                }
+                    Ipaddr = reqeustProcessResult.Result.Item1,
+                    Port = reqeustProcessResult.Result.Item2,
+                    Hdr = request.Hdr,
 
-            };
+                    Status = new MediaContract.Status()
+                    {
+                        Code = 200,
+                        Msg = "Request Successful!"
+                    }
 
-            return Task.FromResult(resReply);
-
-            //  reqeustProcessResult.Wait(System.TimeSpan.FromSeconds(2));
-
-            //  return reqeustProcessRsult;
-            //_sipCoreMessageService.MonitorService[request.Gbid]
-            // return base.StartLive(request, context);
+                };
+                return Task.FromResult(resReply);
+            }
+            catch(Exception ex)
+            {
+                var resReply = new StartLiveReply()
+                {
+                    Status = new MediaContract.Status()
+                    {
+                        Msg = ex.Message
+                    }
+                };
+                return Task.FromResult(resReply);
+            }
         }
 
         public override Task<StartPlaybackReply> StartPlayback(StartPlaybackRequest request, ServerCallContext context)
@@ -82,28 +88,30 @@ namespace GrpcAgent.WebsocketRpcServer
 
         public override Task<StopReply> Stop(StopRequest request, ServerCallContext context)
         {
-            //return base.Stop(request, context);
-            //var stopReply = new StopReply()
-            //{
-            //    Status = new MediaContract.Status()
-            //    {
-            //        Code = 200,
-            //        Msg = "Stop Successful!"
-            //    }
-            //};
-            //return Task.FromResult(stopReply);
-
-            var stopProcessResult = _sipServiceDirector.Stop(string.IsNullOrEmpty(request.Gbid) ? "42010000001310000184" : request.Gbid);
-
-            var stopReply = new StopReply()
+            try
             {
-                Status = new MediaContract.Status()
+                var stopProcessResult = _sipServiceDirector.Stop(string.IsNullOrEmpty(request.Gbid) ? "42010000001310000184" : request.Gbid);
+                var stopReply = new StopReply()
                 {
-                    Code = 200,
-                    Msg = "Stop Successful!"
-                }
-            };
-            return Task.FromResult(stopReply);
+                    Status = new MediaContract.Status()
+                    {
+                        Code = 200,
+                        Msg = "Stop Successful!"
+                    }
+                };
+                return Task.FromResult(stopReply);
+            }
+            catch (Exception ex)
+            {
+                var stopReply = new StopReply()
+                {
+                    Status = new MediaContract.Status()
+                    {
+                        Msg = ex.Message
+                    }
+                };
+                return Task.FromResult(stopReply);
+            }
         }
     }
 }
