@@ -48,7 +48,7 @@ namespace GrpcAgent.WebsocketRpcServer
             ////dl.Item.Add(_device);
             //try
             //{
-            //    Channel channel = new Channel("10.78.115.152:5000", ChannelCredentials.Insecure);
+            //    Channel channel = new Channel("10.78.115.149:5000", ChannelCredentials.Insecure);
             //    var client = new Manage.Manage.ManageClient(channel);
             //    AddDeviceRequest _AddDeviceRequest = new AddDeviceRequest();
             //    _device.Name = "Carmera01";

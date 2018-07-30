@@ -212,7 +212,7 @@ namespace GB28181Service
         {
             try
             {
-                string GBServerChannelAddress = EnvironmentVariables.GBServerChannelAddress ?? "10.78.115.152:5000";
+                string GBServerChannelAddress = EnvironmentVariables.GBServerChannelAddress ?? "10.78.115.149:5000";
                 Channel channel = new Channel(GBServerChannelAddress, ChannelCredentials.Insecure);
                 var client = new Gb28181Config.Gb28181ConfigClient(channel);
                 //GbConfigRequest _GbConfigRequest = new GbConfigRequest();

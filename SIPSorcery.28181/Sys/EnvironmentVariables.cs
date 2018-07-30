@@ -8,7 +8,7 @@ namespace SIPSorcery.GB28181.Sys
     {
         private const string MICRO_REGISTRY_ADDRESS = "MICRO_REGISTRY_ADDRESS";
         private static string _MICRO_REGISTRY_ADDRESS;
-        private const string GB_SERVICE_LOCAL_IP = "GB_SERVICE_LOCAL_IP";//10.78.115.152
+        private const string GB_SERVICE_LOCAL_IP = "GB_SERVICE_LOCAL_IP";//10.78.115.149
         private static string _GB_SERVICE_LOCAL_IP;
         private const string GB_CAMERA_REMOTE_IP = "GB_CAMERA_REMOTE_IP";//10.78.115.155
         private static string _GB_CAMERA_REMOTE_IP;
