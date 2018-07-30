@@ -182,9 +182,8 @@ namespace GB28181Service
                 var _mainWebSocketRpcServer = _serviceProvider.GetRequiredService<IRpcService>();
                 _mainWebSocketRpcTask = Task.Factory.StartNew(() =>
                 {
-                    _mainWebSocketRpcServer.AddIPAdress("0.0.0.0");//EnvironmentVariables.LocalIp//docker inner container will be used
-                    //_mainWebSocketRpcServer.AddIPAdress("127.0.0.1");
-                    _mainWebSocketRpcServer.AddPort(50051);
+                    _mainWebSocketRpcServer.AddIPAdress("0.0.0.0");
+                    _mainWebSocketRpcServer.AddPort(EnvironmentVariables.GBServerGrpcPort);//50051
                     _mainWebSocketRpcServer.Run();
                 });
 

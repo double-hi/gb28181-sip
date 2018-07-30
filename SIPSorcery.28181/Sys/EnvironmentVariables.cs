@@ -10,11 +10,11 @@ namespace SIPSorcery.GB28181.Sys
         private static string _MICRO_REGISTRY_ADDRESS;
         private const string GB_SERVICE_LOCAL_IP = "GB_SERVICE_LOCAL_IP";//10.78.115.152
         private static string _GB_SERVICE_LOCAL_IP;
-        private const string GB_SERVICE_LOCAL_PORT = "GB_SERVICE_LOCAL_PORT";//5061
-        private static string _GB_SERVICE_LOCAL_PORT;
         private const string GB_CAMERA_REMOTE_IP = "GB_CAMERA_REMOTE_IP";//10.78.115.155
-        private static string _GB_CAMERA_REMOTE_IP; 
-        private const string GB_SERVER_CHANNEL_ADDRESS = "GB_SERVER_CHANNEL_ADDRESS";//10.77.38.86:50050
+        private static string _GB_CAMERA_REMOTE_IP;
+        private const string GB_CAMERA_REMOTE_PORT = "GB_CAMERA_REMOTE_PORT";//5060
+        private static string _GB_CAMERA_REMOTE_PORT;
+        private const string GB_SERVER_CHANNEL_ADDRESS = "GB_SERVER_CHANNEL_ADDRESS";//10.77.38.86:5000
         private static string _GB_SERVER_CHANNEL_ADDRESS;
         public static string MicroRegistryAddress
         {
@@ -26,20 +26,29 @@ namespace SIPSorcery.GB28181.Sys
             get { return _GB_SERVICE_LOCAL_IP ?? Environment.GetEnvironmentVariable(GB_SERVICE_LOCAL_IP); }
             set { _GB_SERVICE_LOCAL_IP = value; }
         }
-        public static string GbServiceLocalPort
-        {
-            get { return _GB_SERVICE_LOCAL_PORT ?? Environment.GetEnvironmentVariable(GB_SERVICE_LOCAL_PORT); }
-            set { _GB_SERVICE_LOCAL_PORT = value; }
-        }
+        
         public static string GbCameraRemoteIp
         {
             get { return _GB_CAMERA_REMOTE_IP ?? Environment.GetEnvironmentVariable(GB_CAMERA_REMOTE_IP); }
             set { _GB_CAMERA_REMOTE_IP = value; }
         }
+        public static string GbCameraRemotePort
+        {
+            get { return _GB_CAMERA_REMOTE_PORT ?? Environment.GetEnvironmentVariable(GB_CAMERA_REMOTE_PORT); }
+            set { _GB_CAMERA_REMOTE_PORT = value; }
+        }
         public static string GBServerChannelAddress
         {
             get { return _GB_SERVER_CHANNEL_ADDRESS ?? Environment.GetEnvironmentVariable(GB_SERVER_CHANNEL_ADDRESS); }
             set { _GB_SERVER_CHANNEL_ADDRESS = value; }
+        }
+        public static int GBServerGrpcPort
+        {
+            get { return 50051; }
+        }
+        public static int GbServiceLocalPort
+        {
+            get { return 5061; }
         }
     }
 }

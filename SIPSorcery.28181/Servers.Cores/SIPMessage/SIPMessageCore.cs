@@ -187,7 +187,7 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
             Camera _camera = new Camera();
             _camera.DeviceID = "42010000001310000184";
             _camera.IPAddress = EnvironmentVariables.GbCameraRemoteIp ?? "10.78.115.156";
-            _camera.Port = 5060;
+            _camera.Port = string.IsNullOrEmpty(EnvironmentVariables.GbCameraRemotePort) ? 5060 : int.Parse(EnvironmentVariables.GbCameraRemotePort);
             _cameras.Add(_camera);
 
             // init the camera info for connetctions
@@ -215,7 +215,7 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
 
             try
             {
-                logger.Debug("SIPMessageCoreService daemon is runing...");
+                logger.Debug("SIPMessageCoreService is runing.");
                 var sipChannels = SIPTransportConfig.ParseSIPChannelsNode(_LocalSipAccount);
                 _transport.PerformanceMonitorPrefix = SIPSorceryPerformanceMonitor.REGISTRAR_PREFIX;
                 _transport.MsgEncode = _LocalSipAccount.MsgEncode;

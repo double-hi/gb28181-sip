@@ -48,7 +48,7 @@ namespace SIPSorcery.GB28181.Sys.Config
                     }
                     else if (_sipAccountsCache == null)
                     {
-                        logger.Debug("Get GB Server Config Failed, it's running with xml config.");
+                        logger.Debug("Get GB Server Config Failed, but it's running with xml config.");
                     }
                 }
                 if (_sipAccountsCache == null)

@@ -59,7 +59,7 @@ namespace GrpcAgent
 
             healthService.SetStatus("GB28181", Grpc.Health.V1.HealthCheckResponse.Types.ServingStatus.Serving);
             //  var threadId = Thread.CurrentThread.ManagedThreadId;
-            logger.Debug("RPC Server for StreamSever, successfully started at " + _ipaddress + ":" + _port);
+            logger.Debug("RPCTCPChannel socket on " + _ipaddress + ":" + _port + " listening started.");
 
             tokenSource.Task.Wait();
             _server.ShutdownAsync().Wait();
