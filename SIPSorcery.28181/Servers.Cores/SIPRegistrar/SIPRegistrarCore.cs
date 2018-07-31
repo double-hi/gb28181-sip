@@ -322,7 +322,7 @@ namespace SIPSorcery.GB28181.Servers
                     SIPResponse okRes = GetOkResponse(sipRequest);
 
                     registerTransaction.SendFinalResponse(okRes);
-                    RPCDmsRegisterReceived?.Invoke(registerTransaction);
+                    RPCDmsRegisterReceived?.Invoke(registerTransaction, _localSipAccount);
 
                     //Add Camera Item Into Cache
                     CacheDeviceItem(sipRequest);
