@@ -1822,6 +1822,11 @@ namespace SIPSorcery.GB28181.SIP
 
                 CheckTransactionEngineExists();
                 UASInviteTransaction uasInviteTransaction = new UASInviteTransaction(this, sipRequest, dstEndPoint, localSIPEndPoint, outboundProxy, ContactIPAddress, noCDR);
+                if (_transactionEngine.GetTransaction(sipRequest) != null
+                    && _transactionEngine.GetTransaction(sipRequest).TransactionId.Equals(uasInviteTransaction.TransactionId))
+                {
+                    return uasInviteTransaction;
+                }
                 _transactionEngine.AddTransaction(uasInviteTransaction);
                 return uasInviteTransaction;
             }
