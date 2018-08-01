@@ -83,7 +83,7 @@ namespace SIPSorcery.GB28181.Sys
                         logger.Debug("EnvironmentVariables.GBServerGrpcPort: " + EnvironmentVariables.GBServerGrpcPort);
                         logger.Debug("EnvironmentVariables.GbServiceLocalIp: " + EnvironmentVariables.GbServiceLocalIp);
                         logger.Debug("EnvironmentVariables.GbServiceLocalPort: " + EnvironmentVariables.GbServiceLocalPort);
-                        logger.Debug("====if EnvironmentVariables have no value, it gets from xml config====");
+                        logger.Debug("Notes: if EnvironmentVariables have no value, it gets from xml config.");
                     }
                     catch (Exception excp)
                     {
