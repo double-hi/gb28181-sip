@@ -170,49 +170,29 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
 
         private void _cameraCache_OnItemAdded(object arg1, Camera camera)
         {
-
-            var ipaddress = IPAddress.Parse(camera.IPAddress);
-            _nodeMonitorService.TryAdd(camera.DeviceID, new SIPMonitorCoreService(this, _transport, sipAccountStorage: _sipAccountStorage)
+            try
             {
-                RemoteEndPoint = new SIPEndPoint(SIPProtocolsEnum.udp, ipaddress, camera.Port),
-                DeviceId = camera.DeviceID
-            });
-
-            // throw new NotImplementedException();
-        }
-
-        private List<Camera> _cameras = new List<Camera>();        
-        private void Initialize(List<Camera> cameraList)
-        {
-            Camera _camera = new Camera();
-            _camera.DeviceID = "42010000001310000184";
-            _camera.IPAddress = EnvironmentVariables.GbCameraRemoteIp ?? "10.78.115.156";
-            _camera.Port = string.IsNullOrEmpty(EnvironmentVariables.GbCameraRemotePort) ? 5060 : int.Parse(EnvironmentVariables.GbCameraRemotePort);
-            _cameras.Add(_camera);
-
-            // init the camera info for connetctions
-            cameraList?.ForEach(deviceItem =>
-            {
-                var ipaddress = IPAddress.Parse(deviceItem.IPAddress);
-                SIPMonitorCoreService sipMonitorcore = new SIPMonitorCoreService(this, _transport, sipAccountStorage: _sipAccountStorage)
+                var ipaddress = IPAddress.Parse(camera.IPAddress);
+                _nodeMonitorService.TryAdd(camera.DeviceID, new SIPMonitorCoreService(this, _transport, sipAccountStorage: _sipAccountStorage)
                 {
-                    RemoteEndPoint = new SIPEndPoint(SIPProtocolsEnum.udp, ipaddress, deviceItem.Port),
-                    DeviceId = deviceItem.DeviceID
-                };
-                _nodeMonitorService.TryAdd(deviceItem.DeviceID, sipMonitorcore);
-            });
-            logger.Debug(cameraList.Count() + " PTZ Cameras Initialized.");
+                    RemoteEndPoint = new SIPEndPoint(SIPProtocolsEnum.udp, ipaddress, camera.Port),
+                    DeviceId = camera.DeviceID
+                });
+                logger.Debug(_nodeMonitorService.Count + " PTZ Cameras Initialized.");
+            }
+            catch(Exception ex)
+            {
+                logger.Debug("_cameraCache_OnItemAdded: " + ex.Message);
+            }
         }
-
+        
         #region 启动/停止消息主服务(监听注册链接)
         public void Start()
         {
             _serviceState = ServiceStatus.Wait;
             LocalEP = SIPEndPoint.ParseSIPEndPoint("udp:" + _LocalSipAccount.LocalIP.ToString() + ":" + _LocalSipAccount.LocalPort);
             LocalSIPId = _LocalSipAccount.LocalID;
-
-            Initialize(_cameras);
-
+            
             try
             {
                 logger.Debug("SIPMessageCoreService is runing.");
@@ -265,16 +245,13 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
             {
                 logger.Debug("PTZ Controlling started.");
 
-                _cameras?.ForEach(deviceItem =>
+                foreach (var item in _nodeMonitorService.ToArray())
                 {
-                    foreach (var item in _nodeMonitorService.ToArray())
+                    if (item.Key.Equals(deviceId))
                     {
-                        if (deviceItem.DeviceID.Equals(deviceId) && item.Key.Equals(deviceId))
-                        {
-                            item.Value.PtzContrl(ptzcmd, dwSpeed);
-                        }
+                        item.Value.PtzContrl(ptzcmd, dwSpeed);
                     }
-                });
+                }
 
                 logger.Debug("PTZ Controlling halted.");
             }

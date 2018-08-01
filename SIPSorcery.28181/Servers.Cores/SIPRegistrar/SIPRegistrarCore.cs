@@ -235,8 +235,6 @@ namespace SIPSorcery.GB28181.Servers
                                 FireProxyLogEvent(new SIPMonitorConsoleEvent(SIPMonitorServerTypesEnum.Registrar, SIPMonitorEventTypesEnum.RegistrarTiming, "register result=" + result.ToString() + ", time=" + duration.TotalMilliseconds + "ms, user=" + registrarTransaction.TransactionRequest.Header.To.ToURI.User + ".", null));
                                 RegisterComplete?.Invoke(duration.TotalMilliseconds, registrarTransaction.TransactionRequest.Header.AuthenticationHeader != null);
 
-
-                                logger.Debug("IPC register have completed: Server " + registrarTransaction.LocalSIPEndPoint + ", " + "Camera " + registrarTransaction.RemoteEndPoint);
                                 //CacheDeviceItem(registrarTransaction.TransactionRequest);
                             }
                         }
@@ -270,7 +268,6 @@ namespace SIPSorcery.GB28181.Servers
             return (contactHeaderExpiry == -1) ? registerRequest.Header.Expires : contactHeaderExpiry;
         }
 
-
         private void CacheDeviceItem(SIPRequest sipRequest)
         {
 
@@ -280,11 +277,8 @@ namespace SIPSorcery.GB28181.Servers
                 DeviceID = sipRequest.Header.From.FromURI.User,
                 IPAddress = sipRequest.Header.Vias.TopViaHeader.Host,
                 Port = sipRequest.Header.Vias.TopViaHeader.Port
-
             });
-
         }
-
 
         private RegisterResultEnum Register(SIPTransaction registerTransaction)
         {
@@ -322,10 +316,10 @@ namespace SIPSorcery.GB28181.Servers
                     SIPResponse okRes = GetOkResponse(sipRequest);
 
                     registerTransaction.SendFinalResponse(okRes);
-                    RPCDmsRegisterReceived?.Invoke(registerTransaction, _localSipAccount);
 
                     //Add Camera Item Into Cache
                     CacheDeviceItem(sipRequest);
+                    RPCDmsRegisterReceived?.Invoke(registerTransaction, _localSipAccount);
 
                     return RegisterResultEnum.AuthenticationRequired;
                 }
@@ -468,8 +462,6 @@ namespace SIPSorcery.GB28181.Servers
                             sipRequest.Header.Contact[0].Expires = m_minimumBindingExpiry;
                             SIPResponse okResponse = GetOkResponse(sipRequest);
                             registerTransaction.SendFinalResponse(okResponse);
-
-       
 
                         }
                     }
