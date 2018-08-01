@@ -190,12 +190,12 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
         public void Start()
         {
             _serviceState = ServiceStatus.Wait;
-            LocalEP = SIPEndPoint.ParseSIPEndPoint("udp:" + _LocalSipAccount.LocalIP.ToString() + ":" + _LocalSipAccount.LocalPort);
+            LocalEP = SIPEndPoint.ParseSIPEndPoint(_LocalSipAccount.MsgProtocol + ":" + _LocalSipAccount.LocalIP.ToString() + ":" + _LocalSipAccount.LocalPort);
             LocalSIPId = _LocalSipAccount.LocalID;
             
             try
             {
-                logger.Debug("SIPMessageCoreService is runing.");
+                logger.Debug("SIPMessageCoreService is runing at " + LocalEP.ToString());
                 var sipChannels = SIPTransportConfig.ParseSIPChannelsNode(_LocalSipAccount);
                 _transport.PerformanceMonitorPrefix = SIPSorceryPerformanceMonitor.REGISTRAR_PREFIX;
                 _transport.MsgEncode = _LocalSipAccount.MsgEncode;
