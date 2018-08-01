@@ -14,8 +14,7 @@ namespace SIPSorcery.GB28181.Sys
         {
             get { return _GB_SERVICE_LOCAL_IP ?? Environment.GetEnvironmentVariable(GB_SERVICE_LOCAL_IP); }
             set { _GB_SERVICE_LOCAL_IP = value; }
-        }
-        
+        }        
         public static string GBServerChannelAddress
         {
             get { return _GB_SERVER_CHANNEL_ADDRESS ?? Environment.GetEnvironmentVariable(GB_SERVER_CHANNEL_ADDRESS); }
