@@ -559,10 +559,9 @@ namespace SIPSorcery.GB28181.SIP.App
                         foreach (DataRow row in sipAssetSet.Tables[0].Rows)
                         {
                             var sipAsset = new SIPAccount();
-
+                            logger.Debug("Load Assets From XML Local Ip&Port: " + row["LocalIp"] + ":" + row["LocalPort"]);
                             row["LocalIp"] = EnvironmentVariables.GbServiceLocalIp ?? row["LocalIp"];
                             row["LocalPort"] = EnvironmentVariables.GbServiceLocalPort;
-
                             sipAsset.Load(row);
                             assets.Add(sipAsset.Id, sipAsset);
                         }

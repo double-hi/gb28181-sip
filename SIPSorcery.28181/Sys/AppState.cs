@@ -79,6 +79,11 @@ namespace SIPSorcery.GB28181.Sys
                     {
                         logger = LogManager.GetLogger(APP_LOGGING_ID);
                         logger.Debug("Logging initialised.");
+                        logger.Debug("EnvironmentVariables.GBServerChannelAddress: " + EnvironmentVariables.GBServerChannelAddress);
+                        logger.Debug("EnvironmentVariables.GBServerGrpcPort: " + EnvironmentVariables.GBServerGrpcPort);
+                        logger.Debug("EnvironmentVariables.GbServiceLocalIp: " + EnvironmentVariables.GbServiceLocalIp);
+                        logger.Debug("EnvironmentVariables.GbServiceLocalPort: " + EnvironmentVariables.GbServiceLocalPort);
+                        logger.Debug("====if EnvironmentVariables have no value, it gets from xml config====");
                     }
                     catch (Exception excp)
                     {
