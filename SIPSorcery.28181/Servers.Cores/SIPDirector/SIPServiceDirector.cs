@@ -22,53 +22,50 @@ namespace SIPSorcery.GB28181.Servers
             _sipCoreMessageService = sipCoreMessageService;
             _sipCoreMessageService.OnCatalogReceived += _sipCoreMessageService_OnCatalogReceived;
         }
-        
+
+        #region 实时视频流
         public ISIPMonitorCore GetTargetMonitorService(string gbid)
         {
             if (_sipCoreMessageService == null)
             {
                 throw new NullReferenceException("instance not exist!");
             }
-
             if (_sipCoreMessageService.NodeMonitorService.ContainsKey(gbid))
             {
                 return _sipCoreMessageService.NodeMonitorService[gbid];
             }
-
             return null;
-
         }
-
-        //make real Request
+        /// <summary>
+        /// make real Request
+        /// </summary>
+        /// <param name="gbid"></param>
+        /// <param name="mediaPort"></param>
+        /// <param name="receiveIP"></param>
+        /// <returns></returns>
         async public Task<Tuple<string, int, ProtocolType>> MakeVideoRequest(string gbid, int[] mediaPort, string receiveIP)
         {
             logger.Debug("Make video request started.");
             var target = GetTargetMonitorService(gbid);
-
             if (target == null)
             {
                 return null;
             }
-
             var taskResult = await Task.Factory.StartNew(() =>
-           {
-
-               var cSeq = target.RealVideoReq(mediaPort, receiveIP, true);
-
-               var result = target.WaitRequestResult();
-
-               return result;
-           });
-
+            {
+                var cSeq = target.RealVideoReq(mediaPort, receiveIP, true);
+                var result = target.WaitRequestResult();
+                return result;
+            });
             var ipaddress = _sipCoreMessageService.GetReceiveIP(taskResult.Item2.Body);
-
             var port = _sipCoreMessageService.GetReceivePort(taskResult.Item2.Body, SDPMediaTypesEnum.video);
-
             return Tuple.Create(ipaddress, port, ProtocolType.Udp);
         }
-
-
-        //stop real Request
+        /// <summary>
+        /// stop real Request
+        /// </summary>
+        /// <param name="gbid"></param>
+        /// <returns></returns>
         async public Task<Tuple<string, int, ProtocolType>> Stop(string gbid)
         {
             var target = GetTargetMonitorService(gbid);
@@ -77,8 +74,6 @@ namespace SIPSorcery.GB28181.Servers
             {
                 return null;
             }
-
-            //stop
             target.ByeVideoReq();
             return null;
 
@@ -86,19 +81,14 @@ namespace SIPSorcery.GB28181.Servers
             //{
             //    //stop
             //    target.ByeVideoReq();
-
             //    var result = target.WaitRequestResult();
-
             //    return result;
             //});
-
             //var ipaddress = _sipCoreMessageService.GetReceiveIP(taskResult.Item2.Body);
-
             //var port = _sipCoreMessageService.GetReceivePort(taskResult.Item2.Body, SDPMediaTypesEnum.video);
-
             //return Tuple.Create(ipaddress, port, ProtocolType.Udp);
-
         }
+        #endregion
 
         #region 设备目录
         private void _sipCoreMessageService_OnCatalogReceived(Catalog obj)
@@ -109,12 +99,26 @@ namespace SIPSorcery.GB28181.Servers
             }
         }
         /// <summary>
-        /// 设备目录查询
+        /// Device Catalog Query
         /// </summary>
+        /// <param name="deviceId"></param>
         public void GetCatalog(string deviceId)
         {
             logger.Debug("Device Catalog Query started.");
             _sipCoreMessageService.DeviceCatalogQuery(deviceId);
+        }
+        #endregion
+
+        #region 设备转动
+        /// <summary>
+        /// PTZ Control
+        /// </summary>
+        /// <param name="ptzCommand"></param>
+        /// <param name="speed"></param>
+        /// <param name="deviceid"></param>
+        public void PtzControl(SIPMonitor.PTZCommand ptzCommand, int speed, string deviceid)
+        {
+            _sipCoreMessageService.PtzControl(ptzCommand, speed, deviceid);
         }
         #endregion
     }

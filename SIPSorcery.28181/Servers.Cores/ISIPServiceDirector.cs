@@ -18,8 +18,16 @@ namespace SIPSorcery.GB28181.Servers
         Task<Tuple<string, int, ProtocolType>> Stop(string gbid);
 
         /// <summary>
-        /// 设备目录查询
+        /// Device Catalog Query
         /// </summary>
+        /// <param name="deviceId"></param>
         void GetCatalog(string deviceId);
+        /// <summary>
+        /// PTZ Control
+        /// </summary>
+        /// <param name="ptzCommand"></param>
+        /// <param name="speed"></param>
+        /// <param name="deviceid"></param>
+        void PtzControl(SIPMonitor.PTZCommand ptzCommand, int speed, string deviceid);
     }
 }
