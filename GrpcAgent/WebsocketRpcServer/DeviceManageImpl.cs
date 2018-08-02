@@ -42,7 +42,7 @@ namespace GrpcAgent.WebsocketRpcServer
                 _AddDeviceRequest.LoginRoleId = "admin";
                 var reply = client.AddDevice(_AddDeviceRequest);
 
-                logger.Debug("Device[" + sipTransaction.TransactionRequest.RemoteSIPEndPoint + "] register DMS successed.");
+                logger.Debug("Device[" + sipTransaction.TransactionRequest.RemoteSIPEndPoint + "] register DMS " + reply.Status.ToString());
             }
             catch (Exception ex)
             {

@@ -58,14 +58,14 @@ namespace GB28181Service
             }
         }
 
-        /// <summary>
-        /// 目录查询回调
-        /// </summary>
-        /// <param name="cata"></param>
-        public void OnCatalogReceived(Catalog cata)
-        {
-            //_catalogQueue.Enqueue(cata);
-        }
+        ///// <summary>
+        ///// 目录查询回调
+        ///// </summary>
+        ///// <param name="cata"></param>
+        //public void OnCatalogReceived(Catalog cata)
+        //{
+        //    _catalogQueue.Enqueue(cata);
+        //}
 
 
 
