@@ -25,16 +25,15 @@ namespace GrpcAgent.WebsocketRpcServer
 
         private void _sipRegistrarCore_RPCDmsRegisterReceived(SIPTransaction sipTransaction, SIPAccount sIPAccount)
         {
-            logger.Debug("Device[" + sipTransaction.TransactionRequest.RemoteSIPEndPoint + "] is registering DMS.");
-
-            Device _device = new Device();
-            SIPRequest sipRequest = sipTransaction.TransactionRequest;
-            _device.Name = sIPAccount.Owner ?? string.Empty;
-            _device.Guid = sipTransaction.TransactionRequestFrom.URI.User;//42010000001310000184
-            _device.ProtocolType = ProtoType.ProtoGb28181;
-            _device.LoginUser.Add(new LoginUser() { LoginName = sIPAccount.SIPUsername ?? string.Empty, LoginPwd = sIPAccount.SIPPassword ?? string.Empty });
             try
             {
+                Device _device = new Device();
+                SIPRequest sipRequest = sipTransaction.TransactionRequest;
+                _device.Name = sIPAccount.Owner ?? string.Empty;
+                _device.Guid = sipTransaction.TransactionRequestFrom.URI.User;//42010000001310000184
+                _device.ProtocolType = ProtoType.ProtoGb28181;
+                _device.LoginUser.Add(new LoginUser() { LoginName = sIPAccount.SIPUsername ?? string.Empty, LoginPwd = sIPAccount.SIPPassword ?? string.Empty });
+
                 Channel channel = new Channel(EnvironmentVariables.GBServerChannelAddress ?? "10.78.115.149:5000", ChannelCredentials.Insecure);
                 var client = new Manage.Manage.ManageClient(channel);
                 AddDeviceRequest _AddDeviceRequest = new AddDeviceRequest();
@@ -42,11 +41,11 @@ namespace GrpcAgent.WebsocketRpcServer
                 _AddDeviceRequest.LoginRoleId = "admin";
                 var reply = client.AddDevice(_AddDeviceRequest);
 
-                logger.Debug("Device[" + sipTransaction.TransactionRequest.RemoteSIPEndPoint + "] register DMS " + reply.Status.ToString());
+                logger.Debug("Device[" + sipTransaction.TransactionRequest.RemoteSIPEndPoint + "] have completed registering DMS service.");
             }
             catch (Exception ex)
             {
-                logger.Error("Device[" + sipTransaction.TransactionRequest.RemoteSIPEndPoint + "] register DMS failed. " + ex.Message);
+                logger.Error("Device[" + sipTransaction.TransactionRequest.RemoteSIPEndPoint + "] register DMS failed: " + ex.Message);
             }
         }
     }

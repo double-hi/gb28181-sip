@@ -178,7 +178,7 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
                     RemoteEndPoint = new SIPEndPoint(SIPProtocolsEnum.udp, ipaddress, camera.Port),
                     DeviceId = camera.DeviceID
                 });
-                logger.Debug(_nodeMonitorService.Count + " PTZ Cameras Initialized.");
+                logger.Debug("Camera[" + camera.DeviceID + "," + camera.IPAddress.ToString() + ":" + camera.Port + "] item initialized.");
             }
             catch(Exception ex)
             {
