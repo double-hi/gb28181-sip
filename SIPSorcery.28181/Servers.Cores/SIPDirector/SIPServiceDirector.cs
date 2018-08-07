@@ -21,8 +21,9 @@ namespace SIPSorcery.GB28181.Servers
         {
             _sipCoreMessageService = sipCoreMessageService;
             _sipCoreMessageService.OnCatalogReceived += _sipCoreMessageService_OnCatalogReceived;
+            _sipCoreMessageService.OnNotifyCatalogReceived += _sipCoreMessageService_OnNotifyCatalogReceived;
         }
-
+        
         #region 实时视频流
         public ISIPMonitorCore GetTargetMonitorService(string gbid)
         {
@@ -115,6 +116,25 @@ namespace SIPSorcery.GB28181.Servers
         {
             logger.Debug("Device Catalog Subscribe started.");
             _sipCoreMessageService.DeviceCatalogSubscribe(deviceId);
+        }
+
+        /// <summary>
+        /// Notify Catalog Received
+        /// </summary>
+        /// <param name="obj"></param>
+        private void _sipCoreMessageService_OnNotifyCatalogReceived(NotifyCatalog obj)
+        {
+            if (obj.DeviceList == null)
+            {
+                return;
+            }
+            new Action(() =>
+            {
+                foreach (var item in obj.DeviceList.Items)
+                {
+
+                }
+            }).BeginInvoke(null, null);
         }
         #endregion
 

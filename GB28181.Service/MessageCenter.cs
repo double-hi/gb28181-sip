@@ -103,20 +103,20 @@ namespace GB28181Service
             }
         }
 
-        internal void OnNotifyCatalogReceived(NotifyCatalog notify)
-        {
-            if (notify.DeviceList == null)
-            {
-                return;
-            }
-            new Action(() =>
-            {
-                foreach (var item in notify.DeviceList.Items)
-                {
+        //internal void OnNotifyCatalogReceived(NotifyCatalog notify)
+        //{
+        //    if (notify.DeviceList == null)
+        //    {
+        //        return;
+        //    }
+        //    new Action(() =>
+        //    {
+        //        foreach (var item in notify.DeviceList.Items)
+        //        {
 
-                }
-            }).BeginInvoke(null, null);
-        }
+        //        }
+        //    }).BeginInvoke(null, null);
+        //}
 
         internal void OnAlarmReceived(Alarm alarm)
         {
