@@ -560,6 +560,7 @@ namespace SIPSorcery.GB28181.SIP.App
                         {
                             var sipAsset = new SIPAccount();
                             logger.Debug("Load assets from xml with local ip&port is " + row["LocalIp"] + ":" + row["LocalPort"]);
+                            row["LocalId"] = EnvironmentVariables.GbServiceLocalId ?? row["LocalId"];
                             row["LocalIp"] = EnvironmentVariables.GbServiceLocalIp ?? row["LocalIp"];
                             row["LocalPort"] = EnvironmentVariables.GbServiceLocalPort;
                             sipAsset.Load(row);
