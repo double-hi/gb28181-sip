@@ -53,5 +53,12 @@ namespace GrpcAgent.WebsocketRpcServer
             Instance instance = JsonConvert.DeserializeObject<Instance>(jsonCatalog);
             return Task.FromResult(new GetCatalogReply { Catalog = instance });
         }
+
+        public override Task<DeviceCatalogSubscribeReply> DeviceCatalogSubscribe(DeviceCatalogSubscribeRequest request, ServerCallContext context)
+        {
+            _sipServiceDirector.DeviceCatalogSubscribe(request.Deviceid);
+            
+            return Task.FromResult(new DeviceCatalogSubscribeReply { Message = "OK" });
+        }
     }
 }

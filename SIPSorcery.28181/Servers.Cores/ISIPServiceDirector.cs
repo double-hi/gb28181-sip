@@ -23,6 +23,11 @@ namespace SIPSorcery.GB28181.Servers
         /// <param name="deviceId"></param>
         void GetCatalog(string deviceId);
         /// <summary>
+        /// Device Catalog Subscribe
+        /// </summary>
+        /// <param name="deviceId"></param>
+        void DeviceCatalogSubscribe(string deviceId);
+        /// <summary>
         /// PTZ Control
         /// </summary>
         /// <param name="ptzCommand"></param>

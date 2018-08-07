@@ -107,6 +107,15 @@ namespace SIPSorcery.GB28181.Servers
             logger.Debug("Device Catalog Query started.");
             _sipCoreMessageService.DeviceCatalogQuery(deviceId);
         }
+        /// <summary>
+        /// Device Catalog Subscribe
+        /// </summary>
+        /// <param name="deviceId"></param>
+        public void DeviceCatalogSubscribe(string deviceId)
+        {
+            logger.Debug("Device Catalog Subscribe started.");
+            _sipCoreMessageService.DeviceCatalogSubscribe(deviceId);
+        }
         #endregion
 
         #region 设备转动

@@ -1108,9 +1108,10 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
             {
                 CommandType = CommandType.Catalog,
                 DeviceID = remoteID,
-                SN = new Random().Next(1, ushort.MaxValue),
-                StartTime = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss"),
-                EndTime = DateTime.Now.AddYears(1).ToString("yyyy-MM-ddTHH:mm:ss")
+                SN = new Random().Next(1, ushort.MaxValue)
+                //,
+                //StartTime = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss"),
+                //EndTime = DateTime.Now.AddYears(1).ToString("yyyy-MM-ddTHH:mm:ss")
             };
             string xmlBody = CatalogQuery.Instance.Save<CatalogQuery>(catalog);
             catalogReq.Body = xmlBody;
