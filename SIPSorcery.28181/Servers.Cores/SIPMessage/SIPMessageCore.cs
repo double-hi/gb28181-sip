@@ -1135,12 +1135,15 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
             SIPRequest catalogReq = _transport.GetRequest(SIPMethodsEnum.SUBSCRIBE, remoteUri);
 
             catalogReq.Header.From = from;
-            //catalogReq.Header.Contact = null;
+            catalogReq.Header.Contact = new List<SIPContactHeader>
+            {
+                new SIPContactHeader(null, localUri)
+            };
             catalogReq.Header.Allow = null;
             catalogReq.Header.To = to;
             catalogReq.Header.UserAgent = SIPConstants.SIP_USERAGENT_STRING;
-            catalogReq.Header.Event = "Catalog";//"presence";//"Catalog";//"Catalog;id=1894";
-            catalogReq.Header.Expires = 600;
+            catalogReq.Header.Event = "Catalog";//"presence";//"Catalog;id=1894";
+            catalogReq.Header.Expires = 60000;
             catalogReq.Header.CSeq = cSeq;
             catalogReq.Header.CallId = callId;
             catalogReq.Header.ContentType = "application/MANSCDP+xml";//"Application/MANSCDP+xml"
