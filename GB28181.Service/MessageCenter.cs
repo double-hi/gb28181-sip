@@ -113,25 +113,24 @@ namespace GB28181Service
         //    {
         //        foreach (var item in notify.DeviceList.Items)
         //        {
-
         //        }
         //    }).BeginInvoke(null, null);
         //}
 
-        internal void OnAlarmReceived(Alarm alarm)
-        {
-            var msg = "DeviceID:" + alarm.DeviceID +
-               "\r\nSN:" + alarm.SN +
-               "\r\nCmdType:" + alarm.CmdType +
-               "\r\nAlarmPriority:" + alarm.AlarmPriority +
-               "\r\nAlarmMethod:" + alarm.AlarmMethod +
-               "\r\nAlarmTime:" + alarm.AlarmTime +
-               "\r\nAlarmDescription:" + alarm.AlarmDescription;
-            new Action(() =>
-            {
-                _sipCoreMessageService.NodeMonitorService[alarm.DeviceID].AlarmResponse(alarm);
-            }).Invoke();
-        }
+        //internal void OnAlarmReceived(Alarm alarm)
+        //{
+        //    var msg = "DeviceID:" + alarm.DeviceID +
+        //       "\r\nSN:" + alarm.SN +
+        //       "\r\nCmdType:" + alarm.CmdType +
+        //       "\r\nAlarmPriority:" + alarm.AlarmPriority +
+        //       "\r\nAlarmMethod:" + alarm.AlarmMethod +
+        //       "\r\nAlarmTime:" + alarm.AlarmTime +
+        //       "\r\nAlarmDescription:" + alarm.AlarmDescription;
+        //    new Action(() =>
+        //    {
+        //        _sipCoreMessageService.NodeMonitorService[alarm.DeviceID].AlarmResponse(alarm);
+        //    }).Invoke();
+        //}
 
         internal void OnDeviceStatusReceived(SIPEndPoint remoteEP, DeviceStatus device)
         {
