@@ -4,6 +4,7 @@ using GrpcDeviceCatalog;
 using SIPSorcery.GB28181.Servers;
 using SIPSorcery.GB28181.Sys.XML;
 using Newtonsoft.Json;
+using System;
 
 namespace GrpcAgent.WebsocketRpcServer
 {
@@ -56,9 +57,16 @@ namespace GrpcAgent.WebsocketRpcServer
 
         public override Task<DeviceCatalogSubscribeReply> DeviceCatalogSubscribe(DeviceCatalogSubscribeRequest request, ServerCallContext context)
         {
-            _sipServiceDirector.DeviceCatalogSubscribe(request.Deviceid);
-            
-            return Task.FromResult(new DeviceCatalogSubscribeReply { Message = "OK" });
+            string msg = "OK";
+            try
+            {
+                _sipServiceDirector.DeviceCatalogSubscribe(request.Deviceid);
+            }
+            catch (Exception ex)
+            {
+                msg = ex.Message;
+            }
+            return Task.FromResult(new DeviceCatalogSubscribeReply { Message = msg });
         }
     }
 }

@@ -20,36 +20,43 @@ namespace GrpcAgent.WebsocketRpcServer
 
         public override Task<PtzDirectReply> PtzDirect(PtzDirectRequest request, ServerCallContext context)
         {
-            if (request.Xyz.X == 0 && request.Xyz.Y == 4 && request.Xyz.Z == 0)
+            string msg = "OK";
+            try
             {
-                _sipServiceDirector.PtzControl(PTZCommand.Up, request.Speed * 50, request.Deviceid);
+                if (request.Xyz.X == 0 && request.Xyz.Y == 4 && request.Xyz.Z == 0)
+                {
+                    _sipServiceDirector.PtzControl(PTZCommand.Up, request.Speed * 50, request.Deviceid);
+                }
+                else if (request.Xyz.X == 0 && request.Xyz.Y == -4 && request.Xyz.Z == 0)
+                {
+                    _sipServiceDirector.PtzControl(PTZCommand.Down, request.Speed * 50, request.Deviceid);
+                }
+                else if (request.Xyz.X == 4 && request.Xyz.Y == 0 && request.Xyz.Z == 0)
+                {
+                    _sipServiceDirector.PtzControl(PTZCommand.Left, request.Speed * 50, request.Deviceid);
+                }
+                else if (request.Xyz.X == -4 && request.Xyz.Y == 0 && request.Xyz.Z == 0)
+                {
+                    _sipServiceDirector.PtzControl(PTZCommand.Right, request.Speed * 50, request.Deviceid);
+                }
+                else if (request.Xyz.X == 0 && request.Xyz.Y == 0 && request.Xyz.Z == 4)
+                {
+                    _sipServiceDirector.PtzControl(PTZCommand.Zoom1, request.Speed * 50, request.Deviceid);
+                }
+                else if (request.Xyz.X == 0 && request.Xyz.Y == 0 && request.Xyz.Z == -4)
+                {
+                    _sipServiceDirector.PtzControl(PTZCommand.Zoom2, request.Speed * 50, request.Deviceid);
+                }
+                else
+                {
+                    _sipServiceDirector.PtzControl(PTZCommand.Stop, request.Speed * 50, request.Deviceid);
+                }
             }
-            else if (request.Xyz.X == 0 && request.Xyz.Y == -4 && request.Xyz.Z == 0)
+            catch (Exception ex)
             {
-                _sipServiceDirector.PtzControl(PTZCommand.Down, request.Speed * 50, request.Deviceid);
+                msg = ex.Message;
             }
-            else if (request.Xyz.X == 4 && request.Xyz.Y == 0 && request.Xyz.Z == 0)
-            {
-                _sipServiceDirector.PtzControl(PTZCommand.Left, request.Speed * 50, request.Deviceid);
-            }
-            else if (request.Xyz.X == -4 && request.Xyz.Y == 0 && request.Xyz.Z == 0)
-            {
-                _sipServiceDirector.PtzControl(PTZCommand.Right, request.Speed * 50, request.Deviceid);
-            }
-            else if (request.Xyz.X == 0 && request.Xyz.Y == 0 && request.Xyz.Z == 4)
-            {
-                _sipServiceDirector.PtzControl(PTZCommand.Zoom1, request.Speed * 50, request.Deviceid);
-            }
-            else if (request.Xyz.X == 0 && request.Xyz.Y == 0 && request.Xyz.Z == -4)
-            {
-                _sipServiceDirector.PtzControl(PTZCommand.Zoom2, request.Speed * 50, request.Deviceid);
-            }
-            else
-            {
-                _sipServiceDirector.PtzControl(PTZCommand.Stop, request.Speed * 50, request.Deviceid);
-            }
-            string x = "Status: 200 OK";
-            return Task.FromResult(new PtzDirectReply { Message = x });
+            return Task.FromResult(new PtzDirectReply { Message = msg });
         }
     }
 }
