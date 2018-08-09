@@ -39,6 +39,7 @@ namespace GrpcAgent.WebsocketRpcServer
                     break;
                 }
             }
+            //{"CmdType":2,"SN":42058,"DeviceID":"34030000002000000001","SumNum":12,"DeviceList":{"Items":[{"DeviceID":"31011550","Name":"浦东新区张江高科","Manufacturer":null,"Model":null,"Owner":null,"CivilCode":null,"Block":"null","Address":null,"Parental":null,"ParentalValue":null,"ParentID":"null","BusinessGroupID":"null","SafetyWay":null,"SafetyWayValue":null,"RegisterWay":null,"RegisterWayValue":null,"CertNum":"null","Certifiable":0,"CertifiableValue":null,"ErrCode":0,"ErrCodeValue":null,"EndTime":"null","Secrecy":0,"SecrecyValue":null,"IPAddress":null,"Port":null,"PortValue":null,"Password":"null","Status":0,"Longitude":0,"LongitudeValue":null,"Latitude":0,"LatitudeValue":null,"InfList":null,"RemoteEP":"10.77.38.86:5060"}]}}
             string jsonCatalog = JsonConvert.SerializeObject(_Catalog)
                 .Replace("\"Block\":null", "\"Block\":\"null\"")
                 .Replace("\"ParentID\":null", "\"ParentID\":\"null\"")
@@ -50,7 +51,13 @@ namespace GrpcAgent.WebsocketRpcServer
                 .Replace("\"Secrecy\":null", "\"Secrecy\":0")
                 .Replace("\"Password\":null", "\"Password\":\"null\"")
                 .Replace("\"Longitude\":null", "\"Longitude\":0")
-                .Replace("\"Latitude\":null", "\"Latitude\":0");
+                .Replace("\"Latitude\":null", "\"Latitude\":0")
+                .Replace("\"Parental\":null", "\"Parental\":0")
+                .Replace("\"SafetyWay\":null", "\"SafetyWay\":0")
+                .Replace("\"RegisterWay\":null", "\"RegisterWay\":0")
+                .Replace("\"Port\":null", "\"Port\":0")
+                .Replace(":null", ":\"null\"")
+                .Replace(",\"InfList\":\"null\"", "");//delete InfList
             Instance instance = JsonConvert.DeserializeObject<Instance>(jsonCatalog);
             return Task.FromResult(new GetCatalogReply { Catalog = instance });
         }
