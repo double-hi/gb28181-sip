@@ -16,6 +16,8 @@ namespace SIPSorcery.GB28181.Servers
         private ISipMessageCore _sipCoreMessageService;
         private Dictionary<string, Catalog> _Catalogs = new Dictionary<string, Catalog>();
         public Dictionary<string, Catalog> Catalogs => _Catalogs;
+        private Queue<NotifyCatalog.Item> _NotifyCatalogItem = new Queue<NotifyCatalog.Item>();
+        public Queue<NotifyCatalog.Item> NotifyCatalogItem => _NotifyCatalogItem;
 
         public SIPServiceDirector(ISipMessageCore sipCoreMessageService)
         {
@@ -150,7 +152,7 @@ namespace SIPSorcery.GB28181.Servers
             {
                 foreach (var item in obj.DeviceList.Items)
                 {
-
+                    NotifyCatalogItem.Enqueue(item);
                 }
             }).BeginInvoke(null, null);
         }

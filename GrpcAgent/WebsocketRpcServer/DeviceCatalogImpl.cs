@@ -75,5 +75,46 @@ namespace GrpcAgent.WebsocketRpcServer
             }
             return Task.FromResult(new DeviceCatalogSubscribeReply { Message = msg });
         }
+
+        public override Task<DeviceCatalogNotifyReply> DeviceCatalogNotify(DeviceCatalogNotifyRequest request, ServerCallContext context)
+        {
+            string msg = "OK";
+            NotifyCatalog.Item _NotifyCatalogItem = null;
+            Item instance = null;
+            try
+            {
+                while (_sipServiceDirector.NotifyCatalogItem.Count > 0)
+                {
+                    lock (_sipServiceDirector.NotifyCatalogItem)
+                    {
+                        _NotifyCatalogItem = _sipServiceDirector.NotifyCatalogItem.Dequeue();
+                    }
+                }
+                string jsonObj = JsonConvert.SerializeObject(_NotifyCatalogItem)
+                .Replace("\"Block\":null", "\"Block\":\"null\"")
+                .Replace("\"ParentID\":null", "\"ParentID\":\"null\"")
+                .Replace("\"BusinessGroupID\":null", "\"BusinessGroupID\":\"null\"")
+                .Replace("\"CertNum\":null", "\"CertNum\":\"null\"")
+                .Replace("\"Certifiable\":null", "\"Certifiable\":0")
+                .Replace("\"ErrCode\":null", "\"ErrCode\":0")
+                .Replace("\"EndTime\":null", "\"EndTime\":\"null\"")
+                .Replace("\"Secrecy\":null", "\"Secrecy\":0")
+                .Replace("\"Password\":null", "\"Password\":\"null\"")
+                .Replace("\"Longitude\":null", "\"Longitude\":0")
+                .Replace("\"Latitude\":null", "\"Latitude\":0")
+                .Replace("\"Parental\":null", "\"Parental\":0")
+                .Replace("\"SafetyWay\":null", "\"SafetyWay\":0")
+                .Replace("\"RegisterWay\":null", "\"RegisterWay\":0")
+                .Replace("\"Port\":null", "\"Port\":0")
+                .Replace(":null", ":\"null\"")
+                .Replace(",\"InfList\":\"null\"", "");//delete InfList
+                instance = JsonConvert.DeserializeObject<Item>(jsonObj);
+            }
+            catch (Exception ex)
+            {
+                msg = ex.Message;
+            }
+            return Task.FromResult(new DeviceCatalogNotifyReply { Item = instance });
+        }
     }
 }
