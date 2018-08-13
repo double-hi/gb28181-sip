@@ -12,6 +12,8 @@ namespace SIPSorcery.GB28181.Sys
         private static string _GB_SERVICE_LOCAL_IP;
         private const string GB_SERVER_CHANNEL_ADDRESS = "GB_SERVER_CHANNEL_ADDRESS";//10.77.38.86:5000
         private static string _GB_SERVER_CHANNEL_ADDRESS;
+        private const string GB_NATS_CHANNEL_ADDRESS = "GB_NATS_CHANNEL_ADDRESS";//nats://10.78.115.149:4222
+        private static string _GB_NATS_CHANNEL_ADDRESS;
         public static string GbServiceLocalId
         {
             get { return _GB_SERVICE_LOCAL_ID ?? Environment.GetEnvironmentVariable(GB_SERVICE_LOCAL_ID); }
@@ -26,6 +28,11 @@ namespace SIPSorcery.GB28181.Sys
         {
             get { return _GB_SERVER_CHANNEL_ADDRESS ?? Environment.GetEnvironmentVariable(GB_SERVER_CHANNEL_ADDRESS); }
             set { _GB_SERVER_CHANNEL_ADDRESS = value; }
+        }
+        public static string GBNatsChannelAddress
+        {
+            get { return _GB_NATS_CHANNEL_ADDRESS ?? Environment.GetEnvironmentVariable(GB_NATS_CHANNEL_ADDRESS); }
+            set { _GB_NATS_CHANNEL_ADDRESS = value; }
         }
         public static int GBServerGrpcPort
         {

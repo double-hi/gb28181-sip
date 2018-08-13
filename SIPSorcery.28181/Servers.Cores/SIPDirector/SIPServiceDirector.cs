@@ -24,25 +24,25 @@ namespace SIPSorcery.GB28181.Servers
             _sipCoreMessageService = sipCoreMessageService;
             _sipCoreMessageService.OnCatalogReceived += _sipCoreMessageService_OnCatalogReceived;
             _sipCoreMessageService.OnNotifyCatalogReceived += _sipCoreMessageService_OnNotifyCatalogReceived;
-            _sipCoreMessageService.OnAlarmReceived += _sipCoreMessageService_OnAlarmReceived;
+            //_sipCoreMessageService.OnAlarmReceived += _sipCoreMessageService_OnAlarmReceived;
         }
 
-        #region 报警通知
-        private void _sipCoreMessageService_OnAlarmReceived(Alarm obj)
-        {
-            var msg = "DeviceID:" + obj.DeviceID +
-              "\r\nSN:" + obj.SN +
-              "\r\nCmdType:" + obj.CmdType +
-              "\r\nAlarmPriority:" + obj.AlarmPriority +
-              "\r\nAlarmMethod:" + obj.AlarmMethod +
-              "\r\nAlarmTime:" + obj.AlarmTime +
-              "\r\nAlarmDescription:" + obj.AlarmDescription;
-            new Action(() =>
-            {
-                _sipCoreMessageService.NodeMonitorService[obj.DeviceID].AlarmResponse(obj);
-            }).Invoke();
-        }
-        #endregion
+        //#region 报警通知
+        //private void _sipCoreMessageService_OnAlarmReceived(Alarm obj)
+        //{
+        //    var msg = "DeviceID:" + obj.DeviceID +
+        //      "\r\nSN:" + obj.SN +
+        //      "\r\nCmdType:" + obj.CmdType +
+        //      "\r\nAlarmPriority:" + obj.AlarmPriority +
+        //      "\r\nAlarmMethod:" + obj.AlarmMethod +
+        //      "\r\nAlarmTime:" + obj.AlarmTime +
+        //      "\r\nAlarmDescription:" + obj.AlarmDescription;
+        //    new Action(() =>
+        //    {
+        //        _sipCoreMessageService.NodeMonitorService[obj.DeviceID].AlarmResponse(obj);
+        //    }).Invoke();
+        //}
+        //#endregion
 
         #region 实时视频流
         public ISIPMonitorCore GetTargetMonitorService(string gbid)
