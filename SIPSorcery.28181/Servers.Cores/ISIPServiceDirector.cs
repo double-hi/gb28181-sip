@@ -10,8 +10,9 @@ namespace SIPSorcery.GB28181.Servers
     {
         Dictionary<string, Catalog> Catalogs { get; }
         Queue<NotifyCatalog.Item> NotifyCatalogItem { get; }
-        ISIPMonitorCore GetTargetMonitorService(string gbid);
-        
+        ISIPMonitorCore GetTargetMonitorService(string gbid); 
+        Dictionary<string, DeviceStatus> DeviceStatuses { get; }
+
         //ip/port/protocol/ 
         Task<Tuple<string, int, ProtocolType>> MakeVideoRequest(string gbid, int[] mediaPort, string receiveIP);
 

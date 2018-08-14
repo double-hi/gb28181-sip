@@ -4,8 +4,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Grpc.Core;
 using GrpcProtocol;
+using Newtonsoft.Json;
 using SIPSorcery.GB28181.Servers;
 using SIPSorcery.GB28181.Servers.SIPMonitor;
+using SIPSorcery.GB28181.Sys.XML;
 
 namespace GrpcAgent.WebsocketRpcServer
 {
@@ -20,16 +22,31 @@ namespace GrpcAgent.WebsocketRpcServer
 
         public override Task<DeviceStateQueryReply> DeviceStateQuery(DeviceStateQueryRequest request, ServerCallContext context)
         {
-            string msg = "OK";
-            try
+            _sipServiceDirector.DeviceStateQuery(request.Deviceid);
+            DeviceStatus _DeviceStatus = null;
+            while (true)
             {
-                _sipServiceDirector.DeviceStateQuery(request.Deviceid);               
+                foreach (DeviceStatus obj in _sipServiceDirector.DeviceStatuses.Values)
+                {
+                    if (request.Deviceid.Equals(obj.DeviceID))
+                    {
+                        _DeviceStatus = obj;
+                    }
+                }
+                if (_DeviceStatus == null)
+                {
+                    System.Threading.Thread.Sleep(500);
+                }
+                else
+                {
+                    break;
+                }
             }
-            catch (Exception ex)
-            {
-                msg = ex.Message;
-            }
-            return Task.FromResult(new DeviceStateQueryReply { Message = msg });
+            string json = JsonConvert.SerializeObject(_DeviceStatus)
+                .Replace("\"SN\":null", "\"SN\":0")
+                .Replace(":null", ":\"null\"");
+            Instance instance = JsonConvert.DeserializeObject<Instance>(json);
+            return Task.FromResult(new DeviceStateQueryReply { DeviceStatus = instance });
         }
     }
 }

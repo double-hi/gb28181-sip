@@ -164,7 +164,7 @@ namespace GB28181Service
                     //_mainSipService.OnNotifyCatalogReceived += messageHandler.OnNotifyCatalogReceived;
                     _mainSipService.OnAlarmReceived += messageHandler.OnAlarmReceived;
                     _mainSipService.OnRecordInfoReceived += messageHandler.OnRecordInfoReceived;
-                    _mainSipService.OnDeviceStatusReceived += messageHandler.OnDeviceStatusReceived;
+                    //_mainSipService.OnDeviceStatusReceived += messageHandler.OnDeviceStatusReceived;
                     _mainSipService.OnDeviceInfoReceived += messageHandler.OnDeviceInfoReceived;
                     _mainSipService.OnMediaStatusReceived += messageHandler.OnMediaStatusReceived;
                     _mainSipService.OnPresetQueryReceived += messageHandler.OnPresetQueryReceived;

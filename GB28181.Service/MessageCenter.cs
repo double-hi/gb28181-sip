@@ -23,7 +23,6 @@ namespace GB28181Service
         public MessageCenter(ISipMessageCore sipCoreMessageService)
         {
             _sipCoreMessageService = sipCoreMessageService;
-
         }
 
         internal void OnKeepaliveReceived(SIPEndPoint remoteEP, KeepAlive keapalive, string devId)
@@ -40,7 +39,6 @@ namespace GB28181Service
         internal void OnServiceChanged(string msg, ServiceStatus state)
         {
             SetSIPService(msg, state);
-
         }
 
         /// <summary>
@@ -51,11 +49,9 @@ namespace GB28181Service
         {
             if (state == ServiceStatus.Wait)
             {
-
             }
             else
             {
-
             }
         }
 
@@ -68,34 +64,24 @@ namespace GB28181Service
         //    _catalogQueue.Enqueue(cata);
         //}
 
-
-
         //设备信息查询回调函数
         private void DeviceInfoReceived(SIPEndPoint remoteEP, DeviceInfo device)
         {
-
-
         }
 
         //设备状态查询回调函数
         private void DeviceStatusReceived(SIPEndPoint remoteEP, DeviceStatus device)
         {
-
         }
-
-
-
+        
         /// <summary>
         /// 录像查询回调
         /// </summary>
         /// <param name="record"></param>
         internal void OnRecordInfoReceived(RecordInfo record)
         {
-
             SetRecord(record);
-
         }
-
 
         private void SetRecord(RecordInfo record)
         {
@@ -152,17 +138,17 @@ namespace GB28181Service
                 logger.Error("OnAlarmReceived Exception: " + ex.Message);
             }
         }
-        internal void OnDeviceStatusReceived(SIPEndPoint remoteEP, DeviceStatus device)
-        {
-            var msg = "DeviceID:" + device.DeviceID +
-                 "\r\nResult:" + device.Result +
-                 "\r\nOnline:" + device.Online +
-                 "\r\nState:" + device.Status;
-            new Action(() =>
-            {
 
-            }).Invoke();
-        }
+        //internal void OnDeviceStatusReceived(SIPEndPoint remoteEP, DeviceStatus device)
+        //{
+        //    var msg = "DeviceID:" + device.DeviceID +
+        //         "\r\nResult:" + device.Result +
+        //         "\r\nOnline:" + device.Online +
+        //         "\r\nState:" + device.Status;
+        //    new Action(() =>
+        //    {
+        //    }).Invoke();
+        //}
 
         internal void OnDeviceInfoReceived(SIPEndPoint arg1, DeviceInfo arg2)
         {

@@ -25,21 +25,55 @@ namespace GrpcProtocol {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChRkZXZpY2VfZmVhdHVyZS5wcm90bxIMR3JwY1Byb3RvY29sIisKF0Rldmlj",
-            "ZVN0YXRlUXVlcnlSZXF1ZXN0EhAKCGRldmljZWlkGAEgASgJIigKFURldmlj",
-            "ZVN0YXRlUXVlcnlSZXBseRIPCgdtZXNzYWdlGAEgASgJMnEKDURldmljZUZl",
-            "YXR1cmUSYAoQRGV2aWNlU3RhdGVRdWVyeRIlLkdycGNQcm90b2NvbC5EZXZp",
-            "Y2VTdGF0ZVF1ZXJ5UmVxdWVzdBojLkdycGNQcm90b2NvbC5EZXZpY2VTdGF0",
-            "ZVF1ZXJ5UmVwbHkiAGIGcHJvdG8z"));
+            "ZVN0YXRlUXVlcnlSZXF1ZXN0EhAKCGRldmljZWlkGAEgASgJIkUKFURldmlj",
+            "ZVN0YXRlUXVlcnlSZXBseRIsCgxEZXZpY2VTdGF0dXMYASABKAsyFi5HcnBj",
+            "UHJvdG9jb2wuSW5zdGFuY2UilAEKCEluc3RhbmNlEioKB0NtZFR5cGUYASAB",
+            "KA4yGS5HcnBjUHJvdG9jb2wuQ29tbWFuZFR5cGUSCgoCU04YAiABKAUSEAoI",
+            "RGV2aWNlSUQYAyABKAkSDgoGUmVzdWx0GAQgASgJEg4KBk9ubGluZRgFIAEo",
+            "CRIOCgZTdGF0dXMYBiABKAkSDgoGUmVhc29uGAcgASgJKpcCCgtDb21tYW5k",
+            "VHlwZRILCgdVbmtub3duEAASDQoJS2VlcGFsaXZlEAESCwoHQ2F0YWxvZxAC",
+            "EggKBFBsYXkQAxIMCghQbGF5YmFjaxAEEhEKDURldmljZUNvbnRyb2wQBRIJ",
+            "CgVBbGFybRAGEg4KCkRldmljZUluZm8QBxIQCgxEZXZpY2VTdGF0dXMQCBIO",
+            "CgpSZWNvcmRJbmZvEAkSDAoIRG93bmxvYWQQChISCg5Db25maWdEb3dubG9h",
+            "ZBALEg0KCUJyb2FkY2FzdBAMEg8KC1ByZXNldFF1ZXJ5EA0SEgoOTW9iaWxl",
+            "UG9zaXRpb24QDhIQCgxEZXZpY2VDb25maWcQDxIPCgtNZWRpYVN0YXR1cxAQ",
+            "MnEKDURldmljZUZlYXR1cmUSYAoQRGV2aWNlU3RhdGVRdWVyeRIlLkdycGNQ",
+            "cm90b2NvbC5EZXZpY2VTdGF0ZVF1ZXJ5UmVxdWVzdBojLkdycGNQcm90b2Nv",
+            "bC5EZXZpY2VTdGF0ZVF1ZXJ5UmVwbHkiAGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::GrpcProtocol.CommandType), }, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::GrpcProtocol.DeviceStateQueryRequest), global::GrpcProtocol.DeviceStateQueryRequest.Parser, new[]{ "Deviceid" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcProtocol.DeviceStateQueryReply), global::GrpcProtocol.DeviceStateQueryReply.Parser, new[]{ "Message" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcProtocol.DeviceStateQueryReply), global::GrpcProtocol.DeviceStateQueryReply.Parser, new[]{ "DeviceStatus" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcProtocol.Instance), global::GrpcProtocol.Instance.Parser, new[]{ "CmdType", "SN", "DeviceID", "Result", "Online", "Status", "Reason" }, null, null, null)
           }));
     }
     #endregion
 
   }
+  #region Enums
+  public enum CommandType {
+    [pbr::OriginalName("Unknown")] Unknown = 0,
+    [pbr::OriginalName("Keepalive")] Keepalive = 1,
+    [pbr::OriginalName("Catalog")] Catalog = 2,
+    [pbr::OriginalName("Play")] Play = 3,
+    [pbr::OriginalName("Playback")] Playback = 4,
+    [pbr::OriginalName("DeviceControl")] DeviceControl = 5,
+    [pbr::OriginalName("Alarm")] Alarm = 6,
+    [pbr::OriginalName("DeviceInfo")] DeviceInfo = 7,
+    [pbr::OriginalName("DeviceStatus")] DeviceStatus = 8,
+    [pbr::OriginalName("RecordInfo")] RecordInfo = 9,
+    [pbr::OriginalName("Download")] Download = 10,
+    [pbr::OriginalName("ConfigDownload")] ConfigDownload = 11,
+    [pbr::OriginalName("Broadcast")] Broadcast = 12,
+    [pbr::OriginalName("PresetQuery")] PresetQuery = 13,
+    [pbr::OriginalName("MobilePosition")] MobilePosition = 14,
+    [pbr::OriginalName("DeviceConfig")] DeviceConfig = 15,
+    [pbr::OriginalName("MediaStatus")] MediaStatus = 16,
+  }
+
+  #endregion
+
   #region Messages
   /// <summary>
   /// The request message.
@@ -201,7 +235,7 @@ namespace GrpcProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public DeviceStateQueryReply(DeviceStateQueryReply other) : this() {
-      message_ = other.message_;
+      DeviceStatus = other.deviceStatus_ != null ? other.DeviceStatus.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -210,14 +244,14 @@ namespace GrpcProtocol {
       return new DeviceStateQueryReply(this);
     }
 
-    /// <summary>Field number for the "message" field.</summary>
-    public const int MessageFieldNumber = 1;
-    private string message_ = "";
+    /// <summary>Field number for the "DeviceStatus" field.</summary>
+    public const int DeviceStatusFieldNumber = 1;
+    private global::GrpcProtocol.Instance deviceStatus_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Message {
-      get { return message_; }
+    public global::GrpcProtocol.Instance DeviceStatus {
+      get { return deviceStatus_; }
       set {
-        message_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        deviceStatus_ = value;
       }
     }
 
@@ -234,14 +268,14 @@ namespace GrpcProtocol {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Message != other.Message) return false;
+      if (!object.Equals(DeviceStatus, other.DeviceStatus)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Message.Length != 0) hash ^= Message.GetHashCode();
+      if (deviceStatus_ != null) hash ^= DeviceStatus.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -255,9 +289,9 @@ namespace GrpcProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Message.Length != 0) {
+      if (deviceStatus_ != null) {
         output.WriteRawTag(10);
-        output.WriteString(Message);
+        output.WriteMessage(DeviceStatus);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -267,8 +301,8 @@ namespace GrpcProtocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Message.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Message);
+      if (deviceStatus_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(DeviceStatus);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -281,8 +315,11 @@ namespace GrpcProtocol {
       if (other == null) {
         return;
       }
-      if (other.Message.Length != 0) {
-        Message = other.Message;
+      if (other.deviceStatus_ != null) {
+        if (deviceStatus_ == null) {
+          deviceStatus_ = new global::GrpcProtocol.Instance();
+        }
+        DeviceStatus.MergeFrom(other.DeviceStatus);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -296,7 +333,307 @@ namespace GrpcProtocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            Message = input.ReadString();
+            if (deviceStatus_ == null) {
+              deviceStatus_ = new global::GrpcProtocol.Instance();
+            }
+            input.ReadMessage(deviceStatus_);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class Instance : pb::IMessage<Instance> {
+    private static readonly pb::MessageParser<Instance> _parser = new pb::MessageParser<Instance>(() => new Instance());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Instance> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::GrpcProtocol.DeviceFeatureReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Instance() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Instance(Instance other) : this() {
+      cmdType_ = other.cmdType_;
+      sN_ = other.sN_;
+      deviceID_ = other.deviceID_;
+      result_ = other.result_;
+      online_ = other.online_;
+      status_ = other.status_;
+      reason_ = other.reason_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Instance Clone() {
+      return new Instance(this);
+    }
+
+    /// <summary>Field number for the "CmdType" field.</summary>
+    public const int CmdTypeFieldNumber = 1;
+    private global::GrpcProtocol.CommandType cmdType_ = 0;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::GrpcProtocol.CommandType CmdType {
+      get { return cmdType_; }
+      set {
+        cmdType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "SN" field.</summary>
+    public const int SNFieldNumber = 2;
+    private int sN_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int SN {
+      get { return sN_; }
+      set {
+        sN_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "DeviceID" field.</summary>
+    public const int DeviceIDFieldNumber = 3;
+    private string deviceID_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string DeviceID {
+      get { return deviceID_; }
+      set {
+        deviceID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Result" field.</summary>
+    public const int ResultFieldNumber = 4;
+    private string result_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Result {
+      get { return result_; }
+      set {
+        result_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Online" field.</summary>
+    public const int OnlineFieldNumber = 5;
+    private string online_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Online {
+      get { return online_; }
+      set {
+        online_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Status" field.</summary>
+    public const int StatusFieldNumber = 6;
+    private string status_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Status {
+      get { return status_; }
+      set {
+        status_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Reason" field.</summary>
+    public const int ReasonFieldNumber = 7;
+    private string reason_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Reason {
+      get { return reason_; }
+      set {
+        reason_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Instance);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Instance other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (CmdType != other.CmdType) return false;
+      if (SN != other.SN) return false;
+      if (DeviceID != other.DeviceID) return false;
+      if (Result != other.Result) return false;
+      if (Online != other.Online) return false;
+      if (Status != other.Status) return false;
+      if (Reason != other.Reason) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (CmdType != 0) hash ^= CmdType.GetHashCode();
+      if (SN != 0) hash ^= SN.GetHashCode();
+      if (DeviceID.Length != 0) hash ^= DeviceID.GetHashCode();
+      if (Result.Length != 0) hash ^= Result.GetHashCode();
+      if (Online.Length != 0) hash ^= Online.GetHashCode();
+      if (Status.Length != 0) hash ^= Status.GetHashCode();
+      if (Reason.Length != 0) hash ^= Reason.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (CmdType != 0) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) CmdType);
+      }
+      if (SN != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(SN);
+      }
+      if (DeviceID.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(DeviceID);
+      }
+      if (Result.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Result);
+      }
+      if (Online.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Online);
+      }
+      if (Status.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(Status);
+      }
+      if (Reason.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(Reason);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (CmdType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CmdType);
+      }
+      if (SN != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SN);
+      }
+      if (DeviceID.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(DeviceID);
+      }
+      if (Result.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Result);
+      }
+      if (Online.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Online);
+      }
+      if (Status.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Status);
+      }
+      if (Reason.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Reason);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Instance other) {
+      if (other == null) {
+        return;
+      }
+      if (other.CmdType != 0) {
+        CmdType = other.CmdType;
+      }
+      if (other.SN != 0) {
+        SN = other.SN;
+      }
+      if (other.DeviceID.Length != 0) {
+        DeviceID = other.DeviceID;
+      }
+      if (other.Result.Length != 0) {
+        Result = other.Result;
+      }
+      if (other.Online.Length != 0) {
+        Online = other.Online;
+      }
+      if (other.Status.Length != 0) {
+        Status = other.Status;
+      }
+      if (other.Reason.Length != 0) {
+        Reason = other.Reason;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            cmdType_ = (global::GrpcProtocol.CommandType) input.ReadEnum();
+            break;
+          }
+          case 16: {
+            SN = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            DeviceID = input.ReadString();
+            break;
+          }
+          case 34: {
+            Result = input.ReadString();
+            break;
+          }
+          case 42: {
+            Online = input.ReadString();
+            break;
+          }
+          case 50: {
+            Status = input.ReadString();
+            break;
+          }
+          case 58: {
+            Reason = input.ReadString();
             break;
           }
         }

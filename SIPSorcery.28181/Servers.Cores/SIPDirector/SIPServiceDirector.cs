@@ -17,7 +17,9 @@ namespace SIPSorcery.GB28181.Servers
         private Dictionary<string, Catalog> _Catalogs = new Dictionary<string, Catalog>();
         public Dictionary<string, Catalog> Catalogs => _Catalogs;
         private Queue<NotifyCatalog.Item> _NotifyCatalogItem = new Queue<NotifyCatalog.Item>();
-        public Queue<NotifyCatalog.Item> NotifyCatalogItem => _NotifyCatalogItem;
+        public Queue<NotifyCatalog.Item> NotifyCatalogItem => _NotifyCatalogItem; 
+        private Dictionary<string, DeviceStatus> _DeviceStatuses = new Dictionary<string, DeviceStatus>();
+        public Dictionary<string, DeviceStatus> DeviceStatuses => _DeviceStatuses;
 
         public SIPServiceDirector(ISipMessageCore sipCoreMessageService)
         {
@@ -25,8 +27,9 @@ namespace SIPSorcery.GB28181.Servers
             _sipCoreMessageService.OnCatalogReceived += _sipCoreMessageService_OnCatalogReceived;
             _sipCoreMessageService.OnNotifyCatalogReceived += _sipCoreMessageService_OnNotifyCatalogReceived;
             //_sipCoreMessageService.OnAlarmReceived += _sipCoreMessageService_OnAlarmReceived;
+            _sipCoreMessageService.OnDeviceStatusReceived += _sipCoreMessageService_OnDeviceStatusReceived;
         }
-
+        
         //#region 报警通知
         //private void _sipCoreMessageService_OnAlarmReceived(Alarm obj)
         //{
@@ -118,6 +121,11 @@ namespace SIPSorcery.GB28181.Servers
             {
                 Catalogs.Add(obj.DeviceID, obj);
             }
+            else
+            {
+                Catalogs.Remove(obj.DeviceID);
+                Catalogs.Add(obj.DeviceID, obj);
+            }
         }
         /// <summary>
         /// Device Catalog Query
@@ -171,6 +179,18 @@ namespace SIPSorcery.GB28181.Servers
         }
         #endregion
         #region 设备状态
+        private void _sipCoreMessageService_OnDeviceStatusReceived(SIP.SIPEndPoint arg1, DeviceStatus arg2)
+        {
+            if (!DeviceStatuses.ContainsKey(arg2.DeviceID))
+            {
+                DeviceStatuses.Add(arg2.DeviceID, arg2);
+            }
+            else
+            {
+                DeviceStatuses.Remove(arg2.DeviceID);
+                DeviceStatuses.Add(arg2.DeviceID, arg2);
+            }
+        }
         public void DeviceStateQuery(string deviceid)
         {
             _sipCoreMessageService.DeviceStateQuery(deviceid);

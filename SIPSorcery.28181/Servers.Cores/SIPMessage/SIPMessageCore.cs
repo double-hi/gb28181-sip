@@ -257,7 +257,7 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
             }
             catch (Exception excp)
             {
-                logger.Error("Error: PtzContrl(): " + excp.Message);
+                logger.Error("PtzContrl(): " + excp.Message);
             }
         }
         public void DeviceStateQuery(string deviceId)
@@ -278,7 +278,7 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
             }
             catch (Exception excp)
             {
-                logger.Error("Error: PtzContrl(): " + excp.Message);
+                logger.Error("DeviceStateQuery(): " + excp.Message);
             }
         }
         #endregion
