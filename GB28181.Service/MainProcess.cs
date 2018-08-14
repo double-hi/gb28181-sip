@@ -22,6 +22,7 @@ using GrpcPtzControl;
 using GrpcDeviceCatalog;
 using Grpc.Core;
 using GrpcGb28181Config;
+using GrpcProtocol;
 
 namespace GB28181Service
 {
@@ -141,6 +142,7 @@ namespace GB28181Service
                             .AddScoped<PtzControl.PtzControlBase, PtzControlImpl>()
                             .AddScoped<DeviceCatalog.DeviceCatalogBase, DeviceCatalogImpl>()
                             .AddScoped<Manage.Manage.ManageBase, DeviceManageImpl>()
+                            .AddScoped<DeviceFeature.DeviceFeatureBase, DeviceFeatureImpl>()
                             .AddSingleton<IServiceCollection>(servicesContainer); // add itself 
             _serviceProvider = servicesContainer.BuildServiceProvider();
         }

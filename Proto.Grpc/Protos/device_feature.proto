@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package GrpcProtocol;
+
+service DeviceFeature {
+  rpc DeviceStateQuery (DeviceStateQueryRequest) returns (DeviceStateQueryReply) {}
+}
+
+// The request message.
+message DeviceStateQueryRequest {
+	string deviceid = 1;
+}
+
+// The response message.
+message DeviceStateQueryReply {
+  string message = 1;
+}

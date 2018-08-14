@@ -243,7 +243,7 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
         {
             try
             {
-                logger.Debug("PTZ Controlling started.");
+                logger.Debug("PtzControl started.");
 
                 foreach (var item in _nodeMonitorService.ToArray())
                 {
@@ -253,7 +253,28 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
                     }
                 }
 
-                logger.Debug("PTZ Controlling halted.");
+                logger.Debug("PtzControl halted.");
+            }
+            catch (Exception excp)
+            {
+                logger.Error("Error: PtzContrl(): " + excp.Message);
+            }
+        }
+        public void DeviceStateQuery(string deviceId)
+        {
+            try
+            {
+                logger.Debug("DeviceStateQuery started.");
+
+                foreach (var item in _nodeMonitorService.ToArray())
+                {
+                    if (item.Key.Equals(deviceId))
+                    {
+                        item.Value.DeviceStateQuery();
+                    }
+                }
+
+                logger.Debug("DeviceStateQuery halted.");
             }
             catch (Exception excp)
             {

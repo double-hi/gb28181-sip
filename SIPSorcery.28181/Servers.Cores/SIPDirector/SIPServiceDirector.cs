@@ -170,5 +170,11 @@ namespace SIPSorcery.GB28181.Servers
             _sipCoreMessageService.PtzControl(ptzCommand, speed, deviceid);
         }
         #endregion
+        #region 设备状态
+        public void DeviceStateQuery(string deviceid)
+        {
+            _sipCoreMessageService.DeviceStateQuery(deviceid);
+        }
+        #endregion
     }
 }

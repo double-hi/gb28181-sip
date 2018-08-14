@@ -35,5 +35,6 @@ namespace SIPSorcery.GB28181.Servers
         /// <param name="speed"></param>
         /// <param name="deviceid"></param>
         void PtzControl(SIPMonitor.PTZCommand ptzCommand, int speed, string deviceid);
+        void DeviceStateQuery(string deviceid);
     }
 }
