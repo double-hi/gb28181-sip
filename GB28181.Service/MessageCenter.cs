@@ -8,11 +8,13 @@ using NATS.Client;
 using System.Diagnostics;
 using SIPSorcery.GB28181.Sys;
 using System.Text;
+using Logger4Net;
 
 namespace GB28181Service
 {
     public class MessageCenter
     {
+        private static ILog logger = AppState.logger;
         private DateTime _keepaliveTime;
         private Queue<HeartBeatEndPoint> _keepAliveQueue = new Queue<HeartBeatEndPoint>();
         private Queue<Catalog> _catalogQueue = new Queue<Catalog>();
@@ -118,40 +120,37 @@ namespace GB28181Service
 
         internal void OnAlarmReceived(Alarm alarm)
         {
-            var msg = "DeviceID:" + alarm.DeviceID +
-               "\r\nSN:" + alarm.SN +
-               "\r\nCmdType:" + alarm.CmdType +
-               "\r\nAlarmPriority:" + alarm.AlarmPriority +
-               "\r\nAlarmMethod:" + alarm.AlarmMethod +
-               "\r\nAlarmTime:" + alarm.AlarmTime +
-               "\r\nAlarmDescription:" + alarm.AlarmDescription;
-
-            #region
-            string subject = "GB28181-Alarm";
-            byte[] payload =  Encoding.UTF8.GetBytes(msg);
-            Options opts = ConnectionFactory.GetDefaultOptions();
-            opts.Url = EnvironmentVariables.GBNatsChannelAddress ?? Defaults.Url;
-            Stopwatch sw = null;
-            using (IConnection c = new ConnectionFactory().CreateConnection(opts))
+            try
             {
-                sw = Stopwatch.StartNew();
-                c.Publish(subject, payload);
-                c.Flush();
-                sw.Stop();
+                var msg = "DeviceID:" + alarm.DeviceID +
+                   "\r\nSN:" + alarm.SN +
+                   "\r\nCmdType:" + alarm.CmdType +
+                   "\r\nAlarmPriority:" + alarm.AlarmPriority +
+                   "\r\nAlarmMethod:" + alarm.AlarmMethod +
+                   "\r\nAlarmTime:" + alarm.AlarmTime +
+                   "\r\nAlarmDescription:" + alarm.AlarmDescription;
 
-                IStatistics s = c.Stats;
-                System.Console.WriteLine("Statistics:  ");
-                System.Console.WriteLine("   Outgoing Payload Bytes: {0}", s.OutBytes);
-                System.Console.WriteLine("   Outgoing Messages: {0}", s.OutMsgs);
+                #region
+                string subject = "GB28181-Alarm";
+                byte[] payload = Encoding.UTF8.GetBytes(msg);
+                Options opts = ConnectionFactory.GetDefaultOptions();
+                opts.Url = EnvironmentVariables.GBNatsChannelAddress ?? Defaults.Url;
+                using (IConnection c = new ConnectionFactory().CreateConnection(opts))
+                {
+                    c.Publish(subject, payload);
+                    c.Flush();
+                }
+                #endregion
+
+                new Action(() =>
+                {
+                    _sipCoreMessageService.NodeMonitorService[alarm.DeviceID].AlarmResponse(alarm);
+                }).Invoke();
             }
-            #endregion
-
-            new Action(() =>
+            catch (Exception ex)
             {
-                _sipCoreMessageService.NodeMonitorService[alarm.DeviceID].AlarmResponse(alarm);
-            }).Invoke();
-
-
+                logger.Error("OnAlarmReceived Exception: " + ex.Message);
+            }
         }
         internal void OnDeviceStatusReceived(SIPEndPoint remoteEP, DeviceStatus device)
         {
