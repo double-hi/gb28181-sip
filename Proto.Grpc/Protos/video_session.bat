@@ -27,8 +27,8 @@ setlocal
 cd /d %~dp0
 
 @rem set path for rpc compiler tool
-set PROTOC=..\..\packages\Grpc.Tools.1.8.0\tools\windows_x64\protoc.exe
-set PLUGIN=..\..\packages\Grpc.Tools.1.8.0\tools\windows_x64\grpc_csharp_plugin.exe
+set PROTOC=C:\Users\h302201\.nuget\packages\grpc.tools\1.13.1\tools\windows_x64\protoc.exe
+set PLUGIN=C:\Users\h302201\.nuget\packages\grpc.tools\1.13.1\tools\windows_x64\grpc_csharp_plugin.exe
 
 @rem use csharp plugin compile *.proto to csharp code 
 %PROTOC%   --csharp_out ../ --grpc_out ../ ./video_session.proto  --plugin=protoc-gen-grpc=%PLUGIN%
