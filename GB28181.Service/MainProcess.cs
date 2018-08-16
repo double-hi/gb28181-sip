@@ -217,6 +217,7 @@ namespace GB28181Service
             }
         }
 
+        #region Init Server
         private List<SIPSorcery.GB28181.SIP.App.SIPAccount> SipAccountStorage_RPCGBServerConfigReceived()
         {
             try
@@ -303,8 +304,9 @@ namespace GB28181Service
                 }
             }
         }
+        #endregion
 
-
+        #region Consul Register
         public string GetIPAddress()
         {
             string hostname = Dns.GetHostName();
@@ -312,7 +314,6 @@ namespace GB28181Service
             IPAddress localaddr = ipadrlist.AddressList[0];
             return localaddr.ToString();
         }
-
         /// <summary>
         /// Consul Register
         /// </summary>
@@ -337,6 +338,7 @@ namespace GB28181Service
                     }
                 };
                 var result = clients.Agent.ServiceRegister(_AgentServiceRegistration).Result;
+                logger.Debug("GB server("+ "gb28181" + Dns.GetHostName() + ") registering consul completed.");
             }
             catch (Exception ex)
             {
@@ -348,5 +350,6 @@ namespace GB28181Service
             obj.Address = new Uri("http://" + (EnvironmentVariables.MicroRegistryAddress ?? "10.78.115.182:8500"));
             obj.Datacenter = "dc1";
         }
+        #endregion
     }
 }
