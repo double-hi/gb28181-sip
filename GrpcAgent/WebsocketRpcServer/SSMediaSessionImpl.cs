@@ -27,12 +27,9 @@ namespace GrpcAgent.WebsocketRpcServer
                     Code = 200,
                     Msg = "KeepAlive Successful!"
                 }
-
             };
-
             return Task.FromResult(keepAliveReply);
         }
-
 
         public override Task<StartLiveReply> StartLive(StartLiveRequest request, ServerCallContext context)
         {

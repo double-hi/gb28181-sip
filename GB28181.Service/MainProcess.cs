@@ -311,7 +311,12 @@ namespace GB28181Service
         {
             string hostname = Dns.GetHostName();
             IPHostEntry ipadrlist = Dns.GetHostByName(hostname);
-            IPAddress localaddr = ipadrlist.AddressList[0];
+            IPAddress localaddr = null;
+            foreach (IPAddress obj in ipadrlist.AddressList)
+            {
+                localaddr = obj;
+            }
+            logger.Debug("Local machine Dns: " + localaddr.ToString());
             return localaddr.ToString();
         }
         /// <summary>
@@ -329,13 +334,7 @@ namespace GB28181Service
                     ID = "gb28181" + Dns.GetHostName(),
                     Name = "gb28181",
                     Port = EnvironmentVariables.GBServerGrpcPort,
-                    Tags = new[] { "gb28181" },
-                    Check = new AgentServiceCheck()
-                    {
-                        HTTP = GetIPAddress(),
-                        Interval = new TimeSpan(0, 0, 10),
-                        DeregisterCriticalServiceAfter = new TimeSpan(0, 1, 0),
-                    }
+                    Tags = new[] { "gb28181" }
                 };
                 var result = clients.Agent.ServiceRegister(_AgentServiceRegistration).Result;
                 logger.Debug("GB server("+ "gb28181" + Dns.GetHostName() + ") registering consul completed.");
@@ -347,7 +346,7 @@ namespace GB28181Service
         }
         private void ConfigurationOverview(ConsulClientConfiguration obj)
         {
-            obj.Address = new Uri("http://" + (EnvironmentVariables.MicroRegistryAddress ?? "10.78.115.182:8500"));
+            obj.Address = new Uri("http://" + (EnvironmentVariables.MicroRegistryAddress ?? "10.78.115.124:8500"));
             obj.Datacenter = "dc1";
         }
         #endregion
