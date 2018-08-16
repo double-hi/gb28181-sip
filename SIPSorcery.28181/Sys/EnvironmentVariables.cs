@@ -6,6 +6,8 @@ namespace SIPSorcery.GB28181.Sys
 {
     public class EnvironmentVariables
     {
+        private const string MICRO_REGISTRY_ADDRESS = "MICRO_REGISTRY_ADDRESS";
+        private static string _MICRO_REGISTRY_ADDRESS;
         private const string GB_SERVICE_LOCAL_ID = "GB_SERVICE_LOCAL_ID";//42010000002100000002
         private static string _GB_SERVICE_LOCAL_ID;
         private const string GB_SERVICE_LOCAL_IP = "GB_SERVICE_LOCAL_IP";//10.78.115.149
@@ -14,6 +16,11 @@ namespace SIPSorcery.GB28181.Sys
         private static string _GB_SERVER_CHANNEL_ADDRESS;
         private const string GB_NATS_CHANNEL_ADDRESS = "GB_NATS_CHANNEL_ADDRESS";//nats://10.78.115.149:4222
         private static string _GB_NATS_CHANNEL_ADDRESS;
+        public static string MicroRegistryAddress
+        {
+            get { return _MICRO_REGISTRY_ADDRESS ?? Environment.GetEnvironmentVariable(MICRO_REGISTRY_ADDRESS); }
+            set { _MICRO_REGISTRY_ADDRESS = value; }
+        }
         public static string GbServiceLocalId
         {
             get { return _GB_SERVICE_LOCAL_ID ?? Environment.GetEnvironmentVariable(GB_SERVICE_LOCAL_ID); }

@@ -23,6 +23,8 @@ using GrpcDeviceCatalog;
 using Grpc.Core;
 using GrpcGb28181Config;
 using GrpcProtocol;
+using Consul;
+using System.Net;
 
 namespace GB28181Service
 {
@@ -50,11 +52,14 @@ namespace GB28181Service
         private DateTime _keepaliveTime;
         private Queue<HeartBeatEndPoint> _keepAliveQueue = new Queue<HeartBeatEndPoint>();
 
-        private Queue<Catalog> _catalogQueue = new Queue<Catalog>();
+        private Queue<SIPSorcery.GB28181.Sys.XML.Catalog> _catalogQueue = new Queue<SIPSorcery.GB28181.Sys.XML.Catalog>();
 
         private readonly ServiceCollection servicesContainer = new ServiceCollection();
 
         private ServiceProvider _serviceProvider = null;
+
+        private AgentServiceRegistration _AgentServiceRegistration = null;
+
         public MainProcess()
         {
 
@@ -102,6 +107,8 @@ namespace GB28181Service
             var config = builder.Build();//Console.WriteLine(config["sipaccount:ID"]);
             //var sect = config.GetSection("sipaccounts");
 
+            //Consul Register
+            ServiceRegister();
             //InitServer
             SipAccountStorage.RPCGBServerConfigReceived += SipAccountStorage_RPCGBServerConfigReceived;
 
@@ -295,6 +302,51 @@ namespace GB28181Service
                     throw exceptionObj;
                 }
             }
+        }
+
+
+        public string GetIPAddress()
+        {
+            string hostname = Dns.GetHostName();
+            IPHostEntry ipadrlist = Dns.GetHostByName(hostname);
+            IPAddress localaddr = ipadrlist.AddressList[0];
+            return localaddr.ToString();
+        }
+
+        /// <summary>
+        /// Consul Register
+        /// </summary>
+        /// <param name="client"></param>
+        private void ServiceRegister()
+        {
+            try
+            {
+                var clients = new ConsulClient(ConfigurationOverview);
+                _AgentServiceRegistration = new AgentServiceRegistration()
+                {
+                    Address = GetIPAddress(),
+                    ID = "gb28181" + Dns.GetHostName(),
+                    Name = "gb28181",
+                    Port = 50051,
+                    Tags = new[] { "gb28181" },
+                    Check = new AgentServiceCheck()
+                    {
+                        HTTP = GetIPAddress(),
+                        Interval = new TimeSpan(0, 0, 10),
+                        DeregisterCriticalServiceAfter = new TimeSpan(0, 1, 0),
+                    }
+                };
+                var result = clients.Agent.ServiceRegister(_AgentServiceRegistration).Result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Consul Register: " + ex.Message);
+            }
+        }
+        private void ConfigurationOverview(ConsulClientConfiguration obj)
+        {
+            obj.Address = new Uri("http://" + (EnvironmentVariables.MicroRegistryAddress ?? "10.78.115.182:8500"));
+            obj.Datacenter = "dc1";
         }
     }
 }
