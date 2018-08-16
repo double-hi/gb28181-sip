@@ -79,7 +79,7 @@ namespace SIPSorcery.GB28181.Sys
                     {
                         logger = LogManager.GetLogger(APP_LOGGING_ID);
                         logger.Debug("Logging initialised.");
-                        logger.Debug("EnvironmentVariables.MicroRegistryAddress: " + (EnvironmentVariables.MicroRegistryAddress ?? "10.78.115.182:8500"));
+                        logger.Debug("EnvironmentVariables.MicroRegistryAddress: " + (EnvironmentVariables.MicroRegistryAddress ?? "10.78.115.124:8500"));
                         logger.Debug("EnvironmentVariables.GBNatsChannelAddress: " + (EnvironmentVariables.GBNatsChannelAddress ?? "nats://10.78.115.149:4222"));
                         logger.Debug("EnvironmentVariables.GBServerChannelAddress: " + (EnvironmentVariables.GBServerChannelAddress ?? "10.78.115.149:5000"));
                         logger.Debug("EnvironmentVariables.GbServiceLocalIp: " + (EnvironmentVariables.GbServiceLocalIp ?? "10.78.115.149"));
