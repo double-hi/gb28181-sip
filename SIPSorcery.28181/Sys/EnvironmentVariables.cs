@@ -6,7 +6,7 @@ namespace SIPSorcery.GB28181.Sys
 {
     public class EnvironmentVariables
     {
-        private const string MICRO_REGISTRY_ADDRESS = "MICRO_REGISTRY_ADDRESS";
+        private const string MICRO_REGISTRY_ADDRESS = "MICRO_REGISTRY_ADDRESS";//10.78.115.124:8500
         private static string _MICRO_REGISTRY_ADDRESS;
         private const string GB_SERVICE_LOCAL_ID = "GB_SERVICE_LOCAL_ID";//42010000002100000002
         private static string _GB_SERVICE_LOCAL_ID;
