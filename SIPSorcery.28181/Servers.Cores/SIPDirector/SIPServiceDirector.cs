@@ -99,6 +99,7 @@ namespace SIPSorcery.GB28181.Servers
                 return null;
             }
             target.ByeVideoReq();
+            logger.Debug("Make video request stopped.");
             return null;
 
             //var taskResult = await Task.Factory.StartNew(() =>

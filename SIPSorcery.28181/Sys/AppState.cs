@@ -79,12 +79,12 @@ namespace SIPSorcery.GB28181.Sys
                     {
                         logger = LogManager.GetLogger(APP_LOGGING_ID);
                         logger.Debug("Logging initialised.");
-                        logger.Debug("EnvironmentVariables.MicroRegistryAddress: " + (EnvironmentVariables.MicroRegistryAddress ?? "10.78.115.124:8500"));
-                        logger.Debug("EnvironmentVariables.GBNatsChannelAddress: " + (EnvironmentVariables.GBNatsChannelAddress ?? "nats://10.78.115.149:4222"));
-                        logger.Debug("EnvironmentVariables.GBServerChannelAddress: " + (EnvironmentVariables.GBServerChannelAddress ?? "10.78.115.149:5000"));
-                        logger.Debug("EnvironmentVariables.GbServiceLocalIp: " + (EnvironmentVariables.GbServiceLocalIp ?? "10.78.115.149"));
+                        logger.Debug("EnvironmentVariables.MICRO_REGISTRY_ADDRESS: " + (EnvironmentVariables.MicroRegistryAddress ?? "10.78.115.124:8500"));
+                        logger.Debug("EnvironmentVariables.GB_NATS_CHANNEL_ADDRESS: " + (EnvironmentVariables.GBNatsChannelAddress ?? "nats://10.78.115.149:4222"));
+                        logger.Debug("EnvironmentVariables.GB_SERVER_CHANNEL_ADDRESS: " + (EnvironmentVariables.GBServerChannelAddress ?? "10.78.115.149:5000"));
+                        logger.Debug("EnvironmentVariables.GB_SERVICE_LOCAL_IP: " + (EnvironmentVariables.GbServiceLocalIp ?? "10.78.115.149"));
                         logger.Debug("EnvironmentVariables.GbServiceLocalPort: " + EnvironmentVariables.GbServiceLocalPort);
-                        logger.Debug("EnvironmentVariables.GbServiceLocalId: " + (EnvironmentVariables.GbServiceLocalId ?? "42010000002100000002"));
+                        logger.Debug("EnvironmentVariables.GB_SERVICE_LOCAL_ID: " + (EnvironmentVariables.GbServiceLocalId ?? "42010000002100000002"));
                         logger.Debug("EnvironmentVariables.GBServerGrpcPort: " + EnvironmentVariables.GBServerGrpcPort);
                         logger.Debug("Notes: if EnvironmentVariables have no value, it gets from xml config.");
                     }

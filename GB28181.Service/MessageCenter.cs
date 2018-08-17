@@ -47,12 +47,7 @@ namespace GB28181Service
         /// <param name="state">sip状态</param>
         private void SetSIPService(string msg, ServiceStatus state)
         {
-            if (state == ServiceStatus.Wait)
-            {
-            }
-            else
-            {
-            }
+            logger.Debug("SIP Service Status: " + msg + "," + state);
         }
 
         ///// <summary>
