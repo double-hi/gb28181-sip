@@ -25,6 +25,7 @@ using GrpcGb28181Config;
 using GrpcProtocol;
 using Consul;
 using System.Net;
+using GrpcVideoOnDemand;
 
 namespace GB28181Service
 {
@@ -150,6 +151,7 @@ namespace GB28181Service
                             .AddScoped<DeviceCatalog.DeviceCatalogBase, DeviceCatalogImpl>()
                             .AddScoped<Manage.Manage.ManageBase, DeviceManageImpl>()
                             .AddScoped<DeviceFeature.DeviceFeatureBase, DeviceFeatureImpl>()
+                            .AddScoped<VideoOnDemand.VideoOnDemandBase, VideoOnDemandImpl>()
                             .AddSingleton<IServiceCollection>(servicesContainer); // add itself 
             _serviceProvider = servicesContainer.BuildServiceProvider();
         }
@@ -170,7 +172,7 @@ namespace GB28181Service
                     //_mainSipService.OnCatalogReceived += messageHandler.OnCatalogReceived;
                     //_mainSipService.OnNotifyCatalogReceived += messageHandler.OnNotifyCatalogReceived;
                     _mainSipService.OnAlarmReceived += messageHandler.OnAlarmReceived;
-                    _mainSipService.OnRecordInfoReceived += messageHandler.OnRecordInfoReceived;
+                    //_mainSipService.OnRecordInfoReceived += messageHandler.OnRecordInfoReceived;
                     //_mainSipService.OnDeviceStatusReceived += messageHandler.OnDeviceStatusReceived;
                     _mainSipService.OnDeviceInfoReceived += messageHandler.OnDeviceInfoReceived;
                     _mainSipService.OnMediaStatusReceived += messageHandler.OnMediaStatusReceived;
