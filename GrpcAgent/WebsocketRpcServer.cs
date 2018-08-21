@@ -9,6 +9,7 @@ using GrpcPtzControl;
 using GrpcDeviceCatalog;
 using Manage;
 using GrpcProtocol;
+using GrpcVideoOnDemand;
 
 namespace GrpcAgent
 {
@@ -25,6 +26,7 @@ namespace GrpcAgent
         private DeviceCatalog.DeviceCatalogBase _deviceCatalogService;
         private Manage.Manage.ManageBase _deviceManageService;
         private DeviceFeature.DeviceFeatureBase _deviceFeatureService;
+        private VideoOnDemand.VideoOnDemandBase _videoOnDemandService;
         public string Ipaddress { get => _ipaddress; set => _ipaddress = value; }
         public int Port { get => _port; set => _port = value; }
 
@@ -37,13 +39,15 @@ namespace GrpcAgent
             PtzControl.PtzControlBase ptzControlService,
             DeviceCatalog.DeviceCatalogBase deviceCatalogService,
             Manage.Manage.ManageBase deviceManageService,
-            DeviceFeature.DeviceFeatureBase deviceFeatureService)
+            DeviceFeature.DeviceFeatureBase deviceFeatureService,
+            VideoOnDemand.VideoOnDemandBase videoOnDemandService)
         {
             _videoSession = videoSessionImp;
             _ptzControlService = ptzControlService;
             _deviceCatalogService = deviceCatalogService;
             _deviceManageService = deviceManageService;
             _deviceFeatureService = deviceFeatureService;
+            _videoOnDemandService = videoOnDemandService;
         }
 
         public void Run()
@@ -55,7 +59,8 @@ namespace GrpcAgent
                     PtzControl.BindService(_ptzControlService),
                     DeviceCatalog.BindService(_deviceCatalogService),
                     Manage.Manage.BindService(_deviceManageService),
-                    DeviceFeature.BindService(_deviceFeatureService)
+                    DeviceFeature.BindService(_deviceFeatureService),
+                    VideoOnDemand.BindService(_videoOnDemandService)
                 },
                 Ports = { new ServerPort(_ipaddress, _port, ServerCredentials.Insecure) }
             };

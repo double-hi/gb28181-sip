@@ -20,6 +20,8 @@ namespace SIPSorcery.GB28181.Servers
         public Queue<NotifyCatalog.Item> NotifyCatalogItem => _NotifyCatalogItem; 
         private Dictionary<string, DeviceStatus> _DeviceStatuses = new Dictionary<string, DeviceStatus>();
         public Dictionary<string, DeviceStatus> DeviceStatuses => _DeviceStatuses;
+        private Dictionary<string, RecordInfo> _RecordInfoes = new Dictionary<string, RecordInfo>();
+        public Dictionary<string, RecordInfo> RecordInfoes => _RecordInfoes;
 
         public SIPServiceDirector(ISipMessageCore sipCoreMessageService)
         {
@@ -28,8 +30,9 @@ namespace SIPSorcery.GB28181.Servers
             _sipCoreMessageService.OnNotifyCatalogReceived += _sipCoreMessageService_OnNotifyCatalogReceived;
             //_sipCoreMessageService.OnAlarmReceived += _sipCoreMessageService_OnAlarmReceived;
             _sipCoreMessageService.OnDeviceStatusReceived += _sipCoreMessageService_OnDeviceStatusReceived;
+            _sipCoreMessageService.OnRecordInfoReceived += _sipCoreMessageService_OnRecordInfoReceived;
         }
-        
+
         //#region 报警通知
         //private void _sipCoreMessageService_OnAlarmReceived(Alarm obj)
         //{
@@ -192,9 +195,39 @@ namespace SIPSorcery.GB28181.Servers
                 DeviceStatuses.Add(arg2.DeviceID, arg2);
             }
         }
+        /// <summary>
+        /// Device Status Query
+        /// </summary>
+        /// <param name="deviceid"></param>
         public void DeviceStateQuery(string deviceid)
         {
             _sipCoreMessageService.DeviceStateQuery(deviceid);
+        }
+        #endregion
+        #region 录像点播
+        private void _sipCoreMessageService_OnRecordInfoReceived(RecordInfo obj)
+        {
+            if (!RecordInfoes.ContainsKey(obj.DeviceID))
+            {
+                RecordInfoes.Add(obj.DeviceID, obj);
+            }
+            else
+            {
+                RecordInfoes.Remove(obj.DeviceID);
+                RecordInfoes.Add(obj.DeviceID, obj);
+            }
+        }
+        /// <summary>
+        /// History Record File Query
+        /// </summary>
+        /// <param name="deviceId"></param>
+        /// <param name="startTime"></param>
+        /// <param name="endTime"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public int RecordFileQuery(string deviceId, DateTime startTime, DateTime endTime, string type)
+        {
+            return _sipCoreMessageService.RecordFileQuery(deviceId, startTime, endTime, type);
         }
         #endregion
     }

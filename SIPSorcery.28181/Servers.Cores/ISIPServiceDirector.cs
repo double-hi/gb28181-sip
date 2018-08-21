@@ -10,8 +10,9 @@ namespace SIPSorcery.GB28181.Servers
     {
         Dictionary<string, Catalog> Catalogs { get; }
         Queue<NotifyCatalog.Item> NotifyCatalogItem { get; }
-        ISIPMonitorCore GetTargetMonitorService(string gbid); 
+        ISIPMonitorCore GetTargetMonitorService(string gbid);
         Dictionary<string, DeviceStatus> DeviceStatuses { get; }
+        Dictionary<string, RecordInfo> RecordInfoes { get; }
 
         //ip/port/protocol/ 
         Task<Tuple<string, int, ProtocolType>> MakeVideoRequest(string gbid, int[] mediaPort, string receiveIP);
@@ -37,5 +38,6 @@ namespace SIPSorcery.GB28181.Servers
         /// <param name="deviceid"></param>
         void PtzControl(SIPMonitor.PTZCommand ptzCommand, int speed, string deviceid);
         void DeviceStateQuery(string deviceid);
+        int RecordFileQuery(string deviceId, DateTime startTime, DateTime endTime, string type);
     }
 }

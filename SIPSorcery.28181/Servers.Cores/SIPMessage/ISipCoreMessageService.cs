@@ -41,6 +41,7 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
         void DeviceCatalogQuery();
         void DeviceCatalogQuery(string deviceId);
         void DeviceCatalogSubscribe(string deviceId);
+        int RecordFileQuery(string deviceId, DateTime startTime, DateTime endTime, string type);
 
 
         #region 事件

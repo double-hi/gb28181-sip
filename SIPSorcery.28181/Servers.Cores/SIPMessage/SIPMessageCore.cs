@@ -182,7 +182,7 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
             }
             catch(Exception ex)
             {
-                logger.Debug("_cameraCache_OnItemAdded: " + ex.Message);
+                logger.Debug("Exception _cameraCache_OnItemAdded: " + ex.Message);
             }
         }
         
@@ -204,7 +204,7 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
             }
             catch (Exception excp)
             {
-                logger.Error("Exception SIPMessageCoreService Start. " + excp.Message);
+                logger.Error("Exception Start: " + excp.Message);
             }
         }
 
@@ -235,7 +235,7 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
             }
             catch (Exception excp)
             {
-                logger.Error("Exception SIPRegistrarDaemon Stop. " + excp.Message);
+                logger.Error("Exception Stop: " + excp.Message);
             }
         }
 
@@ -257,7 +257,7 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
             }
             catch (Exception excp)
             {
-                logger.Error("PtzContrl(): " + excp.Message);
+                logger.Error("Exception PtzControl: " + excp.Message);
             }
         }
         public void DeviceStateQuery(string deviceId)
@@ -278,8 +278,32 @@ namespace SIPSorcery.GB28181.Servers.SIPMessage
             }
             catch (Exception excp)
             {
-                logger.Error("DeviceStateQuery(): " + excp.Message);
+                logger.Error("Exception DeviceStateQuery: " + excp.Message);
             }
+        }
+
+        public int RecordFileQuery(string deviceId, DateTime startTime, DateTime endTime, string type)
+        {
+            int RecordTotal = 0;
+            try
+            {
+                logger.Debug("RecordFileQuery started.");
+
+                foreach (var item in _nodeMonitorService.ToArray())
+                {
+                    if (item.Key.Equals(deviceId))
+                    {
+                        RecordTotal = item.Value.RecordFileQuery(startTime, endTime, type);
+                    }
+                }
+
+                logger.Debug("RecordFileQuery halted.");
+            }
+            catch (Exception excp)
+            {
+                logger.Error("Exception RecordFileQuery: " + excp.Message);
+            }
+            return RecordTotal;
         }
         #endregion
 

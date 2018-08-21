@@ -69,21 +69,21 @@ namespace GB28181Service
         {
         }
         
-        /// <summary>
-        /// 录像查询回调
-        /// </summary>
-        /// <param name="record"></param>
-        internal void OnRecordInfoReceived(RecordInfo record)
-        {
-            SetRecord(record);
-        }
+        ///// <summary>
+        ///// 录像查询回调
+        ///// </summary>
+        ///// <param name="record"></param>
+        //internal void OnRecordInfoReceived(RecordInfo record)
+        //{
+        //    SetRecord(record);
+        //}
 
-        private void SetRecord(RecordInfo record)
-        {
-            foreach (var item in record.RecordItems.Items)
-            {
-            }
-        }
+        //private void SetRecord(RecordInfo record)
+        //{
+        //    foreach (var item in record.RecordItems.Items)
+        //    {
+        //    }
+        //}
 
         //internal void OnNotifyCatalogReceived(NotifyCatalog notify)
         //{
