@@ -135,7 +135,7 @@ namespace SIPSorcery.GB28181.Servers
         /// Device Catalog Query
         /// </summary>
         /// <param name="deviceId"></param>
-        public void GetCatalog(string deviceId)
+        public void DeviceCatalogQuery(string deviceId)
         {
             logger.Debug("Device Catalog Query started.");
             _sipCoreMessageService.DeviceCatalogQuery(deviceId);

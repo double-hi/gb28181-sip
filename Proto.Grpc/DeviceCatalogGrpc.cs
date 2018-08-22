@@ -12,19 +12,19 @@ namespace GrpcDeviceCatalog {
   {
     static readonly string __ServiceName = "GrpcDeviceCatalog.DeviceCatalog";
 
-    static readonly grpc::Marshaller<global::GrpcDeviceCatalog.GetCatalogRequest> __Marshaller_GetCatalogRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcDeviceCatalog.GetCatalogRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::GrpcDeviceCatalog.GetCatalogReply> __Marshaller_GetCatalogReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcDeviceCatalog.GetCatalogReply.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::GrpcDeviceCatalog.DeviceCatalogQueryRequest> __Marshaller_DeviceCatalogQueryRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcDeviceCatalog.DeviceCatalogQueryRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::GrpcDeviceCatalog.DeviceCatalogQueryReply> __Marshaller_DeviceCatalogQueryReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcDeviceCatalog.DeviceCatalogQueryReply.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GrpcDeviceCatalog.DeviceCatalogSubscribeRequest> __Marshaller_DeviceCatalogSubscribeRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcDeviceCatalog.DeviceCatalogSubscribeRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GrpcDeviceCatalog.DeviceCatalogSubscribeReply> __Marshaller_DeviceCatalogSubscribeReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcDeviceCatalog.DeviceCatalogSubscribeReply.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GrpcDeviceCatalog.DeviceCatalogNotifyRequest> __Marshaller_DeviceCatalogNotifyRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcDeviceCatalog.DeviceCatalogNotifyRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GrpcDeviceCatalog.DeviceCatalogNotifyReply> __Marshaller_DeviceCatalogNotifyReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcDeviceCatalog.DeviceCatalogNotifyReply.Parser.ParseFrom);
 
-    static readonly grpc::Method<global::GrpcDeviceCatalog.GetCatalogRequest, global::GrpcDeviceCatalog.GetCatalogReply> __Method_GetCatalog = new grpc::Method<global::GrpcDeviceCatalog.GetCatalogRequest, global::GrpcDeviceCatalog.GetCatalogReply>(
+    static readonly grpc::Method<global::GrpcDeviceCatalog.DeviceCatalogQueryRequest, global::GrpcDeviceCatalog.DeviceCatalogQueryReply> __Method_DeviceCatalogQuery = new grpc::Method<global::GrpcDeviceCatalog.DeviceCatalogQueryRequest, global::GrpcDeviceCatalog.DeviceCatalogQueryReply>(
         grpc::MethodType.Unary,
         __ServiceName,
-        "GetCatalog",
-        __Marshaller_GetCatalogRequest,
-        __Marshaller_GetCatalogReply);
+        "DeviceCatalogQuery",
+        __Marshaller_DeviceCatalogQueryRequest,
+        __Marshaller_DeviceCatalogQueryReply);
 
     static readonly grpc::Method<global::GrpcDeviceCatalog.DeviceCatalogSubscribeRequest, global::GrpcDeviceCatalog.DeviceCatalogSubscribeReply> __Method_DeviceCatalogSubscribe = new grpc::Method<global::GrpcDeviceCatalog.DeviceCatalogSubscribeRequest, global::GrpcDeviceCatalog.DeviceCatalogSubscribeReply>(
         grpc::MethodType.Unary,
@@ -49,7 +49,7 @@ namespace GrpcDeviceCatalog {
     /// <summary>Base class for server-side implementations of DeviceCatalog</summary>
     public abstract partial class DeviceCatalogBase
     {
-      public virtual global::System.Threading.Tasks.Task<global::GrpcDeviceCatalog.GetCatalogReply> GetCatalog(global::GrpcDeviceCatalog.GetCatalogRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::GrpcDeviceCatalog.DeviceCatalogQueryReply> DeviceCatalogQuery(global::GrpcDeviceCatalog.DeviceCatalogQueryRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -89,21 +89,21 @@ namespace GrpcDeviceCatalog {
       {
       }
 
-      public virtual global::GrpcDeviceCatalog.GetCatalogReply GetCatalog(global::GrpcDeviceCatalog.GetCatalogRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual global::GrpcDeviceCatalog.DeviceCatalogQueryReply DeviceCatalogQuery(global::GrpcDeviceCatalog.DeviceCatalogQueryRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
-        return GetCatalog(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+        return DeviceCatalogQuery(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual global::GrpcDeviceCatalog.GetCatalogReply GetCatalog(global::GrpcDeviceCatalog.GetCatalogRequest request, grpc::CallOptions options)
+      public virtual global::GrpcDeviceCatalog.DeviceCatalogQueryReply DeviceCatalogQuery(global::GrpcDeviceCatalog.DeviceCatalogQueryRequest request, grpc::CallOptions options)
       {
-        return CallInvoker.BlockingUnaryCall(__Method_GetCatalog, null, options, request);
+        return CallInvoker.BlockingUnaryCall(__Method_DeviceCatalogQuery, null, options, request);
       }
-      public virtual grpc::AsyncUnaryCall<global::GrpcDeviceCatalog.GetCatalogReply> GetCatalogAsync(global::GrpcDeviceCatalog.GetCatalogRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncUnaryCall<global::GrpcDeviceCatalog.DeviceCatalogQueryReply> DeviceCatalogQueryAsync(global::GrpcDeviceCatalog.DeviceCatalogQueryRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
-        return GetCatalogAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+        return DeviceCatalogQueryAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual grpc::AsyncUnaryCall<global::GrpcDeviceCatalog.GetCatalogReply> GetCatalogAsync(global::GrpcDeviceCatalog.GetCatalogRequest request, grpc::CallOptions options)
+      public virtual grpc::AsyncUnaryCall<global::GrpcDeviceCatalog.DeviceCatalogQueryReply> DeviceCatalogQueryAsync(global::GrpcDeviceCatalog.DeviceCatalogQueryRequest request, grpc::CallOptions options)
       {
-        return CallInvoker.AsyncUnaryCall(__Method_GetCatalog, null, options, request);
+        return CallInvoker.AsyncUnaryCall(__Method_DeviceCatalogQuery, null, options, request);
       }
       public virtual global::GrpcDeviceCatalog.DeviceCatalogSubscribeReply DeviceCatalogSubscribe(global::GrpcDeviceCatalog.DeviceCatalogSubscribeRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
@@ -149,7 +149,7 @@ namespace GrpcDeviceCatalog {
     public static grpc::ServerServiceDefinition BindService(DeviceCatalogBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
-          .AddMethod(__Method_GetCatalog, serviceImpl.GetCatalog)
+          .AddMethod(__Method_DeviceCatalogQuery, serviceImpl.DeviceCatalogQuery)
           .AddMethod(__Method_DeviceCatalogSubscribe, serviceImpl.DeviceCatalogSubscribe)
           .AddMethod(__Method_DeviceCatalogNotify, serviceImpl.DeviceCatalogNotify).Build();
     }

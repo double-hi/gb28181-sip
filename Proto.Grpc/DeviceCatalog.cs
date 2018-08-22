@@ -24,61 +24,62 @@ namespace GrpcDeviceCatalog {
     static DeviceCatalogReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChRkZXZpY2VfY2F0YWxvZy5wcm90bxIRR3JwY0RldmljZUNhdGFsb2ciJQoR",
-            "R2V0Q2F0YWxvZ1JlcXVlc3QSEAoIZGV2aWNlaWQYASABKAkiPwoPR2V0Q2F0",
-            "YWxvZ1JlcGx5EiwKB0NhdGFsb2cYASABKAsyGy5HcnBjRGV2aWNlQ2F0YWxv",
-            "Zy5JbnN0YW5jZSKZAQoISW5zdGFuY2USLwoHQ21kVHlwZRgBIAEoDjIeLkdy",
-            "cGNEZXZpY2VDYXRhbG9nLkNvbW1hbmRUeXBlEhAKCERldmljZUlEGAIgASgJ",
-            "Ei4KCkRldmljZUxpc3QYAyABKAsyGi5HcnBjRGV2aWNlQ2F0YWxvZy5EZXZM",
-            "aXN0EgoKAlNOGAQgASgJEg4KBlN1bU51bRgFIAEoCSIxCgdEZXZMaXN0EiYK",
-            "BUl0ZW1zGAEgAygLMhcuR3JwY0RldmljZUNhdGFsb2cuSXRlbSKNBAoESXRl",
-            "bRIQCghEZXZpY2VJRBgBIAEoCRIMCgROYW1lGAIgASgJEhQKDE1hbnVmYWN0",
-            "dXJlchgDIAEoCRINCgVNb2RlbBgEIAEoCRINCgVPd25lchgFIAEoCRIRCglD",
-            "aXZpbENvZGUYBiABKAkSDQoFQmxvY2sYByABKAkSDwoHQWRkcmVzcxgIIAEo",
-            "CRIQCghQYXJlbnRhbBgJIAEoBRIQCghQYXJlbnRJRBgKIAEoCRIXCg9CdXNp",
-            "bmVzc0dyb3VwSUQYCyABKAkSEQoJU2FmZXR5V2F5GAwgASgFEhMKC1JlZ2lz",
-            "dGVyV2F5GA0gASgFEg8KB0NlcnROdW0YDiABKAkSEwoLQ2VydGlmaWFibGUY",
-            "DyABKAUSDwoHRXJyQ29kZRgQIAEoCRIPCgdFbmRUaW1lGBEgASgJEg8KB1Nl",
-            "Y3JlY3kYEiABKAkSEQoJSVBBZGRyZXNzGBMgASgJEgwKBFBvcnQYFCABKAUS",
-            "EAoIUGFzc3dvcmQYFSABKAkSLAoGU3RhdHVzGBYgASgOMhwuR3JwY0Rldmlj",
-            "ZUNhdGFsb2cuRGV2U3RhdHVzEhEKCUxvbmdpdHVkZRgXIAEoARIQCghMYXRp",
-            "dHVkZRgYIAEoARIoCgdJbmZMaXN0GBkgASgLMhcuR3JwY0RldmljZUNhdGFs",
-            "b2cuSW5mbxIQCghSZW1vdGVFUBgaIAEoCSLYAwoESW5mbxIPCgdQVFpUeXBl",
-            "GAEgASgFEhQKDFBUWlR5cGVWYWx1ZRgCIAEoCRIUCgxQb3NpdGlvblR5cGUY",
-            "AyABKAUSGQoRUG9zaXRpb25UeXBlVmFsdWUYBCABKAkSEAoIUm9vbVR5cGUY",
-            "BSABKAUSFQoNUm9vbVR5cGVWYWx1ZRgGIAEoCRIPCgdVc2VUeXBlGAcgASgF",
-            "EhQKDFVzZVR5cGVWYWx1ZRgIIAEoCRIXCg9TdXBwbHlMaWdodFR5cGUYCSAB",
-            "KAUSHAoUU3VwcGx5TGlnaHRUeXBlVmFsdWUYCiABKAkSFQoNRGlyZWN0aW9u",
-            "VHlwZRgLIAEoBRIaChJEaXJlY3Rpb25UeXBlVmFsdWUYDCABKAkSEgoKUmVz",
-            "b2x1dGlvbhgNIAEoCRIXCg9CdXNpbmVzc0dyb3VwSUQYDiABKAkSFQoNRG93",
-            "bmxvYWRTcGVlZBgPIAEoCRIbChNTVkNTcGFjZVN1cHBvcnRNb2RlGBAgASgF",
-            "EiAKGFNWQ1NwYWNlU3VwcG9ydE1vZGVWYWx1ZRgRIAEoCRIaChJTVkNUaW1l",
-            "U3VwcG9ydE1vZGUYEiABKAUSHwoXU1ZDVGltZVN1cHBvcnRNb2RlVmFsdWUY",
-            "EyABKAkiMQodRGV2aWNlQ2F0YWxvZ1N1YnNjcmliZVJlcXVlc3QSEAoIZGV2",
-            "aWNlaWQYASABKAkiLgobRGV2aWNlQ2F0YWxvZ1N1YnNjcmliZVJlcGx5Eg8K",
-            "B21lc3NhZ2UYASABKAkiHAoaRGV2aWNlQ2F0YWxvZ05vdGlmeVJlcXVlc3Qi",
-            "QQoYRGV2aWNlQ2F0YWxvZ05vdGlmeVJlcGx5EiUKBGl0ZW0YASABKAsyFy5H",
-            "cnBjRGV2aWNlQ2F0YWxvZy5JdGVtKpcCCgtDb21tYW5kVHlwZRILCgdVbmtu",
-            "b3duEAASDQoJS2VlcGFsaXZlEAESCwoHQ2F0YWxvZxACEggKBFBsYXkQAxIM",
-            "CghQbGF5YmFjaxAEEhEKDURldmljZUNvbnRyb2wQBRIJCgVBbGFybRAGEg4K",
-            "CkRldmljZUluZm8QBxIQCgxEZXZpY2VTdGF0dXMQCBIOCgpSZWNvcmRJbmZv",
-            "EAkSDAoIRG93bmxvYWQQChISCg5Db25maWdEb3dubG9hZBALEg0KCUJyb2Fk",
-            "Y2FzdBAMEg8KC1ByZXNldFF1ZXJ5EA0SEgoOTW9iaWxlUG9zaXRpb24QDhIQ",
-            "CgxEZXZpY2VDb25maWcQDxIPCgtNZWRpYVN0YXR1cxAQKhwKCURldlN0YXR1",
-            "cxIGCgJPThAAEgcKA09GRhABMtwCCg1EZXZpY2VDYXRhbG9nElgKCkdldENh",
-            "dGFsb2cSJC5HcnBjRGV2aWNlQ2F0YWxvZy5HZXRDYXRhbG9nUmVxdWVzdBoi",
-            "LkdycGNEZXZpY2VDYXRhbG9nLkdldENhdGFsb2dSZXBseSIAEnwKFkRldmlj",
-            "ZUNhdGFsb2dTdWJzY3JpYmUSMC5HcnBjRGV2aWNlQ2F0YWxvZy5EZXZpY2VD",
-            "YXRhbG9nU3Vic2NyaWJlUmVxdWVzdBouLkdycGNEZXZpY2VDYXRhbG9nLkRl",
-            "dmljZUNhdGFsb2dTdWJzY3JpYmVSZXBseSIAEnMKE0RldmljZUNhdGFsb2dO",
-            "b3RpZnkSLS5HcnBjRGV2aWNlQ2F0YWxvZy5EZXZpY2VDYXRhbG9nTm90aWZ5",
-            "UmVxdWVzdBorLkdycGNEZXZpY2VDYXRhbG9nLkRldmljZUNhdGFsb2dOb3Rp",
-            "ZnlSZXBseSIAYgZwcm90bzM="));
+            "ChRkZXZpY2VfY2F0YWxvZy5wcm90bxIRR3JwY0RldmljZUNhdGFsb2ciLQoZ",
+            "RGV2aWNlQ2F0YWxvZ1F1ZXJ5UmVxdWVzdBIQCghkZXZpY2VpZBgBIAEoCSJH",
+            "ChdEZXZpY2VDYXRhbG9nUXVlcnlSZXBseRIsCgdDYXRhbG9nGAEgASgLMhsu",
+            "R3JwY0RldmljZUNhdGFsb2cuSW5zdGFuY2UimQEKCEluc3RhbmNlEi8KB0Nt",
+            "ZFR5cGUYASABKA4yHi5HcnBjRGV2aWNlQ2F0YWxvZy5Db21tYW5kVHlwZRIQ",
+            "CghEZXZpY2VJRBgCIAEoCRIuCgpEZXZpY2VMaXN0GAMgASgLMhouR3JwY0Rl",
+            "dmljZUNhdGFsb2cuRGV2TGlzdBIKCgJTThgEIAEoCRIOCgZTdW1OdW0YBSAB",
+            "KAkiMQoHRGV2TGlzdBImCgVJdGVtcxgBIAMoCzIXLkdycGNEZXZpY2VDYXRh",
+            "bG9nLkl0ZW0ijQQKBEl0ZW0SEAoIRGV2aWNlSUQYASABKAkSDAoETmFtZRgC",
+            "IAEoCRIUCgxNYW51ZmFjdHVyZXIYAyABKAkSDQoFTW9kZWwYBCABKAkSDQoF",
+            "T3duZXIYBSABKAkSEQoJQ2l2aWxDb2RlGAYgASgJEg0KBUJsb2NrGAcgASgJ",
+            "Eg8KB0FkZHJlc3MYCCABKAkSEAoIUGFyZW50YWwYCSABKAUSEAoIUGFyZW50",
+            "SUQYCiABKAkSFwoPQnVzaW5lc3NHcm91cElEGAsgASgJEhEKCVNhZmV0eVdh",
+            "eRgMIAEoBRITCgtSZWdpc3RlcldheRgNIAEoBRIPCgdDZXJ0TnVtGA4gASgJ",
+            "EhMKC0NlcnRpZmlhYmxlGA8gASgFEg8KB0VyckNvZGUYECABKAkSDwoHRW5k",
+            "VGltZRgRIAEoCRIPCgdTZWNyZWN5GBIgASgJEhEKCUlQQWRkcmVzcxgTIAEo",
+            "CRIMCgRQb3J0GBQgASgFEhAKCFBhc3N3b3JkGBUgASgJEiwKBlN0YXR1cxgW",
+            "IAEoDjIcLkdycGNEZXZpY2VDYXRhbG9nLkRldlN0YXR1cxIRCglMb25naXR1",
+            "ZGUYFyABKAESEAoITGF0aXR1ZGUYGCABKAESKAoHSW5mTGlzdBgZIAEoCzIX",
+            "LkdycGNEZXZpY2VDYXRhbG9nLkluZm8SEAoIUmVtb3RlRVAYGiABKAki2AMK",
+            "BEluZm8SDwoHUFRaVHlwZRgBIAEoBRIUCgxQVFpUeXBlVmFsdWUYAiABKAkS",
+            "FAoMUG9zaXRpb25UeXBlGAMgASgFEhkKEVBvc2l0aW9uVHlwZVZhbHVlGAQg",
+            "ASgJEhAKCFJvb21UeXBlGAUgASgFEhUKDVJvb21UeXBlVmFsdWUYBiABKAkS",
+            "DwoHVXNlVHlwZRgHIAEoBRIUCgxVc2VUeXBlVmFsdWUYCCABKAkSFwoPU3Vw",
+            "cGx5TGlnaHRUeXBlGAkgASgFEhwKFFN1cHBseUxpZ2h0VHlwZVZhbHVlGAog",
+            "ASgJEhUKDURpcmVjdGlvblR5cGUYCyABKAUSGgoSRGlyZWN0aW9uVHlwZVZh",
+            "bHVlGAwgASgJEhIKClJlc29sdXRpb24YDSABKAkSFwoPQnVzaW5lc3NHcm91",
+            "cElEGA4gASgJEhUKDURvd25sb2FkU3BlZWQYDyABKAkSGwoTU1ZDU3BhY2VT",
+            "dXBwb3J0TW9kZRgQIAEoBRIgChhTVkNTcGFjZVN1cHBvcnRNb2RlVmFsdWUY",
+            "ESABKAkSGgoSU1ZDVGltZVN1cHBvcnRNb2RlGBIgASgFEh8KF1NWQ1RpbWVT",
+            "dXBwb3J0TW9kZVZhbHVlGBMgASgJIjEKHURldmljZUNhdGFsb2dTdWJzY3Jp",
+            "YmVSZXF1ZXN0EhAKCGRldmljZWlkGAEgASgJIi4KG0RldmljZUNhdGFsb2dT",
+            "dWJzY3JpYmVSZXBseRIPCgdtZXNzYWdlGAEgASgJIhwKGkRldmljZUNhdGFs",
+            "b2dOb3RpZnlSZXF1ZXN0IkEKGERldmljZUNhdGFsb2dOb3RpZnlSZXBseRIl",
+            "CgRpdGVtGAEgASgLMhcuR3JwY0RldmljZUNhdGFsb2cuSXRlbSqXAgoLQ29t",
+            "bWFuZFR5cGUSCwoHVW5rbm93bhAAEg0KCUtlZXBhbGl2ZRABEgsKB0NhdGFs",
+            "b2cQAhIICgRQbGF5EAMSDAoIUGxheWJhY2sQBBIRCg1EZXZpY2VDb250cm9s",
+            "EAUSCQoFQWxhcm0QBhIOCgpEZXZpY2VJbmZvEAcSEAoMRGV2aWNlU3RhdHVz",
+            "EAgSDgoKUmVjb3JkSW5mbxAJEgwKCERvd25sb2FkEAoSEgoOQ29uZmlnRG93",
+            "bmxvYWQQCxINCglCcm9hZGNhc3QQDBIPCgtQcmVzZXRRdWVyeRANEhIKDk1v",
+            "YmlsZVBvc2l0aW9uEA4SEAoMRGV2aWNlQ29uZmlnEA8SDwoLTWVkaWFTdGF0",
+            "dXMQECocCglEZXZTdGF0dXMSBgoCT04QABIHCgNPRkYQATL0AgoNRGV2aWNl",
+            "Q2F0YWxvZxJwChJEZXZpY2VDYXRhbG9nUXVlcnkSLC5HcnBjRGV2aWNlQ2F0",
+            "YWxvZy5EZXZpY2VDYXRhbG9nUXVlcnlSZXF1ZXN0GiouR3JwY0RldmljZUNh",
+            "dGFsb2cuRGV2aWNlQ2F0YWxvZ1F1ZXJ5UmVwbHkiABJ8ChZEZXZpY2VDYXRh",
+            "bG9nU3Vic2NyaWJlEjAuR3JwY0RldmljZUNhdGFsb2cuRGV2aWNlQ2F0YWxv",
+            "Z1N1YnNjcmliZVJlcXVlc3QaLi5HcnBjRGV2aWNlQ2F0YWxvZy5EZXZpY2VD",
+            "YXRhbG9nU3Vic2NyaWJlUmVwbHkiABJzChNEZXZpY2VDYXRhbG9nTm90aWZ5",
+            "Ei0uR3JwY0RldmljZUNhdGFsb2cuRGV2aWNlQ2F0YWxvZ05vdGlmeVJlcXVl",
+            "c3QaKy5HcnBjRGV2aWNlQ2F0YWxvZy5EZXZpY2VDYXRhbG9nTm90aWZ5UmVw",
+            "bHkiAGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::GrpcDeviceCatalog.CommandType), typeof(global::GrpcDeviceCatalog.DevStatus), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcDeviceCatalog.GetCatalogRequest), global::GrpcDeviceCatalog.GetCatalogRequest.Parser, new[]{ "Deviceid" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcDeviceCatalog.GetCatalogReply), global::GrpcDeviceCatalog.GetCatalogReply.Parser, new[]{ "Catalog" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcDeviceCatalog.DeviceCatalogQueryRequest), global::GrpcDeviceCatalog.DeviceCatalogQueryRequest.Parser, new[]{ "Deviceid" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcDeviceCatalog.DeviceCatalogQueryReply), global::GrpcDeviceCatalog.DeviceCatalogQueryReply.Parser, new[]{ "Catalog" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GrpcDeviceCatalog.Instance), global::GrpcDeviceCatalog.Instance.Parser, new[]{ "CmdType", "DeviceID", "DeviceList", "SN", "SumNum" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GrpcDeviceCatalog.DevList), global::GrpcDeviceCatalog.DevList.Parser, new[]{ "Items" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GrpcDeviceCatalog.Item), global::GrpcDeviceCatalog.Item.Parser, new[]{ "DeviceID", "Name", "Manufacturer", "Model", "Owner", "CivilCode", "Block", "Address", "Parental", "ParentID", "BusinessGroupID", "SafetyWay", "RegisterWay", "CertNum", "Certifiable", "ErrCode", "EndTime", "Secrecy", "IPAddress", "Port", "Password", "Status", "Longitude", "Latitude", "InfList", "RemoteEP" }, null, null, null),
@@ -121,11 +122,11 @@ namespace GrpcDeviceCatalog {
   #endregion
 
   #region Messages
-  public sealed partial class GetCatalogRequest : pb::IMessage<GetCatalogRequest> {
-    private static readonly pb::MessageParser<GetCatalogRequest> _parser = new pb::MessageParser<GetCatalogRequest>(() => new GetCatalogRequest());
+  public sealed partial class DeviceCatalogQueryRequest : pb::IMessage<DeviceCatalogQueryRequest> {
+    private static readonly pb::MessageParser<DeviceCatalogQueryRequest> _parser = new pb::MessageParser<DeviceCatalogQueryRequest>(() => new DeviceCatalogQueryRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<GetCatalogRequest> Parser { get { return _parser; } }
+    public static pb::MessageParser<DeviceCatalogQueryRequest> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -138,21 +139,21 @@ namespace GrpcDeviceCatalog {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GetCatalogRequest() {
+    public DeviceCatalogQueryRequest() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GetCatalogRequest(GetCatalogRequest other) : this() {
+    public DeviceCatalogQueryRequest(DeviceCatalogQueryRequest other) : this() {
       deviceid_ = other.deviceid_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GetCatalogRequest Clone() {
-      return new GetCatalogRequest(this);
+    public DeviceCatalogQueryRequest Clone() {
+      return new DeviceCatalogQueryRequest(this);
     }
 
     /// <summary>Field number for the "deviceid" field.</summary>
@@ -168,11 +169,11 @@ namespace GrpcDeviceCatalog {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as GetCatalogRequest);
+      return Equals(other as DeviceCatalogQueryRequest);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(GetCatalogRequest other) {
+    public bool Equals(DeviceCatalogQueryRequest other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -222,7 +223,7 @@ namespace GrpcDeviceCatalog {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(GetCatalogRequest other) {
+    public void MergeFrom(DeviceCatalogQueryRequest other) {
       if (other == null) {
         return;
       }
@@ -250,11 +251,11 @@ namespace GrpcDeviceCatalog {
 
   }
 
-  public sealed partial class GetCatalogReply : pb::IMessage<GetCatalogReply> {
-    private static readonly pb::MessageParser<GetCatalogReply> _parser = new pb::MessageParser<GetCatalogReply>(() => new GetCatalogReply());
+  public sealed partial class DeviceCatalogQueryReply : pb::IMessage<DeviceCatalogQueryReply> {
+    private static readonly pb::MessageParser<DeviceCatalogQueryReply> _parser = new pb::MessageParser<DeviceCatalogQueryReply>(() => new DeviceCatalogQueryReply());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<GetCatalogReply> Parser { get { return _parser; } }
+    public static pb::MessageParser<DeviceCatalogQueryReply> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -267,21 +268,21 @@ namespace GrpcDeviceCatalog {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GetCatalogReply() {
+    public DeviceCatalogQueryReply() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GetCatalogReply(GetCatalogReply other) : this() {
+    public DeviceCatalogQueryReply(DeviceCatalogQueryReply other) : this() {
       Catalog = other.catalog_ != null ? other.Catalog.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GetCatalogReply Clone() {
-      return new GetCatalogReply(this);
+    public DeviceCatalogQueryReply Clone() {
+      return new DeviceCatalogQueryReply(this);
     }
 
     /// <summary>Field number for the "Catalog" field.</summary>
@@ -297,11 +298,11 @@ namespace GrpcDeviceCatalog {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as GetCatalogReply);
+      return Equals(other as DeviceCatalogQueryReply);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(GetCatalogReply other) {
+    public bool Equals(DeviceCatalogQueryReply other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -351,7 +352,7 @@ namespace GrpcDeviceCatalog {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(GetCatalogReply other) {
+    public void MergeFrom(DeviceCatalogQueryReply other) {
       if (other == null) {
         return;
       }

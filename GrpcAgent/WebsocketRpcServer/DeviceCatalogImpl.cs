@@ -5,61 +5,80 @@ using SIPSorcery.GB28181.Servers;
 using SIPSorcery.GB28181.Sys.XML;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using Logger4Net;
 
 namespace GrpcAgent.WebsocketRpcServer
 {
     public class DeviceCatalogImpl : DeviceCatalog.DeviceCatalogBase
     {
+        private static ILog logger = LogManager.GetLogger("RpcServer");
         private ISIPServiceDirector _sipServiceDirector = null;
 
         public DeviceCatalogImpl(ISIPServiceDirector sipServiceDirector)
         {
             _sipServiceDirector = sipServiceDirector;
         }
-        
-        public override Task<GetCatalogReply> GetCatalog(GetCatalogRequest request, ServerCallContext context)
+
+        public override Task<DeviceCatalogQueryReply> DeviceCatalogQuery(DeviceCatalogQueryRequest request, ServerCallContext context)
         {
-            _sipServiceDirector.GetCatalog(request.Deviceid);
+            Instance instance = null;
             Catalog _Catalog = null;
-            while (true)
+            try
             {
-                foreach (Catalog obj in _sipServiceDirector.Catalogs.Values)
+                _sipServiceDirector.DeviceCatalogQuery(request.Deviceid);
+                while (true)
                 {
-                    if (request.Deviceid.Equals(obj.DeviceID))
+                    foreach (Catalog obj in _sipServiceDirector.Catalogs.Values)
                     {
-                        _Catalog = obj;
+                        if (request.Deviceid.Equals(obj.DeviceID))
+                        {
+                            _Catalog = obj;
+                        }
+                    }
+                    if (_Catalog == null)
+                    {
+                        System.Threading.Thread.Sleep(500);
+                    }
+                    else
+                    {
+                        break;
                     }
                 }
-                if (_Catalog == null)
+                
+                List<Catalog.Item> lstCatalogItems = _Catalog.DeviceList.Items;
+                string jsonCatalog = JsonConvert.SerializeObject(_Catalog)
+                    .Replace("\"Certifiable\":null", "\"Certifiable\":0")
+                    .Replace("\"ErrCode\":null", "\"ErrCode\":0")
+                    .Replace("\"Secrecy\":null", "\"Secrecy\":0")
+                    .Replace("\"Longitude\":null", "\"Longitude\":0")
+                    .Replace("\"Latitude\":null", "\"Latitude\":0")
+                    .Replace("\"Parental\":null", "\"Parental\":0")
+                    .Replace("\"SafetyWay\":null", "\"SafetyWay\":0")
+                    .Replace("\"RegisterWay\":null", "\"RegisterWay\":0")
+                    .Replace("\"Port\":null", "\"Port\":0")
+                    .Replace(":null", ":\"null\"")
+                    .Replace(",\"InfList\":\"null\"", "");//delete InfList
+                instance = JsonConvert.DeserializeObject<Instance>(jsonCatalog);
+                foreach (Catalog.Item cataLogItem in lstCatalogItems)
                 {
-                    System.Threading.Thread.Sleep(500);
-                }
-                else
-                {
-                    break;
+                    foreach (Item instanceItem in instance.DeviceList.Items)
+                    {
+                        if (cataLogItem.DeviceID == instanceItem.DeviceID)
+                        {
+                            string jsonInfList = JsonConvert.SerializeObject(cataLogItem.InfList)
+                                .Replace(":null", ":\"null\"");
+                            Info instanceInfo = JsonConvert.DeserializeObject<Info>(jsonInfList);
+                            instanceItem.InfList = instanceInfo;
+                        }
+                    }
                 }
             }
-            //{"CmdType":2,"SN":42058,"DeviceID":"34030000002000000001","SumNum":12,"DeviceList":{"Items":[{"DeviceID":"31011550","Name":"浦东新区张江高科","Manufacturer":null,"Model":null,"Owner":null,"CivilCode":null,"Block":"null","Address":null,"Parental":null,"ParentalValue":null,"ParentID":"null","BusinessGroupID":"null","SafetyWay":null,"SafetyWayValue":null,"RegisterWay":null,"RegisterWayValue":null,"CertNum":"null","Certifiable":0,"CertifiableValue":null,"ErrCode":0,"ErrCodeValue":null,"EndTime":"null","Secrecy":0,"SecrecyValue":null,"IPAddress":null,"Port":null,"PortValue":null,"Password":"null","Status":0,"Longitude":0,"LongitudeValue":null,"Latitude":0,"LatitudeValue":null,"InfList":null,"RemoteEP":"10.77.38.86:5060"}]}}
-            string jsonCatalog = JsonConvert.SerializeObject(_Catalog)
-                .Replace("\"Block\":null", "\"Block\":\"null\"")
-                .Replace("\"ParentID\":null", "\"ParentID\":\"null\"")
-                .Replace("\"BusinessGroupID\":null", "\"BusinessGroupID\":\"null\"")
-                .Replace("\"CertNum\":null", "\"CertNum\":\"null\"")
-                .Replace("\"Certifiable\":null", "\"Certifiable\":0")
-                .Replace("\"ErrCode\":null", "\"ErrCode\":0")
-                .Replace("\"EndTime\":null", "\"EndTime\":\"null\"")
-                .Replace("\"Secrecy\":null", "\"Secrecy\":0")
-                .Replace("\"Password\":null", "\"Password\":\"null\"")
-                .Replace("\"Longitude\":null", "\"Longitude\":0")
-                .Replace("\"Latitude\":null", "\"Latitude\":0")
-                .Replace("\"Parental\":null", "\"Parental\":0")
-                .Replace("\"SafetyWay\":null", "\"SafetyWay\":0")
-                .Replace("\"RegisterWay\":null", "\"RegisterWay\":0")
-                .Replace("\"Port\":null", "\"Port\":0")
-                .Replace(":null", ":\"null\"")
-                .Replace(",\"InfList\":\"null\"", "");//delete InfList
-            Instance instance = JsonConvert.DeserializeObject<Instance>(jsonCatalog);
-            return Task.FromResult(new GetCatalogReply { Catalog = instance });
+            catch (Exception ex)
+            {
+                logger.Error("Exception GRPC DeviceCatalogQuery: " + ex.Message);
+            }
+            return Task.FromResult(new DeviceCatalogQueryReply { Catalog = instance });
         }
 
         public override Task<DeviceCatalogSubscribeReply> DeviceCatalogSubscribe(DeviceCatalogSubscribeRequest request, ServerCallContext context)

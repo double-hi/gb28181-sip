@@ -3,16 +3,16 @@ syntax = "proto3";
 package GrpcDeviceCatalog;
 
 service DeviceCatalog {
-  rpc GetCatalog (GetCatalogRequest) returns (GetCatalogReply) {}
+  rpc DeviceCatalogQuery (DeviceCatalogQueryRequest) returns (DeviceCatalogQueryReply) {}
   rpc DeviceCatalogSubscribe (DeviceCatalogSubscribeRequest) returns (DeviceCatalogSubscribeReply) {}
   rpc DeviceCatalogNotify (DeviceCatalogNotifyRequest) returns (DeviceCatalogNotifyReply) {}
 }
 
-message GetCatalogRequest {
+message DeviceCatalogQueryRequest {
   string deviceid = 1;
 }
 
-message GetCatalogReply {
+message DeviceCatalogQueryReply {
   Instance Catalog = 1;
 }
 

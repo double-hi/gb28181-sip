@@ -24,7 +24,7 @@ namespace SIPSorcery.GB28181.Servers
         /// Device Catalog Query
         /// </summary>
         /// <param name="deviceId"></param>
-        void GetCatalog(string deviceId);
+        void DeviceCatalogQuery(string deviceId);
         /// <summary>
         /// Device Catalog Subscribe
         /// </summary>
