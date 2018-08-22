@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace GrpcProtocol {
+namespace GrpcDeviceFeature {
 
   /// <summary>Holder for reflection information generated from device_feature.proto</summary>
   public static partial class DeviceFeatureReflection {
@@ -24,28 +24,29 @@ namespace GrpcProtocol {
     static DeviceFeatureReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChRkZXZpY2VfZmVhdHVyZS5wcm90bxIMR3JwY1Byb3RvY29sIisKF0Rldmlj",
-            "ZVN0YXRlUXVlcnlSZXF1ZXN0EhAKCGRldmljZWlkGAEgASgJIkUKFURldmlj",
-            "ZVN0YXRlUXVlcnlSZXBseRIsCgxEZXZpY2VTdGF0dXMYASABKAsyFi5HcnBj",
-            "UHJvdG9jb2wuSW5zdGFuY2UilAEKCEluc3RhbmNlEioKB0NtZFR5cGUYASAB",
-            "KA4yGS5HcnBjUHJvdG9jb2wuQ29tbWFuZFR5cGUSCgoCU04YAiABKAUSEAoI",
-            "RGV2aWNlSUQYAyABKAkSDgoGUmVzdWx0GAQgASgJEg4KBk9ubGluZRgFIAEo",
-            "CRIOCgZTdGF0dXMYBiABKAkSDgoGUmVhc29uGAcgASgJKpcCCgtDb21tYW5k",
-            "VHlwZRILCgdVbmtub3duEAASDQoJS2VlcGFsaXZlEAESCwoHQ2F0YWxvZxAC",
-            "EggKBFBsYXkQAxIMCghQbGF5YmFjaxAEEhEKDURldmljZUNvbnRyb2wQBRIJ",
-            "CgVBbGFybRAGEg4KCkRldmljZUluZm8QBxIQCgxEZXZpY2VTdGF0dXMQCBIO",
-            "CgpSZWNvcmRJbmZvEAkSDAoIRG93bmxvYWQQChISCg5Db25maWdEb3dubG9h",
-            "ZBALEg0KCUJyb2FkY2FzdBAMEg8KC1ByZXNldFF1ZXJ5EA0SEgoOTW9iaWxl",
-            "UG9zaXRpb24QDhIQCgxEZXZpY2VDb25maWcQDxIPCgtNZWRpYVN0YXR1cxAQ",
-            "MnEKDURldmljZUZlYXR1cmUSYAoQRGV2aWNlU3RhdGVRdWVyeRIlLkdycGNQ",
-            "cm90b2NvbC5EZXZpY2VTdGF0ZVF1ZXJ5UmVxdWVzdBojLkdycGNQcm90b2Nv",
-            "bC5EZXZpY2VTdGF0ZVF1ZXJ5UmVwbHkiAGIGcHJvdG8z"));
+            "ChRkZXZpY2VfZmVhdHVyZS5wcm90bxIRR3JwY0RldmljZUZlYXR1cmUiKwoX",
+            "RGV2aWNlU3RhdGVRdWVyeVJlcXVlc3QSEAoIZGV2aWNlaWQYASABKAkiSgoV",
+            "RGV2aWNlU3RhdGVRdWVyeVJlcGx5EjEKDERldmljZVN0YXR1cxgBIAEoCzIb",
+            "LkdycGNEZXZpY2VGZWF0dXJlLkluc3RhbmNlIpkBCghJbnN0YW5jZRIvCgdD",
+            "bWRUeXBlGAEgASgOMh4uR3JwY0RldmljZUZlYXR1cmUuQ29tbWFuZFR5cGUS",
+            "CgoCU04YAiABKAUSEAoIRGV2aWNlSUQYAyABKAkSDgoGUmVzdWx0GAQgASgJ",
+            "Eg4KBk9ubGluZRgFIAEoCRIOCgZTdGF0dXMYBiABKAkSDgoGUmVhc29uGAcg",
+            "ASgJKpcCCgtDb21tYW5kVHlwZRILCgdVbmtub3duEAASDQoJS2VlcGFsaXZl",
+            "EAESCwoHQ2F0YWxvZxACEggKBFBsYXkQAxIMCghQbGF5YmFjaxAEEhEKDURl",
+            "dmljZUNvbnRyb2wQBRIJCgVBbGFybRAGEg4KCkRldmljZUluZm8QBxIQCgxE",
+            "ZXZpY2VTdGF0dXMQCBIOCgpSZWNvcmRJbmZvEAkSDAoIRG93bmxvYWQQChIS",
+            "Cg5Db25maWdEb3dubG9hZBALEg0KCUJyb2FkY2FzdBAMEg8KC1ByZXNldFF1",
+            "ZXJ5EA0SEgoOTW9iaWxlUG9zaXRpb24QDhIQCgxEZXZpY2VDb25maWcQDxIP",
+            "CgtNZWRpYVN0YXR1cxAQMnsKDURldmljZUZlYXR1cmUSagoQRGV2aWNlU3Rh",
+            "dGVRdWVyeRIqLkdycGNEZXZpY2VGZWF0dXJlLkRldmljZVN0YXRlUXVlcnlS",
+            "ZXF1ZXN0GiguR3JwY0RldmljZUZlYXR1cmUuRGV2aWNlU3RhdGVRdWVyeVJl",
+            "cGx5IgBiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::GrpcProtocol.CommandType), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcProtocol.DeviceStateQueryRequest), global::GrpcProtocol.DeviceStateQueryRequest.Parser, new[]{ "Deviceid" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcProtocol.DeviceStateQueryReply), global::GrpcProtocol.DeviceStateQueryReply.Parser, new[]{ "DeviceStatus" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcProtocol.Instance), global::GrpcProtocol.Instance.Parser, new[]{ "CmdType", "SN", "DeviceID", "Result", "Online", "Status", "Reason" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::GrpcDeviceFeature.CommandType), }, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcDeviceFeature.DeviceStateQueryRequest), global::GrpcDeviceFeature.DeviceStateQueryRequest.Parser, new[]{ "Deviceid" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcDeviceFeature.DeviceStateQueryReply), global::GrpcDeviceFeature.DeviceStateQueryReply.Parser, new[]{ "DeviceStatus" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcDeviceFeature.Instance), global::GrpcDeviceFeature.Instance.Parser, new[]{ "CmdType", "SN", "DeviceID", "Result", "Online", "Status", "Reason" }, null, null, null)
           }));
     }
     #endregion
@@ -86,7 +87,7 @@ namespace GrpcProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::GrpcProtocol.DeviceFeatureReflection.Descriptor.MessageTypes[0]; }
+      get { return global::GrpcDeviceFeature.DeviceFeatureReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -218,7 +219,7 @@ namespace GrpcProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::GrpcProtocol.DeviceFeatureReflection.Descriptor.MessageTypes[1]; }
+      get { return global::GrpcDeviceFeature.DeviceFeatureReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -246,9 +247,9 @@ namespace GrpcProtocol {
 
     /// <summary>Field number for the "DeviceStatus" field.</summary>
     public const int DeviceStatusFieldNumber = 1;
-    private global::GrpcProtocol.Instance deviceStatus_;
+    private global::GrpcDeviceFeature.Instance deviceStatus_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::GrpcProtocol.Instance DeviceStatus {
+    public global::GrpcDeviceFeature.Instance DeviceStatus {
       get { return deviceStatus_; }
       set {
         deviceStatus_ = value;
@@ -317,7 +318,7 @@ namespace GrpcProtocol {
       }
       if (other.deviceStatus_ != null) {
         if (deviceStatus_ == null) {
-          deviceStatus_ = new global::GrpcProtocol.Instance();
+          deviceStatus_ = new global::GrpcDeviceFeature.Instance();
         }
         DeviceStatus.MergeFrom(other.DeviceStatus);
       }
@@ -334,7 +335,7 @@ namespace GrpcProtocol {
             break;
           case 10: {
             if (deviceStatus_ == null) {
-              deviceStatus_ = new global::GrpcProtocol.Instance();
+              deviceStatus_ = new global::GrpcDeviceFeature.Instance();
             }
             input.ReadMessage(deviceStatus_);
             break;
@@ -353,7 +354,7 @@ namespace GrpcProtocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::GrpcProtocol.DeviceFeatureReflection.Descriptor.MessageTypes[2]; }
+      get { return global::GrpcDeviceFeature.DeviceFeatureReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -387,9 +388,9 @@ namespace GrpcProtocol {
 
     /// <summary>Field number for the "CmdType" field.</summary>
     public const int CmdTypeFieldNumber = 1;
-    private global::GrpcProtocol.CommandType cmdType_ = 0;
+    private global::GrpcDeviceFeature.CommandType cmdType_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::GrpcProtocol.CommandType CmdType {
+    public global::GrpcDeviceFeature.CommandType CmdType {
       get { return cmdType_; }
       set {
         cmdType_ = value;
@@ -609,7 +610,7 @@ namespace GrpcProtocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            cmdType_ = (global::GrpcProtocol.CommandType) input.ReadEnum();
+            cmdType_ = (global::GrpcDeviceFeature.CommandType) input.ReadEnum();
             break;
           }
           case 16: {

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package GrpcProtocol;
+package GrpcDeviceFeature;
 
 service DeviceFeature {
   rpc DeviceStateQuery (DeviceStateQueryRequest) returns (DeviceStateQueryReply) {}

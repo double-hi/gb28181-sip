@@ -22,7 +22,7 @@ using GrpcPtzControl;
 using GrpcDeviceCatalog;
 using Grpc.Core;
 using GrpcGb28181Config;
-using GrpcProtocol;
+using GrpcDeviceFeature;
 using Consul;
 using System.Net;
 using GrpcVideoOnDemand;

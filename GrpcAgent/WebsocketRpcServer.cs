@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using GrpcPtzControl;
 using GrpcDeviceCatalog;
 using Manage;
-using GrpcProtocol;
+using GrpcDeviceFeature;
 using GrpcVideoOnDemand;
 
 namespace GrpcAgent

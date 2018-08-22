@@ -7,15 +7,15 @@
 
 using grpc = global::Grpc.Core;
 
-namespace GrpcProtocol {
+namespace GrpcDeviceFeature {
   public static partial class DeviceFeature
   {
-    static readonly string __ServiceName = "GrpcProtocol.DeviceFeature";
+    static readonly string __ServiceName = "GrpcDeviceFeature.DeviceFeature";
 
-    static readonly grpc::Marshaller<global::GrpcProtocol.DeviceStateQueryRequest> __Marshaller_DeviceStateQueryRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcProtocol.DeviceStateQueryRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::GrpcProtocol.DeviceStateQueryReply> __Marshaller_DeviceStateQueryReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcProtocol.DeviceStateQueryReply.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::GrpcDeviceFeature.DeviceStateQueryRequest> __Marshaller_DeviceStateQueryRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcDeviceFeature.DeviceStateQueryRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::GrpcDeviceFeature.DeviceStateQueryReply> __Marshaller_DeviceStateQueryReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GrpcDeviceFeature.DeviceStateQueryReply.Parser.ParseFrom);
 
-    static readonly grpc::Method<global::GrpcProtocol.DeviceStateQueryRequest, global::GrpcProtocol.DeviceStateQueryReply> __Method_DeviceStateQuery = new grpc::Method<global::GrpcProtocol.DeviceStateQueryRequest, global::GrpcProtocol.DeviceStateQueryReply>(
+    static readonly grpc::Method<global::GrpcDeviceFeature.DeviceStateQueryRequest, global::GrpcDeviceFeature.DeviceStateQueryReply> __Method_DeviceStateQuery = new grpc::Method<global::GrpcDeviceFeature.DeviceStateQueryRequest, global::GrpcDeviceFeature.DeviceStateQueryReply>(
         grpc::MethodType.Unary,
         __ServiceName,
         "DeviceStateQuery",
@@ -25,13 +25,13 @@ namespace GrpcProtocol {
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
     {
-      get { return global::GrpcProtocol.DeviceFeatureReflection.Descriptor.Services[0]; }
+      get { return global::GrpcDeviceFeature.DeviceFeatureReflection.Descriptor.Services[0]; }
     }
 
     /// <summary>Base class for server-side implementations of DeviceFeature</summary>
     public abstract partial class DeviceFeatureBase
     {
-      public virtual global::System.Threading.Tasks.Task<global::GrpcProtocol.DeviceStateQueryReply> DeviceStateQuery(global::GrpcProtocol.DeviceStateQueryRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::GrpcDeviceFeature.DeviceStateQueryReply> DeviceStateQuery(global::GrpcDeviceFeature.DeviceStateQueryRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -61,19 +61,19 @@ namespace GrpcProtocol {
       {
       }
 
-      public virtual global::GrpcProtocol.DeviceStateQueryReply DeviceStateQuery(global::GrpcProtocol.DeviceStateQueryRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual global::GrpcDeviceFeature.DeviceStateQueryReply DeviceStateQuery(global::GrpcDeviceFeature.DeviceStateQueryRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return DeviceStateQuery(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual global::GrpcProtocol.DeviceStateQueryReply DeviceStateQuery(global::GrpcProtocol.DeviceStateQueryRequest request, grpc::CallOptions options)
+      public virtual global::GrpcDeviceFeature.DeviceStateQueryReply DeviceStateQuery(global::GrpcDeviceFeature.DeviceStateQueryRequest request, grpc::CallOptions options)
       {
         return CallInvoker.BlockingUnaryCall(__Method_DeviceStateQuery, null, options, request);
       }
-      public virtual grpc::AsyncUnaryCall<global::GrpcProtocol.DeviceStateQueryReply> DeviceStateQueryAsync(global::GrpcProtocol.DeviceStateQueryRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncUnaryCall<global::GrpcDeviceFeature.DeviceStateQueryReply> DeviceStateQueryAsync(global::GrpcDeviceFeature.DeviceStateQueryRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return DeviceStateQueryAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual grpc::AsyncUnaryCall<global::GrpcProtocol.DeviceStateQueryReply> DeviceStateQueryAsync(global::GrpcProtocol.DeviceStateQueryRequest request, grpc::CallOptions options)
+      public virtual grpc::AsyncUnaryCall<global::GrpcDeviceFeature.DeviceStateQueryReply> DeviceStateQueryAsync(global::GrpcDeviceFeature.DeviceStateQueryRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_DeviceStateQuery, null, options, request);
       }

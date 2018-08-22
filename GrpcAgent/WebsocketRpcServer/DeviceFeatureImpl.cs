@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Grpc.Core;
-using GrpcProtocol;
+using GrpcDeviceFeature;
 using Newtonsoft.Json;
 using SIPSorcery.GB28181.Servers;
 using SIPSorcery.GB28181.Servers.SIPMonitor;
