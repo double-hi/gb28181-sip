@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Grpc.Core;
 using GrpcPtzControl;
+using Logger4Net;
 using SIPSorcery.GB28181.Servers;
 using SIPSorcery.GB28181.Servers.SIPMonitor;
 
@@ -11,6 +12,7 @@ namespace GrpcAgent.WebsocketRpcServer
 {
     public class PtzControlImpl : PtzControl.PtzControlBase
     {
+        private static ILog logger = LogManager.GetLogger("RpcServer");
         private ISIPServiceDirector _sipServiceDirector = null;
 
         public PtzControlImpl(ISIPServiceDirector sipServiceDirector)
@@ -55,6 +57,7 @@ namespace GrpcAgent.WebsocketRpcServer
             catch (Exception ex)
             {
                 msg = ex.Message;
+                logger.Error("Exception GRPC PtzDirect: " + ex.Message);
             }
             return Task.FromResult(new PtzDirectReply { Message = msg });
         }

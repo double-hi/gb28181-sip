@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Grpc.Core;
 using GrpcDeviceFeature;
+using Logger4Net;
 using Newtonsoft.Json;
 using SIPSorcery.GB28181.Servers;
 using SIPSorcery.GB28181.Servers.SIPMonitor;
@@ -13,6 +14,7 @@ namespace GrpcAgent.WebsocketRpcServer
 {
     public class DeviceFeatureImpl : DeviceFeature.DeviceFeatureBase
     {
+        private static ILog logger = LogManager.GetLogger("RpcServer");
         private ISIPServiceDirector _sipServiceDirector = null;
 
         public DeviceFeatureImpl(ISIPServiceDirector sipServiceDirector)
@@ -22,30 +24,38 @@ namespace GrpcAgent.WebsocketRpcServer
 
         public override Task<DeviceStateQueryReply> DeviceStateQuery(DeviceStateQueryRequest request, ServerCallContext context)
         {
-            _sipServiceDirector.DeviceStateQuery(request.Deviceid);
             DeviceStatus _DeviceStatus = null;
-            while (true)
+            Instance instance = null;
+            try
             {
-                foreach (DeviceStatus obj in _sipServiceDirector.DeviceStatuses.Values)
+                _sipServiceDirector.DeviceStateQuery(request.Deviceid);
+                while (true)
                 {
-                    if (request.Deviceid.Equals(obj.DeviceID))
+                    foreach (DeviceStatus obj in _sipServiceDirector.DeviceStatuses.Values)
                     {
-                        _DeviceStatus = obj;
+                        if (request.Deviceid.Equals(obj.DeviceID))
+                        {
+                            _DeviceStatus = obj;
+                        }
+                    }
+                    if (_DeviceStatus == null)
+                    {
+                        System.Threading.Thread.Sleep(500);
+                    }
+                    else
+                    {
+                        break;
                     }
                 }
-                if (_DeviceStatus == null)
-                {
-                    System.Threading.Thread.Sleep(500);
-                }
-                else
-                {
-                    break;
-                }
+                string json = JsonConvert.SerializeObject(_DeviceStatus)
+                    .Replace("\"SN\":null", "\"SN\":0")
+                    .Replace(":null", ":\"null\"");
+                instance = JsonConvert.DeserializeObject<Instance>(json);
             }
-            string json = JsonConvert.SerializeObject(_DeviceStatus)
-                .Replace("\"SN\":null", "\"SN\":0")
-                .Replace(":null", ":\"null\"");
-            Instance instance = JsonConvert.DeserializeObject<Instance>(json);
+            catch (Exception ex)
+            {
+                logger.Error("Exception GRPC DeviceStateQuery: " + ex.Message);
+            }
             return Task.FromResult(new DeviceStateQueryReply { DeviceStatus = instance });
         }
     }

@@ -3,12 +3,13 @@ using MediaContract;
 using System.Threading.Tasks;
 using SIPSorcery.GB28181.Servers;
 using System;
+using Logger4Net;
 
 namespace GrpcAgent.WebsocketRpcServer
 {
     public class SSMediaSessionImpl : VideoSession.VideoSessionBase
     {
-
+        private static ILog logger = LogManager.GetLogger("RpcServer");
         private MediaEventSource _eventSource = null;
         private ISIPServiceDirector _sipServiceDirector = null;
 
@@ -58,6 +59,7 @@ namespace GrpcAgent.WebsocketRpcServer
             }
             catch(Exception ex)
             {
+                logger.Error("Exception GRPC StartLive: " + ex.Message);
                 var resReply = new StartLiveReply()
                 {
                     Status = new MediaContract.Status()
@@ -100,6 +102,7 @@ namespace GrpcAgent.WebsocketRpcServer
             }
             catch (Exception ex)
             {
+                logger.Error("Exception GRPC StopVideo: " + ex.Message);
                 var stopReply = new StopReply()
                 {
                     Status = new MediaContract.Status()
