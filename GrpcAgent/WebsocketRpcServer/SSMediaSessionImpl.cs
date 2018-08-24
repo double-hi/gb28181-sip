@@ -37,7 +37,7 @@ namespace GrpcAgent.WebsocketRpcServer
             try
             {
                 _eventSource?.FireLivePlayRequestEvent(request, context);
-                var reqeustProcessResult = _sipServiceDirector.MakeVideoRequest(request.Gbid, new int[] { request.Port }, request.Ipaddr);
+                var reqeustProcessResult = _sipServiceDirector.RealVideoReq(request.Gbid, new int[] { request.Port }, request.Ipaddr);
 
                 reqeustProcessResult?.Wait(System.TimeSpan.FromSeconds(1));
 
@@ -53,7 +53,6 @@ namespace GrpcAgent.WebsocketRpcServer
                         Code = 200,
                         Msg = "Request Successful!"
                     }
-
                 };
                 return Task.FromResult(resReply);
             }
@@ -61,6 +60,43 @@ namespace GrpcAgent.WebsocketRpcServer
             {
                 logger.Error("Exception GRPC StartLive: " + ex.Message);
                 var resReply = new StartLiveReply()
+                {
+                    Status = new MediaContract.Status()
+                    {
+                        Msg = ex.Message
+                    }
+                };
+                return Task.FromResult(resReply);
+            }
+        }
+        public override Task<StartHistoryReply> StartHistory(StartHistoryRequest request, ServerCallContext context)
+        {
+            try
+            {
+                _eventSource?.FireHistoryPlayRequestEvent(request, context);
+                var reqeustProcessResult = _sipServiceDirector.BackVideoReq(Convert.ToDateTime(request.BeginTime), Convert.ToDateTime(request.EndTime), request.Gbid, new int[] { request.Port }, request.Ipaddr);
+
+                reqeustProcessResult?.Wait(System.TimeSpan.FromSeconds(1));
+
+                //get the response .
+                var resReply = new StartHistoryReply()
+                {
+                    Ipaddr = reqeustProcessResult.Result.Item1,
+                    Port = reqeustProcessResult.Result.Item2,
+                    Hdr = request.Hdr,
+
+                    Status = new MediaContract.Status()
+                    {
+                        Code = 200,
+                        Msg = "Request Successful!"
+                    }
+                };
+                return Task.FromResult(resReply);
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Exception GRPC StartHistory: " + ex.Message);
+                var resReply = new StartHistoryReply()
                 {
                     Status = new MediaContract.Status()
                     {

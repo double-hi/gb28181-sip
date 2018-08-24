@@ -20,16 +20,21 @@ namespace GrpcAgent
     /// </summary>
     /// <param name="record"></param>
     public delegate void VideoDownloadRequestHandler(StartPlaybackRequest request, ServerCallContext context);
+    /// <summary>
+    /// 录像点播事件处理
+    /// </summary>
+    /// <param name="request"></param>
+    /// <param name="context"></param>
+    public delegate void HistoryPlayRequestHandler(StartHistoryRequest request, ServerCallContext context);
 
 
 
     public class MediaEventSource
     {
-
         public event LivePlayRequestHandler LivePlayRequestReceived = null;
         public event PlaybackRequestHandler PlaybackRequesReceived = null;
         public event PlaybackRequestHandler DownloadRequestReceived = null;
-
+        public event HistoryPlayRequestHandler HistoryPlayRequestReceived = null;
 
         public void FireLivePlayRequestEvent(StartLiveRequest request, ServerCallContext context)
         {
@@ -40,14 +45,15 @@ namespace GrpcAgent
         {
             DownloadRequestReceived?.Invoke(request, context);
         }
-
-
+        
         internal void FirePlaybackRequestEvent(StartPlaybackRequest request, ServerCallContext context)
         {
             PlaybackRequesReceived?.Invoke(request, context);
         }
+
+        public void FireHistoryPlayRequestEvent(StartHistoryRequest request, ServerCallContext context)
+        {
+            HistoryPlayRequestReceived?.Invoke(request, context);
+        }
     }
-
-
-
 }

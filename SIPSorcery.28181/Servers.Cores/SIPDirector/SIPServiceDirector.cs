@@ -64,13 +64,13 @@ namespace SIPSorcery.GB28181.Servers
             return null;
         }
         /// <summary>
-        /// make real Request
+        /// Real Video Request
         /// </summary>
         /// <param name="gbid"></param>
         /// <param name="mediaPort"></param>
         /// <param name="receiveIP"></param>
         /// <returns></returns>
-        async public Task<Tuple<string, int, ProtocolType>> MakeVideoRequest(string gbid, int[] mediaPort, string receiveIP)
+        async public Task<Tuple<string, int, ProtocolType>> RealVideoReq(string gbid, int[] mediaPort, string receiveIP)
         {
             logger.Debug("Make video request started.");
             var target = GetTargetMonitorService(gbid);
@@ -81,6 +81,33 @@ namespace SIPSorcery.GB28181.Servers
             var taskResult = await Task.Factory.StartNew(() =>
             {
                 var cSeq = target.RealVideoReq(mediaPort, receiveIP, true);
+                var result = target.WaitRequestResult();
+                return result;
+            });
+            var ipaddress = _sipCoreMessageService.GetReceiveIP(taskResult.Item2.Body);
+            var port = _sipCoreMessageService.GetReceivePort(taskResult.Item2.Body, SDPMediaTypesEnum.video);
+            return Tuple.Create(ipaddress, port, ProtocolType.Udp);
+        }
+        /// <summary>
+        /// history video request
+        /// </summary>
+        /// <param name="beginTime"></param>
+        /// <param name="endTime"></param>
+        /// <param name="gbid"></param>
+        /// <param name="mediaPort"></param>
+        /// <param name="receiveIP"></param>
+        /// <returns></returns>
+        async public Task<Tuple<string, int, ProtocolType>> BackVideoReq(DateTime beginTime, DateTime endTime, string gbid, int[] mediaPort, string receiveIP)
+        {
+            logger.Debug("History video request started.");
+            var target = GetTargetMonitorService(gbid);
+            if (target == null)
+            {
+                return null;
+            }
+            var taskResult = await Task.Factory.StartNew(() =>
+            {
+                var cSeq = target.BackVideoReq(beginTime, endTime, mediaPort, receiveIP, true);
                 var result = target.WaitRequestResult();
                 return result;
             });
@@ -102,7 +129,7 @@ namespace SIPSorcery.GB28181.Servers
                 return null;
             }
             target.ByeVideoReq();
-            logger.Debug("Make video request stopped.");
+            logger.Debug("Video request stopped.");
             return null;
 
             //var taskResult = await Task.Factory.StartNew(() =>
