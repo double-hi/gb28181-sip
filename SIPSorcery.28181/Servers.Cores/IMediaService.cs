@@ -53,6 +53,7 @@ namespace SIPSorcery.GB28181.Servers
         /// <param name="beginTime">开始时间</param>
         /// <param name="endTime">结束时间</param>
         void BackVideoReq(DateTime beginTime, DateTime endTime);
+        int BackVideoReq(DateTime beginTime, DateTime endTime, int[] mediaPort, string receiveIP, bool needResult = false);
 
         /// <summary>
         /// 录像文件下载请求

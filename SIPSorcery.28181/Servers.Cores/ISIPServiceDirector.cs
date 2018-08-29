@@ -15,7 +15,8 @@ namespace SIPSorcery.GB28181.Servers
         Dictionary<string, RecordInfo> RecordInfoes { get; }
 
         //ip/port/protocol/ 
-        Task<Tuple<string, int, ProtocolType>> MakeVideoRequest(string gbid, int[] mediaPort, string receiveIP);
+        Task<Tuple<string, int, ProtocolType>> RealVideoReq(string gbid, int[] mediaPort, string receiveIP);
+        Task<Tuple<string, int, ProtocolType>> BackVideoReq(DateTime beginTime, DateTime endTime, string gbid, int[] mediaPort, string receiveIP);
 
         //Stop 
         Task<Tuple<string, int, ProtocolType>> Stop(string gbid);

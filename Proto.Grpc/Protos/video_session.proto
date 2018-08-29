@@ -8,6 +8,7 @@ package MediaContract;
 service VideoSession {
   //LivePlay
   rpc StartLive (StartLiveRequest) returns (StartLiveReply) {}
+  rpc StartHistory (StartHistoryRequest) returns (StartHistoryReply) {}
   //Start playback or Dowload
   rpc StartPlayback (StartPlaybackRequest) returns (StartPlaybackReply) {}
   //Stop Video
@@ -15,7 +16,6 @@ service VideoSession {
 
   //keepalive between two point
   rpc KeepAlive (KeepAliveRequest) returns (KeepAliveReply) {}
-
 }
 
 enum BusinessType {
@@ -24,7 +24,6 @@ enum BusinessType {
 	BT_DOWNLOAD = 2;
 	BT_MAX = 3;
 }
-
 
 enum TransportProtocol {
 	TCP = 0;
@@ -43,7 +42,6 @@ message Status {
     string msg = 2;
 }
 
-
 // The request message containing StartLiveRequest.
 message StartLiveRequest {
 	Header hdr =1;
@@ -60,7 +58,23 @@ message StartLiveReply {
 	int32 port = 4;
 }
 
-
+// The request message containing StartHistoryRequest.
+message StartHistoryRequest {
+	Header hdr =1;
+	TransportProtocol trans_proto = 2;
+	string gbid = 3;
+	string ipaddr = 4;
+	int32 port = 5;
+	string begin_time = 6;
+	string end_time = 7;
+}
+// The response message containing the StartHistoryReply.
+message StartHistoryReply {
+	Header hdr = 1;
+	Status status = 2;
+	string ipaddr = 3;
+	int32 port = 4;
+}
 
 // The request message containing StartPlaybackRequest/download.
 message StartPlaybackRequest {
@@ -80,7 +94,6 @@ message StartPlaybackReply {
 	int32 port = 4;
 }
 
-
 // The request message containing StopLiveRequest.
 message StopRequest {
 	Header hdr =1;
@@ -88,20 +101,16 @@ message StopRequest {
 	BusinessType business_type =3;
 }
 
-
 // The response message containing the StopLiveReply.
 message StopReply {
 	Header hdr = 1;
 	Status status = 2;
 }
 
-
-
 // The request message containing ParametersRequest.
 message KeepAliveRequest {
 	Header hdr = 1;
 }
-
 
 // The response message containing the ParametersReply.
 message KeepAliveReply {

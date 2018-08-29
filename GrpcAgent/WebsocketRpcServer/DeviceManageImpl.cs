@@ -34,7 +34,7 @@ namespace GrpcAgent.WebsocketRpcServer
                 _device.ProtocolType = ProtoType.ProtoGb28181;
                 _device.LoginUser.Add(new LoginUser() { LoginName = sIPAccount.SIPUsername ?? string.Empty, LoginPwd = sIPAccount.SIPPassword ?? string.Empty });
 
-                Channel channel = new Channel(EnvironmentVariables.GBServerChannelAddress ?? "10.78.115.149:5000", ChannelCredentials.Insecure);
+                Channel channel = new Channel(EnvironmentVariables.GBServerChannelAddress ?? "10.78.115.182:5000", ChannelCredentials.Insecure);
                 var client = new Manage.Manage.ManageClient(channel);
                 AddDeviceRequest _AddDeviceRequest = new AddDeviceRequest();
                 _AddDeviceRequest.Device.Add(_device);

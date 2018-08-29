@@ -387,6 +387,46 @@ namespace SIPSorcery.GB28181.Servers.SIPMonitor
             _sipMsgCoreService.SendRequest(RemoteEndPoint, backReq);
             _reqSession = backReq;
         }
+        public int BackVideoReq(DateTime beginTime, DateTime endTime, int[] mediaPort, string receiveIP, bool needResult = false)
+        {
+            //_mediaPort = _sipMsgCoreService.SetMediaPort();
+
+            uint startTime = TimeConvert.DateToTimeStamp(beginTime);
+            uint stopTime = TimeConvert.DateToTimeStamp(endTime);
+
+            //string localIp = _sipMsgCoreService.LocalEP.Address.ToString();
+            string fromTag = CallProperties.CreateNewTag();
+            int cSeq = CallProperties.CreateNewCSeq();
+            string callId = CallProperties.CreateNewCallId();
+
+            SIPURI remoteUri = new SIPURI(DeviceId, RemoteEndPoint.ToHost(), "");
+            SIPURI localUri = new SIPURI(_sipMsgCoreService.LocalSIPId, _sipMsgCoreService.LocalEP.ToHost(), "");
+            SIPFromHeader from = new SIPFromHeader(null, localUri, fromTag);
+            SIPToHeader to = new SIPToHeader(null, remoteUri, null);
+            SIPRequest backReq = _sipTransport.GetRequest(SIPMethodsEnum.INVITE, remoteUri);
+            SIPContactHeader contactHeader = new SIPContactHeader(null, localUri);
+            backReq.Header.Contact.Clear();
+            backReq.Header.Contact.Add(contactHeader);
+
+            backReq.Header.Allow = null;
+            backReq.Header.From = from;
+            backReq.Header.To = to;
+            backReq.Header.UserAgent = SIPConstants.SIP_USERAGENT_STRING;
+            backReq.Header.CSeq = cSeq;
+            backReq.Header.CallId = callId;
+            backReq.Header.Subject = SetSubject();
+            backReq.Header.ContentType = "application/sdp";
+
+            backReq.Body = SetMediaReq(receiveIP, mediaPort, startTime, stopTime);
+            _sipMsgCoreService.SendRequest(RemoteEndPoint, backReq);
+            _reqSession = backReq;
+
+            if (needResult)
+            {
+                _syncRequestContext.TryAdd(cSeq, backReq);
+            }
+            return cSeq;
+        }
 
         /// <summary>
         /// 录像文件下载
