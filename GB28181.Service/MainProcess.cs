@@ -21,11 +21,12 @@ using SIPSorcery.GB28181.Sys.Model;
 using GrpcPtzControl;
 using GrpcDeviceCatalog;
 using Grpc.Core;
-using GrpcGb28181Config;
+//using GrpcGb28181Config;
 using GrpcDeviceFeature;
 using Consul;
 using System.Net;
 using GrpcVideoOnDemand;
+using Manage;
 
 namespace GB28181Service
 {
@@ -226,10 +227,10 @@ namespace GB28181Service
             {
                 string GBServerChannelAddress = EnvironmentVariables.GBServerChannelAddress ?? "10.78.115.182:5000";//device-mgr-device-mgr
                 Channel channel = new Channel(GBServerChannelAddress, ChannelCredentials.Insecure);
-                var client = new Gb28181Config.Gb28181ConfigClient(channel);
+                var client = new ManageGbService.ManageGbServiceClient(channel);
                 //GbConfigRequest _GbConfigRequest = new GbConfigRequest();
-                GbConfigReply _GbConfigReply = new GbConfigReply();
-                _GbConfigReply = client.GbConfig(new GbConfigRequest() { });
+                QueryGb28181ConfigReply _GbConfigReply = new QueryGb28181ConfigReply();
+                _GbConfigReply = client.GetGb28181ServiceConfig(new QueryGb28181ConfigRequest() { });
 
                 List<SIPSorcery.GB28181.SIP.App.SIPAccount> _lstSIPAccount = new List<SIPSorcery.GB28181.SIP.App.SIPAccount>();
                 foreach (SIPAccount item in _GbConfigReply.Sipaccount)
