@@ -1,37 +1,35 @@
 syntax = "proto3";
 
-package GrpcGb28181Config;
-
-service Gb28181Config {
-  // Sends a greeting
-  rpc GbConfig (GbConfigRequest) returns (GbConfigReply) {}
+package manage;
+service ManageGbService {
+  rpc GetGb28181ServiceConfig (QueryGb28181ConfigRequest) returns (QueryGb28181ConfigReply) {}
 }
 
 // The request message.
-message GbConfigRequest {
+message QueryGb28181ConfigRequest {
 }
 
 // The response message.
-message GbConfigReply {
+message QueryGb28181ConfigReply {
   repeated SIPAccount sipaccount = 1;
 }
-
+//SIPAccount ..
 message SIPAccount {
-  string Id = 1;
-  string Name = 2;
-  string GbVersion = 3;
-  string LocalID = 4;
-  string LocalIP = 5;
-  string LocalPort = 6;
-  string RemotePort = 7;
-  string Authentication = 8;
-  string SIPUsername = 9;
-  string SIPPassword = 10;
-  string MsgProtocol = 11;
-  string StreamProtocol = 12;
-  string TcpMode = 13;
-  string MsgEncode = 14;
-  string PacketOutOrder = 15;
-  string KeepaliveInterval = 16;
-  string KeepaliveNumber = 17;
-}
+    string Id = 1;
+    string Name = 2;
+    string GbVersion = 3;
+    string LocalID = 4;
+    string LocalIP = 5;
+    string LocalPort = 6;
+    string RemotePort = 7;
+    string Authentication = 8;
+    string SIPUsername = 9;
+    string SIPPassword = 10;
+    string MsgProtocol = 11;
+    string StreamProtocol = 12;
+    string TcpMode = 13;
+    string MsgEncode = 14;
+    string PacketOutOrder = 15;
+    string KeepaliveInterval = 16;
+    string KeepaliveNumber = 17;
+  }
