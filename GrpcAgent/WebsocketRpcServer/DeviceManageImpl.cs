@@ -32,7 +32,7 @@ namespace GrpcAgent.WebsocketRpcServer
                 _device.Name = sIPAccount.Owner ?? string.Empty;
                 _device.Guid = sipTransaction.TransactionRequestFrom.URI.User;//42010000001310000184
                 _device.ProtocolType = ProtoType.ProtoGb28181;
-                _device.LoginUser.Add(new LoginUser() { LoginName = sIPAccount.SIPUsername ?? string.Empty, LoginPwd = sIPAccount.SIPPassword ?? string.Empty });
+                _device.LoginUser.Add(new LoginUser() { LoginName = sIPAccount.SIPUsername ?? "admin", LoginPwd = sIPAccount.SIPPassword ?? "123456" });
 
                 Channel channel = new Channel(EnvironmentVariables.GBServerChannelAddress ?? "10.78.115.182:5000", ChannelCredentials.Insecure);
                 var client = new Manage.Manage.ManageClient(channel);

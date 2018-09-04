@@ -24,105 +24,124 @@ namespace Manage {
     static DeviceManageReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChNkZXZpY2VfbWFuYWdlLnByb3RvEgZtYW5hZ2UiRgoTUXVlcnlDaGFubmVs",
-            "UmVxdWVzdBIVCg1sb2dpbl9yb2xlX2lkGAEgASgJEhgKEHBhcmVudF9kZXZp",
-            "Y2VfaWQYAiABKAkiRQoUUXVlcnlDaGFubmVsUmVzcG9uc2USLQoPY2hhbm5l",
-            "bF9kZXZpY2VzGAEgAygLMhQubWFuYWdlLlNpbXBsZURldmljZSKIAQoEVmll",
-            "dxIMCgRndWlkGAEgASgJEgwKBG5hbWUYAiABKAkSEwoLZGVzY3JpcHRpb24Y",
-            "AyABKAkSEQoJcGFyZW50X2lkGAQgASgJEhYKDmNoaWxkX3ZpZXdfaWRzGAUg",
-            "AygJEhIKCmRldmljZV9pZHMYBiADKAkSEAoIb3duZXJfaWQYByABKAki3gEK",
-            "ClNpbXBsZVZpZXcSDAoEZ3VpZBgBIAEoCRIMCgRuYW1lGAIgASgJEhMKC2Rl",
-            "c2NyaXB0aW9uGAMgASgJEi4KEmNoaWxkX3NpbXBsZV92aWV3cxgEIAMoCzIS",
-            "Lm1hbmFnZS5TaW1wbGVWaWV3EiUKB2RldmljZXMYBSADKAsyFC5tYW5hZ2Uu",
-            "S2V5VmFsdWVQYWlyEhAKCG93bmVyX2lkGAYgASgJEhoKEnRvdGFsX2Rldmlj",
-            "ZV9jb3VudBgHIAEoBRIaChJ0b3RhbF9vbmxpbmVfY291bnQYCCABKAUiKAoM",
-            "S2V5VmFsdWVQYWlyEgoKAmlkGAEgASgJEgwKBG5hbWUYAiABKAkiQAoOQWRk",
-            "Vmlld1JlcXVlc3QSGwoFdmlld3MYASADKAsyDC5tYW5hZ2UuVmlldxIRCgl0",
-            "aW1lc3RhbXAYAiABKAQiOwoPQWRkVmlld1Jlc3BvbnNlEigKBnN0YXR1cxgB",
-            "IAEoDjIYLm1hbmFnZS5PUF9SRVNVTFRfU1RBVFVTIkMKEVVwZGF0ZVZpZXdS",
-            "ZXF1ZXN0EhsKBXZpZXdzGAEgAygLMgwubWFuYWdlLlZpZXcSEQoJdGltZXN0",
-            "YW1wGAIgASgEIj4KElVwZGF0ZVZpZXdSZXNwb25zZRIoCgZzdGF0dXMYASAB",
-            "KA4yGC5tYW5hZ2UuT1BfUkVTVUxUX1NUQVRVUyI4ChFEZWxldGVWaWV3UmVx",
-            "dWVzdBIRCgl0aW1lc3RhbXAYASABKAQSEAoIdmlld19pZHMYAiADKAkiPgoS",
-            "RGVsZXRlVmlld1Jlc3BvbnNlEigKBnN0YXR1cxgBIAEoDjIYLm1hbmFnZS5P",
-            "UF9SRVNVTFRfU1RBVFVTIkkKElF1ZXJ5U2ltcGxlUmVxdWVzdBIRCgl0aW1l",
-            "c3RhbXAYASABKAQSDwoHdXNlcl9pZBgCIAEoCRIPCgd2aWV3X2lkGAMgASgJ",
-            "IkIKGVF1ZXJ5U2ltcGxlRGV2aWNlc1JlcXVlc3QSEQoJdGltZXN0YW1wGAEg",
-            "ASgEEhIKCmRldmljZV9pZHMYAiADKAkicQoaUXVlcnlTaW1wbGVEZXZpY2Vz",
-            "UmVzcG9uc2USJQoGc3RhdHVzGAEgASgOMhUubWFuYWdlLlNFQVJDSF9TVEFU",
-            "VVMSLAoOc2ltcGxlX2RldmljZXMYAiADKAsyFC5tYW5hZ2UuU2ltcGxlRGV2",
-            "aWNlIlEKF0Z1enp5UXVlcnlEZXZpY2VSZXF1ZXN0EhEKCXRpbWVzdGFtcBgB",
-            "IAEoBBIVCg1sb2dpbl9yb2xlX2lkGAIgASgJEgwKBG5hbWUYAyABKAkiQQoY",
-            "RnV6enlRdWVyeURldmljZVJlc3BvbnNlEiUKB2RldmljZXMYASADKAsyFC5t",
-            "YW5hZ2UuS2V5VmFsdWVQYWlyIkAKGFF1ZXJ5U2ltcGxlRGV2aWNlUmVxdWVz",
-            "dBIRCgl0aW1lc3RhbXAYASABKAQSEQoJZGV2aWNlX2lkGAIgASgJIm8KGVF1",
-            "ZXJ5U2ltcGxlRGV2aWNlUmVzcG9uc2USJQoGc3RhdHVzGAEgASgOMhUubWFu",
-            "YWdlLlNFQVJDSF9TVEFUVVMSKwoNc2ltcGxlX2RldmljZRgCIAEoCzIULm1h",
-            "bmFnZS5TaW1wbGVEZXZpY2UiagoXUXVlcnlTaW1wbGVWaWV3UmVzcG9uc2US",
-            "JQoGc3RhdHVzGAEgASgOMhUubWFuYWdlLlNFQVJDSF9TVEFUVVMSKAoMc2lt",
-            "cGxlX3ZpZXdzGAIgAygLMhIubWFuYWdlLlNpbXBsZVZpZXci9AIKBkRldmlj",
-            "ZRIMCgRndWlkGAEgASgJEgwKBG5hbWUYAiABKAkSIwoJdHlwZV9jb2RlGAMg",
-            "ASgOMhAubWFuYWdlLlR5cGVDb2RlEigKDXByb3RvY29sX3R5cGUYBCABKA4y",
-            "ES5tYW5hZ2UuUHJvdG9UeXBlEhMKC2Rlc2NyaXB0aW9uGAUgASgJEhAKCGdl",
-            "b19sb25nGAYgASgBEg8KB2dlb19sYXQYByABKAESEAoIcHR6X3R5cGUYCCAB",
-            "KA0SLQoPcHJvdG9jb2xfZGV0YWlsGAkgASgLMhQubWFuYWdlLlByb3RvY29s",
-            "SW5mbxInCgxtZWRpYV9kZXRhaWwYCiABKAsyES5tYW5hZ2UuTWVkaWFJbmZv",
-            "EiUKCmxvZ2luX3VzZXIYCyADKAsyES5tYW5hZ2UuTG9naW5Vc2VyEgsKA3Rh",
-            "ZxgMIAMoCRIVCg1tZWRpYV9zcmNUeXBlGA0gAygNEhIKCmNoYW5uZWxfaWQY",
-            "DiABKAUi5QEKDFNpbXBsZURldmljZRIMCgRndWlkGAEgASgJEhMKC2Rldmlj",
-            "ZV9uYW1lGAIgASgJEigKDXByb3RvY29sX3R5cGUYAyABKA4yES5tYW5hZ2Uu",
-            "UHJvdG9UeXBlEi0KD3Byb3RvY29sX2RldGFpbBgEIAEoCzIULm1hbmFnZS5Q",
-            "cm90b2NvbEluZm8SIAoFdXNlcnMYBSADKAsyES5tYW5hZ2UuTG9naW5Vc2Vy",
-            "EiMKCXR5cGVfY29kZRgGIAEoDjIQLm1hbmFnZS5UeXBlQ29kZRISCgpjaGFu",
-            "bmVsX2lkGAcgASgFIjIKCUxvZ2luVXNlchISCgpsb2dpbl9uYW1lGAEgASgJ",
-            "EhEKCWxvZ2luX3B3ZBgCIAEoCSJICg5EZXZpY2VDYXRlZ29yeRITCgtjYXRl",
-            "Z29yeV9pZBgBIAEoBBIMCgRuYW1lGAIgASgJEhMKC2Rlc2NyaXB0aW9uGAMg",
-            "ASgJIlAKDFByb3RvY29sSW5mbxIiCgVvbnZpZhgBIAEoCzITLm1hbmFnZS5P",
-            "bnZpZkRldGFpbBIcCgJnYhgCIAEoCzIQLm1hbmFnZS5HQkRldGFpbCInCgtP",
-            "bnZpZkRldGFpbBIKCgJJUBgBIAEoCRIMCgRQb3J0GAIgASgNIkYKCEdCRGV0",
-            "YWlsEg0KBUdCX0lEGAEgASgJEhEKCXBhcmVudF9JRBgCIAEoCRIKCgJJUBgD",
-            "IAEoCRIMCgRwb3J0GAQgASgNInMKCU1lZGlhSW5mbxIUCgx2aWRlb19lbmNv",
-            "ZGUYASABKA0SFAoMYXVkaW9fZW5jb2RlGAIgASgNEhMKC3ZpZGVvX3dpZHRo",
-            "GAMgASgNEhQKDHZpZGVvX2hlaWdodBgEIAEoDRIPCgdwcm9maWxlGAUgASgN",
-            "IrUBCg1EZXZpY2VEZXRhaWxzEgwKBGd1aWQYASABKAkSEAoIcHR6X3R5cGUY",
-            "AiABKA0SFAoMbWFudWZhY3R1cmVyGAMgASgJEhQKDG1vZGVsX251bWJlchgE",
-            "IAEoCRITCgt2ZW5kb3JfbmFtZRgFIAEoCRIUCgx2aWRlb19lbmNvZGUYBiAB",
-            "KA0SFAoMYXVkaW9fZW5jb2RlGAcgASgNEhcKD2lzX3ZpZGVvX2RldmljZRgI",
-            "IAEoCCKdAQoPRGV2aWNlSXRlbUV2ZW50EgwKBGd1aWQYASABKAkSDAoEbmFt",
-            "ZRgCIAEoCRITCgtkZXNjcmlwdGlvbhgDIAEoCRIxChBkZXZpY2Vfb3BlcmF0",
-            "aW9uGAQgASgOMhcubWFuYWdlLkRldmljZU9wZXJhdGlvbhITCgtvcGVyYXRv",
-            "cl9pZBgFIAEoCRIRCgl0aW1lc3RhbXAYBiABKAMiXAoQQWRkRGV2aWNlUmVx",
-            "dWVzdBIRCgl0aW1lc3RhbXAYASABKAQSHgoGZGV2aWNlGAIgAygLMg4ubWFu",
-            "YWdlLkRldmljZRIVCg1sb2dpbl9yb2xlX2lkGAMgASgJIj0KEUFkZERldmlj",
+            "ChNkZXZpY2VfbWFuYWdlLnByb3RvEgZtYW5hZ2UiQgoYUXVlcnlCeVByb3Rv",
+            "VHlwZXNSZXF1ZXN0EiYKC3Byb3RvX3R5cGVzGAEgAygOMhEubWFuYWdlLlBy",
+            "b3RvVHlwZSJCChlRdWVyeUJ5UHJvdG9UeXBlc1Jlc3BvbnNlEiUKB2Rldmlj",
+            "ZXMYASADKAsyFC5tYW5hZ2UuU2ltcGxlRGV2aWNlIjEKFVVwZGF0ZVZpZXdO",
+            "YW1lUmVxdWVzdBIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJIjMKGFF1ZXJ5",
+            "UGFyZW50RGV2aWNlUmVxdWVzdBIXCg9jaGlsZF9kZXZpY2VfaWQYASABKAki",
+            "SAoZUXVlcnlQYXJlbnREZXZpY2VSZXNwb25zZRIrCg1wYXJlbnRfZGV2aWNl",
+            "GAEgASgLMhQubWFuYWdlLlNpbXBsZURldmljZSJGChNRdWVyeUNoYW5uZWxS",
+            "ZXF1ZXN0EhUKDWxvZ2luX3JvbGVfaWQYASABKAkSGAoQcGFyZW50X2Rldmlj",
+            "ZV9pZBgCIAEoCSJFChRRdWVyeUNoYW5uZWxSZXNwb25zZRItCg9jaGFubmVs",
+            "X2RldmljZXMYASADKAsyFC5tYW5hZ2UuU2ltcGxlRGV2aWNlIogBCgRWaWV3",
+            "EgwKBGd1aWQYASABKAkSDAoEbmFtZRgCIAEoCRITCgtkZXNjcmlwdGlvbhgD",
+            "IAEoCRIRCglwYXJlbnRfaWQYBCABKAkSFgoOY2hpbGRfdmlld19pZHMYBSAD",
+            "KAkSEgoKZGV2aWNlX2lkcxgGIAMoCRIQCghvd25lcl9pZBgHIAEoCSLeAQoK",
+            "U2ltcGxlVmlldxIMCgRndWlkGAEgASgJEgwKBG5hbWUYAiABKAkSEwoLZGVz",
+            "Y3JpcHRpb24YAyABKAkSLgoSY2hpbGRfc2ltcGxlX3ZpZXdzGAQgAygLMhIu",
+            "bWFuYWdlLlNpbXBsZVZpZXcSJQoHZGV2aWNlcxgFIAMoCzIULm1hbmFnZS5T",
+            "aW1wbGVEZXZpY2USEAoIb3duZXJfaWQYBiABKAkSGgoSdG90YWxfZGV2aWNl",
+            "X2NvdW50GAcgASgFEhoKEnRvdGFsX29ubGluZV9jb3VudBgIIAEoBSIoCgxL",
+            "ZXlWYWx1ZVBhaXISCgoCaWQYASABKAkSDAoEbmFtZRgCIAEoCSItCg5BZGRW",
+            "aWV3UmVxdWVzdBIbCgV2aWV3cxgBIAMoCzIMLm1hbmFnZS5WaWV3IjsKD0Fk",
+            "ZFZpZXdSZXNwb25zZRIoCgZzdGF0dXMYASABKA4yGC5tYW5hZ2UuT1BfUkVT",
+            "VUxUX1NUQVRVUyIwChFVcGRhdGVWaWV3UmVxdWVzdBIbCgV2aWV3cxgBIAMo",
+            "CzIMLm1hbmFnZS5WaWV3Ij4KElVwZGF0ZVZpZXdSZXNwb25zZRIoCgZzdGF0",
+            "dXMYASABKA4yGC5tYW5hZ2UuT1BfUkVTVUxUX1NUQVRVUyIlChFEZWxldGVW",
+            "aWV3UmVxdWVzdBIQCgh2aWV3X2lkcxgBIAMoCSI+ChJEZWxldGVWaWV3UmVz",
+            "cG9uc2USKAoGc3RhdHVzGAEgASgOMhgubWFuYWdlLk9QX1JFU1VMVF9TVEFU",
+            "VVMiRwoSUXVlcnlTaW1wbGVSZXF1ZXN0Eg8KB3VzZXJfaWQYASABKAkSDwoH",
+            "dmlld19pZBgCIAEoCRIPCgdvcmRlcmJ5GAMgASgJIi8KGVF1ZXJ5U2ltcGxl",
+            "RGV2aWNlc1JlcXVlc3QSEgoKZGV2aWNlX2lkcxgBIAMoCSJxChpRdWVyeVNp",
+            "bXBsZURldmljZXNSZXNwb25zZRIlCgZzdGF0dXMYASABKA4yFS5tYW5hZ2Uu",
+            "U0VBUkNIX1NUQVRVUxIsCg5zaW1wbGVfZGV2aWNlcxgCIAMoCzIULm1hbmFn",
+            "ZS5TaW1wbGVEZXZpY2UiPgoXRnV6enlRdWVyeURldmljZVJlcXVlc3QSFQoN",
+            "bG9naW5fcm9sZV9pZBgBIAEoCRIMCgRuYW1lGAIgASgJIkEKGEZ1enp5UXVl",
+            "cnlEZXZpY2VSZXNwb25zZRIlCgdkZXZpY2VzGAEgAygLMhQubWFuYWdlLktl",
+            "eVZhbHVlUGFpciItChhRdWVyeVNpbXBsZURldmljZVJlcXVlc3QSEQoJZGV2",
+            "aWNlX2lkGAEgASgJIm8KGVF1ZXJ5U2ltcGxlRGV2aWNlUmVzcG9uc2USJQoG",
+            "c3RhdHVzGAEgASgOMhUubWFuYWdlLlNFQVJDSF9TVEFUVVMSKwoNc2ltcGxl",
+            "X2RldmljZRgCIAEoCzIULm1hbmFnZS5TaW1wbGVEZXZpY2UiagoXUXVlcnlT",
+            "aW1wbGVWaWV3UmVzcG9uc2USJQoGc3RhdHVzGAEgASgOMhUubWFuYWdlLlNF",
+            "QVJDSF9TVEFUVVMSKAoMc2ltcGxlX3ZpZXdzGAIgAygLMhIubWFuYWdlLlNp",
+            "bXBsZVZpZXciqQMKBkRldmljZRIMCgRndWlkGAEgASgJEgwKBG5hbWUYAiAB",
+            "KAkSCgoCSVAYAyABKAkSDAoEcG9ydBgEIAEoDRIoCg1wcm90b2NvbF90eXBl",
+            "GAUgASgOMhEubWFuYWdlLlByb3RvVHlwZRITCgtkZXNjcmlwdGlvbhgGIAEo",
+            "CRIQCghnZW9fbG9uZxgHIAEoARIPCgdnZW9fbGF0GAggASgBEhAKCHB0el90",
+            "eXBlGAkgASgNEg0KBUdCX0lEGAogASgJEhQKDEdCX1BhcmVudF9JRBgLIAEo",
+            "CRInCgxtZWRpYV9kZXRhaWwYDCABKAsyES5tYW5hZ2UuTWVkaWFJbmZvEiUK",
+            "CmxvZ2luX3VzZXIYDSADKAsyES5tYW5hZ2UuTG9naW5Vc2VyEgsKA3RhZxgO",
+            "IAMoCRIVCg1tZWRpYV9zcmNUeXBlGA8gAygNEhEKCXBhcmVudF9JRBgQIAEo",
+            "CRIlCgpzaGFwZV90eXBlGBEgASgOMhEubWFuYWdlLlNoYXBlVHlwZRIiChps",
+            "YW5ndWFnZV9mb3JtYXRfc2hhcGVfdHlwZRgSIAEoCSK6AgoMU2ltcGxlRGV2",
+            "aWNlEgwKBGd1aWQYASABKAkSDAoEbmFtZRgCIAEoCRIoCg1wcm90b2NvbF90",
+            "eXBlGAMgASgOMhEubWFuYWdlLlByb3RvVHlwZRIKCgJJUBgEIAEoCRIMCgRw",
+            "b3J0GAUgASgNEg0KBUdCX0lEGAYgASgJEhQKDEdCX1BhcmVudF9JRBgHIAEo",
+            "CRIgCgV1c2VycxgIIAMoCzIRLm1hbmFnZS5Mb2dpblVzZXISEQoJZGV2aWNl",
+            "X2lkGAkgASgJEhIKCmNoYW5uZWxfaWQYCiABKAkSEgoKcHJpbWFyeV9pZBgL",
+            "IAEoCRIOCgZzdWJfaWQYDCABKAkSEQoJcGFyZW50X2lkGA0gASgJEiUKCnNo",
+            "YXBlX3R5cGUYDiABKA4yES5tYW5hZ2UuU2hhcGVUeXBlIjIKCUxvZ2luVXNl",
+            "chISCgpsb2dpbl9uYW1lGAEgASgJEhEKCWxvZ2luX3B3ZBgCIAEoCSJICg5E",
+            "ZXZpY2VDYXRlZ29yeRITCgtjYXRlZ29yeV9pZBgBIAEoBBIMCgRuYW1lGAIg",
+            "ASgJEhMKC2Rlc2NyaXB0aW9uGAMgASgJInMKCU1lZGlhSW5mbxIUCgx2aWRl",
+            "b19lbmNvZGUYASABKA0SFAoMYXVkaW9fZW5jb2RlGAIgASgNEhMKC3ZpZGVv",
+            "X3dpZHRoGAMgASgNEhQKDHZpZGVvX2hlaWdodBgEIAEoDRIPCgdwcm9maWxl",
+            "GAUgASgNIrUBCg1EZXZpY2VEZXRhaWxzEgwKBGd1aWQYASABKAkSEAoIcHR6",
+            "X3R5cGUYAiABKA0SFAoMbWFudWZhY3R1cmVyGAMgASgJEhQKDG1vZGVsX251",
+            "bWJlchgEIAEoCRITCgt2ZW5kb3JfbmFtZRgFIAEoCRIUCgx2aWRlb19lbmNv",
+            "ZGUYBiABKA0SFAoMYXVkaW9fZW5jb2RlGAcgASgNEhcKD2lzX3ZpZGVvX2Rl",
+            "dmljZRgIIAEoCCKdAQoPRGV2aWNlSXRlbUV2ZW50EgwKBGd1aWQYASABKAkS",
+            "DAoEbmFtZRgCIAEoCRITCgtkZXNjcmlwdGlvbhgDIAEoCRIxChBkZXZpY2Vf",
+            "b3BlcmF0aW9uGAQgASgOMhcubWFuYWdlLkRldmljZU9wZXJhdGlvbhITCgtv",
+            "cGVyYXRvcl9pZBgFIAEoCRIRCgl0aW1lc3RhbXAYBiABKAMiSQoQQWRkRGV2",
+            "aWNlUmVxdWVzdBIeCgZkZXZpY2UYASADKAsyDi5tYW5hZ2UuRGV2aWNlEhUK",
+            "DWxvZ2luX3JvbGVfaWQYAiABKAkitwEKEUFkZERldmljZVJlc3BvbnNlEhcK",
+            "D2R1cGxpY2F0ZV9uYW1lcxgBIAMoCRIiChpjaGFubmVsX2NyZWF0ZV9mYWls",
+            "ZWRfbmFtZRgCIAMoCRIdChVzdWNjZXNzX2ltcG9ydF9udW1iZXIYAyABKAUS",
+            "HAoUZmFpbGVkX2ltcG9ydF9udW1iZXIYBCABKAUSKAoGc3RhdHVzGAUgASgO",
+            "MhgubWFuYWdlLk9QX1JFU1VMVF9TVEFUVVMiKQoTRGVsZXRlRGV2aWNlUmVx",
+            "dWVzdBISCgpkZXZpY2VzX2lkGAEgAygJImUKFERlbGV0ZURldmljZVJlc3Bv",
+            "bnNlEigKBnN0YXR1cxgBIAEoDjIYLm1hbmFnZS5PUF9SRVNVTFRfU1RBVFVT",
+            "EiMKC2RldmljZV9pdGVtGAIgAygLMg4ubWFuYWdlLkRldmljZSJRChNVcGRh",
+            "dGVEZXZpY2VSZXF1ZXN0EhUKDWxvZ2luX3JvbGVfaWQYASABKAkSIwoLZGV2",
+            "aWNlX2l0ZW0YAiADKAsyDi5tYW5hZ2UuRGV2aWNlImUKFFVwZGF0ZURldmlj",
             "ZVJlc3BvbnNlEigKBnN0YXR1cxgBIAEoDjIYLm1hbmFnZS5PUF9SRVNVTFRf",
-            "U1RBVFVTIjwKE0RlbGV0ZURldmljZVJlcXVlc3QSEQoJdGltZXN0YW1wGAEg",
-            "ASgEEhIKCmRldmljZXNfaWQYAiADKAkiZQoURGVsZXRlRGV2aWNlUmVzcG9u",
-            "c2USKAoGc3RhdHVzGAEgASgOMhgubWFuYWdlLk9QX1JFU1VMVF9TVEFUVVMS",
-            "IwoLZGV2aWNlX2l0ZW0YAiADKAsyDi5tYW5hZ2UuRGV2aWNlIlEKE1VwZGF0",
-            "ZURldmljZVJlcXVlc3QSFQoNbG9naW5fcm9sZV9pZBgBIAEoCRIjCgtkZXZp",
-            "Y2VfaXRlbRgCIAMoCzIOLm1hbmFnZS5EZXZpY2UiZQoUVXBkYXRlRGV2aWNl",
-            "UmVzcG9uc2USKAoGc3RhdHVzGAEgASgOMhgubWFuYWdlLk9QX1JFU1VMVF9T",
-            "VEFUVVMSIwoLZGV2aWNlX2l0ZW0YAyADKAsyDi5tYW5hZ2UuRGV2aWNlIoEB",
-            "CgxRdWVyeVJlcXVlc3QSLwoPcXVlcnlfY29uZGl0aW9uGAEgASgLMhYubWFu",
-            "YWdlLlF1ZXJ5Q29uZGl0aW9uEhMKC3BhZ2VfbnVtYmVyGAIgASgFEhYKDmNv",
-            "dW50X3Blcl9wYWdlGAMgASgFEhMKC2xvZ2luUm9sZUlkGAQgASgJIkEKDlF1",
-            "ZXJ5Q29uZGl0aW9uEgoKAmlkGAEgASgJEgwKBG5hbWUYAiABKAkSFQoNcHJv",
-            "dG9jb2xfdHlwZRgDIAEoCSKGAQoTUXVlcnlEZXZpY2VSZXNwb25zZRIlCgZz",
-            "dGF0dXMYASABKA4yFS5tYW5hZ2UuU0VBUkNIX1NUQVRVUxIfCgdkZXZpY2Vz",
-            "GAIgAygLMg4ubWFuYWdlLkRldmljZRITCgt0b3RhbF9jb3VudBgDIAEoBRIS",
-            "Cgp0b3RhbF9wYWdlGAQgASgFIlwKD0NoZWNrRHVwUmVxdWVzdBIRCgl0aW1l",
-            "c3RhbXAYASABKAQSIgoIY2F0ZWdvcnkYAiABKA4yEC5tYW5hZ2UuQ2F0ZWdv",
-            "cnkSEgoKY2hlY2tWYWx1ZRgDIAMoCSJcChBDaGVja0R1cFJlc3BvbnNlEigK",
-            "BnN0YXR1cxgBIAEoDjIYLm1hbmFnZS5DSEVDS0RVUExfUkVTVUxUEhEKCWR1",
-            "cGxWYWx1ZRgCIAMoCRILCgNtc2cYAyABKAkqhQEKCVByb3RvVHlwZRIPCgtQ",
-            "Uk9UT19PTlZJRhAAEhEKDVBST1RPX0dCMjgxODEQARIOCgpQUk9UT19SVFNQ",
-            "EAISDgoKUFJPVE9fTVFUVBADEg4KClBST1RPX0NPQVAQBBITCg9QUk9UT19X",
-            "RUJTT0NLRVQQBRIPCgtQUk9UT19PVEhFUhAGKi0KCFR5cGVDb2RlEgcKA0lQ",
-            "QxAAEgsKB05WUjcxMjgQARILCgdDaGFubmVsEAIqTgoHUFRaVHlwZRIXChND",
-            "QU1fRE9NRV9ISUdIX1NQRUVEEAASDAoIQ0FNX0RPTUUQARILCgdDQU1fQk9Y",
-            "EAISDwoLQ0FNX0JPWF9GSVgQAyphCg9EZXZpY2VPcGVyYXRpb24SDwoLRE9Q",
-            "X1VOS05PV04QABIOCgpET1BfQ1JFQVRFEAESDgoKRE9QX0RFTEVURRACEg4K",
-            "CkRPUF9VUERBVEUQAxINCglET1BfUVVFUlkQBCpYCghDYXRlZ29yeRIRCg1D",
+            "U1RBVFVTEiMKC2RldmljZV9pdGVtGAMgAygLMg4ubWFuYWdlLkRldmljZSLH",
+            "AQoMUXVlcnlSZXF1ZXN0Ei8KD3F1ZXJ5X2NvbmRpdGlvbhgBIAEoCzIWLm1h",
+            "bmFnZS5RdWVyeUNvbmRpdGlvbhIgCgdvcmRlcmJ5GAIgASgOMg8ubWFuYWdl",
+            "Lk9yZGVyQnkSEAoISXNBc2NlbmQYAyABKAgSEwoLcGFnZV9udW1iZXIYBCAB",
+            "KAUSFgoOY291bnRfcGVyX3BhZ2UYBSABKAUSEwoLbG9naW5Sb2xlSWQYBiAB",
+            "KAkSEAoIbGFuZ3VhZ2UYByABKAkiagoOUXVlcnlDb25kaXRpb24SEwoLZGV2",
+            "aWNlX25hbWUYASABKAkSCgoCaXAYAiABKAkSKQoOcHJvdG9jb2xfdHlwZXMY",
+            "AyADKA4yES5tYW5hZ2UuUHJvdG9UeXBlEgwKBHBvcnQYBCABKAUiJwoSUXVl",
+            "cnlEZXZpY2VSZXF1ZXN0EhEKCWRldmljZV9pZBgBIAEoCSKGAQoTUXVlcnlE",
+            "ZXZpY2VSZXNwb25zZRIlCgZzdGF0dXMYASABKA4yFS5tYW5hZ2UuU0VBUkNI",
+            "X1NUQVRVUxIfCgdkZXZpY2VzGAIgAygLMg4ubWFuYWdlLkRldmljZRITCgt0",
+            "b3RhbF9jb3VudBgDIAEoBRISCgp0b3RhbF9wYWdlGAQgASgFIlwKD0NoZWNr",
+            "RHVwUmVxdWVzdBIRCgl0aW1lc3RhbXAYASABKAQSIgoIY2F0ZWdvcnkYAiAB",
+            "KA4yEC5tYW5hZ2UuQ2F0ZWdvcnkSEgoKY2hlY2tWYWx1ZRgDIAMoCSJcChBD",
+            "aGVja0R1cFJlc3BvbnNlEigKBnN0YXR1cxgBIAEoDjIYLm1hbmFnZS5DSEVD",
+            "S0RVUExfUkVTVUxUEhEKCWR1cGxWYWx1ZRgCIAMoCRILCgNtc2cYAyABKAki",
+            "pgMKE0RldmljZUNoYW5nZU1lc3NhZ2USEAoIZGV2aWNlSUQYASABKAkSCgoC",
+            "aXAYAiABKAkSDAoEcG9ydBgDIAEoBRIRCglsb2dpbk5hbWUYBCABKAkSEAoI",
+            "bG9naW5Qd2QYBSABKAkSMgoGYWN0aW9uGAYgASgOMiIubWFuYWdlLkRldmlj",
+            "ZUNoYW5nZU1lc3NhZ2UuQWN0aW9uEhIKCmRldmljZU5hbWUYByABKAkSDQoF",
+            "R0JfSUQYCCABKAkSFAoMR0JfUGFyZW50X0lEGAkgASgJEhIKCmNoYW5uZWxf",
+            "aWQYCiABKAkSDQoFRFZSSUQYCyABKAkSEgoKcHJpbWFyeV9pZBgMIAEoCRIO",
+            "CgZzdWJfaWQYDSABKAkSJQoKcHJvdG9fdHlwZRgOIAEoDjIRLm1hbmFnZS5Q",
+            "cm90b1R5cGUSEQoJcGFyZW50X2lkGA8gASgJEiUKCnNoYXBlX3R5cGUYECAB",
+            "KA4yES5tYW5hZ2UuU2hhcGVUeXBlIikKBkFjdGlvbhIHCgNBZGQQABIKCgZV",
+            "cGRhdGUQARIKCgZEZWxldGUQAipuCglQcm90b1R5cGUSEQoNUFJPVE9fR0Iy",
+            "ODE4MRAAEhEKDVBST1RPX05WUjcxMjgQARIZChVQUk9UT19OVlI3MTI4X0No",
+            "YW5uZWwQAhIPCgtQUk9UT19PTlZJRhADEg8KC1BST1RPX0lQU0FOEAQqTgoH",
+            "UFRaVHlwZRIXChNDQU1fRE9NRV9ISUdIX1NQRUVEEAASDAoIQ0FNX0RPTUUQ",
+            "ARILCgdDQU1fQk9YEAISDwoLQ0FNX0JPWF9GSVgQAypACglTaGFwZVR5cGUS",
+            "DgoKTm90U3VwcG9ydBAAEgoKBkJ1bGxldBABEggKBERvbWUQAhINCglGaXhl",
+            "ZERvbWUQAyphCg9EZXZpY2VPcGVyYXRpb24SDwoLRE9QX1VOS05PV04QABIO",
+            "CgpET1BfQ1JFQVRFEAESDgoKRE9QX0RFTEVURRACEg4KCkRPUF9VUERBVEUQ",
+            "AxINCglET1BfUVVFUlkQBCo3CgdPcmRlckJ5EggKBE5hbWUQABIGCgJJcBAB",
+            "EggKBFBvcnQQAhIQCgxQcm90b2NvbFR5cGUQAypYCghDYXRlZ29yeRIRCg1D",
             "YXRlZ29yeV9Sb2xlEAASEQoNQ2F0ZWdvcnlfVXNlchABEhMKD0NhdGVnb3J5",
             "X0RldmljZRACEhEKDUNhdGVnb3J5X1ZpZXcQAypSChBDSEVDS0RVUExfUkVT",
             "VUxUEhIKDkNIRUNLRFVQTF9EVVBMEAASFAoQQ0hFQ0tEVVBMX05PRFVQTBAB",
@@ -130,73 +149,84 @@ namespace Manage {
             "Ck9QX1NVQ0NFU1MQABIQCgxPUF9FWENFUFRJT04QARIUChBPUF9OQU1FRFVQ",
             "TElDQVRFEAISIAocT1BfUkVTT1VSQ0VPQ0NVUlJFREVYQ0VQVElPThADKlIK",
             "DVNFQVJDSF9TVEFUVVMSFgoSU0VBUkNIX0lOX1BST0dSRVNTEAASEwoPU0VB",
-            "UkNIX0ZJTklTSEVEEAESFAoQU0VBUkNIX0VYQ0VQVElPThACMoAICgZNYW5h",
-            "Z2USQgoJQWRkRGV2aWNlEhgubWFuYWdlLkFkZERldmljZVJlcXVlc3QaGS5t",
-            "YW5hZ2UuQWRkRGV2aWNlUmVzcG9uc2UiABJLCgxEZWxldGVEZXZpY2USGy5t",
-            "YW5hZ2UuRGVsZXRlRGV2aWNlUmVxdWVzdBocLm1hbmFnZS5EZWxldGVEZXZp",
-            "Y2VSZXNwb25zZSIAEksKDFVwZGF0ZURldmljZRIbLm1hbmFnZS5VcGRhdGVE",
-            "ZXZpY2VSZXF1ZXN0GhwubWFuYWdlLlVwZGF0ZURldmljZVJlc3BvbnNlIgAS",
-            "QgoLUXVlcnlEZXZpY2USFC5tYW5hZ2UuUXVlcnlSZXF1ZXN0GhsubWFuYWdl",
-            "LlF1ZXJ5RGV2aWNlUmVzcG9uc2UiABJACglDaGVja0R1cGwSFy5tYW5hZ2Uu",
-            "Q2hlY2tEdXBSZXF1ZXN0GhgubWFuYWdlLkNoZWNrRHVwUmVzcG9uc2UiABI8",
-            "CgdBZGRWaWV3EhYubWFuYWdlLkFkZFZpZXdSZXF1ZXN0GhcubWFuYWdlLkFk",
-            "ZFZpZXdSZXNwb25zZSIAEkUKCkRlbGV0ZVZpZXcSGS5tYW5hZ2UuRGVsZXRl",
-            "Vmlld1JlcXVlc3QaGi5tYW5hZ2UuRGVsZXRlVmlld1Jlc3BvbnNlIgASRQoK",
-            "VXBkYXRlVmlldxIZLm1hbmFnZS5VcGRhdGVWaWV3UmVxdWVzdBoaLm1hbmFn",
-            "ZS5VcGRhdGVWaWV3UmVzcG9uc2UiABJQCg9RdWVyeVNpbXBsZVZpZXcSGi5t",
-            "YW5hZ2UuUXVlcnlTaW1wbGVSZXF1ZXN0Gh8ubWFuYWdlLlF1ZXJ5U2ltcGxl",
-            "Vmlld1Jlc3BvbnNlIgASXgoVUXVlcnlTaW1wbGVEZXZpY2VCeUlkEiAubWFu",
-            "YWdlLlF1ZXJ5U2ltcGxlRGV2aWNlUmVxdWVzdBohLm1hbmFnZS5RdWVyeVNp",
-            "bXBsZURldmljZVJlc3BvbnNlIgASYQoWUXVlcnlTaW1wbGVEZXZpY2VCeUlk",
-            "cxIhLm1hbmFnZS5RdWVyeVNpbXBsZURldmljZXNSZXF1ZXN0GiIubWFuYWdl",
-            "LlF1ZXJ5U2ltcGxlRGV2aWNlc1Jlc3BvbnNlIgASXQoWRnV6enlRdWVyeURl",
-            "dmljZUJ5TmFtZRIfLm1hbmFnZS5GdXp6eVF1ZXJ5RGV2aWNlUmVxdWVzdBog",
-            "Lm1hbmFnZS5GdXp6eVF1ZXJ5RGV2aWNlUmVzcG9uc2UiABJSChNRdWVyeUNo",
-            "YW5uZWxEZXZpY2VzEhsubWFuYWdlLlF1ZXJ5Q2hhbm5lbFJlcXVlc3QaHC5t",
-            "YW5hZ2UuUXVlcnlDaGFubmVsUmVzcG9uc2UiAGIGcHJvdG8z"));
+            "UkNIX0ZJTklTSEVEEAESFAoQU0VBUkNIX0VYQ0VQVElPThACKiYKEkRldmlj",
+            "ZU1lc3NhZ2VUb3BpYxIQCgxEZXZpY2VDaGFuZ2UQADKFCgoGTWFuYWdlEkIK",
+            "CUFkZERldmljZRIYLm1hbmFnZS5BZGREZXZpY2VSZXF1ZXN0GhkubWFuYWdl",
+            "LkFkZERldmljZVJlc3BvbnNlIgASSwoMRGVsZXRlRGV2aWNlEhsubWFuYWdl",
+            "LkRlbGV0ZURldmljZVJlcXVlc3QaHC5tYW5hZ2UuRGVsZXRlRGV2aWNlUmVz",
+            "cG9uc2UiABJLCgxVcGRhdGVEZXZpY2USGy5tYW5hZ2UuVXBkYXRlRGV2aWNl",
+            "UmVxdWVzdBocLm1hbmFnZS5VcGRhdGVEZXZpY2VSZXNwb25zZSIAEkIKC1F1",
+            "ZXJ5RGV2aWNlEhQubWFuYWdlLlF1ZXJ5UmVxdWVzdBobLm1hbmFnZS5RdWVy",
+            "eURldmljZVJlc3BvbnNlIgASTAoPUXVlcnlEZXZpY2VCeUlkEhoubWFuYWdl",
+            "LlF1ZXJ5RGV2aWNlUmVxdWVzdBobLm1hbmFnZS5RdWVyeURldmljZVJlc3Bv",
+            "bnNlIgASQAoJQ2hlY2tEdXBsEhcubWFuYWdlLkNoZWNrRHVwUmVxdWVzdBoY",
+            "Lm1hbmFnZS5DaGVja0R1cFJlc3BvbnNlIgASPAoHQWRkVmlldxIWLm1hbmFn",
+            "ZS5BZGRWaWV3UmVxdWVzdBoXLm1hbmFnZS5BZGRWaWV3UmVzcG9uc2UiABJF",
+            "CgpEZWxldGVWaWV3EhkubWFuYWdlLkRlbGV0ZVZpZXdSZXF1ZXN0GhoubWFu",
+            "YWdlLkRlbGV0ZVZpZXdSZXNwb25zZSIAEkUKClVwZGF0ZVZpZXcSGS5tYW5h",
+            "Z2UuVXBkYXRlVmlld1JlcXVlc3QaGi5tYW5hZ2UuVXBkYXRlVmlld1Jlc3Bv",
+            "bnNlIgASUAoPUXVlcnlTaW1wbGVWaWV3EhoubWFuYWdlLlF1ZXJ5U2ltcGxl",
+            "UmVxdWVzdBofLm1hbmFnZS5RdWVyeVNpbXBsZVZpZXdSZXNwb25zZSIAEmEK",
+            "FlF1ZXJ5U2ltcGxlRGV2aWNlQnlJZHMSIS5tYW5hZ2UuUXVlcnlTaW1wbGVE",
+            "ZXZpY2VzUmVxdWVzdBoiLm1hbmFnZS5RdWVyeVNpbXBsZURldmljZXNSZXNw",
+            "b25zZSIAEl0KFkZ1enp5UXVlcnlEZXZpY2VCeU5hbWUSHy5tYW5hZ2UuRnV6",
+            "enlRdWVyeURldmljZVJlcXVlc3QaIC5tYW5hZ2UuRnV6enlRdWVyeURldmlj",
+            "ZVJlc3BvbnNlIgASUgoTUXVlcnlDaGFubmVsRGV2aWNlcxIbLm1hbmFnZS5R",
+            "dWVyeUNoYW5uZWxSZXF1ZXN0GhwubWFuYWdlLlF1ZXJ5Q2hhbm5lbFJlc3Bv",
+            "bnNlIgASYwoaUXVlcnlQYXJlbnREZXZpY2VCeUNoaWxkSUQSIC5tYW5hZ2Uu",
+            "UXVlcnlQYXJlbnREZXZpY2VSZXF1ZXN0GiEubWFuYWdlLlF1ZXJ5UGFyZW50",
+            "RGV2aWNlUmVzcG9uc2UiABJNCg5VcGRhdGVWaWV3TmFtZRIdLm1hbmFnZS5V",
+            "cGRhdGVWaWV3TmFtZVJlcXVlc3QaGi5tYW5hZ2UuVXBkYXRlVmlld1Jlc3Bv",
+            "bnNlIgASYQoYUXVlcnlEZXZpY2VzQnlQcm90b1R5cGVzEiAubWFuYWdlLlF1",
+            "ZXJ5QnlQcm90b1R5cGVzUmVxdWVzdBohLm1hbmFnZS5RdWVyeUJ5UHJvdG9U",
+            "eXBlc1Jlc3BvbnNlIgBiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Manage.ProtoType), typeof(global::Manage.TypeCode), typeof(global::Manage.PTZType), typeof(global::Manage.DeviceOperation), typeof(global::Manage.Category), typeof(global::Manage.CHECKDUPL_RESULT), typeof(global::Manage.OP_RESULT_STATUS), typeof(global::Manage.SEARCH_STATUS), }, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Manage.ProtoType), typeof(global::Manage.PTZType), typeof(global::Manage.ShapeType), typeof(global::Manage.DeviceOperation), typeof(global::Manage.OrderBy), typeof(global::Manage.Category), typeof(global::Manage.CHECKDUPL_RESULT), typeof(global::Manage.OP_RESULT_STATUS), typeof(global::Manage.SEARCH_STATUS), typeof(global::Manage.DeviceMessageTopic), }, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.QueryByProtoTypesRequest), global::Manage.QueryByProtoTypesRequest.Parser, new[]{ "ProtoTypes" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.QueryByProtoTypesResponse), global::Manage.QueryByProtoTypesResponse.Parser, new[]{ "Devices" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.UpdateViewNameRequest), global::Manage.UpdateViewNameRequest.Parser, new[]{ "Id", "Name" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.QueryParentDeviceRequest), global::Manage.QueryParentDeviceRequest.Parser, new[]{ "ChildDeviceId" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.QueryParentDeviceResponse), global::Manage.QueryParentDeviceResponse.Parser, new[]{ "ParentDevice" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Manage.QueryChannelRequest), global::Manage.QueryChannelRequest.Parser, new[]{ "LoginRoleId", "ParentDeviceId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Manage.QueryChannelResponse), global::Manage.QueryChannelResponse.Parser, new[]{ "ChannelDevices" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Manage.View), global::Manage.View.Parser, new[]{ "Guid", "Name", "Description", "ParentId", "ChildViewIds", "DeviceIds", "OwnerId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Manage.SimpleView), global::Manage.SimpleView.Parser, new[]{ "Guid", "Name", "Description", "ChildSimpleViews", "Devices", "OwnerId", "TotalDeviceCount", "TotalOnlineCount" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Manage.KeyValuePair), global::Manage.KeyValuePair.Parser, new[]{ "Id", "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.AddViewRequest), global::Manage.AddViewRequest.Parser, new[]{ "Views", "Timestamp" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.AddViewRequest), global::Manage.AddViewRequest.Parser, new[]{ "Views" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Manage.AddViewResponse), global::Manage.AddViewResponse.Parser, new[]{ "Status" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.UpdateViewRequest), global::Manage.UpdateViewRequest.Parser, new[]{ "Views", "Timestamp" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.UpdateViewRequest), global::Manage.UpdateViewRequest.Parser, new[]{ "Views" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Manage.UpdateViewResponse), global::Manage.UpdateViewResponse.Parser, new[]{ "Status" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.DeleteViewRequest), global::Manage.DeleteViewRequest.Parser, new[]{ "Timestamp", "ViewIds" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.DeleteViewRequest), global::Manage.DeleteViewRequest.Parser, new[]{ "ViewIds" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Manage.DeleteViewResponse), global::Manage.DeleteViewResponse.Parser, new[]{ "Status" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.QuerySimpleRequest), global::Manage.QuerySimpleRequest.Parser, new[]{ "Timestamp", "UserId", "ViewId" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.QuerySimpleDevicesRequest), global::Manage.QuerySimpleDevicesRequest.Parser, new[]{ "Timestamp", "DeviceIds" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.QuerySimpleRequest), global::Manage.QuerySimpleRequest.Parser, new[]{ "UserId", "ViewId", "Orderby" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.QuerySimpleDevicesRequest), global::Manage.QuerySimpleDevicesRequest.Parser, new[]{ "DeviceIds" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Manage.QuerySimpleDevicesResponse), global::Manage.QuerySimpleDevicesResponse.Parser, new[]{ "Status", "SimpleDevices" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.FuzzyQueryDeviceRequest), global::Manage.FuzzyQueryDeviceRequest.Parser, new[]{ "Timestamp", "LoginRoleId", "Name" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.FuzzyQueryDeviceRequest), global::Manage.FuzzyQueryDeviceRequest.Parser, new[]{ "LoginRoleId", "Name" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Manage.FuzzyQueryDeviceResponse), global::Manage.FuzzyQueryDeviceResponse.Parser, new[]{ "Devices" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.QuerySimpleDeviceRequest), global::Manage.QuerySimpleDeviceRequest.Parser, new[]{ "Timestamp", "DeviceId" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.QuerySimpleDeviceRequest), global::Manage.QuerySimpleDeviceRequest.Parser, new[]{ "DeviceId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Manage.QuerySimpleDeviceResponse), global::Manage.QuerySimpleDeviceResponse.Parser, new[]{ "Status", "SimpleDevice" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Manage.QuerySimpleViewResponse), global::Manage.QuerySimpleViewResponse.Parser, new[]{ "Status", "SimpleViews" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.Device), global::Manage.Device.Parser, new[]{ "Guid", "Name", "TypeCode", "ProtocolType", "Description", "GeoLong", "GeoLat", "PtzType", "ProtocolDetail", "MediaDetail", "LoginUser", "Tag", "MediaSrcType", "ChannelId" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.SimpleDevice), global::Manage.SimpleDevice.Parser, new[]{ "Guid", "DeviceName", "ProtocolType", "ProtocolDetail", "Users", "TypeCode", "ChannelId" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.Device), global::Manage.Device.Parser, new[]{ "Guid", "Name", "IP", "Port", "ProtocolType", "Description", "GeoLong", "GeoLat", "PtzType", "GBID", "GBParentID", "MediaDetail", "LoginUser", "Tag", "MediaSrcType", "ParentID", "ShapeType", "LanguageFormatShapeType" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.SimpleDevice), global::Manage.SimpleDevice.Parser, new[]{ "Guid", "Name", "ProtocolType", "IP", "Port", "GBID", "GBParentID", "Users", "DeviceId", "ChannelId", "PrimaryId", "SubId", "ParentId", "ShapeType" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Manage.LoginUser), global::Manage.LoginUser.Parser, new[]{ "LoginName", "LoginPwd" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Manage.DeviceCategory), global::Manage.DeviceCategory.Parser, new[]{ "CategoryId", "Name", "Description" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.ProtocolInfo), global::Manage.ProtocolInfo.Parser, new[]{ "Onvif", "Gb" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.OnvifDetail), global::Manage.OnvifDetail.Parser, new[]{ "IP", "Port" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.GBDetail), global::Manage.GBDetail.Parser, new[]{ "GBID", "ParentID", "IP", "Port" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Manage.MediaInfo), global::Manage.MediaInfo.Parser, new[]{ "VideoEncode", "AudioEncode", "VideoWidth", "VideoHeight", "Profile" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Manage.DeviceDetails), global::Manage.DeviceDetails.Parser, new[]{ "Guid", "PtzType", "Manufacturer", "ModelNumber", "VendorName", "VideoEncode", "AudioEncode", "IsVideoDevice" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Manage.DeviceItemEvent), global::Manage.DeviceItemEvent.Parser, new[]{ "Guid", "Name", "Description", "DeviceOperation", "OperatorId", "Timestamp" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.AddDeviceRequest), global::Manage.AddDeviceRequest.Parser, new[]{ "Timestamp", "Device", "LoginRoleId" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.AddDeviceResponse), global::Manage.AddDeviceResponse.Parser, new[]{ "Status" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.DeleteDeviceRequest), global::Manage.DeleteDeviceRequest.Parser, new[]{ "Timestamp", "DevicesId" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.AddDeviceRequest), global::Manage.AddDeviceRequest.Parser, new[]{ "Device", "LoginRoleId" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.AddDeviceResponse), global::Manage.AddDeviceResponse.Parser, new[]{ "DuplicateNames", "ChannelCreateFailedName", "SuccessImportNumber", "FailedImportNumber", "Status" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.DeleteDeviceRequest), global::Manage.DeleteDeviceRequest.Parser, new[]{ "DevicesId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Manage.DeleteDeviceResponse), global::Manage.DeleteDeviceResponse.Parser, new[]{ "Status", "DeviceItem" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Manage.UpdateDeviceRequest), global::Manage.UpdateDeviceRequest.Parser, new[]{ "LoginRoleId", "DeviceItem" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Manage.UpdateDeviceResponse), global::Manage.UpdateDeviceResponse.Parser, new[]{ "Status", "DeviceItem" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.QueryRequest), global::Manage.QueryRequest.Parser, new[]{ "QueryCondition", "PageNumber", "CountPerPage", "LoginRoleId" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.QueryCondition), global::Manage.QueryCondition.Parser, new[]{ "Id", "Name", "ProtocolType" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.QueryRequest), global::Manage.QueryRequest.Parser, new[]{ "QueryCondition", "Orderby", "IsAscend", "PageNumber", "CountPerPage", "LoginRoleId", "Language" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.QueryCondition), global::Manage.QueryCondition.Parser, new[]{ "DeviceName", "Ip", "ProtocolTypes", "Port" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.QueryDeviceRequest), global::Manage.QueryDeviceRequest.Parser, new[]{ "DeviceId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Manage.QueryDeviceResponse), global::Manage.QueryDeviceResponse.Parser, new[]{ "Status", "Devices", "TotalCount", "TotalPage" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Manage.CheckDupRequest), global::Manage.CheckDupRequest.Parser, new[]{ "Timestamp", "Category", "CheckValue" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.CheckDupResponse), global::Manage.CheckDupResponse.Parser, new[]{ "Status", "DuplValue", "Msg" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.CheckDupResponse), global::Manage.CheckDupResponse.Parser, new[]{ "Status", "DuplValue", "Msg" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.DeviceChangeMessage), global::Manage.DeviceChangeMessage.Parser, new[]{ "DeviceID", "Ip", "Port", "LoginName", "LoginPwd", "Action", "DeviceName", "GBID", "GBParentID", "ChannelId", "DVRID", "PrimaryId", "SubId", "ProtoType", "ParentId", "ShapeType" }, null, new[]{ typeof(global::Manage.DeviceChangeMessage.Types.Action) }, null)
           }));
     }
     #endregion
@@ -204,19 +234,11 @@ namespace Manage {
   }
   #region Enums
   public enum ProtoType {
-    [pbr::OriginalName("PROTO_ONVIF")] ProtoOnvif = 0,
-    [pbr::OriginalName("PROTO_GB28181")] ProtoGb28181 = 1,
-    [pbr::OriginalName("PROTO_RTSP")] ProtoRtsp = 2,
-    [pbr::OriginalName("PROTO_MQTT")] ProtoMqtt = 3,
-    [pbr::OriginalName("PROTO_COAP")] ProtoCoap = 4,
-    [pbr::OriginalName("PROTO_WEBSOCKET")] ProtoWebsocket = 5,
-    [pbr::OriginalName("PROTO_OTHER")] ProtoOther = 6,
-  }
-
-  public enum TypeCode {
-    [pbr::OriginalName("IPC")] Ipc = 0,
-    [pbr::OriginalName("NVR7128")] Nvr7128 = 1,
-    [pbr::OriginalName("Channel")] Channel = 2,
+    [pbr::OriginalName("PROTO_GB28181")] ProtoGb28181 = 0,
+    [pbr::OriginalName("PROTO_NVR7128")] ProtoNvr7128 = 1,
+    [pbr::OriginalName("PROTO_NVR7128_Channel")] ProtoNvr7128Channel = 2,
+    [pbr::OriginalName("PROTO_ONVIF")] ProtoOnvif = 3,
+    [pbr::OriginalName("PROTO_IPSAN")] ProtoIpsan = 4,
   }
 
   public enum PTZType {
@@ -226,12 +248,26 @@ namespace Manage {
     [pbr::OriginalName("CAM_BOX_FIX")] CamBoxFix = 3,
   }
 
+  public enum ShapeType {
+    [pbr::OriginalName("NotSupport")] NotSupport = 0,
+    [pbr::OriginalName("Bullet")] Bullet = 1,
+    [pbr::OriginalName("Dome")] Dome = 2,
+    [pbr::OriginalName("FixedDome")] FixedDome = 3,
+  }
+
   public enum DeviceOperation {
     [pbr::OriginalName("DOP_UNKNOWN")] DopUnknown = 0,
     [pbr::OriginalName("DOP_CREATE")] DopCreate = 1,
     [pbr::OriginalName("DOP_DELETE")] DopDelete = 2,
     [pbr::OriginalName("DOP_UPDATE")] DopUpdate = 3,
     [pbr::OriginalName("DOP_QUERY")] DopQuery = 4,
+  }
+
+  public enum OrderBy {
+    [pbr::OriginalName("Name")] Name = 0,
+    [pbr::OriginalName("Ip")] Ip = 1,
+    [pbr::OriginalName("Port")] Port = 2,
+    [pbr::OriginalName("ProtocolType")] ProtocolType = 3,
   }
 
   public enum Category {
@@ -260,9 +296,677 @@ namespace Manage {
     [pbr::OriginalName("SEARCH_EXCEPTION")] SearchException = 2,
   }
 
+  public enum DeviceMessageTopic {
+    [pbr::OriginalName("DeviceChange")] DeviceChange = 0,
+  }
+
   #endregion
 
   #region Messages
+  public sealed partial class QueryByProtoTypesRequest : pb::IMessage<QueryByProtoTypesRequest> {
+    private static readonly pb::MessageParser<QueryByProtoTypesRequest> _parser = new pb::MessageParser<QueryByProtoTypesRequest>(() => new QueryByProtoTypesRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<QueryByProtoTypesRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[0]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public QueryByProtoTypesRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public QueryByProtoTypesRequest(QueryByProtoTypesRequest other) : this() {
+      protoTypes_ = other.protoTypes_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public QueryByProtoTypesRequest Clone() {
+      return new QueryByProtoTypesRequest(this);
+    }
+
+    /// <summary>Field number for the "proto_types" field.</summary>
+    public const int ProtoTypesFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Manage.ProtoType> _repeated_protoTypes_codec
+        = pb::FieldCodec.ForEnum(10, x => (int) x, x => (global::Manage.ProtoType) x);
+    private readonly pbc::RepeatedField<global::Manage.ProtoType> protoTypes_ = new pbc::RepeatedField<global::Manage.ProtoType>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Manage.ProtoType> ProtoTypes {
+      get { return protoTypes_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as QueryByProtoTypesRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(QueryByProtoTypesRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!protoTypes_.Equals(other.protoTypes_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= protoTypes_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      protoTypes_.WriteTo(output, _repeated_protoTypes_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += protoTypes_.CalculateSize(_repeated_protoTypes_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(QueryByProtoTypesRequest other) {
+      if (other == null) {
+        return;
+      }
+      protoTypes_.Add(other.protoTypes_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10:
+          case 8: {
+            protoTypes_.AddEntriesFrom(input, _repeated_protoTypes_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class QueryByProtoTypesResponse : pb::IMessage<QueryByProtoTypesResponse> {
+    private static readonly pb::MessageParser<QueryByProtoTypesResponse> _parser = new pb::MessageParser<QueryByProtoTypesResponse>(() => new QueryByProtoTypesResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<QueryByProtoTypesResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public QueryByProtoTypesResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public QueryByProtoTypesResponse(QueryByProtoTypesResponse other) : this() {
+      devices_ = other.devices_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public QueryByProtoTypesResponse Clone() {
+      return new QueryByProtoTypesResponse(this);
+    }
+
+    /// <summary>Field number for the "devices" field.</summary>
+    public const int DevicesFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Manage.SimpleDevice> _repeated_devices_codec
+        = pb::FieldCodec.ForMessage(10, global::Manage.SimpleDevice.Parser);
+    private readonly pbc::RepeatedField<global::Manage.SimpleDevice> devices_ = new pbc::RepeatedField<global::Manage.SimpleDevice>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Manage.SimpleDevice> Devices {
+      get { return devices_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as QueryByProtoTypesResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(QueryByProtoTypesResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!devices_.Equals(other.devices_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= devices_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      devices_.WriteTo(output, _repeated_devices_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += devices_.CalculateSize(_repeated_devices_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(QueryByProtoTypesResponse other) {
+      if (other == null) {
+        return;
+      }
+      devices_.Add(other.devices_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            devices_.AddEntriesFrom(input, _repeated_devices_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class UpdateViewNameRequest : pb::IMessage<UpdateViewNameRequest> {
+    private static readonly pb::MessageParser<UpdateViewNameRequest> _parser = new pb::MessageParser<UpdateViewNameRequest>(() => new UpdateViewNameRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<UpdateViewNameRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public UpdateViewNameRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public UpdateViewNameRequest(UpdateViewNameRequest other) : this() {
+      id_ = other.id_;
+      name_ = other.name_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public UpdateViewNameRequest Clone() {
+      return new UpdateViewNameRequest(this);
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private string id_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Id {
+      get { return id_; }
+      set {
+        id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 2;
+    private string name_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as UpdateViewNameRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(UpdateViewNameRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      if (Name != other.Name) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id.Length != 0) hash ^= Id.GetHashCode();
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Id.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Id);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Name);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
+      }
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(UpdateViewNameRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id.Length != 0) {
+        Id = other.Id;
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Id = input.ReadString();
+            break;
+          }
+          case 18: {
+            Name = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class QueryParentDeviceRequest : pb::IMessage<QueryParentDeviceRequest> {
+    private static readonly pb::MessageParser<QueryParentDeviceRequest> _parser = new pb::MessageParser<QueryParentDeviceRequest>(() => new QueryParentDeviceRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<QueryParentDeviceRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public QueryParentDeviceRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public QueryParentDeviceRequest(QueryParentDeviceRequest other) : this() {
+      childDeviceId_ = other.childDeviceId_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public QueryParentDeviceRequest Clone() {
+      return new QueryParentDeviceRequest(this);
+    }
+
+    /// <summary>Field number for the "child_device_id" field.</summary>
+    public const int ChildDeviceIdFieldNumber = 1;
+    private string childDeviceId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string ChildDeviceId {
+      get { return childDeviceId_; }
+      set {
+        childDeviceId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as QueryParentDeviceRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(QueryParentDeviceRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (ChildDeviceId != other.ChildDeviceId) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (ChildDeviceId.Length != 0) hash ^= ChildDeviceId.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (ChildDeviceId.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(ChildDeviceId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (ChildDeviceId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ChildDeviceId);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(QueryParentDeviceRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.ChildDeviceId.Length != 0) {
+        ChildDeviceId = other.ChildDeviceId;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            ChildDeviceId = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class QueryParentDeviceResponse : pb::IMessage<QueryParentDeviceResponse> {
+    private static readonly pb::MessageParser<QueryParentDeviceResponse> _parser = new pb::MessageParser<QueryParentDeviceResponse>(() => new QueryParentDeviceResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<QueryParentDeviceResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[4]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public QueryParentDeviceResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public QueryParentDeviceResponse(QueryParentDeviceResponse other) : this() {
+      ParentDevice = other.parentDevice_ != null ? other.ParentDevice.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public QueryParentDeviceResponse Clone() {
+      return new QueryParentDeviceResponse(this);
+    }
+
+    /// <summary>Field number for the "parent_device" field.</summary>
+    public const int ParentDeviceFieldNumber = 1;
+    private global::Manage.SimpleDevice parentDevice_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Manage.SimpleDevice ParentDevice {
+      get { return parentDevice_; }
+      set {
+        parentDevice_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as QueryParentDeviceResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(QueryParentDeviceResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(ParentDevice, other.ParentDevice)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (parentDevice_ != null) hash ^= ParentDevice.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (parentDevice_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(ParentDevice);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (parentDevice_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ParentDevice);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(QueryParentDeviceResponse other) {
+      if (other == null) {
+        return;
+      }
+      if (other.parentDevice_ != null) {
+        if (parentDevice_ == null) {
+          parentDevice_ = new global::Manage.SimpleDevice();
+        }
+        ParentDevice.MergeFrom(other.ParentDevice);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (parentDevice_ == null) {
+              parentDevice_ = new global::Manage.SimpleDevice();
+            }
+            input.ReadMessage(parentDevice_);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   public sealed partial class QueryChannelRequest : pb::IMessage<QueryChannelRequest> {
     private static readonly pb::MessageParser<QueryChannelRequest> _parser = new pb::MessageParser<QueryChannelRequest>(() => new QueryChannelRequest());
     private pb::UnknownFieldSet _unknownFields;
@@ -271,7 +975,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[0]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -428,7 +1132,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[1]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -549,7 +1253,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[2]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -830,7 +1534,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[3]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -908,11 +1612,11 @@ namespace Manage {
 
     /// <summary>Field number for the "devices" field.</summary>
     public const int DevicesFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::Manage.KeyValuePair> _repeated_devices_codec
-        = pb::FieldCodec.ForMessage(42, global::Manage.KeyValuePair.Parser);
-    private readonly pbc::RepeatedField<global::Manage.KeyValuePair> devices_ = new pbc::RepeatedField<global::Manage.KeyValuePair>();
+    private static readonly pb::FieldCodec<global::Manage.SimpleDevice> _repeated_devices_codec
+        = pb::FieldCodec.ForMessage(42, global::Manage.SimpleDevice.Parser);
+    private readonly pbc::RepeatedField<global::Manage.SimpleDevice> devices_ = new pbc::RepeatedField<global::Manage.SimpleDevice>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Manage.KeyValuePair> Devices {
+    public pbc::RepeatedField<global::Manage.SimpleDevice> Devices {
       get { return devices_; }
     }
 
@@ -1139,7 +1843,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[4]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1296,7 +2000,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[5]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1314,7 +2018,6 @@ namespace Manage {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public AddViewRequest(AddViewRequest other) : this() {
       views_ = other.views_.Clone();
-      timestamp_ = other.timestamp_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1333,17 +2036,6 @@ namespace Manage {
       get { return views_; }
     }
 
-    /// <summary>Field number for the "timestamp" field.</summary>
-    public const int TimestampFieldNumber = 2;
-    private ulong timestamp_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ulong Timestamp {
-      get { return timestamp_; }
-      set {
-        timestamp_ = value;
-      }
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as AddViewRequest);
@@ -1358,7 +2050,6 @@ namespace Manage {
         return true;
       }
       if(!views_.Equals(other.views_)) return false;
-      if (Timestamp != other.Timestamp) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1366,7 +2057,6 @@ namespace Manage {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= views_.GetHashCode();
-      if (Timestamp != 0UL) hash ^= Timestamp.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1381,10 +2071,6 @@ namespace Manage {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
       views_.WriteTo(output, _repeated_views_codec);
-      if (Timestamp != 0UL) {
-        output.WriteRawTag(16);
-        output.WriteUInt64(Timestamp);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1394,9 +2080,6 @@ namespace Manage {
     public int CalculateSize() {
       int size = 0;
       size += views_.CalculateSize(_repeated_views_codec);
-      if (Timestamp != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Timestamp);
-      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -1409,9 +2092,6 @@ namespace Manage {
         return;
       }
       views_.Add(other.views_);
-      if (other.Timestamp != 0UL) {
-        Timestamp = other.Timestamp;
-      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1425,10 +2105,6 @@ namespace Manage {
             break;
           case 10: {
             views_.AddEntriesFrom(input, _repeated_views_codec);
-            break;
-          }
-          case 16: {
-            Timestamp = input.ReadUInt64();
             break;
           }
         }
@@ -1445,7 +2121,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[6]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1574,7 +2250,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[7]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1592,7 +2268,6 @@ namespace Manage {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public UpdateViewRequest(UpdateViewRequest other) : this() {
       views_ = other.views_.Clone();
-      timestamp_ = other.timestamp_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1611,17 +2286,6 @@ namespace Manage {
       get { return views_; }
     }
 
-    /// <summary>Field number for the "timestamp" field.</summary>
-    public const int TimestampFieldNumber = 2;
-    private ulong timestamp_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ulong Timestamp {
-      get { return timestamp_; }
-      set {
-        timestamp_ = value;
-      }
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as UpdateViewRequest);
@@ -1636,7 +2300,6 @@ namespace Manage {
         return true;
       }
       if(!views_.Equals(other.views_)) return false;
-      if (Timestamp != other.Timestamp) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1644,7 +2307,6 @@ namespace Manage {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= views_.GetHashCode();
-      if (Timestamp != 0UL) hash ^= Timestamp.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1659,10 +2321,6 @@ namespace Manage {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
       views_.WriteTo(output, _repeated_views_codec);
-      if (Timestamp != 0UL) {
-        output.WriteRawTag(16);
-        output.WriteUInt64(Timestamp);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1672,9 +2330,6 @@ namespace Manage {
     public int CalculateSize() {
       int size = 0;
       size += views_.CalculateSize(_repeated_views_codec);
-      if (Timestamp != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Timestamp);
-      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -1687,9 +2342,6 @@ namespace Manage {
         return;
       }
       views_.Add(other.views_);
-      if (other.Timestamp != 0UL) {
-        Timestamp = other.Timestamp;
-      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1703,10 +2355,6 @@ namespace Manage {
             break;
           case 10: {
             views_.AddEntriesFrom(input, _repeated_views_codec);
-            break;
-          }
-          case 16: {
-            Timestamp = input.ReadUInt64();
             break;
           }
         }
@@ -1723,7 +2371,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[8]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1852,7 +2500,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[9]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[14]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1869,7 +2517,6 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public DeleteViewRequest(DeleteViewRequest other) : this() {
-      timestamp_ = other.timestamp_;
       viewIds_ = other.viewIds_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -1879,21 +2526,10 @@ namespace Manage {
       return new DeleteViewRequest(this);
     }
 
-    /// <summary>Field number for the "timestamp" field.</summary>
-    public const int TimestampFieldNumber = 1;
-    private ulong timestamp_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ulong Timestamp {
-      get { return timestamp_; }
-      set {
-        timestamp_ = value;
-      }
-    }
-
     /// <summary>Field number for the "view_ids" field.</summary>
-    public const int ViewIdsFieldNumber = 2;
+    public const int ViewIdsFieldNumber = 1;
     private static readonly pb::FieldCodec<string> _repeated_viewIds_codec
-        = pb::FieldCodec.ForString(18);
+        = pb::FieldCodec.ForString(10);
     private readonly pbc::RepeatedField<string> viewIds_ = new pbc::RepeatedField<string>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<string> ViewIds {
@@ -1913,7 +2549,6 @@ namespace Manage {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Timestamp != other.Timestamp) return false;
       if(!viewIds_.Equals(other.viewIds_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -1921,7 +2556,6 @@ namespace Manage {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Timestamp != 0UL) hash ^= Timestamp.GetHashCode();
       hash ^= viewIds_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -1936,10 +2570,6 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Timestamp != 0UL) {
-        output.WriteRawTag(8);
-        output.WriteUInt64(Timestamp);
-      }
       viewIds_.WriteTo(output, _repeated_viewIds_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1949,9 +2579,6 @@ namespace Manage {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Timestamp != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Timestamp);
-      }
       size += viewIds_.CalculateSize(_repeated_viewIds_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1963,9 +2590,6 @@ namespace Manage {
     public void MergeFrom(DeleteViewRequest other) {
       if (other == null) {
         return;
-      }
-      if (other.Timestamp != 0UL) {
-        Timestamp = other.Timestamp;
       }
       viewIds_.Add(other.viewIds_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -1979,11 +2603,7 @@ namespace Manage {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            Timestamp = input.ReadUInt64();
-            break;
-          }
-          case 18: {
+          case 10: {
             viewIds_.AddEntriesFrom(input, _repeated_viewIds_codec);
             break;
           }
@@ -2001,7 +2621,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[10]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[15]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2130,7 +2750,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[11]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[16]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2147,9 +2767,9 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public QuerySimpleRequest(QuerySimpleRequest other) : this() {
-      timestamp_ = other.timestamp_;
       userId_ = other.userId_;
       viewId_ = other.viewId_;
+      orderby_ = other.orderby_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2158,19 +2778,8 @@ namespace Manage {
       return new QuerySimpleRequest(this);
     }
 
-    /// <summary>Field number for the "timestamp" field.</summary>
-    public const int TimestampFieldNumber = 1;
-    private ulong timestamp_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ulong Timestamp {
-      get { return timestamp_; }
-      set {
-        timestamp_ = value;
-      }
-    }
-
     /// <summary>Field number for the "user_id" field.</summary>
-    public const int UserIdFieldNumber = 2;
+    public const int UserIdFieldNumber = 1;
     private string userId_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string UserId {
@@ -2181,13 +2790,24 @@ namespace Manage {
     }
 
     /// <summary>Field number for the "view_id" field.</summary>
-    public const int ViewIdFieldNumber = 3;
+    public const int ViewIdFieldNumber = 2;
     private string viewId_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string ViewId {
       get { return viewId_; }
       set {
         viewId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "orderby" field.</summary>
+    public const int OrderbyFieldNumber = 3;
+    private string orderby_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Orderby {
+      get { return orderby_; }
+      set {
+        orderby_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -2204,18 +2824,18 @@ namespace Manage {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Timestamp != other.Timestamp) return false;
       if (UserId != other.UserId) return false;
       if (ViewId != other.ViewId) return false;
+      if (Orderby != other.Orderby) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Timestamp != 0UL) hash ^= Timestamp.GetHashCode();
       if (UserId.Length != 0) hash ^= UserId.GetHashCode();
       if (ViewId.Length != 0) hash ^= ViewId.GetHashCode();
+      if (Orderby.Length != 0) hash ^= Orderby.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2229,17 +2849,17 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Timestamp != 0UL) {
-        output.WriteRawTag(8);
-        output.WriteUInt64(Timestamp);
-      }
       if (UserId.Length != 0) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(10);
         output.WriteString(UserId);
       }
       if (ViewId.Length != 0) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(18);
         output.WriteString(ViewId);
+      }
+      if (Orderby.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Orderby);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -2249,14 +2869,14 @@ namespace Manage {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Timestamp != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Timestamp);
-      }
       if (UserId.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(UserId);
       }
       if (ViewId.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(ViewId);
+      }
+      if (Orderby.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Orderby);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2269,14 +2889,14 @@ namespace Manage {
       if (other == null) {
         return;
       }
-      if (other.Timestamp != 0UL) {
-        Timestamp = other.Timestamp;
-      }
       if (other.UserId.Length != 0) {
         UserId = other.UserId;
       }
       if (other.ViewId.Length != 0) {
         ViewId = other.ViewId;
+      }
+      if (other.Orderby.Length != 0) {
+        Orderby = other.Orderby;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -2289,16 +2909,16 @@ namespace Manage {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            Timestamp = input.ReadUInt64();
-            break;
-          }
-          case 18: {
+          case 10: {
             UserId = input.ReadString();
             break;
           }
-          case 26: {
+          case 18: {
             ViewId = input.ReadString();
+            break;
+          }
+          case 26: {
+            Orderby = input.ReadString();
             break;
           }
         }
@@ -2315,7 +2935,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[12]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[17]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2332,7 +2952,6 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public QuerySimpleDevicesRequest(QuerySimpleDevicesRequest other) : this() {
-      timestamp_ = other.timestamp_;
       deviceIds_ = other.deviceIds_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -2342,21 +2961,10 @@ namespace Manage {
       return new QuerySimpleDevicesRequest(this);
     }
 
-    /// <summary>Field number for the "timestamp" field.</summary>
-    public const int TimestampFieldNumber = 1;
-    private ulong timestamp_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ulong Timestamp {
-      get { return timestamp_; }
-      set {
-        timestamp_ = value;
-      }
-    }
-
     /// <summary>Field number for the "device_ids" field.</summary>
-    public const int DeviceIdsFieldNumber = 2;
+    public const int DeviceIdsFieldNumber = 1;
     private static readonly pb::FieldCodec<string> _repeated_deviceIds_codec
-        = pb::FieldCodec.ForString(18);
+        = pb::FieldCodec.ForString(10);
     private readonly pbc::RepeatedField<string> deviceIds_ = new pbc::RepeatedField<string>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<string> DeviceIds {
@@ -2376,7 +2984,6 @@ namespace Manage {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Timestamp != other.Timestamp) return false;
       if(!deviceIds_.Equals(other.deviceIds_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -2384,7 +2991,6 @@ namespace Manage {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Timestamp != 0UL) hash ^= Timestamp.GetHashCode();
       hash ^= deviceIds_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -2399,10 +3005,6 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Timestamp != 0UL) {
-        output.WriteRawTag(8);
-        output.WriteUInt64(Timestamp);
-      }
       deviceIds_.WriteTo(output, _repeated_deviceIds_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -2412,9 +3014,6 @@ namespace Manage {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Timestamp != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Timestamp);
-      }
       size += deviceIds_.CalculateSize(_repeated_deviceIds_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2426,9 +3025,6 @@ namespace Manage {
     public void MergeFrom(QuerySimpleDevicesRequest other) {
       if (other == null) {
         return;
-      }
-      if (other.Timestamp != 0UL) {
-        Timestamp = other.Timestamp;
       }
       deviceIds_.Add(other.deviceIds_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -2442,11 +3038,7 @@ namespace Manage {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            Timestamp = input.ReadUInt64();
-            break;
-          }
-          case 18: {
+          case 10: {
             deviceIds_.AddEntriesFrom(input, _repeated_deviceIds_codec);
             break;
           }
@@ -2464,7 +3056,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[13]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[18]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2613,7 +3205,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[14]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[19]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2630,7 +3222,6 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public FuzzyQueryDeviceRequest(FuzzyQueryDeviceRequest other) : this() {
-      timestamp_ = other.timestamp_;
       loginRoleId_ = other.loginRoleId_;
       name_ = other.name_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -2641,19 +3232,8 @@ namespace Manage {
       return new FuzzyQueryDeviceRequest(this);
     }
 
-    /// <summary>Field number for the "timestamp" field.</summary>
-    public const int TimestampFieldNumber = 1;
-    private ulong timestamp_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ulong Timestamp {
-      get { return timestamp_; }
-      set {
-        timestamp_ = value;
-      }
-    }
-
     /// <summary>Field number for the "login_role_id" field.</summary>
-    public const int LoginRoleIdFieldNumber = 2;
+    public const int LoginRoleIdFieldNumber = 1;
     private string loginRoleId_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string LoginRoleId {
@@ -2664,7 +3244,7 @@ namespace Manage {
     }
 
     /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 3;
+    public const int NameFieldNumber = 2;
     private string name_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
@@ -2687,7 +3267,6 @@ namespace Manage {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Timestamp != other.Timestamp) return false;
       if (LoginRoleId != other.LoginRoleId) return false;
       if (Name != other.Name) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -2696,7 +3275,6 @@ namespace Manage {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Timestamp != 0UL) hash ^= Timestamp.GetHashCode();
       if (LoginRoleId.Length != 0) hash ^= LoginRoleId.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (_unknownFields != null) {
@@ -2712,16 +3290,12 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Timestamp != 0UL) {
-        output.WriteRawTag(8);
-        output.WriteUInt64(Timestamp);
-      }
       if (LoginRoleId.Length != 0) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(10);
         output.WriteString(LoginRoleId);
       }
       if (Name.Length != 0) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(18);
         output.WriteString(Name);
       }
       if (_unknownFields != null) {
@@ -2732,9 +3306,6 @@ namespace Manage {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Timestamp != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Timestamp);
-      }
       if (LoginRoleId.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(LoginRoleId);
       }
@@ -2751,9 +3322,6 @@ namespace Manage {
     public void MergeFrom(FuzzyQueryDeviceRequest other) {
       if (other == null) {
         return;
-      }
-      if (other.Timestamp != 0UL) {
-        Timestamp = other.Timestamp;
       }
       if (other.LoginRoleId.Length != 0) {
         LoginRoleId = other.LoginRoleId;
@@ -2772,15 +3340,11 @@ namespace Manage {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            Timestamp = input.ReadUInt64();
-            break;
-          }
-          case 18: {
+          case 10: {
             LoginRoleId = input.ReadString();
             break;
           }
-          case 26: {
+          case 18: {
             Name = input.ReadString();
             break;
           }
@@ -2798,7 +3362,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[15]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[20]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2919,7 +3483,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[16]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[21]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2936,7 +3500,6 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public QuerySimpleDeviceRequest(QuerySimpleDeviceRequest other) : this() {
-      timestamp_ = other.timestamp_;
       deviceId_ = other.deviceId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -2946,19 +3509,8 @@ namespace Manage {
       return new QuerySimpleDeviceRequest(this);
     }
 
-    /// <summary>Field number for the "timestamp" field.</summary>
-    public const int TimestampFieldNumber = 1;
-    private ulong timestamp_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ulong Timestamp {
-      get { return timestamp_; }
-      set {
-        timestamp_ = value;
-      }
-    }
-
     /// <summary>Field number for the "device_id" field.</summary>
-    public const int DeviceIdFieldNumber = 2;
+    public const int DeviceIdFieldNumber = 1;
     private string deviceId_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string DeviceId {
@@ -2981,7 +3533,6 @@ namespace Manage {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Timestamp != other.Timestamp) return false;
       if (DeviceId != other.DeviceId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -2989,7 +3540,6 @@ namespace Manage {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Timestamp != 0UL) hash ^= Timestamp.GetHashCode();
       if (DeviceId.Length != 0) hash ^= DeviceId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -3004,12 +3554,8 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Timestamp != 0UL) {
-        output.WriteRawTag(8);
-        output.WriteUInt64(Timestamp);
-      }
       if (DeviceId.Length != 0) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(10);
         output.WriteString(DeviceId);
       }
       if (_unknownFields != null) {
@@ -3020,9 +3566,6 @@ namespace Manage {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Timestamp != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Timestamp);
-      }
       if (DeviceId.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(DeviceId);
       }
@@ -3036,9 +3579,6 @@ namespace Manage {
     public void MergeFrom(QuerySimpleDeviceRequest other) {
       if (other == null) {
         return;
-      }
-      if (other.Timestamp != 0UL) {
-        Timestamp = other.Timestamp;
       }
       if (other.DeviceId.Length != 0) {
         DeviceId = other.DeviceId;
@@ -3054,11 +3594,7 @@ namespace Manage {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            Timestamp = input.ReadUInt64();
-            break;
-          }
-          case 18: {
+          case 10: {
             DeviceId = input.ReadString();
             break;
           }
@@ -3076,7 +3612,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[17]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[22]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3239,7 +3775,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[18]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[23]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3388,7 +3924,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[19]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[24]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3407,18 +3943,22 @@ namespace Manage {
     public Device(Device other) : this() {
       guid_ = other.guid_;
       name_ = other.name_;
-      typeCode_ = other.typeCode_;
+      iP_ = other.iP_;
+      port_ = other.port_;
       protocolType_ = other.protocolType_;
       description_ = other.description_;
       geoLong_ = other.geoLong_;
       geoLat_ = other.geoLat_;
       ptzType_ = other.ptzType_;
-      ProtocolDetail = other.protocolDetail_ != null ? other.ProtocolDetail.Clone() : null;
+      gBID_ = other.gBID_;
+      gBParentID_ = other.gBParentID_;
       MediaDetail = other.mediaDetail_ != null ? other.MediaDetail.Clone() : null;
       loginUser_ = other.loginUser_.Clone();
       tag_ = other.tag_.Clone();
       mediaSrcType_ = other.mediaSrcType_.Clone();
-      channelId_ = other.channelId_;
+      parentID_ = other.parentID_;
+      shapeType_ = other.shapeType_;
+      languageFormatShapeType_ = other.languageFormatShapeType_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -3452,19 +3992,30 @@ namespace Manage {
       }
     }
 
-    /// <summary>Field number for the "type_code" field.</summary>
-    public const int TypeCodeFieldNumber = 3;
-    private global::Manage.TypeCode typeCode_ = 0;
+    /// <summary>Field number for the "IP" field.</summary>
+    public const int IPFieldNumber = 3;
+    private string iP_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Manage.TypeCode TypeCode {
-      get { return typeCode_; }
+    public string IP {
+      get { return iP_; }
       set {
-        typeCode_ = value;
+        iP_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "port" field.</summary>
+    public const int PortFieldNumber = 4;
+    private uint port_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint Port {
+      get { return port_; }
+      set {
+        port_ = value;
       }
     }
 
     /// <summary>Field number for the "protocol_type" field.</summary>
-    public const int ProtocolTypeFieldNumber = 4;
+    public const int ProtocolTypeFieldNumber = 5;
     private global::Manage.ProtoType protocolType_ = 0;
     /// <summary>
     ///用以区别设备接入时采用的协议类型,必须存储
@@ -3478,7 +4029,7 @@ namespace Manage {
     }
 
     /// <summary>Field number for the "description" field.</summary>
-    public const int DescriptionFieldNumber = 5;
+    public const int DescriptionFieldNumber = 6;
     private string description_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Description {
@@ -3489,7 +4040,7 @@ namespace Manage {
     }
 
     /// <summary>Field number for the "geo_long" field.</summary>
-    public const int GeoLongFieldNumber = 6;
+    public const int GeoLongFieldNumber = 7;
     private double geoLong_;
     /// <summary>
     /// </summary>
@@ -3502,7 +4053,7 @@ namespace Manage {
     }
 
     /// <summary>Field number for the "geo_lat" field.</summary>
-    public const int GeoLatFieldNumber = 7;
+    public const int GeoLatFieldNumber = 8;
     private double geoLat_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public double GeoLat {
@@ -3513,7 +4064,7 @@ namespace Manage {
     }
 
     /// <summary>Field number for the "ptz_type" field.</summary>
-    public const int PtzTypeFieldNumber = 8;
+    public const int PtzTypeFieldNumber = 9;
     private uint ptzType_;
     /// <summary>
     ///PTZ类型,      
@@ -3526,22 +4077,30 @@ namespace Manage {
       }
     }
 
-    /// <summary>Field number for the "protocol_detail" field.</summary>
-    public const int ProtocolDetailFieldNumber = 9;
-    private global::Manage.ProtocolInfo protocolDetail_;
-    /// <summary>
-    ///协议相关的细节
-    /// </summary>
+    /// <summary>Field number for the "GB_ID" field.</summary>
+    public const int GBIDFieldNumber = 10;
+    private string gBID_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Manage.ProtocolInfo ProtocolDetail {
-      get { return protocolDetail_; }
+    public string GBID {
+      get { return gBID_; }
       set {
-        protocolDetail_ = value;
+        gBID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "GB_Parent_ID" field.</summary>
+    public const int GBParentIDFieldNumber = 11;
+    private string gBParentID_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string GBParentID {
+      get { return gBParentID_; }
+      set {
+        gBParentID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
     /// <summary>Field number for the "media_detail" field.</summary>
-    public const int MediaDetailFieldNumber = 10;
+    public const int MediaDetailFieldNumber = 12;
     private global::Manage.MediaInfo mediaDetail_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Manage.MediaInfo MediaDetail {
@@ -3552,9 +4111,9 @@ namespace Manage {
     }
 
     /// <summary>Field number for the "login_user" field.</summary>
-    public const int LoginUserFieldNumber = 11;
+    public const int LoginUserFieldNumber = 13;
     private static readonly pb::FieldCodec<global::Manage.LoginUser> _repeated_loginUser_codec
-        = pb::FieldCodec.ForMessage(90, global::Manage.LoginUser.Parser);
+        = pb::FieldCodec.ForMessage(106, global::Manage.LoginUser.Parser);
     private readonly pbc::RepeatedField<global::Manage.LoginUser> loginUser_ = new pbc::RepeatedField<global::Manage.LoginUser>();
     /// <summary>
     ///登陆设备的用户信息
@@ -3565,9 +4124,9 @@ namespace Manage {
     }
 
     /// <summary>Field number for the "tag" field.</summary>
-    public const int TagFieldNumber = 12;
+    public const int TagFieldNumber = 14;
     private static readonly pb::FieldCodec<string> _repeated_tag_codec
-        = pb::FieldCodec.ForString(98);
+        = pb::FieldCodec.ForString(114);
     private readonly pbc::RepeatedField<string> tag_ = new pbc::RepeatedField<string>();
     /// <summary>
     ///对设备做的标注，比如打个标签，用于检索和参数携带，允许多个标注
@@ -3578,9 +4137,9 @@ namespace Manage {
     }
 
     /// <summary>Field number for the "media_srcType" field.</summary>
-    public const int MediaSrcTypeFieldNumber = 13;
+    public const int MediaSrcTypeFieldNumber = 15;
     private static readonly pb::FieldCodec<uint> _repeated_mediaSrcType_codec
-        = pb::FieldCodec.ForUInt32(106);
+        = pb::FieldCodec.ForUInt32(122);
     private readonly pbc::RepeatedField<uint> mediaSrcType_ = new pbc::RepeatedField<uint>();
     /// <summary>
     ///设备的提供数据类型（提供视频/音频/文本数据/二进制数据包，0 for nil ,1 for video 2 for audio 3 for binary
@@ -3590,14 +4149,36 @@ namespace Manage {
       get { return mediaSrcType_; }
     }
 
-    /// <summary>Field number for the "channel_id" field.</summary>
-    public const int ChannelIdFieldNumber = 14;
-    private int channelId_;
+    /// <summary>Field number for the "parent_ID" field.</summary>
+    public const int ParentIDFieldNumber = 16;
+    private string parentID_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int ChannelId {
-      get { return channelId_; }
+    public string ParentID {
+      get { return parentID_; }
       set {
-        channelId_ = value;
+        parentID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "shape_type" field.</summary>
+    public const int ShapeTypeFieldNumber = 17;
+    private global::Manage.ShapeType shapeType_ = 0;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Manage.ShapeType ShapeType {
+      get { return shapeType_; }
+      set {
+        shapeType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "language_format_shape_type" field.</summary>
+    public const int LanguageFormatShapeTypeFieldNumber = 18;
+    private string languageFormatShapeType_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string LanguageFormatShapeType {
+      get { return languageFormatShapeType_; }
+      set {
+        languageFormatShapeType_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -3616,18 +4197,22 @@ namespace Manage {
       }
       if (Guid != other.Guid) return false;
       if (Name != other.Name) return false;
-      if (TypeCode != other.TypeCode) return false;
+      if (IP != other.IP) return false;
+      if (Port != other.Port) return false;
       if (ProtocolType != other.ProtocolType) return false;
       if (Description != other.Description) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(GeoLong, other.GeoLong)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(GeoLat, other.GeoLat)) return false;
       if (PtzType != other.PtzType) return false;
-      if (!object.Equals(ProtocolDetail, other.ProtocolDetail)) return false;
+      if (GBID != other.GBID) return false;
+      if (GBParentID != other.GBParentID) return false;
       if (!object.Equals(MediaDetail, other.MediaDetail)) return false;
       if(!loginUser_.Equals(other.loginUser_)) return false;
       if(!tag_.Equals(other.tag_)) return false;
       if(!mediaSrcType_.Equals(other.mediaSrcType_)) return false;
-      if (ChannelId != other.ChannelId) return false;
+      if (ParentID != other.ParentID) return false;
+      if (ShapeType != other.ShapeType) return false;
+      if (LanguageFormatShapeType != other.LanguageFormatShapeType) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -3636,18 +4221,22 @@ namespace Manage {
       int hash = 1;
       if (Guid.Length != 0) hash ^= Guid.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (TypeCode != 0) hash ^= TypeCode.GetHashCode();
+      if (IP.Length != 0) hash ^= IP.GetHashCode();
+      if (Port != 0) hash ^= Port.GetHashCode();
       if (ProtocolType != 0) hash ^= ProtocolType.GetHashCode();
       if (Description.Length != 0) hash ^= Description.GetHashCode();
       if (GeoLong != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(GeoLong);
       if (GeoLat != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(GeoLat);
       if (PtzType != 0) hash ^= PtzType.GetHashCode();
-      if (protocolDetail_ != null) hash ^= ProtocolDetail.GetHashCode();
+      if (GBID.Length != 0) hash ^= GBID.GetHashCode();
+      if (GBParentID.Length != 0) hash ^= GBParentID.GetHashCode();
       if (mediaDetail_ != null) hash ^= MediaDetail.GetHashCode();
       hash ^= loginUser_.GetHashCode();
       hash ^= tag_.GetHashCode();
       hash ^= mediaSrcType_.GetHashCode();
-      if (ChannelId != 0) hash ^= ChannelId.GetHashCode();
+      if (ParentID.Length != 0) hash ^= ParentID.GetHashCode();
+      if (ShapeType != 0) hash ^= ShapeType.GetHashCode();
+      if (LanguageFormatShapeType.Length != 0) hash ^= LanguageFormatShapeType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3669,44 +4258,60 @@ namespace Manage {
         output.WriteRawTag(18);
         output.WriteString(Name);
       }
-      if (TypeCode != 0) {
-        output.WriteRawTag(24);
-        output.WriteEnum((int) TypeCode);
+      if (IP.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(IP);
+      }
+      if (Port != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(Port);
       }
       if (ProtocolType != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(40);
         output.WriteEnum((int) ProtocolType);
       }
       if (Description.Length != 0) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(50);
         output.WriteString(Description);
       }
       if (GeoLong != 0D) {
-        output.WriteRawTag(49);
+        output.WriteRawTag(57);
         output.WriteDouble(GeoLong);
       }
       if (GeoLat != 0D) {
-        output.WriteRawTag(57);
+        output.WriteRawTag(65);
         output.WriteDouble(GeoLat);
       }
       if (PtzType != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(72);
         output.WriteUInt32(PtzType);
       }
-      if (protocolDetail_ != null) {
-        output.WriteRawTag(74);
-        output.WriteMessage(ProtocolDetail);
+      if (GBID.Length != 0) {
+        output.WriteRawTag(82);
+        output.WriteString(GBID);
+      }
+      if (GBParentID.Length != 0) {
+        output.WriteRawTag(90);
+        output.WriteString(GBParentID);
       }
       if (mediaDetail_ != null) {
-        output.WriteRawTag(82);
+        output.WriteRawTag(98);
         output.WriteMessage(MediaDetail);
       }
       loginUser_.WriteTo(output, _repeated_loginUser_codec);
       tag_.WriteTo(output, _repeated_tag_codec);
       mediaSrcType_.WriteTo(output, _repeated_mediaSrcType_codec);
-      if (ChannelId != 0) {
-        output.WriteRawTag(112);
-        output.WriteInt32(ChannelId);
+      if (ParentID.Length != 0) {
+        output.WriteRawTag(130, 1);
+        output.WriteString(ParentID);
+      }
+      if (ShapeType != 0) {
+        output.WriteRawTag(136, 1);
+        output.WriteEnum((int) ShapeType);
+      }
+      if (LanguageFormatShapeType.Length != 0) {
+        output.WriteRawTag(146, 1);
+        output.WriteString(LanguageFormatShapeType);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -3722,8 +4327,11 @@ namespace Manage {
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
-      if (TypeCode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) TypeCode);
+      if (IP.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(IP);
+      }
+      if (Port != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Port);
       }
       if (ProtocolType != 0) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ProtocolType);
@@ -3740,8 +4348,11 @@ namespace Manage {
       if (PtzType != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PtzType);
       }
-      if (protocolDetail_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ProtocolDetail);
+      if (GBID.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(GBID);
+      }
+      if (GBParentID.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(GBParentID);
       }
       if (mediaDetail_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(MediaDetail);
@@ -3749,8 +4360,14 @@ namespace Manage {
       size += loginUser_.CalculateSize(_repeated_loginUser_codec);
       size += tag_.CalculateSize(_repeated_tag_codec);
       size += mediaSrcType_.CalculateSize(_repeated_mediaSrcType_codec);
-      if (ChannelId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ChannelId);
+      if (ParentID.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(ParentID);
+      }
+      if (ShapeType != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeEnumSize((int) ShapeType);
+      }
+      if (LanguageFormatShapeType.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(LanguageFormatShapeType);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -3769,8 +4386,11 @@ namespace Manage {
       if (other.Name.Length != 0) {
         Name = other.Name;
       }
-      if (other.TypeCode != 0) {
-        TypeCode = other.TypeCode;
+      if (other.IP.Length != 0) {
+        IP = other.IP;
+      }
+      if (other.Port != 0) {
+        Port = other.Port;
       }
       if (other.ProtocolType != 0) {
         ProtocolType = other.ProtocolType;
@@ -3787,11 +4407,11 @@ namespace Manage {
       if (other.PtzType != 0) {
         PtzType = other.PtzType;
       }
-      if (other.protocolDetail_ != null) {
-        if (protocolDetail_ == null) {
-          protocolDetail_ = new global::Manage.ProtocolInfo();
-        }
-        ProtocolDetail.MergeFrom(other.ProtocolDetail);
+      if (other.GBID.Length != 0) {
+        GBID = other.GBID;
+      }
+      if (other.GBParentID.Length != 0) {
+        GBParentID = other.GBParentID;
       }
       if (other.mediaDetail_ != null) {
         if (mediaDetail_ == null) {
@@ -3802,8 +4422,14 @@ namespace Manage {
       loginUser_.Add(other.loginUser_);
       tag_.Add(other.tag_);
       mediaSrcType_.Add(other.mediaSrcType_);
-      if (other.ChannelId != 0) {
-        ChannelId = other.ChannelId;
+      if (other.ParentID.Length != 0) {
+        ParentID = other.ParentID;
+      }
+      if (other.ShapeType != 0) {
+        ShapeType = other.ShapeType;
+      }
+      if (other.LanguageFormatShapeType.Length != 0) {
+        LanguageFormatShapeType = other.LanguageFormatShapeType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -3824,59 +4450,72 @@ namespace Manage {
             Name = input.ReadString();
             break;
           }
-          case 24: {
-            typeCode_ = (global::Manage.TypeCode) input.ReadEnum();
+          case 26: {
+            IP = input.ReadString();
             break;
           }
           case 32: {
+            Port = input.ReadUInt32();
+            break;
+          }
+          case 40: {
             protocolType_ = (global::Manage.ProtoType) input.ReadEnum();
             break;
           }
-          case 42: {
+          case 50: {
             Description = input.ReadString();
             break;
           }
-          case 49: {
+          case 57: {
             GeoLong = input.ReadDouble();
             break;
           }
-          case 57: {
+          case 65: {
             GeoLat = input.ReadDouble();
             break;
           }
-          case 64: {
+          case 72: {
             PtzType = input.ReadUInt32();
             break;
           }
-          case 74: {
-            if (protocolDetail_ == null) {
-              protocolDetail_ = new global::Manage.ProtocolInfo();
-            }
-            input.ReadMessage(protocolDetail_);
+          case 82: {
+            GBID = input.ReadString();
             break;
           }
-          case 82: {
+          case 90: {
+            GBParentID = input.ReadString();
+            break;
+          }
+          case 98: {
             if (mediaDetail_ == null) {
               mediaDetail_ = new global::Manage.MediaInfo();
             }
             input.ReadMessage(mediaDetail_);
             break;
           }
-          case 90: {
+          case 106: {
             loginUser_.AddEntriesFrom(input, _repeated_loginUser_codec);
             break;
           }
-          case 98: {
+          case 114: {
             tag_.AddEntriesFrom(input, _repeated_tag_codec);
             break;
           }
-          case 106:
-          case 104: {
+          case 122:
+          case 120: {
             mediaSrcType_.AddEntriesFrom(input, _repeated_mediaSrcType_codec);
             break;
           }
-          case 112: {
-            ChannelId = input.ReadInt32();
+          case 130: {
+            ParentID = input.ReadString();
+            break;
+          }
+          case 136: {
+            shapeType_ = (global::Manage.ShapeType) input.ReadEnum();
+            break;
+          }
+          case 146: {
+            LanguageFormatShapeType = input.ReadString();
             break;
           }
         }
@@ -3893,7 +4532,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[20]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[25]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3911,12 +4550,19 @@ namespace Manage {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public SimpleDevice(SimpleDevice other) : this() {
       guid_ = other.guid_;
-      deviceName_ = other.deviceName_;
+      name_ = other.name_;
       protocolType_ = other.protocolType_;
-      ProtocolDetail = other.protocolDetail_ != null ? other.ProtocolDetail.Clone() : null;
+      iP_ = other.iP_;
+      port_ = other.port_;
+      gBID_ = other.gBID_;
+      gBParentID_ = other.gBParentID_;
       users_ = other.users_.Clone();
-      typeCode_ = other.typeCode_;
+      deviceId_ = other.deviceId_;
       channelId_ = other.channelId_;
+      primaryId_ = other.primaryId_;
+      subId_ = other.subId_;
+      parentId_ = other.parentId_;
+      shapeType_ = other.shapeType_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -3939,14 +4585,14 @@ namespace Manage {
       }
     }
 
-    /// <summary>Field number for the "device_name" field.</summary>
-    public const int DeviceNameFieldNumber = 2;
-    private string deviceName_ = "";
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 2;
+    private string name_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string DeviceName {
-      get { return deviceName_; }
+    public string Name {
+      get { return name_; }
       set {
-        deviceName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -3964,49 +4610,123 @@ namespace Manage {
       }
     }
 
-    /// <summary>Field number for the "protocol_detail" field.</summary>
-    public const int ProtocolDetailFieldNumber = 4;
-    private global::Manage.ProtocolInfo protocolDetail_;
-    /// <summary>
-    ///协议相关的细节
-    /// </summary>
+    /// <summary>Field number for the "IP" field.</summary>
+    public const int IPFieldNumber = 4;
+    private string iP_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Manage.ProtocolInfo ProtocolDetail {
-      get { return protocolDetail_; }
+    public string IP {
+      get { return iP_; }
       set {
-        protocolDetail_ = value;
+        iP_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "port" field.</summary>
+    public const int PortFieldNumber = 5;
+    private uint port_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint Port {
+      get { return port_; }
+      set {
+        port_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "GB_ID" field.</summary>
+    public const int GBIDFieldNumber = 6;
+    private string gBID_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string GBID {
+      get { return gBID_; }
+      set {
+        gBID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "GB_Parent_ID" field.</summary>
+    public const int GBParentIDFieldNumber = 7;
+    private string gBParentID_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string GBParentID {
+      get { return gBParentID_; }
+      set {
+        gBParentID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
     /// <summary>Field number for the "users" field.</summary>
-    public const int UsersFieldNumber = 5;
+    public const int UsersFieldNumber = 8;
     private static readonly pb::FieldCodec<global::Manage.LoginUser> _repeated_users_codec
-        = pb::FieldCodec.ForMessage(42, global::Manage.LoginUser.Parser);
+        = pb::FieldCodec.ForMessage(66, global::Manage.LoginUser.Parser);
     private readonly pbc::RepeatedField<global::Manage.LoginUser> users_ = new pbc::RepeatedField<global::Manage.LoginUser>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::Manage.LoginUser> Users {
       get { return users_; }
     }
 
-    /// <summary>Field number for the "type_code" field.</summary>
-    public const int TypeCodeFieldNumber = 6;
-    private global::Manage.TypeCode typeCode_ = 0;
+    /// <summary>Field number for the "device_id" field.</summary>
+    public const int DeviceIdFieldNumber = 9;
+    private string deviceId_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Manage.TypeCode TypeCode {
-      get { return typeCode_; }
+    public string DeviceId {
+      get { return deviceId_; }
       set {
-        typeCode_ = value;
+        deviceId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
     /// <summary>Field number for the "channel_id" field.</summary>
-    public const int ChannelIdFieldNumber = 7;
-    private int channelId_;
+    public const int ChannelIdFieldNumber = 10;
+    private string channelId_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int ChannelId {
+    public string ChannelId {
       get { return channelId_; }
       set {
-        channelId_ = value;
+        channelId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "primary_id" field.</summary>
+    public const int PrimaryIdFieldNumber = 11;
+    private string primaryId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string PrimaryId {
+      get { return primaryId_; }
+      set {
+        primaryId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "sub_id" field.</summary>
+    public const int SubIdFieldNumber = 12;
+    private string subId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string SubId {
+      get { return subId_; }
+      set {
+        subId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "parent_id" field.</summary>
+    public const int ParentIdFieldNumber = 13;
+    private string parentId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string ParentId {
+      get { return parentId_; }
+      set {
+        parentId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "shape_type" field.</summary>
+    public const int ShapeTypeFieldNumber = 14;
+    private global::Manage.ShapeType shapeType_ = 0;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Manage.ShapeType ShapeType {
+      get { return shapeType_; }
+      set {
+        shapeType_ = value;
       }
     }
 
@@ -4024,12 +4744,19 @@ namespace Manage {
         return true;
       }
       if (Guid != other.Guid) return false;
-      if (DeviceName != other.DeviceName) return false;
+      if (Name != other.Name) return false;
       if (ProtocolType != other.ProtocolType) return false;
-      if (!object.Equals(ProtocolDetail, other.ProtocolDetail)) return false;
+      if (IP != other.IP) return false;
+      if (Port != other.Port) return false;
+      if (GBID != other.GBID) return false;
+      if (GBParentID != other.GBParentID) return false;
       if(!users_.Equals(other.users_)) return false;
-      if (TypeCode != other.TypeCode) return false;
+      if (DeviceId != other.DeviceId) return false;
       if (ChannelId != other.ChannelId) return false;
+      if (PrimaryId != other.PrimaryId) return false;
+      if (SubId != other.SubId) return false;
+      if (ParentId != other.ParentId) return false;
+      if (ShapeType != other.ShapeType) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -4037,12 +4764,19 @@ namespace Manage {
     public override int GetHashCode() {
       int hash = 1;
       if (Guid.Length != 0) hash ^= Guid.GetHashCode();
-      if (DeviceName.Length != 0) hash ^= DeviceName.GetHashCode();
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (ProtocolType != 0) hash ^= ProtocolType.GetHashCode();
-      if (protocolDetail_ != null) hash ^= ProtocolDetail.GetHashCode();
+      if (IP.Length != 0) hash ^= IP.GetHashCode();
+      if (Port != 0) hash ^= Port.GetHashCode();
+      if (GBID.Length != 0) hash ^= GBID.GetHashCode();
+      if (GBParentID.Length != 0) hash ^= GBParentID.GetHashCode();
       hash ^= users_.GetHashCode();
-      if (TypeCode != 0) hash ^= TypeCode.GetHashCode();
-      if (ChannelId != 0) hash ^= ChannelId.GetHashCode();
+      if (DeviceId.Length != 0) hash ^= DeviceId.GetHashCode();
+      if (ChannelId.Length != 0) hash ^= ChannelId.GetHashCode();
+      if (PrimaryId.Length != 0) hash ^= PrimaryId.GetHashCode();
+      if (SubId.Length != 0) hash ^= SubId.GetHashCode();
+      if (ParentId.Length != 0) hash ^= ParentId.GetHashCode();
+      if (ShapeType != 0) hash ^= ShapeType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -4060,26 +4794,54 @@ namespace Manage {
         output.WriteRawTag(10);
         output.WriteString(Guid);
       }
-      if (DeviceName.Length != 0) {
+      if (Name.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteString(DeviceName);
+        output.WriteString(Name);
       }
       if (ProtocolType != 0) {
         output.WriteRawTag(24);
         output.WriteEnum((int) ProtocolType);
       }
-      if (protocolDetail_ != null) {
+      if (IP.Length != 0) {
         output.WriteRawTag(34);
-        output.WriteMessage(ProtocolDetail);
+        output.WriteString(IP);
+      }
+      if (Port != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(Port);
+      }
+      if (GBID.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(GBID);
+      }
+      if (GBParentID.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(GBParentID);
       }
       users_.WriteTo(output, _repeated_users_codec);
-      if (TypeCode != 0) {
-        output.WriteRawTag(48);
-        output.WriteEnum((int) TypeCode);
+      if (DeviceId.Length != 0) {
+        output.WriteRawTag(74);
+        output.WriteString(DeviceId);
       }
-      if (ChannelId != 0) {
-        output.WriteRawTag(56);
-        output.WriteInt32(ChannelId);
+      if (ChannelId.Length != 0) {
+        output.WriteRawTag(82);
+        output.WriteString(ChannelId);
+      }
+      if (PrimaryId.Length != 0) {
+        output.WriteRawTag(90);
+        output.WriteString(PrimaryId);
+      }
+      if (SubId.Length != 0) {
+        output.WriteRawTag(98);
+        output.WriteString(SubId);
+      }
+      if (ParentId.Length != 0) {
+        output.WriteRawTag(106);
+        output.WriteString(ParentId);
+      }
+      if (ShapeType != 0) {
+        output.WriteRawTag(112);
+        output.WriteEnum((int) ShapeType);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -4092,21 +4854,42 @@ namespace Manage {
       if (Guid.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Guid);
       }
-      if (DeviceName.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(DeviceName);
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
       if (ProtocolType != 0) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ProtocolType);
       }
-      if (protocolDetail_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ProtocolDetail);
+      if (IP.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(IP);
+      }
+      if (Port != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Port);
+      }
+      if (GBID.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(GBID);
+      }
+      if (GBParentID.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(GBParentID);
       }
       size += users_.CalculateSize(_repeated_users_codec);
-      if (TypeCode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) TypeCode);
+      if (DeviceId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(DeviceId);
       }
-      if (ChannelId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ChannelId);
+      if (ChannelId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ChannelId);
+      }
+      if (PrimaryId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(PrimaryId);
+      }
+      if (SubId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(SubId);
+      }
+      if (ParentId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ParentId);
+      }
+      if (ShapeType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ShapeType);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -4122,24 +4905,42 @@ namespace Manage {
       if (other.Guid.Length != 0) {
         Guid = other.Guid;
       }
-      if (other.DeviceName.Length != 0) {
-        DeviceName = other.DeviceName;
+      if (other.Name.Length != 0) {
+        Name = other.Name;
       }
       if (other.ProtocolType != 0) {
         ProtocolType = other.ProtocolType;
       }
-      if (other.protocolDetail_ != null) {
-        if (protocolDetail_ == null) {
-          protocolDetail_ = new global::Manage.ProtocolInfo();
-        }
-        ProtocolDetail.MergeFrom(other.ProtocolDetail);
+      if (other.IP.Length != 0) {
+        IP = other.IP;
+      }
+      if (other.Port != 0) {
+        Port = other.Port;
+      }
+      if (other.GBID.Length != 0) {
+        GBID = other.GBID;
+      }
+      if (other.GBParentID.Length != 0) {
+        GBParentID = other.GBParentID;
       }
       users_.Add(other.users_);
-      if (other.TypeCode != 0) {
-        TypeCode = other.TypeCode;
+      if (other.DeviceId.Length != 0) {
+        DeviceId = other.DeviceId;
       }
-      if (other.ChannelId != 0) {
+      if (other.ChannelId.Length != 0) {
         ChannelId = other.ChannelId;
+      }
+      if (other.PrimaryId.Length != 0) {
+        PrimaryId = other.PrimaryId;
+      }
+      if (other.SubId.Length != 0) {
+        SubId = other.SubId;
+      }
+      if (other.ParentId.Length != 0) {
+        ParentId = other.ParentId;
+      }
+      if (other.ShapeType != 0) {
+        ShapeType = other.ShapeType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -4157,7 +4958,7 @@ namespace Manage {
             break;
           }
           case 18: {
-            DeviceName = input.ReadString();
+            Name = input.ReadString();
             break;
           }
           case 24: {
@@ -4165,22 +4966,47 @@ namespace Manage {
             break;
           }
           case 34: {
-            if (protocolDetail_ == null) {
-              protocolDetail_ = new global::Manage.ProtocolInfo();
-            }
-            input.ReadMessage(protocolDetail_);
+            IP = input.ReadString();
             break;
           }
-          case 42: {
+          case 40: {
+            Port = input.ReadUInt32();
+            break;
+          }
+          case 50: {
+            GBID = input.ReadString();
+            break;
+          }
+          case 58: {
+            GBParentID = input.ReadString();
+            break;
+          }
+          case 66: {
             users_.AddEntriesFrom(input, _repeated_users_codec);
             break;
           }
-          case 48: {
-            typeCode_ = (global::Manage.TypeCode) input.ReadEnum();
+          case 74: {
+            DeviceId = input.ReadString();
             break;
           }
-          case 56: {
-            ChannelId = input.ReadInt32();
+          case 82: {
+            ChannelId = input.ReadString();
+            break;
+          }
+          case 90: {
+            PrimaryId = input.ReadString();
+            break;
+          }
+          case 98: {
+            SubId = input.ReadString();
+            break;
+          }
+          case 106: {
+            ParentId = input.ReadString();
+            break;
+          }
+          case 112: {
+            shapeType_ = (global::Manage.ShapeType) input.ReadEnum();
             break;
           }
         }
@@ -4197,7 +5023,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[21]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[26]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4363,7 +5189,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[22]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[27]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4540,560 +5366,6 @@ namespace Manage {
 
   }
 
-  /// <summary>
-  ///协议
-  /// </summary>
-  public sealed partial class ProtocolInfo : pb::IMessage<ProtocolInfo> {
-    private static readonly pb::MessageParser<ProtocolInfo> _parser = new pb::MessageParser<ProtocolInfo>(() => new ProtocolInfo());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<ProtocolInfo> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[23]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ProtocolInfo() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ProtocolInfo(ProtocolInfo other) : this() {
-      Onvif = other.onvif_ != null ? other.Onvif.Clone() : null;
-      Gb = other.gb_ != null ? other.Gb.Clone() : null;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ProtocolInfo Clone() {
-      return new ProtocolInfo(this);
-    }
-
-    /// <summary>Field number for the "onvif" field.</summary>
-    public const int OnvifFieldNumber = 1;
-    private global::Manage.OnvifDetail onvif_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Manage.OnvifDetail Onvif {
-      get { return onvif_; }
-      set {
-        onvif_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "gb" field.</summary>
-    public const int GbFieldNumber = 2;
-    private global::Manage.GBDetail gb_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Manage.GBDetail Gb {
-      get { return gb_; }
-      set {
-        gb_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as ProtocolInfo);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(ProtocolInfo other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (!object.Equals(Onvif, other.Onvif)) return false;
-      if (!object.Equals(Gb, other.Gb)) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (onvif_ != null) hash ^= Onvif.GetHashCode();
-      if (gb_ != null) hash ^= Gb.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (onvif_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Onvif);
-      }
-      if (gb_ != null) {
-        output.WriteRawTag(18);
-        output.WriteMessage(Gb);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (onvif_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Onvif);
-      }
-      if (gb_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Gb);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(ProtocolInfo other) {
-      if (other == null) {
-        return;
-      }
-      if (other.onvif_ != null) {
-        if (onvif_ == null) {
-          onvif_ = new global::Manage.OnvifDetail();
-        }
-        Onvif.MergeFrom(other.Onvif);
-      }
-      if (other.gb_ != null) {
-        if (gb_ == null) {
-          gb_ = new global::Manage.GBDetail();
-        }
-        Gb.MergeFrom(other.Gb);
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            if (onvif_ == null) {
-              onvif_ = new global::Manage.OnvifDetail();
-            }
-            input.ReadMessage(onvif_);
-            break;
-          }
-          case 18: {
-            if (gb_ == null) {
-              gb_ = new global::Manage.GBDetail();
-            }
-            input.ReadMessage(gb_);
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  public sealed partial class OnvifDetail : pb::IMessage<OnvifDetail> {
-    private static readonly pb::MessageParser<OnvifDetail> _parser = new pb::MessageParser<OnvifDetail>(() => new OnvifDetail());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<OnvifDetail> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[24]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public OnvifDetail() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public OnvifDetail(OnvifDetail other) : this() {
-      iP_ = other.iP_;
-      port_ = other.port_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public OnvifDetail Clone() {
-      return new OnvifDetail(this);
-    }
-
-    /// <summary>Field number for the "IP" field.</summary>
-    public const int IPFieldNumber = 1;
-    private string iP_ = "";
-    /// <summary>
-    ///设备的IP地址
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string IP {
-      get { return iP_; }
-      set {
-        iP_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "Port" field.</summary>
-    public const int PortFieldNumber = 2;
-    private uint port_;
-    /// <summary>
-    ///设备的服务端口
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint Port {
-      get { return port_; }
-      set {
-        port_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as OnvifDetail);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(OnvifDetail other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (IP != other.IP) return false;
-      if (Port != other.Port) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (IP.Length != 0) hash ^= IP.GetHashCode();
-      if (Port != 0) hash ^= Port.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (IP.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(IP);
-      }
-      if (Port != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(Port);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (IP.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(IP);
-      }
-      if (Port != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Port);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(OnvifDetail other) {
-      if (other == null) {
-        return;
-      }
-      if (other.IP.Length != 0) {
-        IP = other.IP;
-      }
-      if (other.Port != 0) {
-        Port = other.Port;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            IP = input.ReadString();
-            break;
-          }
-          case 16: {
-            Port = input.ReadUInt32();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  public sealed partial class GBDetail : pb::IMessage<GBDetail> {
-    private static readonly pb::MessageParser<GBDetail> _parser = new pb::MessageParser<GBDetail>(() => new GBDetail());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<GBDetail> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[25]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GBDetail() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GBDetail(GBDetail other) : this() {
-      gBID_ = other.gBID_;
-      parentID_ = other.parentID_;
-      iP_ = other.iP_;
-      port_ = other.port_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GBDetail Clone() {
-      return new GBDetail(this);
-    }
-
-    /// <summary>Field number for the "GB_ID" field.</summary>
-    public const int GBIDFieldNumber = 1;
-    private string gBID_ = "";
-    /// <summary>
-    ///GBID 20 位国标编码,.
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string GBID {
-      get { return gBID_; }
-      set {
-        gBID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "parent_ID" field.</summary>
-    public const int ParentIDFieldNumber = 2;
-    private string parentID_ = "";
-    /// <summary>
-    ///设备的服务端口
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string ParentID {
-      get { return parentID_; }
-      set {
-        parentID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "IP" field.</summary>
-    public const int IPFieldNumber = 3;
-    private string iP_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string IP {
-      get { return iP_; }
-      set {
-        iP_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "port" field.</summary>
-    public const int PortFieldNumber = 4;
-    private uint port_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint Port {
-      get { return port_; }
-      set {
-        port_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as GBDetail);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(GBDetail other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (GBID != other.GBID) return false;
-      if (ParentID != other.ParentID) return false;
-      if (IP != other.IP) return false;
-      if (Port != other.Port) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (GBID.Length != 0) hash ^= GBID.GetHashCode();
-      if (ParentID.Length != 0) hash ^= ParentID.GetHashCode();
-      if (IP.Length != 0) hash ^= IP.GetHashCode();
-      if (Port != 0) hash ^= Port.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (GBID.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(GBID);
-      }
-      if (ParentID.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(ParentID);
-      }
-      if (IP.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(IP);
-      }
-      if (Port != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(Port);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (GBID.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(GBID);
-      }
-      if (ParentID.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(ParentID);
-      }
-      if (IP.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(IP);
-      }
-      if (Port != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Port);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(GBDetail other) {
-      if (other == null) {
-        return;
-      }
-      if (other.GBID.Length != 0) {
-        GBID = other.GBID;
-      }
-      if (other.ParentID.Length != 0) {
-        ParentID = other.ParentID;
-      }
-      if (other.IP.Length != 0) {
-        IP = other.IP;
-      }
-      if (other.Port != 0) {
-        Port = other.Port;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            GBID = input.ReadString();
-            break;
-          }
-          case 18: {
-            ParentID = input.ReadString();
-            break;
-          }
-          case 26: {
-            IP = input.ReadString();
-            break;
-          }
-          case 32: {
-            Port = input.ReadUInt32();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
   public sealed partial class MediaInfo : pb::IMessage<MediaInfo> {
     private static readonly pb::MessageParser<MediaInfo> _parser = new pb::MessageParser<MediaInfo>(() => new MediaInfo());
     private pb::UnknownFieldSet _unknownFields;
@@ -5102,7 +5374,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[26]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[28]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5361,7 +5633,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[27]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[29]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5686,7 +5958,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[28]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[30]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5955,7 +6227,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[29]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[31]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5972,7 +6244,6 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public AddDeviceRequest(AddDeviceRequest other) : this() {
-      timestamp_ = other.timestamp_;
       device_ = other.device_.Clone();
       loginRoleId_ = other.loginRoleId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -5983,21 +6254,10 @@ namespace Manage {
       return new AddDeviceRequest(this);
     }
 
-    /// <summary>Field number for the "timestamp" field.</summary>
-    public const int TimestampFieldNumber = 1;
-    private ulong timestamp_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ulong Timestamp {
-      get { return timestamp_; }
-      set {
-        timestamp_ = value;
-      }
-    }
-
     /// <summary>Field number for the "device" field.</summary>
-    public const int DeviceFieldNumber = 2;
+    public const int DeviceFieldNumber = 1;
     private static readonly pb::FieldCodec<global::Manage.Device> _repeated_device_codec
-        = pb::FieldCodec.ForMessage(18, global::Manage.Device.Parser);
+        = pb::FieldCodec.ForMessage(10, global::Manage.Device.Parser);
     private readonly pbc::RepeatedField<global::Manage.Device> device_ = new pbc::RepeatedField<global::Manage.Device>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::Manage.Device> Device {
@@ -6005,7 +6265,7 @@ namespace Manage {
     }
 
     /// <summary>Field number for the "login_role_id" field.</summary>
-    public const int LoginRoleIdFieldNumber = 3;
+    public const int LoginRoleIdFieldNumber = 2;
     private string loginRoleId_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string LoginRoleId {
@@ -6028,7 +6288,6 @@ namespace Manage {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Timestamp != other.Timestamp) return false;
       if(!device_.Equals(other.device_)) return false;
       if (LoginRoleId != other.LoginRoleId) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -6037,7 +6296,6 @@ namespace Manage {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Timestamp != 0UL) hash ^= Timestamp.GetHashCode();
       hash ^= device_.GetHashCode();
       if (LoginRoleId.Length != 0) hash ^= LoginRoleId.GetHashCode();
       if (_unknownFields != null) {
@@ -6053,13 +6311,9 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Timestamp != 0UL) {
-        output.WriteRawTag(8);
-        output.WriteUInt64(Timestamp);
-      }
       device_.WriteTo(output, _repeated_device_codec);
       if (LoginRoleId.Length != 0) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(18);
         output.WriteString(LoginRoleId);
       }
       if (_unknownFields != null) {
@@ -6070,9 +6324,6 @@ namespace Manage {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Timestamp != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Timestamp);
-      }
       size += device_.CalculateSize(_repeated_device_codec);
       if (LoginRoleId.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(LoginRoleId);
@@ -6087,9 +6338,6 @@ namespace Manage {
     public void MergeFrom(AddDeviceRequest other) {
       if (other == null) {
         return;
-      }
-      if (other.Timestamp != 0UL) {
-        Timestamp = other.Timestamp;
       }
       device_.Add(other.device_);
       if (other.LoginRoleId.Length != 0) {
@@ -6106,15 +6354,11 @@ namespace Manage {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            Timestamp = input.ReadUInt64();
-            break;
-          }
-          case 18: {
+          case 10: {
             device_.AddEntriesFrom(input, _repeated_device_codec);
             break;
           }
-          case 26: {
+          case 18: {
             LoginRoleId = input.ReadString();
             break;
           }
@@ -6132,7 +6376,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[30]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[32]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6149,6 +6393,10 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public AddDeviceResponse(AddDeviceResponse other) : this() {
+      duplicateNames_ = other.duplicateNames_.Clone();
+      channelCreateFailedName_ = other.channelCreateFailedName_.Clone();
+      successImportNumber_ = other.successImportNumber_;
+      failedImportNumber_ = other.failedImportNumber_;
       status_ = other.status_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -6158,8 +6406,50 @@ namespace Manage {
       return new AddDeviceResponse(this);
     }
 
+    /// <summary>Field number for the "duplicate_names" field.</summary>
+    public const int DuplicateNamesFieldNumber = 1;
+    private static readonly pb::FieldCodec<string> _repeated_duplicateNames_codec
+        = pb::FieldCodec.ForString(10);
+    private readonly pbc::RepeatedField<string> duplicateNames_ = new pbc::RepeatedField<string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<string> DuplicateNames {
+      get { return duplicateNames_; }
+    }
+
+    /// <summary>Field number for the "channel_create_failed_name" field.</summary>
+    public const int ChannelCreateFailedNameFieldNumber = 2;
+    private static readonly pb::FieldCodec<string> _repeated_channelCreateFailedName_codec
+        = pb::FieldCodec.ForString(18);
+    private readonly pbc::RepeatedField<string> channelCreateFailedName_ = new pbc::RepeatedField<string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<string> ChannelCreateFailedName {
+      get { return channelCreateFailedName_; }
+    }
+
+    /// <summary>Field number for the "success_import_number" field.</summary>
+    public const int SuccessImportNumberFieldNumber = 3;
+    private int successImportNumber_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int SuccessImportNumber {
+      get { return successImportNumber_; }
+      set {
+        successImportNumber_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "failed_import_number" field.</summary>
+    public const int FailedImportNumberFieldNumber = 4;
+    private int failedImportNumber_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int FailedImportNumber {
+      get { return failedImportNumber_; }
+      set {
+        failedImportNumber_ = value;
+      }
+    }
+
     /// <summary>Field number for the "status" field.</summary>
-    public const int StatusFieldNumber = 1;
+    public const int StatusFieldNumber = 5;
     private global::Manage.OP_RESULT_STATUS status_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Manage.OP_RESULT_STATUS Status {
@@ -6182,6 +6472,10 @@ namespace Manage {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if(!duplicateNames_.Equals(other.duplicateNames_)) return false;
+      if(!channelCreateFailedName_.Equals(other.channelCreateFailedName_)) return false;
+      if (SuccessImportNumber != other.SuccessImportNumber) return false;
+      if (FailedImportNumber != other.FailedImportNumber) return false;
       if (Status != other.Status) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -6189,6 +6483,10 @@ namespace Manage {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      hash ^= duplicateNames_.GetHashCode();
+      hash ^= channelCreateFailedName_.GetHashCode();
+      if (SuccessImportNumber != 0) hash ^= SuccessImportNumber.GetHashCode();
+      if (FailedImportNumber != 0) hash ^= FailedImportNumber.GetHashCode();
       if (Status != 0) hash ^= Status.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -6203,8 +6501,18 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+      duplicateNames_.WriteTo(output, _repeated_duplicateNames_codec);
+      channelCreateFailedName_.WriteTo(output, _repeated_channelCreateFailedName_codec);
+      if (SuccessImportNumber != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(SuccessImportNumber);
+      }
+      if (FailedImportNumber != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(FailedImportNumber);
+      }
       if (Status != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(40);
         output.WriteEnum((int) Status);
       }
       if (_unknownFields != null) {
@@ -6215,6 +6523,14 @@ namespace Manage {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      size += duplicateNames_.CalculateSize(_repeated_duplicateNames_codec);
+      size += channelCreateFailedName_.CalculateSize(_repeated_channelCreateFailedName_codec);
+      if (SuccessImportNumber != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SuccessImportNumber);
+      }
+      if (FailedImportNumber != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(FailedImportNumber);
+      }
       if (Status != 0) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Status);
       }
@@ -6228,6 +6544,14 @@ namespace Manage {
     public void MergeFrom(AddDeviceResponse other) {
       if (other == null) {
         return;
+      }
+      duplicateNames_.Add(other.duplicateNames_);
+      channelCreateFailedName_.Add(other.channelCreateFailedName_);
+      if (other.SuccessImportNumber != 0) {
+        SuccessImportNumber = other.SuccessImportNumber;
+      }
+      if (other.FailedImportNumber != 0) {
+        FailedImportNumber = other.FailedImportNumber;
       }
       if (other.Status != 0) {
         Status = other.Status;
@@ -6243,7 +6567,23 @@ namespace Manage {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
+          case 10: {
+            duplicateNames_.AddEntriesFrom(input, _repeated_duplicateNames_codec);
+            break;
+          }
+          case 18: {
+            channelCreateFailedName_.AddEntriesFrom(input, _repeated_channelCreateFailedName_codec);
+            break;
+          }
+          case 24: {
+            SuccessImportNumber = input.ReadInt32();
+            break;
+          }
+          case 32: {
+            FailedImportNumber = input.ReadInt32();
+            break;
+          }
+          case 40: {
             status_ = (global::Manage.OP_RESULT_STATUS) input.ReadEnum();
             break;
           }
@@ -6261,7 +6601,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[31]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[33]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6278,7 +6618,6 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public DeleteDeviceRequest(DeleteDeviceRequest other) : this() {
-      timestamp_ = other.timestamp_;
       devicesId_ = other.devicesId_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -6288,21 +6627,10 @@ namespace Manage {
       return new DeleteDeviceRequest(this);
     }
 
-    /// <summary>Field number for the "timestamp" field.</summary>
-    public const int TimestampFieldNumber = 1;
-    private ulong timestamp_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ulong Timestamp {
-      get { return timestamp_; }
-      set {
-        timestamp_ = value;
-      }
-    }
-
     /// <summary>Field number for the "devices_id" field.</summary>
-    public const int DevicesIdFieldNumber = 2;
+    public const int DevicesIdFieldNumber = 1;
     private static readonly pb::FieldCodec<string> _repeated_devicesId_codec
-        = pb::FieldCodec.ForString(18);
+        = pb::FieldCodec.ForString(10);
     private readonly pbc::RepeatedField<string> devicesId_ = new pbc::RepeatedField<string>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<string> DevicesId {
@@ -6322,7 +6650,6 @@ namespace Manage {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Timestamp != other.Timestamp) return false;
       if(!devicesId_.Equals(other.devicesId_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -6330,7 +6657,6 @@ namespace Manage {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Timestamp != 0UL) hash ^= Timestamp.GetHashCode();
       hash ^= devicesId_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -6345,10 +6671,6 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Timestamp != 0UL) {
-        output.WriteRawTag(8);
-        output.WriteUInt64(Timestamp);
-      }
       devicesId_.WriteTo(output, _repeated_devicesId_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -6358,9 +6680,6 @@ namespace Manage {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Timestamp != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Timestamp);
-      }
       size += devicesId_.CalculateSize(_repeated_devicesId_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -6372,9 +6691,6 @@ namespace Manage {
     public void MergeFrom(DeleteDeviceRequest other) {
       if (other == null) {
         return;
-      }
-      if (other.Timestamp != 0UL) {
-        Timestamp = other.Timestamp;
       }
       devicesId_.Add(other.devicesId_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -6388,11 +6704,7 @@ namespace Manage {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            Timestamp = input.ReadUInt64();
-            break;
-          }
-          case 18: {
+          case 10: {
             devicesId_.AddEntriesFrom(input, _repeated_devicesId_codec);
             break;
           }
@@ -6410,7 +6722,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[32]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[34]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6559,7 +6871,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[33]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[35]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6708,7 +7020,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[34]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[36]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6857,7 +7169,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[35]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[37]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6875,9 +7187,12 @@ namespace Manage {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public QueryRequest(QueryRequest other) : this() {
       QueryCondition = other.queryCondition_ != null ? other.QueryCondition.Clone() : null;
+      orderby_ = other.orderby_;
+      isAscend_ = other.isAscend_;
       pageNumber_ = other.pageNumber_;
       countPerPage_ = other.countPerPage_;
       loginRoleId_ = other.loginRoleId_;
+      language_ = other.language_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -6897,8 +7212,30 @@ namespace Manage {
       }
     }
 
+    /// <summary>Field number for the "orderby" field.</summary>
+    public const int OrderbyFieldNumber = 2;
+    private global::Manage.OrderBy orderby_ = 0;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Manage.OrderBy Orderby {
+      get { return orderby_; }
+      set {
+        orderby_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "IsAscend" field.</summary>
+    public const int IsAscendFieldNumber = 3;
+    private bool isAscend_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool IsAscend {
+      get { return isAscend_; }
+      set {
+        isAscend_ = value;
+      }
+    }
+
     /// <summary>Field number for the "page_number" field.</summary>
-    public const int PageNumberFieldNumber = 2;
+    public const int PageNumberFieldNumber = 4;
     private int pageNumber_;
     /// <summary>
     ///page number
@@ -6912,7 +7249,7 @@ namespace Manage {
     }
 
     /// <summary>Field number for the "count_per_page" field.</summary>
-    public const int CountPerPageFieldNumber = 3;
+    public const int CountPerPageFieldNumber = 5;
     private int countPerPage_;
     /// <summary>
     /// item count of per page.
@@ -6926,7 +7263,7 @@ namespace Manage {
     }
 
     /// <summary>Field number for the "loginRoleId" field.</summary>
-    public const int LoginRoleIdFieldNumber = 4;
+    public const int LoginRoleIdFieldNumber = 6;
     private string loginRoleId_ = "";
     /// <summary>
     ///  当前登录的角色 ID
@@ -6936,6 +7273,17 @@ namespace Manage {
       get { return loginRoleId_; }
       set {
         loginRoleId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "language" field.</summary>
+    public const int LanguageFieldNumber = 7;
+    private string language_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Language {
+      get { return language_; }
+      set {
+        language_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -6953,9 +7301,12 @@ namespace Manage {
         return true;
       }
       if (!object.Equals(QueryCondition, other.QueryCondition)) return false;
+      if (Orderby != other.Orderby) return false;
+      if (IsAscend != other.IsAscend) return false;
       if (PageNumber != other.PageNumber) return false;
       if (CountPerPage != other.CountPerPage) return false;
       if (LoginRoleId != other.LoginRoleId) return false;
+      if (Language != other.Language) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -6963,9 +7314,12 @@ namespace Manage {
     public override int GetHashCode() {
       int hash = 1;
       if (queryCondition_ != null) hash ^= QueryCondition.GetHashCode();
+      if (Orderby != 0) hash ^= Orderby.GetHashCode();
+      if (IsAscend != false) hash ^= IsAscend.GetHashCode();
       if (PageNumber != 0) hash ^= PageNumber.GetHashCode();
       if (CountPerPage != 0) hash ^= CountPerPage.GetHashCode();
       if (LoginRoleId.Length != 0) hash ^= LoginRoleId.GetHashCode();
+      if (Language.Length != 0) hash ^= Language.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -6983,17 +7337,29 @@ namespace Manage {
         output.WriteRawTag(10);
         output.WriteMessage(QueryCondition);
       }
-      if (PageNumber != 0) {
+      if (Orderby != 0) {
         output.WriteRawTag(16);
+        output.WriteEnum((int) Orderby);
+      }
+      if (IsAscend != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(IsAscend);
+      }
+      if (PageNumber != 0) {
+        output.WriteRawTag(32);
         output.WriteInt32(PageNumber);
       }
       if (CountPerPage != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(40);
         output.WriteInt32(CountPerPage);
       }
       if (LoginRoleId.Length != 0) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(50);
         output.WriteString(LoginRoleId);
+      }
+      if (Language.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(Language);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -7006,6 +7372,12 @@ namespace Manage {
       if (queryCondition_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(QueryCondition);
       }
+      if (Orderby != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Orderby);
+      }
+      if (IsAscend != false) {
+        size += 1 + 1;
+      }
       if (PageNumber != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(PageNumber);
       }
@@ -7014,6 +7386,9 @@ namespace Manage {
       }
       if (LoginRoleId.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(LoginRoleId);
+      }
+      if (Language.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Language);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -7032,6 +7407,12 @@ namespace Manage {
         }
         QueryCondition.MergeFrom(other.QueryCondition);
       }
+      if (other.Orderby != 0) {
+        Orderby = other.Orderby;
+      }
+      if (other.IsAscend != false) {
+        IsAscend = other.IsAscend;
+      }
       if (other.PageNumber != 0) {
         PageNumber = other.PageNumber;
       }
@@ -7040,6 +7421,9 @@ namespace Manage {
       }
       if (other.LoginRoleId.Length != 0) {
         LoginRoleId = other.LoginRoleId;
+      }
+      if (other.Language.Length != 0) {
+        Language = other.Language;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -7060,15 +7444,27 @@ namespace Manage {
             break;
           }
           case 16: {
-            PageNumber = input.ReadInt32();
+            orderby_ = (global::Manage.OrderBy) input.ReadEnum();
             break;
           }
           case 24: {
+            IsAscend = input.ReadBool();
+            break;
+          }
+          case 32: {
+            PageNumber = input.ReadInt32();
+            break;
+          }
+          case 40: {
             CountPerPage = input.ReadInt32();
             break;
           }
-          case 34: {
+          case 50: {
             LoginRoleId = input.ReadString();
+            break;
+          }
+          case 58: {
+            Language = input.ReadString();
             break;
           }
         }
@@ -7085,7 +7481,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[36]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[38]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7102,9 +7498,10 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public QueryCondition(QueryCondition other) : this() {
-      id_ = other.id_;
-      name_ = other.name_;
-      protocolType_ = other.protocolType_;
+      deviceName_ = other.deviceName_;
+      ip_ = other.ip_;
+      protocolTypes_ = other.protocolTypes_.Clone();
+      port_ = other.port_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -7113,36 +7510,46 @@ namespace Manage {
       return new QueryCondition(this);
     }
 
-    /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 1;
-    private string id_ = "";
+    /// <summary>Field number for the "device_name" field.</summary>
+    public const int DeviceNameFieldNumber = 1;
+    private string deviceName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Id {
-      get { return id_; }
+    public string DeviceName {
+      get { return deviceName_; }
       set {
-        id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        deviceName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
-    /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 2;
-    private string name_ = "";
+    /// <summary>Field number for the "ip" field.</summary>
+    public const int IpFieldNumber = 2;
+    private string ip_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Name {
-      get { return name_; }
+    public string Ip {
+      get { return ip_; }
       set {
-        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        ip_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
-    /// <summary>Field number for the "protocol_type" field.</summary>
-    public const int ProtocolTypeFieldNumber = 3;
-    private string protocolType_ = "";
+    /// <summary>Field number for the "protocol_types" field.</summary>
+    public const int ProtocolTypesFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::Manage.ProtoType> _repeated_protocolTypes_codec
+        = pb::FieldCodec.ForEnum(26, x => (int) x, x => (global::Manage.ProtoType) x);
+    private readonly pbc::RepeatedField<global::Manage.ProtoType> protocolTypes_ = new pbc::RepeatedField<global::Manage.ProtoType>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string ProtocolType {
-      get { return protocolType_; }
+    public pbc::RepeatedField<global::Manage.ProtoType> ProtocolTypes {
+      get { return protocolTypes_; }
+    }
+
+    /// <summary>Field number for the "port" field.</summary>
+    public const int PortFieldNumber = 4;
+    private int port_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Port {
+      get { return port_; }
       set {
-        protocolType_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        port_ = value;
       }
     }
 
@@ -7159,18 +7566,20 @@ namespace Manage {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Id != other.Id) return false;
-      if (Name != other.Name) return false;
-      if (ProtocolType != other.ProtocolType) return false;
+      if (DeviceName != other.DeviceName) return false;
+      if (Ip != other.Ip) return false;
+      if(!protocolTypes_.Equals(other.protocolTypes_)) return false;
+      if (Port != other.Port) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Id.Length != 0) hash ^= Id.GetHashCode();
-      if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (ProtocolType.Length != 0) hash ^= ProtocolType.GetHashCode();
+      if (DeviceName.Length != 0) hash ^= DeviceName.GetHashCode();
+      if (Ip.Length != 0) hash ^= Ip.GetHashCode();
+      hash ^= protocolTypes_.GetHashCode();
+      if (Port != 0) hash ^= Port.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -7184,17 +7593,18 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Id.Length != 0) {
+      if (DeviceName.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(Id);
+        output.WriteString(DeviceName);
       }
-      if (Name.Length != 0) {
+      if (Ip.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteString(Name);
+        output.WriteString(Ip);
       }
-      if (ProtocolType.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(ProtocolType);
+      protocolTypes_.WriteTo(output, _repeated_protocolTypes_codec);
+      if (Port != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(Port);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -7204,14 +7614,15 @@ namespace Manage {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Id.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
+      if (DeviceName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(DeviceName);
       }
-      if (Name.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      if (Ip.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Ip);
       }
-      if (ProtocolType.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(ProtocolType);
+      size += protocolTypes_.CalculateSize(_repeated_protocolTypes_codec);
+      if (Port != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Port);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -7224,14 +7635,15 @@ namespace Manage {
       if (other == null) {
         return;
       }
-      if (other.Id.Length != 0) {
-        Id = other.Id;
+      if (other.DeviceName.Length != 0) {
+        DeviceName = other.DeviceName;
       }
-      if (other.Name.Length != 0) {
-        Name = other.Name;
+      if (other.Ip.Length != 0) {
+        Ip = other.Ip;
       }
-      if (other.ProtocolType.Length != 0) {
-        ProtocolType = other.ProtocolType;
+      protocolTypes_.Add(other.protocolTypes_);
+      if (other.Port != 0) {
+        Port = other.Port;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -7245,15 +7657,149 @@ namespace Manage {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            Id = input.ReadString();
+            DeviceName = input.ReadString();
             break;
           }
           case 18: {
-            Name = input.ReadString();
+            Ip = input.ReadString();
             break;
           }
-          case 26: {
-            ProtocolType = input.ReadString();
+          case 26:
+          case 24: {
+            protocolTypes_.AddEntriesFrom(input, _repeated_protocolTypes_codec);
+            break;
+          }
+          case 32: {
+            Port = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class QueryDeviceRequest : pb::IMessage<QueryDeviceRequest> {
+    private static readonly pb::MessageParser<QueryDeviceRequest> _parser = new pb::MessageParser<QueryDeviceRequest>(() => new QueryDeviceRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<QueryDeviceRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[39]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public QueryDeviceRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public QueryDeviceRequest(QueryDeviceRequest other) : this() {
+      deviceId_ = other.deviceId_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public QueryDeviceRequest Clone() {
+      return new QueryDeviceRequest(this);
+    }
+
+    /// <summary>Field number for the "device_id" field.</summary>
+    public const int DeviceIdFieldNumber = 1;
+    private string deviceId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string DeviceId {
+      get { return deviceId_; }
+      set {
+        deviceId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as QueryDeviceRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(QueryDeviceRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (DeviceId != other.DeviceId) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (DeviceId.Length != 0) hash ^= DeviceId.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (DeviceId.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(DeviceId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (DeviceId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(DeviceId);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(QueryDeviceRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.DeviceId.Length != 0) {
+        DeviceId = other.DeviceId;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            DeviceId = input.ReadString();
             break;
           }
         }
@@ -7270,7 +7816,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[37]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[40]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7475,7 +8021,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[38]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[41]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7652,7 +8198,7 @@ namespace Manage {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[39]; }
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[42]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7818,6 +8364,568 @@ namespace Manage {
         }
       }
     }
+
+  }
+
+  public sealed partial class DeviceChangeMessage : pb::IMessage<DeviceChangeMessage> {
+    private static readonly pb::MessageParser<DeviceChangeMessage> _parser = new pb::MessageParser<DeviceChangeMessage>(() => new DeviceChangeMessage());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<DeviceChangeMessage> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Manage.DeviceManageReflection.Descriptor.MessageTypes[43]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public DeviceChangeMessage() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public DeviceChangeMessage(DeviceChangeMessage other) : this() {
+      deviceID_ = other.deviceID_;
+      ip_ = other.ip_;
+      port_ = other.port_;
+      loginName_ = other.loginName_;
+      loginPwd_ = other.loginPwd_;
+      action_ = other.action_;
+      deviceName_ = other.deviceName_;
+      gBID_ = other.gBID_;
+      gBParentID_ = other.gBParentID_;
+      channelId_ = other.channelId_;
+      dVRID_ = other.dVRID_;
+      primaryId_ = other.primaryId_;
+      subId_ = other.subId_;
+      protoType_ = other.protoType_;
+      parentId_ = other.parentId_;
+      shapeType_ = other.shapeType_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public DeviceChangeMessage Clone() {
+      return new DeviceChangeMessage(this);
+    }
+
+    /// <summary>Field number for the "deviceID" field.</summary>
+    public const int DeviceIDFieldNumber = 1;
+    private string deviceID_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string DeviceID {
+      get { return deviceID_; }
+      set {
+        deviceID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "ip" field.</summary>
+    public const int IpFieldNumber = 2;
+    private string ip_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Ip {
+      get { return ip_; }
+      set {
+        ip_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "port" field.</summary>
+    public const int PortFieldNumber = 3;
+    private int port_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Port {
+      get { return port_; }
+      set {
+        port_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "loginName" field.</summary>
+    public const int LoginNameFieldNumber = 4;
+    private string loginName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string LoginName {
+      get { return loginName_; }
+      set {
+        loginName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "loginPwd" field.</summary>
+    public const int LoginPwdFieldNumber = 5;
+    private string loginPwd_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string LoginPwd {
+      get { return loginPwd_; }
+      set {
+        loginPwd_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "action" field.</summary>
+    public const int ActionFieldNumber = 6;
+    private global::Manage.DeviceChangeMessage.Types.Action action_ = 0;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Manage.DeviceChangeMessage.Types.Action Action {
+      get { return action_; }
+      set {
+        action_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "deviceName" field.</summary>
+    public const int DeviceNameFieldNumber = 7;
+    private string deviceName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string DeviceName {
+      get { return deviceName_; }
+      set {
+        deviceName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "GB_ID" field.</summary>
+    public const int GBIDFieldNumber = 8;
+    private string gBID_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string GBID {
+      get { return gBID_; }
+      set {
+        gBID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "GB_Parent_ID" field.</summary>
+    public const int GBParentIDFieldNumber = 9;
+    private string gBParentID_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string GBParentID {
+      get { return gBParentID_; }
+      set {
+        gBParentID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "channel_id" field.</summary>
+    public const int ChannelIdFieldNumber = 10;
+    private string channelId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string ChannelId {
+      get { return channelId_; }
+      set {
+        channelId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "DVRID" field.</summary>
+    public const int DVRIDFieldNumber = 11;
+    private string dVRID_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string DVRID {
+      get { return dVRID_; }
+      set {
+        dVRID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "primary_id" field.</summary>
+    public const int PrimaryIdFieldNumber = 12;
+    private string primaryId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string PrimaryId {
+      get { return primaryId_; }
+      set {
+        primaryId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "sub_id" field.</summary>
+    public const int SubIdFieldNumber = 13;
+    private string subId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string SubId {
+      get { return subId_; }
+      set {
+        subId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "proto_type" field.</summary>
+    public const int ProtoTypeFieldNumber = 14;
+    private global::Manage.ProtoType protoType_ = 0;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Manage.ProtoType ProtoType {
+      get { return protoType_; }
+      set {
+        protoType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "parent_id" field.</summary>
+    public const int ParentIdFieldNumber = 15;
+    private string parentId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string ParentId {
+      get { return parentId_; }
+      set {
+        parentId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "shape_type" field.</summary>
+    public const int ShapeTypeFieldNumber = 16;
+    private global::Manage.ShapeType shapeType_ = 0;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Manage.ShapeType ShapeType {
+      get { return shapeType_; }
+      set {
+        shapeType_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as DeviceChangeMessage);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(DeviceChangeMessage other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (DeviceID != other.DeviceID) return false;
+      if (Ip != other.Ip) return false;
+      if (Port != other.Port) return false;
+      if (LoginName != other.LoginName) return false;
+      if (LoginPwd != other.LoginPwd) return false;
+      if (Action != other.Action) return false;
+      if (DeviceName != other.DeviceName) return false;
+      if (GBID != other.GBID) return false;
+      if (GBParentID != other.GBParentID) return false;
+      if (ChannelId != other.ChannelId) return false;
+      if (DVRID != other.DVRID) return false;
+      if (PrimaryId != other.PrimaryId) return false;
+      if (SubId != other.SubId) return false;
+      if (ProtoType != other.ProtoType) return false;
+      if (ParentId != other.ParentId) return false;
+      if (ShapeType != other.ShapeType) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (DeviceID.Length != 0) hash ^= DeviceID.GetHashCode();
+      if (Ip.Length != 0) hash ^= Ip.GetHashCode();
+      if (Port != 0) hash ^= Port.GetHashCode();
+      if (LoginName.Length != 0) hash ^= LoginName.GetHashCode();
+      if (LoginPwd.Length != 0) hash ^= LoginPwd.GetHashCode();
+      if (Action != 0) hash ^= Action.GetHashCode();
+      if (DeviceName.Length != 0) hash ^= DeviceName.GetHashCode();
+      if (GBID.Length != 0) hash ^= GBID.GetHashCode();
+      if (GBParentID.Length != 0) hash ^= GBParentID.GetHashCode();
+      if (ChannelId.Length != 0) hash ^= ChannelId.GetHashCode();
+      if (DVRID.Length != 0) hash ^= DVRID.GetHashCode();
+      if (PrimaryId.Length != 0) hash ^= PrimaryId.GetHashCode();
+      if (SubId.Length != 0) hash ^= SubId.GetHashCode();
+      if (ProtoType != 0) hash ^= ProtoType.GetHashCode();
+      if (ParentId.Length != 0) hash ^= ParentId.GetHashCode();
+      if (ShapeType != 0) hash ^= ShapeType.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (DeviceID.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(DeviceID);
+      }
+      if (Ip.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Ip);
+      }
+      if (Port != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(Port);
+      }
+      if (LoginName.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(LoginName);
+      }
+      if (LoginPwd.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(LoginPwd);
+      }
+      if (Action != 0) {
+        output.WriteRawTag(48);
+        output.WriteEnum((int) Action);
+      }
+      if (DeviceName.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(DeviceName);
+      }
+      if (GBID.Length != 0) {
+        output.WriteRawTag(66);
+        output.WriteString(GBID);
+      }
+      if (GBParentID.Length != 0) {
+        output.WriteRawTag(74);
+        output.WriteString(GBParentID);
+      }
+      if (ChannelId.Length != 0) {
+        output.WriteRawTag(82);
+        output.WriteString(ChannelId);
+      }
+      if (DVRID.Length != 0) {
+        output.WriteRawTag(90);
+        output.WriteString(DVRID);
+      }
+      if (PrimaryId.Length != 0) {
+        output.WriteRawTag(98);
+        output.WriteString(PrimaryId);
+      }
+      if (SubId.Length != 0) {
+        output.WriteRawTag(106);
+        output.WriteString(SubId);
+      }
+      if (ProtoType != 0) {
+        output.WriteRawTag(112);
+        output.WriteEnum((int) ProtoType);
+      }
+      if (ParentId.Length != 0) {
+        output.WriteRawTag(122);
+        output.WriteString(ParentId);
+      }
+      if (ShapeType != 0) {
+        output.WriteRawTag(128, 1);
+        output.WriteEnum((int) ShapeType);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (DeviceID.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(DeviceID);
+      }
+      if (Ip.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Ip);
+      }
+      if (Port != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Port);
+      }
+      if (LoginName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(LoginName);
+      }
+      if (LoginPwd.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(LoginPwd);
+      }
+      if (Action != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Action);
+      }
+      if (DeviceName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(DeviceName);
+      }
+      if (GBID.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(GBID);
+      }
+      if (GBParentID.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(GBParentID);
+      }
+      if (ChannelId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ChannelId);
+      }
+      if (DVRID.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(DVRID);
+      }
+      if (PrimaryId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(PrimaryId);
+      }
+      if (SubId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(SubId);
+      }
+      if (ProtoType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ProtoType);
+      }
+      if (ParentId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ParentId);
+      }
+      if (ShapeType != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeEnumSize((int) ShapeType);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(DeviceChangeMessage other) {
+      if (other == null) {
+        return;
+      }
+      if (other.DeviceID.Length != 0) {
+        DeviceID = other.DeviceID;
+      }
+      if (other.Ip.Length != 0) {
+        Ip = other.Ip;
+      }
+      if (other.Port != 0) {
+        Port = other.Port;
+      }
+      if (other.LoginName.Length != 0) {
+        LoginName = other.LoginName;
+      }
+      if (other.LoginPwd.Length != 0) {
+        LoginPwd = other.LoginPwd;
+      }
+      if (other.Action != 0) {
+        Action = other.Action;
+      }
+      if (other.DeviceName.Length != 0) {
+        DeviceName = other.DeviceName;
+      }
+      if (other.GBID.Length != 0) {
+        GBID = other.GBID;
+      }
+      if (other.GBParentID.Length != 0) {
+        GBParentID = other.GBParentID;
+      }
+      if (other.ChannelId.Length != 0) {
+        ChannelId = other.ChannelId;
+      }
+      if (other.DVRID.Length != 0) {
+        DVRID = other.DVRID;
+      }
+      if (other.PrimaryId.Length != 0) {
+        PrimaryId = other.PrimaryId;
+      }
+      if (other.SubId.Length != 0) {
+        SubId = other.SubId;
+      }
+      if (other.ProtoType != 0) {
+        ProtoType = other.ProtoType;
+      }
+      if (other.ParentId.Length != 0) {
+        ParentId = other.ParentId;
+      }
+      if (other.ShapeType != 0) {
+        ShapeType = other.ShapeType;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            DeviceID = input.ReadString();
+            break;
+          }
+          case 18: {
+            Ip = input.ReadString();
+            break;
+          }
+          case 24: {
+            Port = input.ReadInt32();
+            break;
+          }
+          case 34: {
+            LoginName = input.ReadString();
+            break;
+          }
+          case 42: {
+            LoginPwd = input.ReadString();
+            break;
+          }
+          case 48: {
+            action_ = (global::Manage.DeviceChangeMessage.Types.Action) input.ReadEnum();
+            break;
+          }
+          case 58: {
+            DeviceName = input.ReadString();
+            break;
+          }
+          case 66: {
+            GBID = input.ReadString();
+            break;
+          }
+          case 74: {
+            GBParentID = input.ReadString();
+            break;
+          }
+          case 82: {
+            ChannelId = input.ReadString();
+            break;
+          }
+          case 90: {
+            DVRID = input.ReadString();
+            break;
+          }
+          case 98: {
+            PrimaryId = input.ReadString();
+            break;
+          }
+          case 106: {
+            SubId = input.ReadString();
+            break;
+          }
+          case 112: {
+            protoType_ = (global::Manage.ProtoType) input.ReadEnum();
+            break;
+          }
+          case 122: {
+            ParentId = input.ReadString();
+            break;
+          }
+          case 128: {
+            shapeType_ = (global::Manage.ShapeType) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the DeviceChangeMessage message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public enum Action {
+        [pbr::OriginalName("Add")] Add = 0,
+        [pbr::OriginalName("Update")] Update = 1,
+        [pbr::OriginalName("Delete")] Delete = 2,
+      }
+
+    }
+    #endregion
 
   }
 
