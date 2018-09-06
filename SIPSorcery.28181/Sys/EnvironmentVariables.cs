@@ -12,7 +12,7 @@ namespace SIPSorcery.GB28181.Sys
         private static string _GB_SERVICE_LOCAL_ID;
         private const string GB_SERVICE_LOCAL_IP = "GB_SERVICE_LOCAL_IP";//10.78.115.149
         private static string _GB_SERVICE_LOCAL_IP;
-        private const string GB_SERVER_CHANNEL_ADDRESS = "GB_SERVER_CHANNEL_ADDRESS";//localhost:5000
+        private const string GB_SERVER_CHANNEL_ADDRESS = "GB_SERVER_CHANNEL_ADDRESS";//localhost:8080
         private static string _GB_SERVER_CHANNEL_ADDRESS;
         private const string GB_NATS_CHANNEL_ADDRESS = "GB_NATS_CHANNEL_ADDRESS";//nats://10.78.115.149:4222
         private static string _GB_NATS_CHANNEL_ADDRESS;
