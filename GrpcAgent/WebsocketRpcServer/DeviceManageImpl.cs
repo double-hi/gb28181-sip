@@ -63,7 +63,8 @@ namespace GrpcAgent.WebsocketRpcServer
                 _device.LoginUser.Add(new LoginUser() { LoginName = sIPAccount.SIPUsername ?? "admin", LoginPwd = sIPAccount.SIPPassword ?? "123456" });
                 _device.PtzType = 0;
                 _device.ProtocolType = 0;
-                _device.Port = 0;
+                _device.IP = "10.77.37.217";
+                _device.Port = 5060;
                 _device.GBID = sipTransaction.TransactionRequestFrom.URI.User;//42010000001310000184
                 _device.ShapeType = ShapeType.Dome;
                 Channel channel = new Channel(EnvironmentVariables.GBServerChannelAddress ?? "10.78.115.182:8080", ChannelCredentials.Insecure);
