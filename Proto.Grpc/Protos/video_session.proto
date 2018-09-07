@@ -32,9 +32,9 @@ enum TransportProtocol {
 }
 
 message Header {
-	int32 Version = 1;
+	string Version = 1;
     int32 sequence = 2;
-	int32 sessionid = 3;
+	string sessionid = 3;
 }
 
 message Status {

@@ -46,8 +46,7 @@ namespace GrpcAgent.WebsocketRpcServer
                 {
                     Ipaddr = reqeustProcessResult.Result.Item1,
                     Port = reqeustProcessResult.Result.Item2,
-                    Hdr = request.Hdr,
-
+                    Hdr = GetHeaderBySipHeader(reqeustProcessResult.Result.Item3),                    
                     Status = new MediaContract.Status()
                     {
                         Code = 200,
@@ -148,6 +147,15 @@ namespace GrpcAgent.WebsocketRpcServer
                 };
                 return Task.FromResult(stopReply);
             }
+        }
+
+        private Header GetHeaderBySipHeader(SIPSorcery.GB28181.SIP.SIPHeader sipHeader)
+        {
+            Header header = new Header();
+            header.Sequence = sipHeader.CSeq;
+            header.Sessionid = sipHeader.CallId;
+            header.Version = sipHeader.CSeq + sipHeader.CallId;
+            return header;
         }
     }
 }
