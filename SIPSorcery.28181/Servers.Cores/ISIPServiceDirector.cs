@@ -19,7 +19,7 @@ namespace SIPSorcery.GB28181.Servers
         Task<Tuple<string, int, ProtocolType>> BackVideoReq(DateTime beginTime, DateTime endTime, string gbid, int[] mediaPort, string receiveIP);
 
         //Stop 
-        Task<Tuple<string, int, ProtocolType>> Stop(string gbid);
+        Task<Tuple<string, int, ProtocolType>> Stop(string gbid, string sessionid);
 
         /// <summary>
         /// Device Catalog Query

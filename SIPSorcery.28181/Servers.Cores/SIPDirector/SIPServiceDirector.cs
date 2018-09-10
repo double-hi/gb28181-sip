@@ -121,7 +121,7 @@ namespace SIPSorcery.GB28181.Servers
         /// </summary>
         /// <param name="gbid"></param>
         /// <returns></returns>
-        async public Task<Tuple<string, int, ProtocolType>> Stop(string gbid)
+        async public Task<Tuple<string, int, ProtocolType>> Stop(string gbid, string sessionid)
         {
             var target = GetTargetMonitorService(gbid);
 
@@ -129,7 +129,7 @@ namespace SIPSorcery.GB28181.Servers
             {
                 return null;
             }
-            target.ByeVideoReq();
+            target.ByeVideoReq(sessionid);
             logger.Debug("Video request stopped.");
             return null;
 

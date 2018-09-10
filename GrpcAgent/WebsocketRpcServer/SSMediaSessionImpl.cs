@@ -124,7 +124,7 @@ namespace GrpcAgent.WebsocketRpcServer
         {
             try
             {
-                var stopProcessResult = _sipServiceDirector.Stop(string.IsNullOrEmpty(request.Gbid) ? "42010000001310000184" : request.Gbid);
+                var stopProcessResult = _sipServiceDirector.Stop(string.IsNullOrEmpty(request.Gbid) ? "42010000001310000184" : request.Gbid, request.Hdr.Sessionid);
                 var stopReply = new StopReply()
                 {
                     Status = new MediaContract.Status()
@@ -154,7 +154,7 @@ namespace GrpcAgent.WebsocketRpcServer
             Header header = new Header();
             header.Sequence = sipHeader.CSeq;
             header.Sessionid = sipHeader.CallId;
-            header.Version = sipHeader.CSeq + sipHeader.CallId;
+            //header.Version = sipHeader.CSeq + sipHeader.CallId;
             return header;
         }
     }
