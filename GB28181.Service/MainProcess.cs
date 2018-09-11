@@ -199,6 +199,9 @@ namespace GB28181Service
                     _mainWebSocketRpcServer.Run();
                 });
 
+                //video session alive
+                var videosessionalive = VideoSessionKeepAlive();
+
                 ////test code will be removed
                 //var abc = WaitUserCmd();
                 //abc.Wait();
@@ -261,6 +264,32 @@ namespace GB28181Service
             {
                 return null;
             }
+        }
+
+        private async Task VideoSessionKeepAlive()
+        {
+            await Task.Run(() =>
+             {
+                 var mockCaller = _serviceProvider.GetService<ISIPServiceDirector>();
+                 while (true)
+                 {
+                     for (int i = 0; i < mockCaller.VideoSessionAlive.ToArray().Length; i++)
+                     {
+                         Dictionary<string, DateTime> dict = mockCaller.VideoSessionAlive[i];
+                         foreach (string key in dict.Keys)
+                         {
+                             TimeSpan ts1 = new TimeSpan(DateTime.Now.Ticks);
+                             TimeSpan ts2 = new TimeSpan(Convert.ToDateTime(dict[key]).Ticks);
+                             TimeSpan ts = ts1.Subtract(ts2).Duration();
+                             if (ts.Seconds > 30)
+                             {
+                                 mockCaller.Stop(key.ToString().Split(',')[0], key.ToString().Split(',')[1]);
+                                 mockCaller.VideoSessionAlive.RemoveAt(i);
+                             }
+                         }
+                     }
+                 }
+             });
         }
 
         //private async Task WaitUserCmd()

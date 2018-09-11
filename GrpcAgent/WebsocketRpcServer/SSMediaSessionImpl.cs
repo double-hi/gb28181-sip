@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using SIPSorcery.GB28181.Servers;
 using System;
 using Logger4Net;
+using System.Collections.Generic;
 
 namespace GrpcAgent.WebsocketRpcServer
 {
@@ -16,11 +17,18 @@ namespace GrpcAgent.WebsocketRpcServer
         public SSMediaSessionImpl(MediaEventSource eventSource, ISIPServiceDirector sipServiceDirector)
         {
             _eventSource = eventSource;
-            _sipServiceDirector = sipServiceDirector;
+            _sipServiceDirector = sipServiceDirector;   
         }
 
         public override Task<KeepAliveReply> KeepAlive(KeepAliveRequest request, ServerCallContext context)
         {
+            foreach (Dictionary<string, DateTime> dict in _sipServiceDirector.VideoSessionAlive)
+            {
+                if (dict.ContainsKey(request.Gbid + "," + request.Hdr.Sessionid))
+                {
+                    dict[request.Gbid + "," + request.Hdr.Sessionid] = DateTime.Now;
+                }
+            }
             var keepAliveReply = new KeepAliveReply()
             {
                 Status = new MediaContract.Status()
@@ -46,16 +54,21 @@ namespace GrpcAgent.WebsocketRpcServer
                 {
                     Ipaddr = reqeustProcessResult.Result.Item1,
                     Port = reqeustProcessResult.Result.Item2,
-                    Hdr = GetHeaderBySipHeader(reqeustProcessResult.Result.Item3),                    
+                    Hdr = GetHeaderBySipHeader(reqeustProcessResult.Result.Item3),
                     Status = new MediaContract.Status()
                     {
                         Code = 200,
                         Msg = "Request Successful!"
                     }
                 };
+                //add Video Session Alive
+                Dictionary<string, DateTime> _VideoSessionAlive = new Dictionary<string, DateTime>();
+                _VideoSessionAlive.Add(request.Gbid + ',' + resReply.Hdr.Sessionid, DateTime.Now);
+                _sipServiceDirector.VideoSessionAlive.Add(_VideoSessionAlive);
+
                 return Task.FromResult(resReply);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 logger.Error("Exception GRPC StartLive: " + ex.Message);
                 var resReply = new StartLiveReply()
@@ -125,6 +138,7 @@ namespace GrpcAgent.WebsocketRpcServer
             try
             {
                 var stopProcessResult = _sipServiceDirector.Stop(string.IsNullOrEmpty(request.Gbid) ? "42010000001310000184" : request.Gbid, request.Hdr.Sessionid);
+                
                 var stopReply = new StopReply()
                 {
                     Status = new MediaContract.Status()

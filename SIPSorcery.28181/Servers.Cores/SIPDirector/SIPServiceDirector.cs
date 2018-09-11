@@ -22,6 +22,8 @@ namespace SIPSorcery.GB28181.Servers
         public Dictionary<string, DeviceStatus> DeviceStatuses => _DeviceStatuses;
         private Dictionary<string, RecordInfo> _RecordInfoes = new Dictionary<string, RecordInfo>();
         public Dictionary<string, RecordInfo> RecordInfoes => _RecordInfoes;
+        public List<Dictionary<string, DateTime>> VideoSessionAlive => _VideoSessionKeepAlive;
+        private List<Dictionary<string, DateTime>> _VideoSessionKeepAlive = new List<Dictionary<string, DateTime>>();
 
         public SIPServiceDirector(ISipMessageCore sipCoreMessageService)
         {

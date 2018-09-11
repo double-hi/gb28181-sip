@@ -206,13 +206,12 @@ namespace SIPSorcery.GB28181.Servers.SIPMonitor
         {
             try
             {
+                if (!_syncRequestContext.Keys.Contains(sessionid)) return;
                 SIPRequest reqSession = _syncRequestContext[sessionid];
-                _syncRequestContext.TryRemove(sessionid, out reqSession);
                 if (reqSession == null)
                 {
                     return;
                 }
-
                 SIPURI localUri = new SIPURI(_sipMsgCoreService.LocalSIPId, _sipMsgCoreService.LocalEP.ToHost(), "");
                 SIPURI remoteUri = new SIPURI(DeviceId, RemoteEndPoint.ToHost(), "");
                 SIPFromHeader from = reqSession.Header.From;
@@ -228,10 +227,11 @@ namespace SIPSorcery.GB28181.Servers.SIPMonitor
                 byeReq.Header = header;
                 Stop();
                 _sipMsgCoreService.SendReliableRequest(RemoteEndPoint, byeReq);
+                _syncRequestContext.TryRemove(sessionid, out reqSession);
             }
             catch (Exception ex)
             {
-                logger.Error("ByeVideoReq(session already removed): " + ex.Message);
+                logger.Error("ByeVideoReq: " + ex.Message);
             }
         }
 
