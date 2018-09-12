@@ -65,6 +65,7 @@ namespace SIPSorcery.GB28181.SIP
                 IPEndPoint ipedp = new IPEndPoint(IPAddress.Parse("0.0.0.0"), EnvironmentVariables.GbServiceLocalPort);
                 //m_sipConn = new UdpClient(m_localSIPEndPoint.GetIPEndPoint());
                 m_sipConn = new UdpClient(ipedp);
+                m_sipConn.Client.ReceiveTimeout = 3000;
 
                 var listenThread = new Thread(new ThreadStart(Listen))
                 {
