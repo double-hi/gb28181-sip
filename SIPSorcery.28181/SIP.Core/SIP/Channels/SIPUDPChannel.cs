@@ -101,7 +101,7 @@ namespace SIPSorcery.GB28181.SIP
                 while (!Closed)
 				{
                     IPEndPoint inEndPoint = new IPEndPoint(IPAddress.Any, 0);
-                    logger.Debug("SIPUDPChannel socket start.Receive.");
+                    //logger.Debug("SIPUDPChannel socket start.Receive.");
                     try
                     {
                         buffer = m_sipConn.Receive(ref inEndPoint);
