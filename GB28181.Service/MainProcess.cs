@@ -262,6 +262,7 @@ namespace GB28181Service
             }
             catch (Exception ex)
             {
+                logger.Debug("Can't get gb info from device-mgr, it will get gb info from config.");
                 return null;
             }
         }
