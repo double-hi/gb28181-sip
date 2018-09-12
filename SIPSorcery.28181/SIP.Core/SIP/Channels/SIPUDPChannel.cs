@@ -126,7 +126,7 @@ namespace SIPSorcery.GB28181.SIP
                         inEndPoint = new IPEndPoint(IPAddress.Any, 0);
                         continue;
                     }
-                    logger.Debug("SIPUDPChannel socket end.Receive.");
+                    //logger.Debug("SIPUDPChannel socket end.Receive.");
                     if (buffer == null || buffer.Length == 0)
 					{
                         // No need to care about zero byte packets.
@@ -137,7 +137,7 @@ namespace SIPSorcery.GB28181.SIP
 					{
                         SIPMessageReceived?.Invoke(this, new SIPEndPoint(SIPProtocolsEnum.udp, inEndPoint), buffer);
                     }
-                    logger.Debug("SIPUDPChannel socket message handled.");
+                    //logger.Debug("SIPUDPChannel socket message handled.");
                 }
 
                 logger.Debug("SIPUDPChannel socket on " + m_localSIPEndPoint + " listening halted.");
