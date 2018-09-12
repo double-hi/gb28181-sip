@@ -8,6 +8,8 @@ service Manage {
 	rpc DeleteDevice(DeleteDeviceRequest) returns (DeleteDeviceResponse) {}
 	rpc UpdateDevice(UpdateDeviceRequest) returns (UpdateDeviceResponse) {}
     rpc QueryDevice(QueryRequest) returns (QueryDeviceResponse) {}
+
+    rpc QueryDeviceById(QueryDeviceRequest) returns (QueryDeviceResponse){}
     rpc CheckDupl(CheckDupRequest) returns (CheckDupResponse){}
 
     rpc AddView(AddViewRequest) returns (AddViewResponse){}
@@ -15,13 +17,38 @@ service Manage {
     rpc UpdateView(UpdateViewRequest) returns (UpdateViewResponse){}
 
     rpc QuerySimpleView(QuerySimpleRequest) returns (QuerySimpleViewResponse){}
-    rpc QuerySimpleDeviceById(QuerySimpleDeviceRequest) returns (QuerySimpleDeviceResponse){}
 
     rpc QuerySimpleDeviceByIds(QuerySimpleDevicesRequest) returns (QuerySimpleDevicesResponse){}
 
     rpc FuzzyQueryDeviceByName(FuzzyQueryDeviceRequest) returns (FuzzyQueryDeviceResponse){}
 
     rpc QueryChannelDevices(QueryChannelRequest) returns(QueryChannelResponse){}
+
+    rpc QueryParentDeviceByChildID(QueryParentDeviceRequest) returns (QueryParentDeviceResponse){}
+    rpc UpdateViewName(UpdateViewNameRequest) returns (UpdateViewResponse){}
+
+    rpc QueryDevicesByProtoTypes(QueryByProtoTypesRequest) returns(QueryByProtoTypesResponse){}
+}
+
+message QueryByProtoTypesRequest{
+    repeated ProtoType proto_types = 1;
+}
+ 
+message QueryByProtoTypesResponse{
+   repeated SimpleDevice devices=1;
+}
+
+message UpdateViewNameRequest{
+    string id = 1;
+    string name =2;
+}
+ 
+message QueryParentDeviceRequest{
+    string child_device_id=1;
+}
+
+message QueryParentDeviceResponse{
+    SimpleDevice parent_device =1;
 }
 
 message QueryChannelRequest{
@@ -48,7 +75,7 @@ message SimpleView{
     string name =2;
     string description = 3;    
     repeated SimpleView child_simple_views = 4;
-    repeated KeyValuePair devices = 5;
+    repeated SimpleDevice devices = 5;
     string owner_id = 6;
     int32 total_device_count=7;
     int32 total_online_count=8;
@@ -61,7 +88,6 @@ message KeyValuePair{
 
 message AddViewRequest{
     repeated View views =1;
-    uint64 timestamp=2;
 }
 
 message AddViewResponse {
@@ -70,15 +96,13 @@ message AddViewResponse {
 
 message UpdateViewRequest{
     repeated View views =1;
-    uint64 timestamp=2;
 }
 
 message UpdateViewResponse {
     OP_RESULT_STATUS status= 1;      
 }
 message DeleteViewRequest {
-    uint64 timestamp=1;
-    repeated string view_ids = 2;
+    repeated string view_ids = 1;
 }
 
 message DeleteViewResponse {
@@ -86,14 +110,13 @@ message DeleteViewResponse {
 }
 
 message QuerySimpleRequest{
-    uint64 timestamp=1;
-    string user_id =2;
-    string view_id = 3;
+    string user_id =1;
+    string view_id = 2;
+    string orderby = 3;
 }
 
 message QuerySimpleDevicesRequest{
-    uint64 timestamp=1;
-    repeated string device_ids =2;
+    repeated string device_ids =1;
 }
 message QuerySimpleDevicesResponse{
     SEARCH_STATUS status=1;
@@ -101,9 +124,8 @@ message QuerySimpleDevicesResponse{
 }
 
 message FuzzyQueryDeviceRequest{
-    uint64 timestamp=1;
-    string login_role_id=2;
-    string name =3;
+    string login_role_id=1;
+    string name =2;
 }
 
 message FuzzyQueryDeviceResponse{
@@ -111,8 +133,7 @@ message FuzzyQueryDeviceResponse{
 }
 
 message QuerySimpleDeviceRequest{
-    uint64 timestamp=1;
-    string device_id =2;
+    string device_id =1;
 }
 message QuerySimpleDeviceResponse{
     SEARCH_STATUS status=1;
@@ -125,52 +146,63 @@ message QuerySimpleViewResponse{
 }
 
 enum ProtoType {
-    PROTO_ONVIF = 0;
-    PROTO_GB28181 = 1;
-    PROTO_RTSP =2;
-    PROTO_MQTT =3;
-    PROTO_COAP =4;
-    PROTO_WEBSOCKET =5;
-    PROTO_OTHER = 6;
+    PROTO_GB28181 = 0;
+    PROTO_NVR7128 = 1;
+    PROTO_NVR7128_Channel =2;
+    PROTO_ONVIF = 3;
+    PROTO_IPSAN=4;
 }
 
-enum TypeCode{
-    IPC =0;
-    NVR7128=1;
-    Channel=2;
-}
-  enum PTZType {
+enum PTZType {
     CAM_DOME_HIGH_SPEED=0;
     CAM_DOME=1;
     CAM_BOX=2;
     CAM_BOX_FIX=3;
-  }
+}
+
+enum ShapeType{
+    NotSupport=0;
+    Bullet=1;
+    Dome=2;
+    FixedDome=3;
+}
 
 message Device {
     string guid=1;  //device的guid 主键
     string name = 2;
-    TypeCode type_code =3; 
-    ProtoType protocol_type =4;  //用以区别设备接入时采用的协议类型,必须存储
-    string description =5;
-    double  geo_long=6; //
-    double  geo_lat=7;
-    uint32 ptz_type = 8;         //PTZ类型,      
-    ProtocolInfo protocol_detail = 9; //协议相关的细节
-    MediaInfo media_detail = 10; 
-	repeated LoginUser login_user = 11;  //登陆设备的用户信息
-	repeated string tag=12;   //对设备做的标注，比如打个标签，用于检索和参数携带，允许多个标注
-	repeated uint32 media_srcType=13;      //设备的提供数据类型（提供视频/音频/文本数据/二进制数据包，0 for nil ,1 for video 2 for audio 3 for binary
-    int32 channel_id=14; 
+    string IP = 3;
+    uint32 port= 4;
+    ProtoType protocol_type =5;  //用以区别设备接入时采用的协议类型,必须存储
+    string description =6;
+    double  geo_long=7; //
+    double  geo_lat=8;
+    uint32 ptz_type = 9;         //PTZ类型,      
+    string GB_ID=10;
+    string GB_Parent_ID=11;
+    MediaInfo media_detail = 12; 
+	repeated LoginUser login_user = 13;  //登陆设备的用户信息
+	repeated string tag=14;   //对设备做的标注，比如打个标签，用于检索和参数携带，允许多个标注
+	repeated uint32 media_srcType=15;      //设备的提供数据类型（提供视频/音频/文本数据/二进制数据包，0 for nil ,1 for video 2 for audio 3 for binary
+    string parent_ID=16;
+    ShapeType shape_type =17;
+    string language_format_shape_type=18;
 }
 
 message SimpleDevice{
     string guid=1;  //device的guid 主键
-    string device_name =2;
+    string name =2;
     ProtoType protocol_type =3;  //用以区别设备接入时采用的协议类型,必须存储
-    ProtocolInfo protocol_detail = 4; //协议相关的细节
-    repeated LoginUser users =5;
-    TypeCode type_code=6;
-    int32 channel_id = 7;
+    string IP = 4;
+    uint32 port= 5;
+    string GB_ID=6;
+    string GB_Parent_ID=7;
+    repeated LoginUser users =8;
+    string device_id = 9;
+    string channel_id=10;
+    string primary_id=11;
+    string sub_id=12;
+    string parent_id=13;
+    ShapeType shape_type =14;
 }    
 
  message LoginUser {
@@ -183,24 +215,6 @@ message DeviceCategory {
     uint64 category_id = 1;
     string name = 2;
     string description = 3;
-}
-
-//协议
-message ProtocolInfo {
-    OnvifDetail onvif=1;
-	GBDetail gb=2;
-}
-
-message OnvifDetail {
-    string IP=1; //设备的IP地址
-	uint32 Port=2; //设备的服务端口
-}
-
-message GBDetail {
-	string GB_ID=1; //GBID 20 位国标编码,.
-	string parent_ID=2; //设备的服务端口
-    string IP =3;
-    uint32 port=4;
 }
 
 message MediaInfo {
@@ -241,18 +255,20 @@ enum DeviceOperation {
 }
 
 message AddDeviceRequest {
-    uint64 timestamp=1;
-    repeated Device device=2;
-    string login_role_id=3;
+    repeated Device device=1;
+    string login_role_id=2;
 }
 
 message AddDeviceResponse {
-    OP_RESULT_STATUS status= 1;
+    repeated string duplicate_names =1;
+    repeated string channel_create_failed_name=2;
+    int32 success_import_number =3;
+    int32 failed_import_number = 4;
+    OP_RESULT_STATUS status= 5;
 }
 
 message DeleteDeviceRequest {
-    uint64 timestamp=1;
-    repeated string devices_id = 2;
+    repeated string devices_id = 1;
 }
 
 message DeleteDeviceResponse {
@@ -272,15 +288,30 @@ message UpdateDeviceResponse {
 
 message QueryRequest {
     QueryCondition query_condition = 1;
-    int32 page_number = 2;      //page number
-    int32 count_per_page = 3;  // item count of per page.
-    string loginRoleId = 4;//  当前登录的角色 ID
+    OrderBy orderby = 2; 
+    bool IsAscend =3;
+    int32 page_number = 4;      //page number
+    int32 count_per_page = 5;  // item count of per page.
+    string loginRoleId = 6;//  当前登录的角色 ID
+    string language = 7;
+}
+
+enum OrderBy{
+    Name = 0;
+    Ip = 1;
+    Port =2;
+    ProtocolType = 3;
 }
 
 message QueryCondition{
-    string id = 1;
-    string name = 2;
-    string protocol_type=3;
+    string device_name= 1;
+    string ip = 2;
+    repeated ProtoType protocol_types=3;
+    int32 port=4;   
+}
+
+message QueryDeviceRequest{
+    string device_id=1;
 }
 
 message QueryDeviceResponse {
@@ -325,4 +356,32 @@ enum SEARCH_STATUS {
     SEARCH_IN_PROGRESS =0;
     SEARCH_FINISHED=1;
     SEARCH_EXCEPTION=2;
+}
+
+enum DeviceMessageTopic{
+    DeviceChange=0;
+}
+
+message DeviceChangeMessage{
+    string deviceID=1;
+    string ip=2;
+    int32 port=3;
+    string loginName=4;
+    string loginPwd=5;
+    enum Action{
+        Add = 0;
+        Update = 1;
+        Delete = 2;
+    }
+    Action action=6;
+    string deviceName=7;
+    string GB_ID=8;
+    string GB_Parent_ID=9;
+    string channel_id=10;
+    string DVRID=11;
+    string primary_id=12;
+    string sub_id=13;
+    ProtoType proto_type=14;
+    string parent_id=15;
+    ShapeType shape_type =16;
 }

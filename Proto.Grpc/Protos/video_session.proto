@@ -32,9 +32,9 @@ enum TransportProtocol {
 }
 
 message Header {
-	int32 Version = 1;
+	string Version = 1;
     int32 sequence = 2;
-	int32 sessionid = 3;
+	string sessionid = 3;
 }
 
 message Status {
@@ -110,6 +110,7 @@ message StopReply {
 // The request message containing ParametersRequest.
 message KeepAliveRequest {
 	Header hdr = 1;
+	string gbid = 2;
 }
 
 // The response message containing the ParametersReply.

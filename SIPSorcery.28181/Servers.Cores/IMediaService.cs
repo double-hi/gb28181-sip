@@ -18,6 +18,7 @@ namespace SIPSorcery.GB28181.Servers
         /// 取消实时视频请求
         /// </summary>
         void ByeVideoReq();
+        void ByeVideoReq(string sessionid);
 
         /// <summary>
         /// 确认接收实时视频请求

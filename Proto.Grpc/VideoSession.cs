@@ -25,8 +25,8 @@ namespace MediaContract {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChN2aWRlb19zZXNzaW9uLnByb3RvEg1NZWRpYUNvbnRyYWN0Ij4KBkhlYWRl",
-            "chIPCgdWZXJzaW9uGAEgASgFEhAKCHNlcXVlbmNlGAIgASgFEhEKCXNlc3Np",
-            "b25pZBgDIAEoBSIjCgZTdGF0dXMSDAoEY29kZRgBIAEoBRILCgNtc2cYAiAB",
+            "chIPCgdWZXJzaW9uGAEgASgJEhAKCHNlcXVlbmNlGAIgASgFEhEKCXNlc3Np",
+            "b25pZBgDIAEoCSIjCgZTdGF0dXMSDAoEY29kZRgBIAEoBRILCgNtc2cYAiAB",
             "KAkimQEKEFN0YXJ0TGl2ZVJlcXVlc3QSIgoDaGRyGAEgASgLMhUuTWVkaWFD",
             "b250cmFjdC5IZWFkZXISNQoLdHJhbnNfcHJvdG8YAiABKA4yIC5NZWRpYUNv",
             "bnRyYWN0LlRyYW5zcG9ydFByb3RvY29sEgwKBGdiaWQYAyABKAkSDgoGaXBh",
@@ -51,23 +51,23 @@ namespace MediaContract {
             "ZGlhQ29udHJhY3QuSGVhZGVyEgwKBGdiaWQYAiABKAkSMgoNYnVzaW5lc3Nf",
             "dHlwZRgDIAEoDjIbLk1lZGlhQ29udHJhY3QuQnVzaW5lc3NUeXBlIlYKCVN0",
             "b3BSZXBseRIiCgNoZHIYASABKAsyFS5NZWRpYUNvbnRyYWN0LkhlYWRlchIl",
-            "CgZzdGF0dXMYAiABKAsyFS5NZWRpYUNvbnRyYWN0LlN0YXR1cyI2ChBLZWVw",
+            "CgZzdGF0dXMYAiABKAsyFS5NZWRpYUNvbnRyYWN0LlN0YXR1cyJEChBLZWVw",
             "QWxpdmVSZXF1ZXN0EiIKA2hkchgBIAEoCzIVLk1lZGlhQ29udHJhY3QuSGVh",
-            "ZGVyIlsKDktlZXBBbGl2ZVJlcGx5EiIKA2hkchgBIAEoCzIVLk1lZGlhQ29u",
-            "dHJhY3QuSGVhZGVyEiUKBnN0YXR1cxgCIAEoCzIVLk1lZGlhQ29udHJhY3Qu",
-            "U3RhdHVzKk0KDEJ1c2luZXNzVHlwZRIPCgtCVF9MSVZFUExBWRAAEg8KC0JU",
-            "X1BMQVlCQUNLEAESDwoLQlRfRE9XTkxPQUQQAhIKCgZCVF9NQVgQAyouChFU",
-            "cmFuc3BvcnRQcm90b2NvbBIHCgNUQ1AQABIHCgNVRFAQARIHCgNNQVgQAjKf",
-            "AwoMVmlkZW9TZXNzaW9uEk0KCVN0YXJ0TGl2ZRIfLk1lZGlhQ29udHJhY3Qu",
-            "U3RhcnRMaXZlUmVxdWVzdBodLk1lZGlhQ29udHJhY3QuU3RhcnRMaXZlUmVw",
-            "bHkiABJWCgxTdGFydEhpc3RvcnkSIi5NZWRpYUNvbnRyYWN0LlN0YXJ0SGlz",
-            "dG9yeVJlcXVlc3QaIC5NZWRpYUNvbnRyYWN0LlN0YXJ0SGlzdG9yeVJlcGx5",
-            "IgASWQoNU3RhcnRQbGF5YmFjaxIjLk1lZGlhQ29udHJhY3QuU3RhcnRQbGF5",
-            "YmFja1JlcXVlc3QaIS5NZWRpYUNvbnRyYWN0LlN0YXJ0UGxheWJhY2tSZXBs",
-            "eSIAEj4KBFN0b3ASGi5NZWRpYUNvbnRyYWN0LlN0b3BSZXF1ZXN0GhguTWVk",
-            "aWFDb250cmFjdC5TdG9wUmVwbHkiABJNCglLZWVwQWxpdmUSHy5NZWRpYUNv",
-            "bnRyYWN0LktlZXBBbGl2ZVJlcXVlc3QaHS5NZWRpYUNvbnRyYWN0LktlZXBB",
-            "bGl2ZVJlcGx5IgBCBaICAm1zYgZwcm90bzM="));
+            "ZGVyEgwKBGdiaWQYAiABKAkiWwoOS2VlcEFsaXZlUmVwbHkSIgoDaGRyGAEg",
+            "ASgLMhUuTWVkaWFDb250cmFjdC5IZWFkZXISJQoGc3RhdHVzGAIgASgLMhUu",
+            "TWVkaWFDb250cmFjdC5TdGF0dXMqTQoMQnVzaW5lc3NUeXBlEg8KC0JUX0xJ",
+            "VkVQTEFZEAASDwoLQlRfUExBWUJBQ0sQARIPCgtCVF9ET1dOTE9BRBACEgoK",
+            "BkJUX01BWBADKi4KEVRyYW5zcG9ydFByb3RvY29sEgcKA1RDUBAAEgcKA1VE",
+            "UBABEgcKA01BWBACMp8DCgxWaWRlb1Nlc3Npb24STQoJU3RhcnRMaXZlEh8u",
+            "TWVkaWFDb250cmFjdC5TdGFydExpdmVSZXF1ZXN0Gh0uTWVkaWFDb250cmFj",
+            "dC5TdGFydExpdmVSZXBseSIAElYKDFN0YXJ0SGlzdG9yeRIiLk1lZGlhQ29u",
+            "dHJhY3QuU3RhcnRIaXN0b3J5UmVxdWVzdBogLk1lZGlhQ29udHJhY3QuU3Rh",
+            "cnRIaXN0b3J5UmVwbHkiABJZCg1TdGFydFBsYXliYWNrEiMuTWVkaWFDb250",
+            "cmFjdC5TdGFydFBsYXliYWNrUmVxdWVzdBohLk1lZGlhQ29udHJhY3QuU3Rh",
+            "cnRQbGF5YmFja1JlcGx5IgASPgoEU3RvcBIaLk1lZGlhQ29udHJhY3QuU3Rv",
+            "cFJlcXVlc3QaGC5NZWRpYUNvbnRyYWN0LlN0b3BSZXBseSIAEk0KCUtlZXBB",
+            "bGl2ZRIfLk1lZGlhQ29udHJhY3QuS2VlcEFsaXZlUmVxdWVzdBodLk1lZGlh",
+            "Q29udHJhY3QuS2VlcEFsaXZlUmVwbHkiAEIFogICbXNiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::MediaContract.BusinessType), typeof(global::MediaContract.TransportProtocol), }, new pbr::GeneratedClrTypeInfo[] {
@@ -81,7 +81,7 @@ namespace MediaContract {
             new pbr::GeneratedClrTypeInfo(typeof(global::MediaContract.StartPlaybackReply), global::MediaContract.StartPlaybackReply.Parser, new[]{ "Hdr", "Status", "Ipaddr", "Port" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::MediaContract.StopRequest), global::MediaContract.StopRequest.Parser, new[]{ "Hdr", "Gbid", "BusinessType" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::MediaContract.StopReply), global::MediaContract.StopReply.Parser, new[]{ "Hdr", "Status" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::MediaContract.KeepAliveRequest), global::MediaContract.KeepAliveRequest.Parser, new[]{ "Hdr" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::MediaContract.KeepAliveRequest), global::MediaContract.KeepAliveRequest.Parser, new[]{ "Hdr", "Gbid" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::MediaContract.KeepAliveReply), global::MediaContract.KeepAliveReply.Parser, new[]{ "Hdr", "Status" }, null, null, null)
           }));
     }
@@ -143,12 +143,12 @@ namespace MediaContract {
 
     /// <summary>Field number for the "Version" field.</summary>
     public const int VersionFieldNumber = 1;
-    private int version_;
+    private string version_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Version {
+    public string Version {
       get { return version_; }
       set {
-        version_ = value;
+        version_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -165,12 +165,12 @@ namespace MediaContract {
 
     /// <summary>Field number for the "sessionid" field.</summary>
     public const int SessionidFieldNumber = 3;
-    private int sessionid_;
+    private string sessionid_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Sessionid {
+    public string Sessionid {
       get { return sessionid_; }
       set {
-        sessionid_ = value;
+        sessionid_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -196,9 +196,9 @@ namespace MediaContract {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Version != 0) hash ^= Version.GetHashCode();
+      if (Version.Length != 0) hash ^= Version.GetHashCode();
       if (Sequence != 0) hash ^= Sequence.GetHashCode();
-      if (Sessionid != 0) hash ^= Sessionid.GetHashCode();
+      if (Sessionid.Length != 0) hash ^= Sessionid.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -212,17 +212,17 @@ namespace MediaContract {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Version != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(Version);
+      if (Version.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Version);
       }
       if (Sequence != 0) {
         output.WriteRawTag(16);
         output.WriteInt32(Sequence);
       }
-      if (Sessionid != 0) {
-        output.WriteRawTag(24);
-        output.WriteInt32(Sessionid);
+      if (Sessionid.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Sessionid);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -232,14 +232,14 @@ namespace MediaContract {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Version != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Version);
+      if (Version.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Version);
       }
       if (Sequence != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Sequence);
       }
-      if (Sessionid != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Sessionid);
+      if (Sessionid.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Sessionid);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -252,13 +252,13 @@ namespace MediaContract {
       if (other == null) {
         return;
       }
-      if (other.Version != 0) {
+      if (other.Version.Length != 0) {
         Version = other.Version;
       }
       if (other.Sequence != 0) {
         Sequence = other.Sequence;
       }
-      if (other.Sessionid != 0) {
+      if (other.Sessionid.Length != 0) {
         Sessionid = other.Sessionid;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -272,16 +272,16 @@ namespace MediaContract {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            Version = input.ReadInt32();
+          case 10: {
+            Version = input.ReadString();
             break;
           }
           case 16: {
             Sequence = input.ReadInt32();
             break;
           }
-          case 24: {
-            Sessionid = input.ReadInt32();
+          case 26: {
+            Sessionid = input.ReadString();
             break;
           }
         }
@@ -2360,6 +2360,7 @@ namespace MediaContract {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public KeepAliveRequest(KeepAliveRequest other) : this() {
       Hdr = other.hdr_ != null ? other.Hdr.Clone() : null;
+      gbid_ = other.gbid_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2379,6 +2380,17 @@ namespace MediaContract {
       }
     }
 
+    /// <summary>Field number for the "gbid" field.</summary>
+    public const int GbidFieldNumber = 2;
+    private string gbid_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Gbid {
+      get { return gbid_; }
+      set {
+        gbid_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as KeepAliveRequest);
@@ -2393,6 +2405,7 @@ namespace MediaContract {
         return true;
       }
       if (!object.Equals(Hdr, other.Hdr)) return false;
+      if (Gbid != other.Gbid) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2400,6 +2413,7 @@ namespace MediaContract {
     public override int GetHashCode() {
       int hash = 1;
       if (hdr_ != null) hash ^= Hdr.GetHashCode();
+      if (Gbid.Length != 0) hash ^= Gbid.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2417,6 +2431,10 @@ namespace MediaContract {
         output.WriteRawTag(10);
         output.WriteMessage(Hdr);
       }
+      if (Gbid.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Gbid);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2427,6 +2445,9 @@ namespace MediaContract {
       int size = 0;
       if (hdr_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Hdr);
+      }
+      if (Gbid.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Gbid);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2445,6 +2466,9 @@ namespace MediaContract {
         }
         Hdr.MergeFrom(other.Hdr);
       }
+      if (other.Gbid.Length != 0) {
+        Gbid = other.Gbid;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -2461,6 +2485,10 @@ namespace MediaContract {
               hdr_ = new global::MediaContract.Header();
             }
             input.ReadMessage(hdr_);
+            break;
+          }
+          case 18: {
+            Gbid = input.ReadString();
             break;
           }
         }

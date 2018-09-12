@@ -25,7 +25,7 @@ namespace SIPSorcery.GB28181.Servers.SIPMonitor
         private AutoResetEvent _autoResetEventForRpc = new AutoResetEvent(false);
 
         //concurent requet/reply
-        private ConcurrentDictionary<int, SIPRequest> _syncRequestContext = new ConcurrentDictionary<int, SIPRequest>();
+        private ConcurrentDictionary<string, SIPRequest> _syncRequestContext = new ConcurrentDictionary<string, SIPRequest>();
         private ConcurrentQueue<Tuple<SIPRequest, SIPResponse>> _syncResponseContext = new ConcurrentQueue<Tuple<SIPRequest, SIPResponse>>();
         private ISipMessageCore _sipMsgCoreService;
         /// <summary>
@@ -107,7 +107,7 @@ namespace SIPSorcery.GB28181.Servers.SIPMonitor
             _reqSession = sipRequest;
             if (needResult)
             {
-                _syncRequestContext.TryAdd(cSeq, sipRequest);
+                _syncRequestContext.TryAdd(callId, sipRequest);
             }
             return cSeq;
         }
@@ -139,10 +139,10 @@ namespace SIPSorcery.GB28181.Servers.SIPMonitor
             ackReq.Header = header;
             _toTag = response.Header.To.ToTag;
 
-            if (_syncRequestContext.ContainsKey(response.Header.CSeq))
+            if (_syncRequestContext.ContainsKey(response.Header.CallId))
             {
 
-                SIPRequest request = _syncRequestContext[response.Header.CSeq];
+                SIPRequest request = _syncRequestContext[response.Header.CallId];
 
                 var targetValue = new Tuple<SIPRequest, SIPResponse>(request, response);
                 //update the collection
@@ -201,6 +201,38 @@ namespace SIPSorcery.GB28181.Servers.SIPMonitor
             byeReq.Header = header;
             Stop();
             _sipMsgCoreService.SendReliableRequest(RemoteEndPoint, byeReq);
+        }
+        public void ByeVideoReq(string sessionid)
+        {
+            try
+            {
+                if (!_syncRequestContext.Keys.Contains(sessionid)) return;
+                SIPRequest reqSession = _syncRequestContext[sessionid];
+                if (reqSession == null)
+                {
+                    return;
+                }
+                SIPURI localUri = new SIPURI(_sipMsgCoreService.LocalSIPId, _sipMsgCoreService.LocalEP.ToHost(), "");
+                SIPURI remoteUri = new SIPURI(DeviceId, RemoteEndPoint.ToHost(), "");
+                SIPFromHeader from = reqSession.Header.From;
+                SIPToHeader to = reqSession.Header.To; to.ToTag = _toTag;
+                SIPRequest byeReq = _sipTransport.GetRequest(SIPMethodsEnum.BYE, remoteUri);
+                SIPHeader header = new SIPHeader(from, to, reqSession.Header.CSeq + 1, reqSession.Header.CallId)
+                {
+                    CSeqMethod = SIPMethodsEnum.BYE,
+                    Vias = reqSession.Header.Vias,
+                    UserAgent = SIPConstants.SIP_USERAGENT_STRING,
+                    Contact = reqSession.Header.Contact
+                };
+                byeReq.Header = header;
+                Stop();
+                _sipMsgCoreService.SendReliableRequest(RemoteEndPoint, byeReq);
+                _syncRequestContext.TryRemove(sessionid, out reqSession);
+            }
+            catch (Exception ex)
+            {
+                logger.Error("ByeVideoReq: " + ex.Message);
+            }
         }
 
         /// <summary>
@@ -423,7 +455,7 @@ namespace SIPSorcery.GB28181.Servers.SIPMonitor
 
             if (needResult)
             {
-                _syncRequestContext.TryAdd(cSeq, backReq);
+                _syncRequestContext.TryAdd(callId, backReq);
             }
             return cSeq;
         }

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace GrpcGb28181Config {
+namespace Manage {
 
   /// <summary>Holder for reflection information generated from gb28181_config.proto</summary>
   public static partial class Gb28181ConfigReflection {
@@ -24,26 +24,26 @@ namespace GrpcGb28181Config {
     static Gb28181ConfigReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChRnYjI4MTgxX2NvbmZpZy5wcm90bxIRR3JwY0diMjgxODFDb25maWciEQoP",
-            "R2JDb25maWdSZXF1ZXN0IkIKDUdiQ29uZmlnUmVwbHkSMQoKc2lwYWNjb3Vu",
-            "dBgBIAMoCzIdLkdycGNHYjI4MTgxQ29uZmlnLlNJUEFjY291bnQi4QIKClNJ",
-            "UEFjY291bnQSCgoCSWQYASABKAkSDAoETmFtZRgCIAEoCRIRCglHYlZlcnNp",
-            "b24YAyABKAkSDwoHTG9jYWxJRBgEIAEoCRIPCgdMb2NhbElQGAUgASgJEhEK",
-            "CUxvY2FsUG9ydBgGIAEoCRISCgpSZW1vdGVQb3J0GAcgASgJEhYKDkF1dGhl",
-            "bnRpY2F0aW9uGAggASgJEhMKC1NJUFVzZXJuYW1lGAkgASgJEhMKC1NJUFBh",
-            "c3N3b3JkGAogASgJEhMKC01zZ1Byb3RvY29sGAsgASgJEhYKDlN0cmVhbVBy",
-            "b3RvY29sGAwgASgJEg8KB1RjcE1vZGUYDSABKAkSEQoJTXNnRW5jb2RlGA4g",
-            "ASgJEhYKDlBhY2tldE91dE9yZGVyGA8gASgJEhkKEUtlZXBhbGl2ZUludGVy",
-            "dmFsGBAgASgJEhcKD0tlZXBhbGl2ZU51bWJlchgRIAEoCTJjCg1HYjI4MTgx",
-            "Q29uZmlnElIKCEdiQ29uZmlnEiIuR3JwY0diMjgxODFDb25maWcuR2JDb25m",
-            "aWdSZXF1ZXN0GiAuR3JwY0diMjgxODFDb25maWcuR2JDb25maWdSZXBseSIA",
-            "YgZwcm90bzM="));
+            "ChRnYjI4MTgxX2NvbmZpZy5wcm90bxIGbWFuYWdlIhsKGVF1ZXJ5R2IyODE4",
+            "MUNvbmZpZ1JlcXVlc3QiQQoXUXVlcnlHYjI4MTgxQ29uZmlnUmVwbHkSJgoK",
+            "c2lwYWNjb3VudBgBIAMoCzISLm1hbmFnZS5TSVBBY2NvdW50IuECCgpTSVBB",
+            "Y2NvdW50EgoKAklkGAEgASgJEgwKBE5hbWUYAiABKAkSEQoJR2JWZXJzaW9u",
+            "GAMgASgJEg8KB0xvY2FsSUQYBCABKAkSDwoHTG9jYWxJUBgFIAEoCRIRCglM",
+            "b2NhbFBvcnQYBiABKAkSEgoKUmVtb3RlUG9ydBgHIAEoCRIWCg5BdXRoZW50",
+            "aWNhdGlvbhgIIAEoCRITCgtTSVBVc2VybmFtZRgJIAEoCRITCgtTSVBQYXNz",
+            "d29yZBgKIAEoCRITCgtNc2dQcm90b2NvbBgLIAEoCRIWCg5TdHJlYW1Qcm90",
+            "b2NvbBgMIAEoCRIPCgdUY3BNb2RlGA0gASgJEhEKCU1zZ0VuY29kZRgOIAEo",
+            "CRIWCg5QYWNrZXRPdXRPcmRlchgPIAEoCRIZChFLZWVwYWxpdmVJbnRlcnZh",
+            "bBgQIAEoCRIXCg9LZWVwYWxpdmVOdW1iZXIYESABKAkycgoPTWFuYWdlR2JT",
+            "ZXJ2aWNlEl8KF0dldEdiMjgxODFTZXJ2aWNlQ29uZmlnEiEubWFuYWdlLlF1",
+            "ZXJ5R2IyODE4MUNvbmZpZ1JlcXVlc3QaHy5tYW5hZ2UuUXVlcnlHYjI4MTgx",
+            "Q29uZmlnUmVwbHkiAGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcGb28181Config.GbConfigRequest), global::GrpcGb28181Config.GbConfigRequest.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcGb28181Config.GbConfigReply), global::GrpcGb28181Config.GbConfigReply.Parser, new[]{ "Sipaccount" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcGb28181Config.SIPAccount), global::GrpcGb28181Config.SIPAccount.Parser, new[]{ "Id", "Name", "GbVersion", "LocalID", "LocalIP", "LocalPort", "RemotePort", "Authentication", "SIPUsername", "SIPPassword", "MsgProtocol", "StreamProtocol", "TcpMode", "MsgEncode", "PacketOutOrder", "KeepaliveInterval", "KeepaliveNumber" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.QueryGb28181ConfigRequest), global::Manage.QueryGb28181ConfigRequest.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.QueryGb28181ConfigReply), global::Manage.QueryGb28181ConfigReply.Parser, new[]{ "Sipaccount" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Manage.SIPAccount), global::Manage.SIPAccount.Parser, new[]{ "Id", "Name", "GbVersion", "LocalID", "LocalIP", "LocalPort", "RemotePort", "Authentication", "SIPUsername", "SIPPassword", "MsgProtocol", "StreamProtocol", "TcpMode", "MsgEncode", "PacketOutOrder", "KeepaliveInterval", "KeepaliveNumber" }, null, null, null)
           }));
     }
     #endregion
@@ -53,15 +53,15 @@ namespace GrpcGb28181Config {
   /// <summary>
   /// The request message.
   /// </summary>
-  public sealed partial class GbConfigRequest : pb::IMessage<GbConfigRequest> {
-    private static readonly pb::MessageParser<GbConfigRequest> _parser = new pb::MessageParser<GbConfigRequest>(() => new GbConfigRequest());
+  public sealed partial class QueryGb28181ConfigRequest : pb::IMessage<QueryGb28181ConfigRequest> {
+    private static readonly pb::MessageParser<QueryGb28181ConfigRequest> _parser = new pb::MessageParser<QueryGb28181ConfigRequest>(() => new QueryGb28181ConfigRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<GbConfigRequest> Parser { get { return _parser; } }
+    public static pb::MessageParser<QueryGb28181ConfigRequest> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::GrpcGb28181Config.Gb28181ConfigReflection.Descriptor.MessageTypes[0]; }
+      get { return global::Manage.Gb28181ConfigReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -70,29 +70,29 @@ namespace GrpcGb28181Config {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GbConfigRequest() {
+    public QueryGb28181ConfigRequest() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GbConfigRequest(GbConfigRequest other) : this() {
+    public QueryGb28181ConfigRequest(QueryGb28181ConfigRequest other) : this() {
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GbConfigRequest Clone() {
-      return new GbConfigRequest(this);
+    public QueryGb28181ConfigRequest Clone() {
+      return new QueryGb28181ConfigRequest(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as GbConfigRequest);
+      return Equals(other as QueryGb28181ConfigRequest);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(GbConfigRequest other) {
+    public bool Equals(QueryGb28181ConfigRequest other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -133,7 +133,7 @@ namespace GrpcGb28181Config {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(GbConfigRequest other) {
+    public void MergeFrom(QueryGb28181ConfigRequest other) {
       if (other == null) {
         return;
       }
@@ -157,15 +157,15 @@ namespace GrpcGb28181Config {
   /// <summary>
   /// The response message.
   /// </summary>
-  public sealed partial class GbConfigReply : pb::IMessage<GbConfigReply> {
-    private static readonly pb::MessageParser<GbConfigReply> _parser = new pb::MessageParser<GbConfigReply>(() => new GbConfigReply());
+  public sealed partial class QueryGb28181ConfigReply : pb::IMessage<QueryGb28181ConfigReply> {
+    private static readonly pb::MessageParser<QueryGb28181ConfigReply> _parser = new pb::MessageParser<QueryGb28181ConfigReply>(() => new QueryGb28181ConfigReply());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<GbConfigReply> Parser { get { return _parser; } }
+    public static pb::MessageParser<QueryGb28181ConfigReply> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::GrpcGb28181Config.Gb28181ConfigReflection.Descriptor.MessageTypes[1]; }
+      get { return global::Manage.Gb28181ConfigReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -174,40 +174,40 @@ namespace GrpcGb28181Config {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GbConfigReply() {
+    public QueryGb28181ConfigReply() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GbConfigReply(GbConfigReply other) : this() {
+    public QueryGb28181ConfigReply(QueryGb28181ConfigReply other) : this() {
       sipaccount_ = other.sipaccount_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GbConfigReply Clone() {
-      return new GbConfigReply(this);
+    public QueryGb28181ConfigReply Clone() {
+      return new QueryGb28181ConfigReply(this);
     }
 
     /// <summary>Field number for the "sipaccount" field.</summary>
     public const int SipaccountFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::GrpcGb28181Config.SIPAccount> _repeated_sipaccount_codec
-        = pb::FieldCodec.ForMessage(10, global::GrpcGb28181Config.SIPAccount.Parser);
-    private readonly pbc::RepeatedField<global::GrpcGb28181Config.SIPAccount> sipaccount_ = new pbc::RepeatedField<global::GrpcGb28181Config.SIPAccount>();
+    private static readonly pb::FieldCodec<global::Manage.SIPAccount> _repeated_sipaccount_codec
+        = pb::FieldCodec.ForMessage(10, global::Manage.SIPAccount.Parser);
+    private readonly pbc::RepeatedField<global::Manage.SIPAccount> sipaccount_ = new pbc::RepeatedField<global::Manage.SIPAccount>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::GrpcGb28181Config.SIPAccount> Sipaccount {
+    public pbc::RepeatedField<global::Manage.SIPAccount> Sipaccount {
       get { return sipaccount_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as GbConfigReply);
+      return Equals(other as QueryGb28181ConfigReply);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(GbConfigReply other) {
+    public bool Equals(QueryGb28181ConfigReply other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -252,7 +252,7 @@ namespace GrpcGb28181Config {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(GbConfigReply other) {
+    public void MergeFrom(QueryGb28181ConfigReply other) {
       if (other == null) {
         return;
       }
@@ -278,6 +278,9 @@ namespace GrpcGb28181Config {
 
   }
 
+  /// <summary>
+  ///SIPAccount ..
+  /// </summary>
   public sealed partial class SIPAccount : pb::IMessage<SIPAccount> {
     private static readonly pb::MessageParser<SIPAccount> _parser = new pb::MessageParser<SIPAccount>(() => new SIPAccount());
     private pb::UnknownFieldSet _unknownFields;
@@ -286,7 +289,7 @@ namespace GrpcGb28181Config {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::GrpcGb28181Config.Gb28181ConfigReflection.Descriptor.MessageTypes[2]; }
+      get { return global::Manage.Gb28181ConfigReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

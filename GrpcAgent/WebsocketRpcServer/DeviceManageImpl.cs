@@ -23,24 +23,57 @@ namespace GrpcAgent.WebsocketRpcServer
             _sipRegistrarCore.RPCDmsRegisterReceived += _sipRegistrarCore_RPCDmsRegisterReceived;
         }
 
-        private void _sipRegistrarCore_RPCDmsRegisterReceived(SIPTransaction sipTransaction, SIPAccount sIPAccount)
+        private void _sipRegistrarCore_RPCDmsRegisterReceived(SIPTransaction sipTransaction, SIPSorcery.GB28181.SIP.App.SIPAccount sIPAccount)
         {
             try
             {
                 Device _device = new Device();
                 SIPRequest sipRequest = sipTransaction.TransactionRequest;
-                _device.Name = sIPAccount.Owner ?? string.Empty;
-                _device.Guid = sipTransaction.TransactionRequestFrom.URI.User;//42010000001310000184
-                _device.ProtocolType = ProtoType.ProtoGb28181;
-                _device.LoginUser.Add(new LoginUser() { LoginName = sIPAccount.SIPUsername ?? string.Empty, LoginPwd = sIPAccount.SIPPassword ?? string.Empty });
-
-                Channel channel = new Channel(EnvironmentVariables.GBServerChannelAddress ?? "10.78.115.182:5000", ChannelCredentials.Insecure);
+                //{
+                //    "_id": ObjectID("5b8f8b0aba6730933a2bdaf5"),
+                //    "uuid": "005199cd-7d06-43dc-a9cc-a2d9cf42a118",
+                //    "name": "testgbname",
+                //    "users": [
+                //        {
+                //            "loginname": "admin",
+                //            "loginpwd": "123456"
+                //        }
+                //    ],
+                //    "tag": [],
+                //    "ptztype": 0,
+                //    "description": "",
+                //    "protocoltype": 0,
+                //    "ip": "",
+                //    "port": 0,
+                //    "gbid": "42010000001310000184",
+                //    "gbparentid": "",
+                //    "mediasrctype": [],
+                //    "mediainfo": null,
+                //    "longitude": 0,
+                //    "latitude": 0,
+                //    "parentid": "",
+                //    "did": "",
+                //    "cid": "",
+                //    "pid": "",
+                //    "sid": "",
+                //    "shapetype": 2
+                //}
+                _device.Guid = Guid.NewGuid().ToString();
+                _device.Name = "gbdevice";
+                _device.LoginUser.Add(new LoginUser() { LoginName = sIPAccount.SIPUsername ?? "admin", LoginPwd = sIPAccount.SIPPassword ?? "123456" });
+                _device.PtzType = 0;
+                _device.ProtocolType = 0;
+                _device.IP = sipTransaction.TransactionRequest.RemoteSIPEndPoint.Address.ToString();//10.78.116.188
+                _device.Port = 5060;
+                _device.GBID = sipTransaction.TransactionRequestFrom.URI.User;//42010000001310000184
+                _device.ShapeType = ShapeType.Dome;
+                //var options = new List<ChannelOption> { new ChannelOption(ChannelOptions.MaxMessageLength, int.MaxValue) };
+                Channel channel = new Channel(EnvironmentVariables.GBServerChannelAddress ?? "devicemanagementservice:8080", ChannelCredentials.Insecure);//10.78.115.182:8080
                 var client = new Manage.Manage.ManageClient(channel);
                 AddDeviceRequest _AddDeviceRequest = new AddDeviceRequest();
                 _AddDeviceRequest.Device.Add(_device);
                 _AddDeviceRequest.LoginRoleId = "admin";
                 var reply = client.AddDevice(_AddDeviceRequest);
-
                 logger.Debug("Device[" + sipTransaction.TransactionRequest.RemoteSIPEndPoint + "] have completed registering DMS service.");
             }
             catch (Exception ex)

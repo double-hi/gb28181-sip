@@ -65,6 +65,7 @@ namespace SIPSorcery.GB28181.SIP
                 IPEndPoint ipedp = new IPEndPoint(IPAddress.Parse("0.0.0.0"), EnvironmentVariables.GbServiceLocalPort);
                 //m_sipConn = new UdpClient(m_localSIPEndPoint.GetIPEndPoint());
                 m_sipConn = new UdpClient(ipedp);
+                //m_sipConn.Client.ReceiveTimeout = 3000;
 
                 var listenThread = new Thread(new ThreadStart(Listen))
                 {
@@ -100,12 +101,12 @@ namespace SIPSorcery.GB28181.SIP
                 while (!Closed)
 				{
                     IPEndPoint inEndPoint = new IPEndPoint(IPAddress.Any, 0);
-
+                    //logger.Debug("SIPUDPChannel socket start.Receive.");
                     try
                     {
                         buffer = m_sipConn.Receive(ref inEndPoint);
                     }
-                    catch (SocketException)
+                    catch (SocketException sockex)
                     {
                         // ToDo. Pretty sure these exceptions get thrown when an ICMP message comes back indicating there is no listening
                         // socket on the other end. It would be nice to be able to relate that back to the socket that the data was sent to
@@ -113,6 +114,8 @@ namespace SIPSorcery.GB28181.SIP
                         //logger.Warn("SocketException SIPUDPChannel Receive (" + sockExcp.ErrorCode + "). " + sockExcp.Message);
 
                         //inEndPoint = new SIPEndPoint(new IPEndPoint(IPAddress.Any, 0));
+
+                        logger.Error("SocketException listening on SIPUDPChannel. " + sockex.Message);
                         continue;
                     }
                     catch(Exception listenExcp)
@@ -123,8 +126,8 @@ namespace SIPSorcery.GB28181.SIP
                         inEndPoint = new IPEndPoint(IPAddress.Any, 0);
                         continue;
                     }
-
-					if(buffer == null || buffer.Length == 0)
+                    //logger.Debug("SIPUDPChannel socket end.Receive.");
+                    if (buffer == null || buffer.Length == 0)
 					{
                         // No need to care about zero byte packets.
                         //string remoteEndPoint = (inEndPoint != null) ? inEndPoint.ToString() : "could not determine";
@@ -134,7 +137,8 @@ namespace SIPSorcery.GB28181.SIP
 					{
                         SIPMessageReceived?.Invoke(this, new SIPEndPoint(SIPProtocolsEnum.udp, inEndPoint), buffer);
                     }
-				}
+                    //logger.Debug("SIPUDPChannel socket message handled.");
+                }
 
                 logger.Debug("SIPUDPChannel socket on " + m_localSIPEndPoint + " listening halted.");
 			}

@@ -13,13 +13,14 @@ namespace SIPSorcery.GB28181.Servers
         ISIPMonitorCore GetTargetMonitorService(string gbid);
         Dictionary<string, DeviceStatus> DeviceStatuses { get; }
         Dictionary<string, RecordInfo> RecordInfoes { get; }
+        List<Dictionary<string, DateTime>> VideoSessionAlive { get; }
 
         //ip/port/protocol/ 
-        Task<Tuple<string, int, ProtocolType>> RealVideoReq(string gbid, int[] mediaPort, string receiveIP);
+        Task<Tuple<string, int, SIPSorcery.GB28181.SIP.SIPHeader, ProtocolType>> RealVideoReq(string gbid, int[] mediaPort, string receiveIP);
         Task<Tuple<string, int, ProtocolType>> BackVideoReq(DateTime beginTime, DateTime endTime, string gbid, int[] mediaPort, string receiveIP);
 
         //Stop 
-        Task<Tuple<string, int, ProtocolType>> Stop(string gbid);
+        Task<Tuple<string, int, ProtocolType>> Stop(string gbid, string sessionid);
 
         /// <summary>
         /// Device Catalog Query

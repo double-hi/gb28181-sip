@@ -22,6 +22,8 @@ namespace SIPSorcery.GB28181.Servers
         public Dictionary<string, DeviceStatus> DeviceStatuses => _DeviceStatuses;
         private Dictionary<string, RecordInfo> _RecordInfoes = new Dictionary<string, RecordInfo>();
         public Dictionary<string, RecordInfo> RecordInfoes => _RecordInfoes;
+        public List<Dictionary<string, DateTime>> VideoSessionAlive => _VideoSessionKeepAlive;
+        private List<Dictionary<string, DateTime>> _VideoSessionKeepAlive = new List<Dictionary<string, DateTime>>();
 
         public SIPServiceDirector(ISipMessageCore sipCoreMessageService)
         {
@@ -70,7 +72,7 @@ namespace SIPSorcery.GB28181.Servers
         /// <param name="mediaPort"></param>
         /// <param name="receiveIP"></param>
         /// <returns></returns>
-        async public Task<Tuple<string, int, ProtocolType>> RealVideoReq(string gbid, int[] mediaPort, string receiveIP)
+        async public Task<Tuple<string, int, SIPSorcery.GB28181.SIP.SIPHeader, ProtocolType>> RealVideoReq(string gbid, int[] mediaPort, string receiveIP)
         {
             logger.Debug("Make video request started.");
             var target = GetTargetMonitorService(gbid);
@@ -86,7 +88,8 @@ namespace SIPSorcery.GB28181.Servers
             });
             var ipaddress = _sipCoreMessageService.GetReceiveIP(taskResult.Item2.Body);
             var port = _sipCoreMessageService.GetReceivePort(taskResult.Item2.Body, SDPMediaTypesEnum.video);
-            return Tuple.Create(ipaddress, port, ProtocolType.Udp);
+            var header = taskResult.Item1.Header;
+            return Tuple.Create(ipaddress, port, header, ProtocolType.Udp);
         }
         /// <summary>
         /// history video request
@@ -120,7 +123,7 @@ namespace SIPSorcery.GB28181.Servers
         /// </summary>
         /// <param name="gbid"></param>
         /// <returns></returns>
-        async public Task<Tuple<string, int, ProtocolType>> Stop(string gbid)
+        async public Task<Tuple<string, int, ProtocolType>> Stop(string gbid, string sessionid)
         {
             var target = GetTargetMonitorService(gbid);
 
@@ -128,7 +131,7 @@ namespace SIPSorcery.GB28181.Servers
             {
                 return null;
             }
-            target.ByeVideoReq();
+            target.ByeVideoReq(sessionid);
             logger.Debug("Video request stopped.");
             return null;
 
