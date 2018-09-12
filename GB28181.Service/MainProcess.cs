@@ -228,7 +228,7 @@ namespace GB28181Service
         {
             try
             {
-                string GBServerChannelAddress = EnvironmentVariables.GBServerChannelAddress ?? "10.78.115.182:5000";//device-mgr-device-mgr
+                string GBServerChannelAddress = EnvironmentVariables.GBServerChannelAddress ?? "devicemanagementservice:8080";//devicemanagementservice
                 Channel channel = new Channel(GBServerChannelAddress, ChannelCredentials.Insecure);
                 var client = new ManageGbService.ManageGbServiceClient(channel);
                 //GbConfigRequest _GbConfigRequest = new GbConfigRequest();

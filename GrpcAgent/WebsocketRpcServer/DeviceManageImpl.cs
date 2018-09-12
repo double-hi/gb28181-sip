@@ -68,7 +68,7 @@ namespace GrpcAgent.WebsocketRpcServer
                 _device.GBID = sipTransaction.TransactionRequestFrom.URI.User;//42010000001310000184
                 _device.ShapeType = ShapeType.Dome;
                 //var options = new List<ChannelOption> { new ChannelOption(ChannelOptions.MaxMessageLength, int.MaxValue) };
-                Channel channel = new Channel(EnvironmentVariables.GBServerChannelAddress ?? "10.78.115.182:5000", ChannelCredentials.Insecure);//10.78.115.182:8080
+                Channel channel = new Channel(EnvironmentVariables.GBServerChannelAddress ?? "devicemanagementservice:8080", ChannelCredentials.Insecure);//10.78.115.182:8080
                 var client = new Manage.Manage.ManageClient(channel);
                 AddDeviceRequest _AddDeviceRequest = new AddDeviceRequest();
                 _AddDeviceRequest.Device.Add(_device);
