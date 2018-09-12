@@ -363,7 +363,7 @@ namespace GB28181Service
                 var clients = new ConsulClient(ConfigurationOverview);
                 _AgentServiceRegistration = new AgentServiceRegistration()
                 {
-                    Address = GetIPAddress(),
+                    Address = "10.78.115.182",//GetIPAddress(),
                     ID = "gb28181" + Dns.GetHostName(),
                     Name = "gb28181",
                     Port = EnvironmentVariables.GBServerGrpcPort,
