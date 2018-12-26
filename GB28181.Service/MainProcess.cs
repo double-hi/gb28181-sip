@@ -110,7 +110,7 @@ namespace GB28181Service
             //var sect = config.GetSection("sipaccounts");
 
             //Consul Register
-            ServiceRegister();
+            //ServiceRegister();
             //InitServer
             SipAccountStorage.RPCGBServerConfigReceived += SipAccountStorage_RPCGBServerConfigReceived;
 

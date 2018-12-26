@@ -47,7 +47,7 @@ namespace SIPSorcery.GB28181.Sys
         }
         public static int GbServiceLocalPort
         {
-            get { return 5061; }
+            get { return 5060; }
         }
     }
 }

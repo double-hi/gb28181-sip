@@ -243,6 +243,7 @@ namespace SIPSorcery.GB28181.SIP
 
         public void ReceiveMessage(SIPChannel sipChannel, SIPEndPoint remoteEndPoint, byte[] buffer)
         {
+            logger.Debug("ReceiveMessage:+" + System.Text.Encoding.Default.GetString(buffer));
             try
             {
                 if (!m_queueIncoming)
